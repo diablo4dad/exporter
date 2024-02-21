@@ -1,0 +1,17 @@
+{
+  "name": "d4log-export",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "export": "node dist/main.js"
+  },
+  "private": true,
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^20.11.19",
+    "typescript": "^5.3.3"
+  }
+}
