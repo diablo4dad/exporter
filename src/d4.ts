@@ -63,6 +63,22 @@ type D4TextureFrame = D4Type & {
     flV1: number,
 }
 
+type D4Emote = D4Ref & D4Type & {
+    hImageNormal: number,
+    hImageHover: number,
+    hImageDisabled: number,
+}
+
+type D4TownPortalCosmetic = D4Ref & D4Type & {
+    hIconImage: number,
+    eClassRestriction: number,
+}
+
+type D4MarkingShape = D4Ref & D4Type & {
+    hIconImage: number,
+    eClassRestriction: number,
+}
+
 type D4String = D4Type & {
     szLabel: string,
     szText: string,
@@ -99,5 +115,8 @@ export type {
     D4ActorItemData,
     D4Ref,
     D4SnoRef,
-    D4InventoryImages
+    D4InventoryImages,
+    D4Emote,
+    D4MarkingShape,
+    D4TownPortalCosmetic,
 };
