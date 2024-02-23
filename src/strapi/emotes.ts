@@ -1,6 +1,16 @@
 import {CLASS_TYPES, D4Emote, getTextFromStl, resolveSno, resolveStringsList} from "../d4";
-import {checkForErrors, D4Dependencies, issueDelete, issueGet, issuePostJson, issuePutJson} from "./common";
-import {StrapiActionResult, StrapiEmoteReq, StrapiEmoteResp, StrapiQueryResult} from "../strapi";
+import {
+    checkForErrors,
+    D4Dependencies,
+    issueDelete,
+    issueGet,
+    issuePostJson,
+    issuePutJson,
+    StrapiActionResult,
+    StrapiEmoteReq,
+    StrapiEmoteResp,
+    StrapiQueryResult
+} from "./common";
 import {MediaLookup} from "./media";
 
 function areEmotesEqual(base: StrapiEmoteReq, remote: StrapiEmoteResp): boolean {
