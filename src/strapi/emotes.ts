@@ -1,4 +1,4 @@
-import {CLASS_TYPES, D4Emote, getTextFromStl, resolveSno, resolveStringsList} from "../d4";
+import {CLASS_TYPES, D4Emote, getTextFromStl, resolveSno, resolveStringsList} from "../d4.js";
 import {
     checkForErrors,
     D4Dependencies,
@@ -9,16 +9,17 @@ import {
     StrapiActionResult,
     StrapiEmoteReq,
     StrapiEmoteResp,
+    StrapiEntry,
     StrapiQueryResult
-} from "./common";
-import {MediaLookup} from "./media";
+} from "./common.js";
+import {MediaLookup} from "./media.js";
 
 function areEmotesEqual(base: StrapiEmoteReq, remote: StrapiEmoteResp): boolean {
     if (base.itemId != remote.itemId) return false;
     if (base.icon !== remote.icon?.data?.id) return false;
     if (base.iconId != remote.iconId) return false;
-    if (!base.usableByClass.every(c => remote.usableByClass.includes(c))) return false;
-    if (!remote.usableByClass.every(c => base.usableByClass.includes(c))) return false;
+    if (!base.usableByClass.every((c: string) => remote.usableByClass.includes(c))) return false;
+    if (!remote.usableByClass.every((c: string) => base.usableByClass.includes(c))) return false;
     if (base.name !== remote.name) return false;
     return base.description === remote.description;
 }
@@ -103,7 +104,11 @@ async function syncEmotes(emotes: Map<string, D4Emote>, deps: D4Dependencies, me
 
         // handle duplicates
         if (dupDetected) {
-            await Promise.all(resp.data.map(e => deleteEmote(e.id)));
+            await Promise.all(
+                resp.data.map(
+                    (e: StrapiEntry<StrapiEmoteResp>) => deleteEmote(e.id)
+                )
+            );
         }
 
         // create emote

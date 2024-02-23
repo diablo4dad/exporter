@@ -1,7 +1,7 @@
-import {MAX_HYDRATE_DEPTH_RECURSION} from "./config";
+import {MAX_HYDRATE_DEPTH_RECURSION} from "./config.js";
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 function parseFile<T>(base: string, sub: string, fn: string, depth: number = 0): [string, T] {
     const relativePath = path.join(sub, fn);
@@ -38,7 +38,7 @@ function parseFiles<T>(base: string, sub: string): Map<string, T> {
         .readdirSync(path.join(base, sub))
         .filter((fn: string) => fn.endsWith(".json"))
         .map((fn: string) => {
-            return parseFile(base, sub, fn);
+            return parseFile<T>(base, sub, fn);
         });
 
     return new Map(files);

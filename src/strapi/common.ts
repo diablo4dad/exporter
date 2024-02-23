@@ -1,5 +1,5 @@
-import {D4Actor, D4ItemType, D4Power, D4Translation} from "../d4";
-import {STRAPI_API_TOKEN, STRAPI_SERVER} from "../config";
+import {D4Actor, D4ItemType, D4Power, D4Translation} from "../d4.js";
+import {STRAPI_API_TOKEN, STRAPI_SERVER} from "../config.js";
 
 export type D4Dependencies = {
     actors: Map<string, D4Actor>,

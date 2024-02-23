@@ -1,5 +1,14 @@
-import {D4Actor, D4Emote, D4Item, D4ItemType, D4MarkingShape, D4Power, D4TownPortalCosmetic, D4Translation} from "./d4";
-import {parseFiles} from "./loader";
+import {
+    D4Actor,
+    D4Emote,
+    D4Item,
+    D4ItemType,
+    D4MarkingShape,
+    D4Power,
+    D4TownPortalCosmetic,
+    D4Translation
+} from "./d4.js";
+import {parseFiles} from "./loader.js";
 import {
     PATH_TO_D4ACTOR,
     PATH_TO_D4DATA,
@@ -11,10 +20,10 @@ import {
     PATH_TO_D4TEXTURES,
     PATH_TO_D4TOWN_PORTAL,
     PATH_TO_POWER
-} from "./config";
-import {getMediaIndex, syncImages} from "./strapi/items";
-import {getTextures} from "./textures";
-import {syncEmotes} from "./strapi/emotes";
+} from "./config.js";
+import {getMediaIndex, syncImages} from "./strapi/items.js";
+import {getTextures} from "./textures.js";
+import {syncEmotes} from "./strapi/emotes.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4DATA, PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4DATA, PATH_TO_D4ITEM_TYPE);
@@ -43,7 +52,7 @@ const app = async () => {
     const filesSynced = await syncImages(PATH_TO_D4TEXTURES, files, media);
 
     // update media list with new uploads
-    filesSynced.forEach((v, k) => {
+    filesSynced.forEach((v: number, k: string) => {
         media.set(k, v);
     })
 

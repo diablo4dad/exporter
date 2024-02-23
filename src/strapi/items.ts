@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs'
-import {partition} from "../helper";
+import {partition} from "../helper.js";
 import {
     arrayToClassList,
     chooseBestIconHandle,
@@ -9,7 +9,7 @@ import {
     resolveSno,
     resolveStringsList,
     toMagicType
-} from "../d4";
+} from "../d4.js";
 import {
     D4Dependencies,
     issueGet,
@@ -19,7 +19,7 @@ import {
     StrapiItemResponse,
     StrapiMediaItem,
     StrapiQueryResult
-} from "./common";
+} from "./common.js";
 
 async function getMediaIndex(): Promise<Map<string, number>> {
     const resp = await issueGet('/api/upload/files');
