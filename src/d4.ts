@@ -1,4 +1,6 @@
 import Path from 'path'
+import path from 'path'
+import {PATH_TO_D4STRING_LIST} from "./config";
 
 type D4Type = {
     __type__: string,
@@ -11,8 +13,8 @@ type D4Ref = {
 }
 
 type D4Item = D4Ref & D4Type & {
-    snoActor?: D4SnoRef | D4Actor,
-    snoItemType?: D4SnoRef | D4ItemType,
+    snoActor?: D4SnoRef,
+    snoItemType?: D4SnoRef,
     tInvImages: D4InventoryImages[],
     unk_75d565b: number, // image
     eMagicType: number,
@@ -63,10 +65,15 @@ type D4TextureFrame = D4Type & {
     flV1: number,
 }
 
+type D4Power = D4Ref & D4Type & {
+    snoClassRequirement: D4SnoRef,
+}
+
 type D4Emote = D4Ref & D4Type & {
     hImageNormal: number,
     hImageHover: number,
     hImageDisabled: number,
+    snoPower: D4SnoRef,
 }
 
 type D4TownPortalCosmetic = D4Ref & D4Type & {
@@ -85,12 +92,20 @@ type D4String = D4Type & {
     hLabel: string,
 }
 
-type D4Translation = D4Ref & D4Item & {
+type D4Translation = D4Ref & D4Type & {
     arStrings: D4String[],
 }
 
+const EMPTY_STRINGS_LIST: D4Translation = {
+    arStrings: [],
+    __snoID__: -1,
+    __fileName__: 'missing',
+    __type__: 'missing',
+    __typeHash__: 'missing',
+}
+
 const MAGIC_TYPES = ["Common", "Legendary", "Unique"];
-const CLASS_TYPES = ["Sorceress", "Druid", "Barbarian", "Rogue", "Necromancer"];
+const CLASS_TYPES = ["Sorcerer", "Druid", "Barbarian", "Rogue", "Necromancer"];
 
 function getStlFileName(ref: D4Ref & D4Type): string {
     const type = ref.__type__;
@@ -102,7 +117,81 @@ function getStlFileName(ref: D4Ref & D4Type): string {
     return `${slicedType}_${baseFileName}.stl.json`;
 }
 
-export {getStlFileName, MAGIC_TYPES, CLASS_TYPES};
+function getTextFromStl(stl: D4Translation, label: string, fallback: string = ''): string {
+    return stl.arStrings
+        .filter(s => s.szLabel === label)
+        .map(s => s.szText)
+        .pop() ?? fallback;
+}
+
+function resolveSno<T>(ref: D4SnoRef | undefined, lookup: Map<string, T>): T | undefined {
+    if (!ref) {
+        return;
+    }
+
+    // normalise filename
+    const targetFileName = path
+        .join('json', ref.__targetFileName__ + '.json')
+        .replace('/', '\\');
+
+    return lookup.get(targetFileName);
+}
+
+function resolveStringsList(ref: D4Ref & D4Type | undefined, lookup: Map<string, D4Translation>): D4Translation {
+    if (!ref) {
+        return EMPTY_STRINGS_LIST;
+    }
+
+    const filename = getStlFileName(ref);
+    const relativeFilename = path.join(PATH_TO_D4STRING_LIST, filename);
+    const stringsList = lookup.get(relativeFilename);
+    return stringsList ?? EMPTY_STRINGS_LIST;
+}
+
+function arrayToClassList(classes: number[]): string[] {
+    return classes.map((v, i) => v === 0 ? false : CLASS_TYPES[i]).filter(c => c  !== false) as string[];
+}
+
+function toMagicType(magicType: number): string {
+    return MAGIC_TYPES[magicType] ?? '';
+}
+
+function chooseBestIconHandle(item: D4Item, actor: D4Actor | undefined): number | null {
+    // this seems to be the best icon when available
+    if (item.unk_75d565b) {
+        return item.unk_75d565b;
+    }
+
+    if (item.tInvImages) {
+        if (item.tInvImages.length !== 5) {
+            console.warn("Expecting tInvImages to contain 5 images.");
+        } else {
+            // default to male barbarian image if available
+            if (item.tInvImages[2].hDefaultImage) {
+                return item.tInvImages[2].hDefaultImage;
+            }
+
+            // otherwise, return any available variant
+            for (const inventoryImage of item.tInvImages) {
+                if (inventoryImage.hDefaultImage) {
+                    return inventoryImage.hDefaultImage;
+                }
+            }
+        }
+    }
+
+    if (actor) {
+        for (const itemData of actor.ptItemData) {
+            if (itemData.hDefaultImage) {
+                return itemData.hDefaultImage;
+            }
+        }
+    }
+
+    return null;
+}
+
+export {getStlFileName, getTextFromStl, resolveSno, resolveStringsList, arrayToClassList, toMagicType, chooseBestIconHandle, CLASS_TYPES};
 export type {
     D4ItemType,
     D4Item,
@@ -119,4 +208,5 @@ export type {
     D4Emote,
     D4MarkingShape,
     D4TownPortalCosmetic,
+    D4Power,
 };

@@ -7,8 +7,13 @@ type StrapiMediaItem = {
     name: string,
 }
 
-type StrapiSearchResult<T> = {
-    data: StrapiSearchData<T>[],
+type StrapiQueryResult<T> = {
+    data: StrapiEntry<T>[],
+    meta: StrapiSearchMeta,
+}
+
+type StrapiActionResult<T> = {
+    data: StrapiEntry<T>,
     meta: StrapiSearchMeta,
 }
 
@@ -23,23 +28,50 @@ type StrapiPagination = {
     total: number,
 }
 
-type StrapiSearchData<T> = {
+type StrapiEntry<T> = {
     id: number,
     attributes: T,
+    // meta
 }
 
-type StrapiItemType = {
+type StrapiItemType<IconT> = {
     itemId: number,
-    name?: string,
-    season?: number,
+    itemType: string,
+    name: string,
+    description: string,
+    transMog: boolean,
+    magicType: string,
+    usableByClass: string[],
+    iconId: number | null,
+    icon: IconT | undefined,
+    // images
 }
+
+type StrapiEmote<IconT> = {
+    itemId: number,
+    name: string,
+    description: string,
+    usableByClass: string[],
+    iconId: number | null,
+    icon: IconT | undefined,
+}
+
+type StrapiItemRequest = StrapiItemType<number | null>;
+type StrapiItemResponse = StrapiItemType<StrapiPostData<StrapiEntry<StrapiMediaItem | null>>>;
+type StrapiEmoteReq = StrapiEmote<number | null>;
+type StrapiEmoteResp = StrapiEmote<StrapiPostData<StrapiEntry<StrapiMediaItem | null>>>;
 
 export type {
     StrapiItemType,
     StrapiMediaItem,
     StrapiPostData,
-    StrapiSearchData,
-    StrapiSearchResult,
+    StrapiEntry,
+    StrapiQueryResult,
     StrapiSearchMeta,
-    StrapiPagination
+    StrapiPagination,
+    StrapiItemResponse,
+    StrapiItemRequest,
+    StrapiEmoteResp,
+    StrapiEmoteReq,
+    StrapiActionResult,
 }
