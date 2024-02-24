@@ -15,6 +15,7 @@ type D4Ref = {
 type D4Item = D4Ref & D4Type & {
     snoActor: D4SnoRef | null,
     snoItemType: D4SnoRef | null,
+    snoMount: D4SnoRef | null,
     tInvImages: D4InventoryImages[],
     unk_75d565b: number, // image
     eMagicType: number,

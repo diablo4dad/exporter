@@ -26,7 +26,7 @@ import {
 import {getTextures} from "./textures.js";
 import {getMediaIndex, syncImages} from "./strapi/media.js";
 import {D4Dependencies} from "./strapi/common.js";
-import {syncPortals} from "./strapi/portals.js";
+import {syncItems} from "./strapi/items.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4DATA, PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4DATA, PATH_TO_D4ITEM_TYPE);
@@ -71,8 +71,8 @@ const app = async () => {
         num_media: media.size,
     });
 
-    // await syncItems(items, deps, media);
-    // console.log("Items synced.")
+    await syncItems(items, deps, media);
+    console.log("Items synced.")
 
     // await syncEmotes(emotes, deps, media);
     // console.log("Emotes synced.")
@@ -80,7 +80,8 @@ const app = async () => {
     // await syncHeadstones(headstones, deps, media);
     // console.log("Headstones synced.");
 
-    await syncPortals(portals, deps, media);
+    // await syncPortals(portals, deps, media);
+    // console.log("Portals synced.");
 
 }
 
