@@ -73,7 +73,7 @@ async function syncImages(pathToImages: string, imagesToSync: string[], existing
 
     // batch uploads into
     const uploadBatches =
-        partition(imagesToUpload, 10)
+        partition(imagesToUpload, 100)
             .map(uploadImages);
 
     // execute each upload

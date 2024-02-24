@@ -59,7 +59,10 @@ const app = async () => {
     const message = filesSynced.size
         ? filesSynced.size + " files uploaded."
         : "All media up-to-date.";
-    console.log(message);
+    console.log(message, {
+        num_files: files.length,
+        num_media: media.size,
+    });
 
     // await syncItems(items, deps, media);
     // console.log("Items synced.")

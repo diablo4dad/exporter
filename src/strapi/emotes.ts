@@ -104,11 +104,7 @@ async function syncEmotes(emotes: Map<string, D4Emote>, deps: D4Dependencies, me
 
         // handle duplicates
         if (dupDetected) {
-            await Promise.all(
-                resp.data.map(
-                    (e: StrapiEntry<StrapiEmoteResp>) => deleteEmote(e.id)
-                )
-            );
+            await Promise.all(resp.data.map((e: StrapiEntry<StrapiEmoteResp>) => deleteEmote(e.id)));
         }
 
         // create emote
