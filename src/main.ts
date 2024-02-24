@@ -21,9 +21,9 @@ import {
     PATH_TO_D4TOWN_PORTAL,
     PATH_TO_POWER
 } from "./config.js";
-import {getMediaIndex, syncImages} from "./strapi/items.js";
 import {getTextures} from "./textures.js";
 import {syncEmotes} from "./strapi/emotes.js";
+import {getMediaIndex, syncImages} from "./strapi/media.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4DATA, PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4DATA, PATH_TO_D4ITEM_TYPE);
