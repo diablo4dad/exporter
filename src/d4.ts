@@ -13,8 +13,8 @@ type D4Ref = {
 }
 
 type D4Item = D4Ref & D4Type & {
-    snoActor?: D4SnoRef,
-    snoItemType?: D4SnoRef,
+    snoActor: D4SnoRef | null,
+    snoItemType: D4SnoRef | null,
     tInvImages: D4InventoryImages[],
     unk_75d565b: number, // image
     eMagicType: number,
@@ -44,10 +44,16 @@ type D4SnoRef = D4Type & {
 
 type D4Actor = D4Ref & D4Type & {
     ptItemData: D4ActorItemData[],
+    ptUIData: D4ActorUIData[],
+    eType: number,
 }
 
 type D4ActorItemData = D4Type & {
     hDefaultImage: number,
+}
+
+type D4ActorUIData = D4Type & {
+    hPortraitImage: number,
 }
 
 type D4Texture = D4Ref & D4Type & {
@@ -74,6 +80,18 @@ type D4Emote = D4Ref & D4Type & {
     hImageHover: number,
     hImageDisabled: number,
     snoPower: D4SnoRef,
+}
+
+type D4StoreProduct = D4Ref & D4Type & {
+    hStoreIconOverride: number,
+    snoItemTransmog: D4SnoRef | null,
+    snoMount: D4SnoRef | null,
+    snoEmote: D4SnoRef | null,
+    snoMarkingShape: D4SnoRef | null,
+    snoJewelry: D4SnoRef | null,
+    snoEmblem: D4SnoRef | null,
+    snoHeadstone: D4SnoRef | null,
+    snoTownPortal: D4SnoRef | null,
 }
 
 type D4TownPortalCosmetic = D4Ref & D4Type & {
@@ -124,8 +142,30 @@ function getTextFromStl(stl: D4Translation, label: string, fallback: string = ''
         .pop() ?? fallback;
 }
 
-function resolveSno<T>(ref: D4SnoRef | undefined, lookup: Map<string, T>): T | undefined {
-    if (!ref) {
+const STORE_MAP = new Map([
+    ['EmoteDefinition', ['Emote', '.emo']],
+    ['ActorDefinition', ['Actor', '.acr']],
+]);
+
+function resolveStoreProduct(ref: D4Ref & D4Type, lookup: Map<string, D4StoreProduct>): D4StoreProduct | undefined {
+    const mapping = STORE_MAP.get(ref.__type__);
+    if (!mapping) {
+        return;
+    }
+
+    const [type, ext] = mapping;
+    const targetFileName = ref.__fileName__
+        .replace(type, 'StoreProduct')
+        .replace(ext, '.prd');
+    const targetFileNameKey = path
+        .join('json', targetFileName + '.json')
+        .replace('/', '\\');
+
+    return lookup.get(targetFileNameKey);
+}
+
+function resolveSno<T>(ref: D4SnoRef | null, lookup: Map<string, T>): T | undefined {
+    if (ref === null) {
         return;
     }
 
@@ -191,7 +231,7 @@ function chooseBestIconHandle(item: D4Item, actor: D4Actor | undefined): number 
     return null;
 }
 
-export {getStlFileName, getTextFromStl, resolveSno, resolveStringsList, arrayToClassList, toMagicType, chooseBestIconHandle, CLASS_TYPES};
+export {getStlFileName, getTextFromStl, resolveSno, resolveStringsList, arrayToClassList, toMagicType, chooseBestIconHandle, CLASS_TYPES, resolveStoreProduct};
 export type {
     D4ItemType,
     D4Item,
@@ -209,4 +249,5 @@ export type {
     D4MarkingShape,
     D4TownPortalCosmetic,
     D4Power,
+    D4StoreProduct,
 };

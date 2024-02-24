@@ -1,4 +1,4 @@
-import {D4Actor, D4ItemType, D4Power, D4Translation} from "../d4.js";
+import {D4Actor, D4ItemType, D4Power, D4StoreProduct, D4Translation} from "../d4.js";
 import {STRAPI_API_TOKEN, STRAPI_SERVER} from "../config.js";
 
 export type D4Dependencies = {
@@ -6,6 +6,7 @@ export type D4Dependencies = {
     strings: Map<string, D4Translation>,
     itemTypes: Map<string, D4ItemType>,
     powers: Map<string, D4Power>,
+    storeProducts: Map<string, D4StoreProduct>,
 }
 
 export function appendAuth(headers: Record<string, string> = {}) {

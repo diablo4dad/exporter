@@ -1,4 +1,12 @@
-import {CLASS_TYPES, D4Emote, getTextFromStl, resolveSno, resolveStringsList} from "../d4.js";
+import {
+    CLASS_TYPES,
+    D4Emote,
+    D4StoreProduct,
+    getTextFromStl,
+    resolveSno,
+    resolveStoreProduct,
+    resolveStringsList
+} from "../d4.js";
 import {
     areEqual,
     createEntity,
@@ -34,14 +42,25 @@ function areEmotesEqual(base: StrapiEmoteReq, remote: StrapiEmoteResp): boolean 
     return areEqual(base, remote);
 }
 
+function findBestEmoteIcon(emote: D4Emote, storeProduct?: D4StoreProduct): number {
+    if (storeProduct) {
+        if (storeProduct.hStoreIconOverride) {
+            return storeProduct.hStoreIconOverride;
+        }
+    }
+
+    return emote.hImageNormal;
+}
+
 function makeStrapiEmote(emote: D4Emote, deps: D4Dependencies, media: Map<string, number>): StrapiEmoteReq {
     const emoteStringsList = resolveStringsList(emote, deps.strings);
     const powerSno = resolveSno(emote.snoPower, deps.powers);
+    const storeProduct = resolveStoreProduct(emote, deps.storeProducts);
 
     const itemId = emote.__snoID__;
     const name = getTextFromStl(emoteStringsList, "Name");
     const description = getTextFromStl(emoteStringsList, "Description");
-    const iconId = emote.hImageNormal;
+    const iconId = findBestEmoteIcon(emote, storeProduct);
     const icon = media.get(iconId + '.webp') ?? null;
     const usableByClass = powerSno
         ? powerSno.snoClassRequirement

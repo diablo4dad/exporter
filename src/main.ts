@@ -5,6 +5,7 @@ import {
     D4ItemType,
     D4MarkingShape,
     D4Power,
+    D4StoreProduct,
     D4TownPortalCosmetic,
     D4Translation
 } from "./d4.js";
@@ -16,6 +17,7 @@ import {
     PATH_TO_D4ITEM,
     PATH_TO_D4ITEM_TYPE,
     PATH_TO_D4MARKING_SHAPE,
+    PATH_TO_D4STORE_PRODUCT,
     PATH_TO_D4STRING_LIST,
     PATH_TO_D4TEXTURES,
     PATH_TO_D4TOWN_PORTAL,
@@ -24,6 +26,8 @@ import {
 import {getTextures} from "./textures.js";
 import {syncEmotes} from "./strapi/emotes.js";
 import {getMediaIndex, syncImages} from "./strapi/media.js";
+import {syncHeadstones} from "./strapi/headstones.js";
+import {D4Dependencies} from "./strapi/common.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4DATA, PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4DATA, PATH_TO_D4ITEM_TYPE);
@@ -33,8 +37,10 @@ const emotes = parseFiles<D4Emote>(PATH_TO_D4DATA, PATH_TO_D4EMOTE);
 const portals = parseFiles<D4TownPortalCosmetic>(PATH_TO_D4DATA, PATH_TO_D4TOWN_PORTAL);
 const markings = parseFiles<D4MarkingShape>(PATH_TO_D4DATA, PATH_TO_D4MARKING_SHAPE);
 const powers = parseFiles<D4Power>(PATH_TO_D4DATA, PATH_TO_POWER);
+const storeProducts = parseFiles<D4StoreProduct>(PATH_TO_D4DATA, PATH_TO_D4STORE_PRODUCT);
+const headstones = new Map(Array.of(...actors.entries()).filter(([_, a]) => a.__fileName__.includes("headstone")));
 
-const deps =  { itemTypes, actors, strings, powers };
+const deps: D4Dependencies = { itemTypes, actors, strings, powers, storeProducts };
 
 console.log("Read " + items.size + " items...");
 console.log("Read " + itemTypes.size + " item types...");
@@ -44,6 +50,7 @@ console.log("Read " + emotes.size + " emotes...");
 console.log("Read " + portals.size + " portals...");
 console.log("Read " + markings.size + " markings...");
 console.log("Read " + powers.size + " powers...");
+console.log("Read " + storeProducts.size + " store products...");
 
 const app = async () => {
     // sync media to strapi server
@@ -69,6 +76,9 @@ const app = async () => {
 
     await syncEmotes(emotes, deps, media);
     console.log("Emotes synced.")
+
+    await syncHeadstones(headstones, deps, media);
+    console.log("Headstones synced.")
 }
 
 app().then(() => {
