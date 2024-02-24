@@ -10,12 +10,16 @@ import {
 import {
     areEqual,
     D4Dependencies,
-    issueGet,
+    findEntity,
     issuePutJson,
     StrapiItemReq,
     StrapiItemResp,
     StrapiQueryResult
 } from "./common.js";
+
+async function findItem(diabloId: number): Promise<StrapiQueryResult<StrapiItemResp>> {
+    return findEntity('items', diabloId);
+}
 
 function makeStrapiItem(item: D4Item, deps: D4Dependencies, media: Map<string, number>): StrapiItemReq {
     // item strings
@@ -50,27 +54,11 @@ function makeStrapiItem(item: D4Item, deps: D4Dependencies, media: Map<string, n
     }
 }
 
-async function fetchStrapiItem(itemId: number): Promise<StrapiQueryResult<StrapiItemResp>> {
-    const resp = await issueGet('/api/items', {
-        'publicationState': 'preview',
-        'populate': '*',
-        'filters[itemId][$eq]': String(itemId),
-    });
-
-    if (!resp.ok) {
-        console.error("Server returning a non-success response.", {
-            status: resp.status,
-            body: await resp.text(),
-        });
-
-        throw new Error("Error fetching Strapi item.");
+function areItemsEqual(base: StrapiItemReq, strapi: StrapiItemResp): boolean {
+    if (!areEqual(base, strapi)) {
+        return false;
     }
 
-    return (await resp.json()) as StrapiQueryResult<StrapiItemResp>;
-}
-
-function areItemsEqual(base: StrapiItemReq, strapi: StrapiItemResp): boolean {
-    if (!areEqual(base, strapi)) return false;
     if (base.itemType !== strapi.itemType) return false;
     if (base.magicType !== strapi.magicType) return false;
     return (base.transMog === strapi.transMog);
@@ -79,7 +67,7 @@ function areItemsEqual(base: StrapiItemReq, strapi: StrapiItemResp): boolean {
 async function syncItems(items: Map<string, D4Item>, deps: D4Dependencies, media: Map<string, number>): Promise<number> {
     for (const item of items.values()) {
         const baseItem = makeStrapiItem(item, deps, media);
-        const strapiItemResult = await fetchStrapiItem(item.__snoID__);
+        const strapiItemResult = await findItem(item.__snoID__);
 
         // handle duplication
         if (strapiItemResult.meta.pagination.total > 1) {
