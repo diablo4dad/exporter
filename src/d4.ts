@@ -145,6 +145,7 @@ function getTextFromStl(stl: D4Translation, label: string, fallback: string = ''
 const STORE_MAP = new Map([
     ['EmoteDefinition', ['Emote', '.emo']],
     ['ActorDefinition', ['Actor', '.acr']],
+    ['TownPortalCosmeticDefinition', ['TownPortalCosmetic', '.tpc']],
 ]);
 
 function resolveStoreProduct(ref: D4Ref & D4Type, lookup: Map<string, D4StoreProduct>): D4StoreProduct | undefined {

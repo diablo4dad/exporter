@@ -24,10 +24,9 @@ import {
     PATH_TO_POWER
 } from "./config.js";
 import {getTextures} from "./textures.js";
-import {syncEmotes} from "./strapi/emotes.js";
 import {getMediaIndex, syncImages} from "./strapi/media.js";
-import {syncHeadstones} from "./strapi/headstones.js";
 import {D4Dependencies} from "./strapi/common.js";
+import {syncPortals} from "./strapi/portals.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4DATA, PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4DATA, PATH_TO_D4ITEM_TYPE);
@@ -38,6 +37,7 @@ const portals = parseFiles<D4TownPortalCosmetic>(PATH_TO_D4DATA, PATH_TO_D4TOWN_
 const markings = parseFiles<D4MarkingShape>(PATH_TO_D4DATA, PATH_TO_D4MARKING_SHAPE);
 const powers = parseFiles<D4Power>(PATH_TO_D4DATA, PATH_TO_POWER);
 const storeProducts = parseFiles<D4StoreProduct>(PATH_TO_D4DATA, PATH_TO_D4STORE_PRODUCT);
+
 const headstones = new Map(Array.of(...actors.entries()).filter(([_, a]) => a.__fileName__.includes("headstone")));
 
 const deps: D4Dependencies = { itemTypes, actors, strings, powers, storeProducts };
@@ -74,11 +74,14 @@ const app = async () => {
     // await syncItems(items, deps, media);
     // console.log("Items synced.")
 
-    await syncEmotes(emotes, deps, media);
-    console.log("Emotes synced.")
+    // await syncEmotes(emotes, deps, media);
+    // console.log("Emotes synced.")
 
-    await syncHeadstones(headstones, deps, media);
-    console.log("Headstones synced.")
+    // await syncHeadstones(headstones, deps, media);
+    // console.log("Headstones synced.");
+
+    await syncPortals(portals, deps, media);
+
 }
 
 app().then(() => {

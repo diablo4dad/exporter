@@ -219,7 +219,11 @@ type StrapiEmoteReq = StrapiBaseReq;
 type StrapiEmoteResp = StrapiBaseResp;
 type StrapiHeadstoneReq = StrapiBaseReq;
 type StrapiHeadstoneResp = StrapiBaseResp;
+type StrapiPortalReq = StrapiBaseReq;
+type StrapiPortalResp = StrapiBaseResp;
 
+export {StrapiPortalReq};
+export {StrapiPortalResp};
 export {StrapiHeadstoneReq};
 export {StrapiHeadstoneResp};
 export {StrapiEmoteResp};
