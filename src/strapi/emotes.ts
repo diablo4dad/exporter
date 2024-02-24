@@ -1,27 +1,37 @@
 import {CLASS_TYPES, D4Emote, getTextFromStl, resolveSno, resolveStringsList} from "../d4.js";
 import {
-    checkForErrors,
+    areEqual,
+    createEntity,
     D4Dependencies,
-    issueDelete,
-    issueGet,
-    issuePostJson,
-    issuePutJson,
+    deleteEntity,
+    findEntity,
     StrapiActionResult,
     StrapiEmoteReq,
     StrapiEmoteResp,
     StrapiEntry,
-    StrapiQueryResult
+    StrapiQueryResult,
+    updateEntity
 } from "./common.js";
 import {MediaLookup} from "./media.js";
 
+async function findEmote(diabloId: number): Promise<StrapiQueryResult<StrapiEmoteResp>> {
+    return findEntity('emotes', diabloId);
+}
+
+async function createEmote(data: StrapiEmoteReq): Promise<StrapiActionResult<StrapiEmoteResp>> {
+    return createEntity('emotes', 'Emote', data);
+}
+
+async function updateEmote(strapiId: number, data: StrapiEmoteReq): Promise<StrapiActionResult<StrapiEmoteResp>> {
+    return updateEntity('emotes', 'Emote', strapiId, data);
+}
+
+async function deleteEmote(strapiId: number): Promise<StrapiActionResult<StrapiEmoteResp>> {
+    return deleteEntity('emotes', 'Emote', strapiId);
+}
+
 function areEmotesEqual(base: StrapiEmoteReq, remote: StrapiEmoteResp): boolean {
-    if (base.itemId != remote.itemId) return false;
-    if (base.icon !== remote.icon?.data?.id) return false;
-    if (base.iconId != remote.iconId) return false;
-    if (!base.usableByClass.every((c: string) => remote.usableByClass.includes(c))) return false;
-    if (!remote.usableByClass.every((c: string) => base.usableByClass.includes(c))) return false;
-    if (base.name !== remote.name) return false;
-    return base.description === remote.description;
+    return areEqual(base, remote);
 }
 
 function makeStrapiEmote(emote: D4Emote, deps: D4Dependencies, media: Map<string, number>): StrapiEmoteReq {
@@ -49,55 +59,10 @@ function makeStrapiEmote(emote: D4Emote, deps: D4Dependencies, media: Map<string
     }
 }
 
-async function getEmote(emoteId: number): Promise<StrapiQueryResult<StrapiEmoteResp>> {
-    const resp = await issueGet('/api/emotes', {
-        'publicationState': 'preview',
-        'populate': '*',
-        'filters[itemId][$eq]': String(emoteId),
-    });
-
-    await checkForErrors(resp);
-
-    return (await resp.json()) as StrapiQueryResult<StrapiEmoteResp>;
-}
-
-async function createEmote(emote: StrapiEmoteReq): Promise<StrapiActionResult<StrapiEmoteResp>> {
-    const resp = await issuePostJson('/api/emotes', { data: emote });
-    await checkForErrors(resp);
-
-    const result = (await resp.json()) as StrapiActionResult<StrapiEmoteResp>;
-
-    console.log(`Emote ${result.data.id} created.`);
-
-    return result;
-}
-
-async function updateEmote(strapiEmoteId: number, emote: StrapiEmoteReq): Promise<StrapiActionResult<StrapiEmoteResp>> {
-    const resp = await issuePutJson(`/api/emotes/${strapiEmoteId}` , { data: emote });
-    await checkForErrors(resp);
-
-    const result = (await resp.json()) as StrapiActionResult<StrapiEmoteResp>;
-
-    console.log(`Emote ${result.data.id} updated.`);
-
-    return result;
-}
-
-async function deleteEmote(strapiEmoteId: number): Promise<StrapiActionResult<StrapiEmoteResp>> {
-    const resp = await issueDelete(`/api/emotes/${strapiEmoteId}`);
-    await checkForErrors(resp);
-
-    const result = (await resp.json()) as StrapiActionResult<StrapiEmoteResp>;
-
-    console.log(`Emote ${result.data.id} deleted.`);
-
-    return result;
-}
-
 async function syncEmotes(emotes: Map<string, D4Emote>, deps: D4Dependencies, media: MediaLookup) {
     for (const emote of emotes.values()) {
         const base = makeStrapiEmote(emote, deps, media);
-        const resp = await getEmote(base.itemId);
+        const resp = await findEmote(base.itemId);
 
         const dupDetected = resp.meta.pagination.total > 1;
         const noResults = resp.meta.pagination.total === 0;

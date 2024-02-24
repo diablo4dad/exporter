@@ -8,15 +8,16 @@ import {
     toMagicType
 } from "../d4.js";
 import {
+    areEqual,
     D4Dependencies,
     issueGet,
     issuePutJson,
-    StrapiItemRequest,
-    StrapiItemResponse,
+    StrapiItemReq,
+    StrapiItemResp,
     StrapiQueryResult
 } from "./common.js";
 
-function makeStrapiItem(item: D4Item, deps: D4Dependencies, media: Map<string, number>): StrapiItemRequest {
+function makeStrapiItem(item: D4Item, deps: D4Dependencies, media: Map<string, number>): StrapiItemReq {
     // item strings
     const itemStringsList = resolveStringsList(item, deps.strings);
 
@@ -49,7 +50,7 @@ function makeStrapiItem(item: D4Item, deps: D4Dependencies, media: Map<string, n
     }
 }
 
-async function fetchStrapiItem(itemId: number): Promise<StrapiQueryResult<StrapiItemResponse>> {
+async function fetchStrapiItem(itemId: number): Promise<StrapiQueryResult<StrapiItemResp>> {
     const resp = await issueGet('/api/items', {
         'publicationState': 'preview',
         'populate': '*',
@@ -65,32 +66,14 @@ async function fetchStrapiItem(itemId: number): Promise<StrapiQueryResult<Strapi
         throw new Error("Error fetching Strapi item.");
     }
 
-    return (await resp.json()) as StrapiQueryResult<StrapiItemResponse>;
+    return (await resp.json()) as StrapiQueryResult<StrapiItemResp>;
 }
 
-function areItemsEqual(base: StrapiItemRequest, strapi: StrapiItemResponse): boolean {
-    if (base.itemId != strapi.itemId) return false; // strapi returns numbers as strings?
-    if (base.name !== strapi.name) return false;
-    if (base.description !== strapi.description) return false;
+function areItemsEqual(base: StrapiItemReq, strapi: StrapiItemResp): boolean {
+    if (!areEqual(base, strapi)) return false;
     if (base.itemType !== strapi.itemType) return false;
     if (base.magicType !== strapi.magicType) return false;
-    if (base.transMog !== strapi.transMog) return false;
-    if (base.iconId != strapi.iconId) return false; // strapi returns numbers as strings?
-    if (!base.usableByClass.every(c => strapi.usableByClass.includes(c))) return false;
-    if (!strapi.usableByClass.every(c => base.usableByClass.includes(c))) return false;
-
-    // if icon is missing, no compare
-    // these are patched manually in the cms
-    if (base.icon) {
-        // only compare icon if it's been populated
-        if (strapi.icon) {
-            if (base.icon !== strapi.icon.data?.id) {
-                return false;
-            }
-        }
-    }
-
-    return true;
+    return (base.transMog === strapi.transMog);
 }
 
 async function syncItems(items: Map<string, D4Item>, deps: D4Dependencies, media: Map<string, number>): Promise<number> {

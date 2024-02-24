@@ -81,6 +81,75 @@ export async function checkForErrors(resp: Response, ...expectErrors: number[]):
     }
 }
 
+export async function findEntity<Resp>(collection: string, diabloId: number): Promise<StrapiQueryResult<Resp>> {
+    const resp = await issueGet(`/api/${collection}`, {
+        'publicationState': 'preview',
+        'populate': '*',
+        'filters[itemId][$eq]': String(diabloId),
+    });
+
+    await checkForErrors(resp);
+
+    return (await resp.json()) as StrapiQueryResult<Resp>;
+}
+
+
+export async function createEntity<Req, Resp>(collection: string, label: string, data: Req): Promise<StrapiActionResult<Resp>> {
+    const resp = await issuePostJson(`/api/${collection}`, { data });
+    await checkForErrors(resp);
+
+    const result = (await resp.json()) as StrapiActionResult<Resp>;
+
+    console.log(`${label} ${result.data.id} created.`);
+
+    return result;
+}
+
+export async function updateEntity<Req, Resp>(collection: string, label: string, strapiId: number, data: Req): Promise<StrapiActionResult<Resp>> {
+    const resp = await issuePutJson(`/api/${collection}/${strapiId}` , { data });
+    await checkForErrors(resp);
+
+    const result = (await resp.json()) as StrapiActionResult<Resp>;
+
+    console.log(`${label} ${result.data.id} updated.`);
+
+    return result;
+}
+
+export async function deleteEntity<Resp>(collection: string, label: string, strapiId: number): Promise<StrapiActionResult<Resp>> {
+    const resp = await issueDelete(`/api/${collection}/${strapiId}`);
+    await checkForErrors(resp);
+
+    const result = (await resp.json()) as StrapiActionResult<Resp>;
+
+    console.log(`${label} ${result.data.id} deleted.`);
+
+    return result;
+}
+
+export function areEqual(base: StrapiBaseReq, remote: StrapiBaseResp): boolean {
+    if (base.itemId != remote.itemId) return false;
+    if (base.icon !== remote.icon?.data?.id) return false;
+    if (base.iconId != remote.iconId) return false;
+    if (!base.usableByClass.every((c: string) => remote.usableByClass.includes(c))) return false;
+    if (!remote.usableByClass.every((c: string) => base.usableByClass.includes(c))) return false;
+    if (base.name !== remote.name) return false;
+    if (base.description !== remote.description) return false;
+
+    // if icon is missing, no compare
+    // these are patched manually in the cms
+    if (base.icon) {
+        // only compare icon if it's been populated
+        if (remote.icon) {
+            if (base.icon !== remote.icon.data?.id) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 class ItemNotFoundError extends Error {
     constructor(itemType: string, itemId: string) {
         super(itemType + ' with ID ' + itemId + ' was not found.');
@@ -122,34 +191,40 @@ type StrapiEntry<T> = {
     attributes: T,
     // meta
 }
-type StrapiItemType<IconT> = {
+
+type StrapiBase<IconT> = {
     itemId: number,
-    itemType: string,
     name: string,
     description: string,
+    usableByClass: string[],
+    iconId: number | null,
+    icon: IconT | undefined,
+}
+
+type StrapiItemType<IconT> = StrapiBase<IconT> & {
+    itemType: string,
     transMog: boolean,
     magicType: string,
-    usableByClass: string[],
-    iconId: number | null,
-    icon: IconT | undefined,
     // images
 }
-type StrapiEmote<IconT> = {
-    itemId: number,
-    name: string,
-    description: string,
-    usableByClass: string[],
-    iconId: number | null,
-    icon: IconT | undefined,
-}
-type StrapiItemRequest = StrapiItemType<number | null>;
-type StrapiItemResponse = StrapiItemType<StrapiPostData<StrapiEntry<StrapiMediaItem | null>>>;
-type StrapiEmoteReq = StrapiEmote<number | null>;
-type StrapiEmoteResp = StrapiEmote<StrapiPostData<StrapiEntry<StrapiMediaItem | null>>>;
+
+type IconReq = number | null;
+type IconResp = StrapiPostData<StrapiEntry<StrapiMediaItem | null>>;
+type StrapiBaseReq = StrapiBase<IconReq>;
+type StrapiBaseResp = StrapiBase<IconResp>;
+type StrapiItemReq = StrapiItemType<IconReq>;
+type StrapiItemResp = StrapiItemType<IconResp>;
+type StrapiEmoteReq = StrapiBaseReq;
+type StrapiEmoteResp = StrapiBaseResp;
+type StrapiHeadstoneReq = StrapiBaseReq;
+type StrapiHeadstoneResp = StrapiBaseResp;
+
+export {StrapiHeadstoneReq};
+export {StrapiHeadstoneResp};
 export {StrapiEmoteResp};
 export {StrapiEmoteReq};
-export {StrapiItemResponse};
-export {StrapiItemRequest};
+export {StrapiItemResp};
+export {StrapiItemReq};
 export {StrapiItemType};
 export {StrapiEntry};
 export {StrapiPagination};
