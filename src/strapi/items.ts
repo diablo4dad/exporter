@@ -4,7 +4,6 @@ import {
     D4Item,
     getTextFromStl,
     resolveSno,
-    resolveStoreProduct,
     resolveStringsList,
     toMagicType
 } from "../d4.js";
@@ -20,8 +19,8 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
         const itemActorStringsList = resolveStringsList(itemActor, deps.strings);
         const itemTypeSno = resolveSno(item.snoItemType, deps.itemTypes);
         const itemTypeStringsList = resolveStringsList(itemTypeSno, deps.strings);
-        const storeProduct = resolveStoreProduct(item, deps.storeProducts);
-        const storeProductStringsList = resolveStringsList(storeProduct, deps.strings);
+        // const storeProduct = resolveStoreProduct(item, deps.storeProducts);
+        // const storeProductStringsList = resolveStringsList(storeProduct, deps.strings);
 
         // composite cms friendly item
         const itemId = item.__snoID__;

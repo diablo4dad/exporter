@@ -1,20 +1,5 @@
 import {D4Dependencies, StrapiItemReq,} from "./common.js";
-import {
-    CLASS_TYPES,
-    D4StoreProduct,
-    D4TownPortalCosmetic,
-    getTextFromStl,
-    resolveStoreProduct,
-    resolveStringsList
-} from "../d4.js";
-
-function findBestPortalIcon(actor: D4TownPortalCosmetic, storeProduct?: D4StoreProduct): number {
-    if (storeProduct?.hStoreIconOverride) {
-        return storeProduct.hStoreIconOverride;
-    }
-
-    return actor.hIconImage;
-}
+import {CLASS_TYPES, D4TownPortalCosmetic, getTextFromStl, resolveStoreProduct, resolveStringsList} from "../d4.js";
 
 export function portalFactory(deps: D4Dependencies, media: Map<string, number>): (portal: D4TownPortalCosmetic) => StrapiItemReq {
     return (portal: D4TownPortalCosmetic): StrapiItemReq => {
@@ -27,7 +12,7 @@ export function portalFactory(deps: D4Dependencies, media: Map<string, number>):
         const transMog = false;
         const name = getTextFromStl(stringsList, "Name");
         const description = getTextFromStl(stringsList, "Description");
-        const iconId = findBestPortalIcon(portal, storeProduct);
+        const iconId = storeProduct?.hStoreIconOverride ?? portal.hIconImage;
         const icon = iconId ? (media.get(iconId + '.webp') ?? null) : null;
         const usableByClass = CLASS_TYPES;
 

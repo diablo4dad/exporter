@@ -76,6 +76,11 @@ type D4Power = D4Ref & D4Type & {
     snoClassRequirement: D4SnoRef,
 }
 
+type D4Emblem = D4Ref & D4Type & {
+    hSmallIcon: number,
+    hLargeIcon: number,
+}
+
 type D4Emote = D4Ref & D4Type & {
     hImageNormal: number,
     hImageHover: number,
@@ -252,4 +257,5 @@ export type {
     D4TownPortalCosmetic,
     D4Power,
     D4StoreProduct,
+    D4Emblem,
 };
