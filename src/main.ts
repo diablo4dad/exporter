@@ -1,5 +1,6 @@
 import {
     D4Actor,
+    D4Emblem,
     D4Emote,
     D4Item,
     D4ItemType,
@@ -12,23 +13,27 @@ import {
 import {parseFiles} from "./loader.js";
 import {
     PATH_TO_D4ACTOR,
+    PATH_TO_D4EMBLEMS,
     PATH_TO_D4EMOTE,
     PATH_TO_D4ITEM,
     PATH_TO_D4ITEM_TYPE,
     PATH_TO_D4MARKING_SHAPE,
+    PATH_TO_D4POWER,
     PATH_TO_D4STORE_PRODUCT,
     PATH_TO_D4STRING_LIST,
     PATH_TO_D4TEXTURES,
-    PATH_TO_D4TOWN_PORTAL,
-    PATH_TO_POWER
+    PATH_TO_D4TOWN_PORTAL
 } from "./config.js";
 import {getTextures} from "./textures.js";
 import {getMediaIndex, syncImages} from "./strapi/media.js";
-import {D4Dependencies, syncItems} from "./strapi/common.js";
+import {D4Dependencies} from "./strapi/common.js";
 import {itemFactory} from "./strapi/items.js";
 import {emoteFactory} from "./strapi/emotes.js";
 import {headstoneFactory} from "./strapi/headstones.js";
 import {portalFactory} from "./strapi/portals.js";
+import {emblemFactory} from "./strapi/emblems.js";
+import {markingShapeFactory} from "./strapi/marking.js";
+import {syncItems} from "./strapi/commands.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -37,9 +42,9 @@ const strings = parseFiles<D4Translation>(PATH_TO_D4STRING_LIST);
 const emotes = parseFiles<D4Emote>(PATH_TO_D4EMOTE);
 const portals = parseFiles<D4TownPortalCosmetic>(PATH_TO_D4TOWN_PORTAL);
 const markings = parseFiles<D4MarkingShape>(PATH_TO_D4MARKING_SHAPE);
-const powers = parseFiles<D4Power>(PATH_TO_POWER);
+const powers = parseFiles<D4Power>(PATH_TO_D4POWER);
 const storeProducts = parseFiles<D4StoreProduct>(PATH_TO_D4STORE_PRODUCT);
-
+const emblems = parseFiles<D4Emblem>(PATH_TO_D4EMBLEMS);
 const headstones = new Map(Array.of(...actors.entries()).filter(([_, a]) => a.__fileName__.includes("headstone")));
 
 const deps: D4Dependencies = { itemTypes, actors, strings, powers, storeProducts };
@@ -69,29 +74,23 @@ const app = async () => {
     const message = filesSynced.size  ? filesSynced.size + " files uploaded." : "All media up-to-date.";
     console.log(message, { num_files: files.length, num_media: media.size });
 
-    // sync items
+    console.log("Syncing items...")
     await syncItems(items, itemFactory(deps, media));
-    console.log("Items synced.")
 
-    // sync emotes
+    console.log("Syncing emotes...")
     await syncItems(emotes, emoteFactory(deps, media));
-    console.log("Emotes synced.")
 
-    // sync headstones
+    console.log("Syncing headstones...");
     await syncItems(headstones, headstoneFactory(deps, media));
-    console.log("Headstones synced.");
 
-    // sync town portals
+    console.log("Syncing town portals...");
     await syncItems(portals, portalFactory(deps, media));
-    console.log("Town Portals synced.");
 
-    // sync emblems
-    await syncItems(portals, portalFactory(deps, media));
-    console.log("Town Portals synced.");
+    console.log("Syncing emblems...");
+    await syncItems(emblems, emblemFactory(deps, media));
 
-    // sync body markings
-    await syncItems(portals, portalFactory(deps, media));
-    console.log("Town Portals synced.");
+    console.log("Syncing body markings...");
+    await syncItems(markings, markingShapeFactory(deps, media));
 }
 
 app().then(() => {

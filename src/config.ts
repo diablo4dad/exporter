@@ -10,7 +10,8 @@ const PATH_TO_D4STRING_LIST = "json\\enUS_Text\\meta\\StringList";
 const PATH_TO_D4EMOTE = "json\\base\\meta\\Emote";
 const PATH_TO_D4TOWN_PORTAL = "json\\base\\meta\\TownPortalCosmetic";
 const PATH_TO_D4MARKING_SHAPE = "json\\base\\meta\\MarkingShape";
-const PATH_TO_POWER = "json\\base\\meta\\Power";
+const PATH_TO_D4POWER = "json\\base\\meta\\Power";
+const PATH_TO_D4EMBLEMS = "json\\base\\meta\\Emblem";
 const PATH_TO_D4STORE_PRODUCT = "json\\base\\meta\\StoreProduct";
 
 // strapi server
@@ -33,5 +34,6 @@ export {
     PATH_TO_D4TOWN_PORTAL,
     PATH_TO_D4STORE_PRODUCT,
     MAX_HYDRATE_DEPTH_RECURSION,
-    PATH_TO_POWER,
+    PATH_TO_D4EMBLEMS,
+    PATH_TO_D4POWER,
 };
