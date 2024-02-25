@@ -25,8 +25,11 @@ import {
 } from "./config.js";
 import {getTextures} from "./textures.js";
 import {getMediaIndex, syncImages} from "./strapi/media.js";
-import {D4Dependencies} from "./strapi/common.js";
-import {syncItems} from "./strapi/items.js";
+import {D4Dependencies, syncItems} from "./strapi/common.js";
+import {itemFactory} from "./strapi/items.js";
+import {emoteFactory} from "./strapi/emotes.js";
+import {headstoneFactory} from "./strapi/headstones.js";
+import {portalFactory} from "./strapi/portals.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4DATA, PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4DATA, PATH_TO_D4ITEM_TYPE);
@@ -63,26 +66,25 @@ const app = async () => {
         media.set(k, v);
     })
 
-    const message = filesSynced.size
-        ? filesSynced.size + " files uploaded."
-        : "All media up-to-date.";
-    console.log(message, {
-        num_files: files.length,
-        num_media: media.size,
-    });
+    // finished with media
+    const message = filesSynced.size  ? filesSynced.size + " files uploaded." : "All media up-to-date.";
+    console.log(message, { num_files: files.length, num_media: media.size });
 
-    await syncItems(items, deps, media);
+    // sync items
+    await syncItems(items, itemFactory(deps, media));
     console.log("Items synced.")
 
-    // await syncEmotes(emotes, deps, media);
-    // console.log("Emotes synced.")
+    // sync emotes
+    await syncItems(emotes, emoteFactory(deps, media));
+    console.log("Emotes synced.")
 
-    // await syncHeadstones(headstones, deps, media);
-    // console.log("Headstones synced.");
+    // sync headstones
+    await syncItems(headstones, headstoneFactory(deps, media));
+    console.log("Headstones synced.");
 
-    // await syncPortals(portals, deps, media);
-    // console.log("Portals synced.");
-
+    // sync town portals
+    await syncItems(portals, portalFactory(deps, media));
+    console.log("Town Portals synced.");
 }
 
 app().then(() => {

@@ -1,4 +1,4 @@
-import {D4Actor, D4ItemType, D4Power, D4StoreProduct, D4Translation} from "../d4.js";
+import {D4Actor, D4Item, D4ItemType, D4Power, D4StoreProduct, D4Translation} from "../d4.js";
 import {STRAPI_API_TOKEN, STRAPI_SERVER} from "../config.js";
 
 export type D4Dependencies = {
@@ -130,12 +130,12 @@ export async function deleteEntity<Resp>(collection: string, label: string, stra
 
 export function areEqual(base: StrapiBaseReq, remote: StrapiBaseResp): boolean {
     if (base.itemId != remote.itemId) return false;
-    if (base.icon !== remote.icon?.data?.id) return false;
     if (base.iconId != remote.iconId) return false;
     if (!base.usableByClass.every((c: string) => remote.usableByClass.includes(c))) return false;
     if (!remote.usableByClass.every((c: string) => base.usableByClass.includes(c))) return false;
     if (base.name !== remote.name) return false;
     if (base.description !== remote.description) return false;
+    if (base.itemType !== remote.itemType) return false;
 
     // if icon is missing, no compare
     // these are patched manually in the cms
@@ -200,10 +200,10 @@ type StrapiBase<IconT> = {
     usableByClass: string[],
     iconId: number | null,
     icon: IconT | undefined,
+    itemType: string,
 }
 
 type StrapiItemType<IconT> = StrapiBase<IconT> & {
-    itemType: string,
     transMog: boolean,
     magicType: string,
     // images
@@ -238,3 +238,63 @@ export {StrapiActionResult};
 export {StrapiQueryResult};
 export {StrapiMediaItem};
 export {StrapiPostData};
+
+async function findItem(diabloId: number): Promise<StrapiQueryResult<StrapiItemResp>> {
+    return findEntity('items', diabloId);
+}
+
+async function createItem(data: StrapiItemReq): Promise<StrapiActionResult<StrapiItemResp>> {
+    return createEntity('items', 'Item', data);
+}
+
+async function updateItem(strapiId: number, data: StrapiItemReq): Promise<StrapiActionResult<StrapiItemResp>> {
+    return updateEntity('items', 'Item', strapiId, data);
+}
+
+async function deleteItem(strapiId: number): Promise<StrapiActionResult<StrapiItemResp>> {
+    return deleteEntity('items', 'Item', strapiId);
+}
+
+function areItemsEqual(base: StrapiItemReq, strapi: StrapiItemResp): boolean {
+    if (!areEqual(base, strapi)) {
+        return false;
+    }
+
+    if (base.itemType !== strapi.itemType) return false;
+    if (base.magicType !== strapi.magicType) return false;
+    return (base.transMog === strapi.transMog);
+}
+
+async function syncItems<T>(items: Map<string, T>, makeStrapiItem: (i: T) => StrapiItemReq): Promise<void> {
+    for (const item of items.values()) {
+        const base = makeStrapiItem(item);
+        const resp = await findItem(base.itemId);
+
+        const dupDetected = resp.meta.pagination.total > 1;
+        const noResults = resp.meta.pagination.total === 0;
+
+        // handle duplicates
+        if (dupDetected) {
+            await Promise.all(resp.data.map((e: StrapiEntry<StrapiEmoteResp>) => deleteItem(e.id)));
+        }
+
+        // create headstone
+        if (dupDetected || noResults) {
+            await createItem(base);
+            continue;
+        }
+
+        // update headstone
+        const remote = resp.data[0];
+        if (!areItemsEqual(base, remote.attributes)) {
+            await updateItem(remote.id, base);
+        }
+    }
+}
+
+async function cleanUpItems(items: Map<string, D4Item>): Promise<void> {
+    const itemByDiabloId = Array.of(...items.values()).map(i => [i.__snoID__, i]);
+
+}
+
+export {syncItems};
