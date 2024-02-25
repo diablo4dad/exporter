@@ -12,7 +12,6 @@ import {
 import {parseFiles} from "./loader.js";
 import {
     PATH_TO_D4ACTOR,
-    PATH_TO_D4DATA,
     PATH_TO_D4EMOTE,
     PATH_TO_D4ITEM,
     PATH_TO_D4ITEM_TYPE,
@@ -31,15 +30,15 @@ import {emoteFactory} from "./strapi/emotes.js";
 import {headstoneFactory} from "./strapi/headstones.js";
 import {portalFactory} from "./strapi/portals.js";
 
-const items = parseFiles<D4Item>(PATH_TO_D4DATA, PATH_TO_D4ITEM);
-const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4DATA, PATH_TO_D4ITEM_TYPE);
-const actors = parseFiles<D4Actor>(PATH_TO_D4DATA, PATH_TO_D4ACTOR);
-const strings = parseFiles<D4Translation>(PATH_TO_D4DATA, PATH_TO_D4STRING_LIST);
-const emotes = parseFiles<D4Emote>(PATH_TO_D4DATA, PATH_TO_D4EMOTE);
-const portals = parseFiles<D4TownPortalCosmetic>(PATH_TO_D4DATA, PATH_TO_D4TOWN_PORTAL);
-const markings = parseFiles<D4MarkingShape>(PATH_TO_D4DATA, PATH_TO_D4MARKING_SHAPE);
-const powers = parseFiles<D4Power>(PATH_TO_D4DATA, PATH_TO_POWER);
-const storeProducts = parseFiles<D4StoreProduct>(PATH_TO_D4DATA, PATH_TO_D4STORE_PRODUCT);
+const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
+const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
+const actors = parseFiles<D4Actor>(PATH_TO_D4ACTOR);
+const strings = parseFiles<D4Translation>(PATH_TO_D4STRING_LIST);
+const emotes = parseFiles<D4Emote>(PATH_TO_D4EMOTE);
+const portals = parseFiles<D4TownPortalCosmetic>(PATH_TO_D4TOWN_PORTAL);
+const markings = parseFiles<D4MarkingShape>(PATH_TO_D4MARKING_SHAPE);
+const powers = parseFiles<D4Power>(PATH_TO_POWER);
+const storeProducts = parseFiles<D4StoreProduct>(PATH_TO_D4STORE_PRODUCT);
 
 const headstones = new Map(Array.of(...actors.entries()).filter(([_, a]) => a.__fileName__.includes("headstone")));
 
@@ -83,6 +82,14 @@ const app = async () => {
     console.log("Headstones synced.");
 
     // sync town portals
+    await syncItems(portals, portalFactory(deps, media));
+    console.log("Town Portals synced.");
+
+    // sync emblems
+    await syncItems(portals, portalFactory(deps, media));
+    console.log("Town Portals synced.");
+
+    // sync body markings
     await syncItems(portals, portalFactory(deps, media));
     console.log("Town Portals synced.");
 }
