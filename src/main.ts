@@ -33,7 +33,7 @@ import {headstoneFactory} from "./strapi/headstones.js";
 import {portalFactory} from "./strapi/portals.js";
 import {emblemFactory} from "./strapi/emblems.js";
 import {markingShapeFactory} from "./strapi/marking.js";
-import {syncItems} from "./strapi/commands.js";
+import {cleanUpItems, syncItems} from "./strapi/commands.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -74,23 +74,29 @@ const app = async () => {
     const message = filesSynced.size  ? filesSynced.size + " files uploaded." : "All media up-to-date.";
     console.log(message, { num_files: files.length, num_media: media.size });
 
+    const itemsToKeep: number[] = [];
+
     console.log("Syncing items...")
-    await syncItems(items, itemFactory(deps, media));
+    itemsToKeep.push(...await syncItems(items, itemFactory(deps, media)));
 
     console.log("Syncing emotes...")
-    await syncItems(emotes, emoteFactory(deps, media));
+    itemsToKeep.push(...await syncItems(emotes, emoteFactory(deps, media)));
 
     console.log("Syncing headstones...");
-    await syncItems(headstones, headstoneFactory(deps, media));
+    itemsToKeep.push(...await syncItems(headstones, headstoneFactory(deps, media)));
 
     console.log("Syncing town portals...");
-    await syncItems(portals, portalFactory(deps, media));
+    itemsToKeep.push(...await syncItems(portals, portalFactory(deps, media)));
 
     console.log("Syncing emblems...");
-    await syncItems(emblems, emblemFactory(deps, media));
+    itemsToKeep.push(...await syncItems(emblems, emblemFactory(deps, media)));
 
     console.log("Syncing body markings...");
-    await syncItems(markings, markingShapeFactory(deps, media));
+    itemsToKeep.push(...await syncItems(markings, markingShapeFactory(deps, media)));
+
+    // clean up
+    console.log("Cleaning up DB...");
+    await cleanUpItems(itemsToKeep);
 }
 
 app().then(() => {

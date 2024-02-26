@@ -1,7 +1,15 @@
-import {CLASS_TYPES, D4Emblem, getTextFromStl, resolveStoreProduct, resolveStringsList} from "../d4.js";
+import {CLASS_TYPES, D4Emblem, D4StoreProduct, getTextFromStl, resolveStoreProduct, resolveStringsList} from "../d4.js";
 import {D4Dependencies, StrapiItemReq} from "./common.js";
 
 export function emblemFactory(deps: D4Dependencies, media: Map<string, number>): (emblem: D4Emblem) => StrapiItemReq {
+    function chooseIcon(emblem: D4Emblem, storeProduct?: D4StoreProduct): number {
+        if (storeProduct?.hStoreIconOverride) {
+            return storeProduct.hStoreIconOverride;
+        } else {
+            return emblem.hSmallIcon;
+        }
+    }
+
     return (emblem: D4Emblem): StrapiItemReq => {
         const emblemStringsList = resolveStringsList(emblem, deps.strings);
         const storeProduct = resolveStoreProduct(emblem, deps.storeProducts);
@@ -10,7 +18,7 @@ export function emblemFactory(deps: D4Dependencies, media: Map<string, number>):
         const itemType = "Emblem";
         const name = getTextFromStl(emblemStringsList, "Name");
         const description = getTextFromStl(emblemStringsList, "Description");
-        const iconId = storeProduct?.hStoreIconOverride ?? emblem.hLargeIcon;
+        const iconId = chooseIcon(emblem, storeProduct);
         const icon = media.get(iconId + '.webp') ?? null;
         const transMog = false;
         const magicType = "Common";

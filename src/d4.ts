@@ -152,6 +152,8 @@ const STORE_MAP = new Map([
     ['EmoteDefinition', ['Emote', '.emo']],
     ['ActorDefinition', ['Actor', '.acr']],
     ['TownPortalCosmeticDefinition', ['TownPortalCosmetic', '.tpc']],
+    ['EmblemDefinition', ['Emblem', '.emb']],
+    ['MarkingShapeDefinition', ['MarkingShape', '.msh']],
 ]);
 
 function resolveStoreProduct(ref: D4Ref & D4Type, lookup: Map<string, D4StoreProduct>): D4StoreProduct | undefined {

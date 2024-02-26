@@ -94,6 +94,16 @@ export async function findEntity<Resp>(collection: string, diabloId: number): Pr
     return (await resp.json()) as StrapiQueryResult<Resp>;
 }
 
+export async function listEntities<Resp>(collection: string, page: number, pageSize: number): Promise<StrapiQueryResult<Resp>> {
+    const resp = await issueGet(`/api/${collection}`, {
+        'pagination[page]': String(page),
+        'pagination[pageSize]': String(pageSize),
+    });
+
+    await checkForErrors(resp);
+
+    return (await resp.json()) as StrapiQueryResult<Resp>;
+}
 
 export async function createEntity<Req, Resp>(collection: string, label: string, data: Req): Promise<StrapiActionResult<Resp>> {
     const resp = await issuePostJson(`/api/${collection}`, { data });

@@ -1,8 +1,8 @@
-import {D4Item} from "../d4.js";
 import {
     createEntity,
     deleteEntity,
     findEntity,
+    listEntities,
     StrapiActionResult,
     StrapiEntry,
     StrapiItemReq,
@@ -25,6 +25,10 @@ async function updateItem(strapiId: number, data: StrapiItemReq): Promise<Strapi
 
 async function deleteItem(strapiId: number): Promise<StrapiActionResult<StrapiItemResp>> {
     return deleteEntity('items', 'Item', strapiId);
+}
+
+async function listItems(page: number, pageSize: number): Promise<StrapiQueryResult<StrapiItemResp>> {
+    return listEntities('items', page, pageSize);
 }
 
 function areItemsEqual(base: StrapiItemReq, strapi: StrapiItemResp): boolean {
@@ -52,11 +56,41 @@ function areItemsEqual(base: StrapiItemReq, strapi: StrapiItemResp): boolean {
     return (base.transMog === strapi.transMog);
 }
 
-async function syncItems<T>(items: Map<string, T>, makeStrapiItem: (i: T) => StrapiItemReq): Promise<void> {
+const ITEM_TYPES_TO_SYNC = [
+    "Mount",
+    "Horse Armor",
+    "Trophy", "Back Trophy",
+    "Axe", "Dagger", "Focus", "Mace", "Scythe", "Shield", "Sword", "Totem", "Wand", "Two-Handed Axe", "Bow", "Crossbow", "Two-Handed Mace", "Polearm", "Two-Handed Scythe", "Staff", "Two-Handed Sword",
+    "Chest Armor", "Boots", "Gloves", "Helm", "Pants",
+    "Body Marking", "Emote", "Town Portal", "Headstone", "Emblem",
+]
+
+function doNotSync(item: StrapiItemReq): boolean {
+    if (!ITEM_TYPES_TO_SYNC.includes(item.itemType)) {
+        return true;
+    }
+
+    if (item.name === '') {
+        return true;
+    }
+
+    return item.itemType === '';
+}
+
+async function syncItems<T>(items: Map<string, T>, makeStrapiItem: (i: T) => StrapiItemReq): Promise<number[]> {
+    // record of synced items
+    const itemsToKeep = [];
+
     for (const item of items.values()) {
         const base = makeStrapiItem(item);
-        const resp = await findItem(base.itemId);
+        if (doNotSync(base)) {
+            continue;
+        }
 
+        // add to keep list
+        itemsToKeep.push(base.itemId);
+
+        const resp = await findItem(base.itemId);
         const dupDetected = resp.meta.pagination.total > 1;
         const noResults = resp.meta.pagination.total === 0;
 
@@ -77,11 +111,31 @@ async function syncItems<T>(items: Map<string, T>, makeStrapiItem: (i: T) => Str
             await updateItem(remote.id, base);
         }
     }
+
+    return itemsToKeep;
 }
 
-async function cleanUpItems(items: Map<string, D4Item>): Promise<void> {
-    const itemByDiabloId = Array.of(...items.values()).map(i => [i.__snoID__, i]);
+async function cleanUpItems(itemsToKeep: number[]): Promise<void> {
+    const itemsToDelete: number[] = [];
+    const resp = await listItems(1, 100);
 
+    for (let i = 1; i <= resp.meta.pagination.pageCount; i++) {
+        const resp = await listItems(i, 100);
+        for (const item of resp.data) {
+            if (!itemsToKeep.includes(Number.parseInt(String(item.attributes.itemId)))) {
+                if (!itemsToDelete.includes(item.id)) {
+                    itemsToDelete.push(item.id);
+                }
+            }
+        }
+    }
+
+    console.log("Number of items to keep: " + itemsToKeep.length);
+    console.log("Number of items to delete: " + itemsToDelete.length);
+
+    for (const i of itemsToDelete) {
+        await deleteItem(i);
+    }
 }
 
-export {syncItems};
+export {syncItems, cleanUpItems};
