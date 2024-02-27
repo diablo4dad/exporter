@@ -5,6 +5,7 @@ import {
     D4Item,
     D4ItemType,
     D4MarkingShape,
+    D4PlayerTitle,
     D4Power,
     D4StoreProduct,
     D4TownPortalCosmetic,
@@ -18,6 +19,7 @@ import {
     PATH_TO_D4ITEM,
     PATH_TO_D4ITEM_TYPE,
     PATH_TO_D4MARKING_SHAPE,
+    PATH_TO_D4PLAYER_TITLE,
     PATH_TO_D4POWER,
     PATH_TO_D4STORE_PRODUCT,
     PATH_TO_D4STRING_LIST,
@@ -33,7 +35,8 @@ import {headstoneFactory} from "./strapi/headstones.js";
 import {portalFactory} from "./strapi/portals.js";
 import {emblemFactory} from "./strapi/emblems.js";
 import {markingShapeFactory} from "./strapi/marking.js";
-import {cleanUpItems, syncItems} from "./strapi/commands.js";
+import {syncItems} from "./strapi/commands.js";
+import {playerTitleFactory} from "./strapi/title.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -45,6 +48,7 @@ const markings = parseFiles<D4MarkingShape>(PATH_TO_D4MARKING_SHAPE);
 const powers = parseFiles<D4Power>(PATH_TO_D4POWER);
 const storeProducts = parseFiles<D4StoreProduct>(PATH_TO_D4STORE_PRODUCT);
 const emblems = parseFiles<D4Emblem>(PATH_TO_D4EMBLEMS);
+const playerTitles = parseFiles<D4PlayerTitle>(PATH_TO_D4PLAYER_TITLE);
 const headstones = new Map(Array.of(...actors.entries()).filter(([_, a]) => a.__fileName__.includes("headstone")));
 
 const deps: D4Dependencies = { itemTypes, actors, strings, powers, storeProducts };
@@ -58,6 +62,7 @@ console.log("Read " + portals.size + " portals...");
 console.log("Read " + markings.size + " markings...");
 console.log("Read " + powers.size + " powers...");
 console.log("Read " + storeProducts.size + " store products...");
+console.log("Read " + playerTitles.size + " player titles...");
 
 const app = async () => {
     // sync media to strapi server
@@ -94,9 +99,11 @@ const app = async () => {
     console.log("Syncing body markings...");
     itemsToKeep.push(...await syncItems(markings, markingShapeFactory(deps, media)));
 
-    // clean up
-    console.log("Cleaning up DB...");
-    await cleanUpItems(itemsToKeep);
+    console.log("Syncing player titles...");
+    itemsToKeep.push(...await syncItems(playerTitles, playerTitleFactory(deps, media)));
+
+    // console.log("Cleaning up DB...");
+    // await cleanUpItems(itemsToKeep);
 }
 
 app().then(() => {

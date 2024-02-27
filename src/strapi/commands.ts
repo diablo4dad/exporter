@@ -63,6 +63,7 @@ const ITEM_TYPES_TO_SYNC = [
     "Axe", "Dagger", "Focus", "Mace", "Scythe", "Shield", "Sword", "Totem", "Wand", "Two-Handed Axe", "Bow", "Crossbow", "Two-Handed Mace", "Polearm", "Two-Handed Scythe", "Staff", "Two-Handed Sword",
     "Chest Armor", "Boots", "Gloves", "Helm", "Pants",
     "Body Marking", "Emote", "Town Portal", "Headstone", "Emblem",
+    "Player Title (Prefix)", "Player Title (Suffix)"
 ]
 
 function doNotSync(item: StrapiItemReq): boolean {

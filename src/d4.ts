@@ -120,6 +120,10 @@ type D4Translation = D4Ref & D4Type & {
     arStrings: D4String[],
 }
 
+type D4PlayerTitle = D4Ref & D4Type & {
+    bIsSeasonal: boolean,
+}
+
 const EMPTY_STRINGS_LIST: D4Translation = {
     arStrings: [],
     __snoID__: -1,
@@ -260,4 +264,5 @@ export type {
     D4Power,
     D4StoreProduct,
     D4Emblem,
+    D4PlayerTitle,
 };
