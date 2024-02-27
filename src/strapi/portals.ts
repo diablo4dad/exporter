@@ -17,7 +17,23 @@ export function portalFactory(deps: D4Dependencies, media: Map<string, number>):
         }
     }
 
+    function patchPortal(portal: D4TownPortalCosmetic): D4TownPortalCosmetic {
+        // "Runic Threshold" has _01 appended to the store product definition
+        // applies a workaround to resolve the strings list
+        if (portal.__snoID__ === 1797816) {
+            const fixedFileName =  portal.__fileName__.replace('_01', '');
+            return {
+                ...portal,
+                __fileName__: fixedFileName,
+            };
+        }
+
+        return portal;
+    }
+
     return (portal: D4TownPortalCosmetic): StrapiItemReq => {
+        portal = patchPortal(portal);
+
         const storeProduct = resolveStoreProduct(portal, deps.storeProducts);
         const stringsList = resolveStringsList(storeProduct, deps.strings);
 
