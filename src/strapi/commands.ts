@@ -7,6 +7,7 @@ import {
     StrapiEntry,
     StrapiItemReq,
     StrapiItemResp,
+    StrapiMediaItem,
     StrapiQueryResult,
     updateEntity
 } from "./common.js";
@@ -78,7 +79,7 @@ function doNotSync(item: StrapiItemReq): boolean {
     return item.itemType === '';
 }
 
-async function syncItems<T>(items: Map<string, T>, makeStrapiItem: (i: T) => StrapiItemReq): Promise<number[]> {
+async function syncItems<T>(items: Map<string, T>, makeStrapiItem: (i: T) => StrapiItemReq, uploadImage: (iconId: number) => Promise<StrapiMediaItem | null>): Promise<number[]> {
     // record of synced items
     const itemsToKeep = [];
 
@@ -90,6 +91,14 @@ async function syncItems<T>(items: Map<string, T>, makeStrapiItem: (i: T) => Str
 
         // add to keep list
         itemsToKeep.push(base.itemId);
+
+        // uploading missing icons
+        if (base.iconId && !base.icon) {
+            const resp = await uploadImage(base.iconId);
+            if (resp) {
+                base.icon = resp.id;
+            }
+        }
 
         const resp = await findItem(base.itemId);
         const dupDetected = resp.meta.pagination.total > 1;

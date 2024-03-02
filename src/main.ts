@@ -23,11 +23,9 @@ import {
     PATH_TO_D4POWER,
     PATH_TO_D4STORE_PRODUCT,
     PATH_TO_D4STRING_LIST,
-    PATH_TO_D4TEXTURES,
     PATH_TO_D4TOWN_PORTAL
 } from "./config.js";
-import {getTextures} from "./textures.js";
-import {getMediaIndex, syncImages} from "./strapi/media.js";
+import {getMediaIndex, uploadImage} from "./strapi/media.js";
 import {D4Dependencies} from "./strapi/common.js";
 import {itemFactory} from "./strapi/items.js";
 import {emoteFactory} from "./strapi/emotes.js";
@@ -67,40 +65,40 @@ console.log("Read " + playerTitles.size + " player titles...");
 const app = async () => {
     // sync media to strapi server
     const media = await getMediaIndex();
-    const files = getTextures(PATH_TO_D4TEXTURES);
-    const filesSynced = await syncImages(PATH_TO_D4TEXTURES, files, media);
+    // const files = getTextures(PATH_TO_D4TEXTURES);
+    // const filesSynced = await syncImages(PATH_TO_D4TEXTURES, files, media);
 
     // update media list with new uploads
-    filesSynced.forEach((v: number, k: string) => {
-        media.set(k, v);
-    })
+    // filesSynced.forEach((v: number, k: string) => {
+    //     media.set(k, v);
+    // })
 
     // finished with media
-    const message = filesSynced.size  ? filesSynced.size + " files uploaded." : "All media up-to-date.";
-    console.log(message, { num_files: files.length, num_media: media.size });
+    // const message = filesSynced.size  ? filesSynced.size + " files uploaded." : "All media up-to-date.";
+    // console.log(message, { num_files: files.length, num_media: media.size });
 
     const itemsToKeep: number[] = [];
 
     console.log("Syncing items...")
-    itemsToKeep.push(...await syncItems(items, itemFactory(deps, media)));
+    itemsToKeep.push(...await syncItems(items, itemFactory(deps, media), uploadImage(media)));
 
     console.log("Syncing emotes...")
-    itemsToKeep.push(...await syncItems(emotes, emoteFactory(deps, media)));
+    itemsToKeep.push(...await syncItems(emotes, emoteFactory(deps, media), uploadImage(media)));
 
     console.log("Syncing headstones...");
-    itemsToKeep.push(...await syncItems(headstones, headstoneFactory(deps, media)));
+    itemsToKeep.push(...await syncItems(headstones, headstoneFactory(deps, media), uploadImage(media)));
 
     console.log("Syncing town portals...");
-    itemsToKeep.push(...await syncItems(portals, portalFactory(deps, media)));
+    itemsToKeep.push(...await syncItems(portals, portalFactory(deps, media), uploadImage(media)));
 
     console.log("Syncing emblems...");
-    itemsToKeep.push(...await syncItems(emblems, emblemFactory(deps, media)));
+    itemsToKeep.push(...await syncItems(emblems, emblemFactory(deps, media), uploadImage(media)));
 
     console.log("Syncing body markings...");
-    itemsToKeep.push(...await syncItems(markings, markingShapeFactory(deps, media)));
+    itemsToKeep.push(...await syncItems(markings, markingShapeFactory(deps, media), uploadImage(media)));
 
     console.log("Syncing player titles...");
-    itemsToKeep.push(...await syncItems(playerTitles, playerTitleFactory(deps, media)));
+    itemsToKeep.push(...await syncItems(playerTitles, playerTitleFactory(deps, media), uploadImage(media)));
 
     // console.log("Cleaning up DB...");
     // await cleanUpItems(itemsToKeep);

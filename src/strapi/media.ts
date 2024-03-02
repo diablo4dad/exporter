@@ -2,6 +2,7 @@ import {issueGet, issuePostForm, StrapiMediaItem} from "./common.js";
 import fs from "fs";
 import path from "path";
 import {partition} from "../helper.js";
+import {PATH_TO_D4TEXTURES} from "../config.js";
 
 type MediaLookup = Map<string, number>;
 
@@ -45,6 +46,32 @@ async function uploadImages(imagesToUpload: string[]): Promise<StrapiMediaItem[]
     console.log("Uploaded images...", data.map(media => media.name));
 
     return data;
+}
+
+export function uploadImage(media: Map<string, number>): (iconId: number) => Promise<StrapiMediaItem | null> {
+    return async (iconId: number) => {
+        if (media.has(iconId + '.webp')) {
+            console.warn('Icon ' + iconId + ' already exists in media.');
+            return null;
+        }
+
+        const filename = path.join(PATH_TO_D4TEXTURES, iconId + '.webp');
+        try {
+            fs.accessSync(filename, fs.constants.R_OK);
+        } catch (err) {
+            console.warn('Unable to read file ' + filename + '...');
+            return null;
+        }
+
+        const resp = await uploadImages([filename]);
+        if (resp.length) {
+            const mediaUpload = resp[0];
+            media.set(mediaUpload.name, mediaUpload.id);
+            return mediaUpload;
+        }
+
+        return null;
+    }
 }
 
 async function syncImages(pathToImages: string, imagesToSync: string[], existingMedia: Map<string, number>): Promise<Map<string, number>> {
