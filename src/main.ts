@@ -33,9 +33,11 @@ import {headstoneFactory} from "./strapi/factory/headstones.js";
 import {portalFactory} from "./strapi/factory/portals.js";
 import {emblemFactory} from "./strapi/factory/emblems.js";
 import {markingShapeFactory} from "./strapi/factory/marking.js";
-import {cleanUpItems, syncBundleItems, syncBundles, syncItems} from "./strapi/commands.js";
+import {cleanUpItems, syncItems} from "./strapi/items.js";
 import {playerTitleFactory} from "./strapi/factory/title.js";
 import {bundleFactory} from "./strapi/factory/bundles.js";
+import {syncBundles} from "./strapi/collections.js";
+import {syncBundleItems} from "./strapi/collectionitems.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -50,7 +52,18 @@ const emblems = parseFiles<D4Emblem>(PATH_TO_D4EMBLEMS);
 const playerTitles = parseFiles<D4PlayerTitle>(PATH_TO_D4PLAYER_TITLE);
 const headstones = new Map(Array.of(...actors.entries()).filter(([_, a]) => a.__fileName__.includes("headstone")));
 
-const deps: D4Dependencies = { itemTypes, actors, strings, powers, storeProducts, portals, items, emotes, markings, emblems };
+const deps: D4Dependencies = {
+    actors,
+    emblems,
+    emotes,
+    itemTypes,
+    items,
+    markings,
+    portals,
+    powers,
+    storeProducts,
+    strings,
+};
 
 console.log("Read " + items.size + " items...");
 console.log("Read " + itemTypes.size + " item types...");
@@ -91,7 +104,7 @@ const app = async () => {
     console.log("Syncing bundles...");
     const bundlesToSync = await syncBundles(storeProducts, bundleFactory(deps));
 
-    console.log("Syncing bundles items...");
+    console.log("Syncing bundle items...");
     await syncBundleItems(storeProducts, bundlesToSync, deps);
 
     console.log("Cleaning up DB...");
