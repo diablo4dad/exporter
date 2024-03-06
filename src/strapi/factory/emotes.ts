@@ -6,10 +6,10 @@ import {
     resolveSno,
     resolveStoreProduct,
     resolveStringsList
-} from "../d4.js";
-import {D4Dependencies, StrapiItemReq,} from "./common.js";
+} from "../../d4.js";
+import {D4Dependencies, ItemReq,} from "../common.js";
 
-export function emoteFactory(deps: D4Dependencies, media: Map<string, number>): (item: D4Emote) => StrapiItemReq {
+export function emoteFactory(deps: D4Dependencies, media: Map<string, number>): (item: D4Emote) => ItemReq {
     function chooseIcon(emote: D4Emote, storeProduct?: D4StoreProduct): number {
         if (storeProduct?.hStoreIconOverride) {
             return storeProduct.hStoreIconOverride;
@@ -18,7 +18,7 @@ export function emoteFactory(deps: D4Dependencies, media: Map<string, number>): 
         }
     }
 
-    return (emote: D4Emote): StrapiItemReq => {
+    return (emote: D4Emote): ItemReq => {
         const emoteStringsList = resolveStringsList(emote, deps.strings);
         const powerSno = resolveSno(emote.snoPower, deps.powers);
         const storeProduct = resolveStoreProduct(emote, deps.storeProducts);

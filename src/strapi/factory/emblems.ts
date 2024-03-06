@@ -1,7 +1,14 @@
-import {CLASS_TYPES, D4Emblem, D4StoreProduct, getTextFromStl, resolveStoreProduct, resolveStringsList} from "../d4.js";
-import {D4Dependencies, StrapiItemReq} from "./common.js";
+import {
+    CLASS_TYPES,
+    D4Emblem,
+    D4StoreProduct,
+    getTextFromStl,
+    resolveStoreProduct,
+    resolveStringsList
+} from "../../d4.js";
+import {D4Dependencies, ItemReq} from "../common.js";
 
-export function emblemFactory(deps: D4Dependencies, media: Map<string, number>): (emblem: D4Emblem) => StrapiItemReq {
+export function emblemFactory(deps: D4Dependencies, media: Map<string, number>): (emblem: D4Emblem) => ItemReq {
     function chooseIcon(emblem: D4Emblem, storeProduct?: D4StoreProduct): number {
         if (storeProduct?.hStoreIconOverride) {
             return storeProduct.hStoreIconOverride;
@@ -10,7 +17,7 @@ export function emblemFactory(deps: D4Dependencies, media: Map<string, number>):
         }
     }
 
-    return (emblem: D4Emblem): StrapiItemReq => {
+    return (emblem: D4Emblem): ItemReq => {
         const emblemStringsList = resolveStringsList(emblem, deps.strings);
         const storeProduct = resolveStoreProduct(emblem, deps.storeProducts);
 

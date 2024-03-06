@@ -6,11 +6,11 @@ import {
     resolveSno,
     resolveStringsList,
     toMagicType
-} from "../d4.js";
-import {D4Dependencies, StrapiItemReq} from "./common.js";
+} from "../../d4.js";
+import {D4Dependencies, ItemReq} from "../common.js";
 
-export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (item: D4Item) => StrapiItemReq {
-    return (item: D4Item): StrapiItemReq => {
+export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (item: D4Item) => ItemReq {
+    return (item: D4Item): ItemReq => {
         // item strings
         const itemStringsList = resolveStringsList(item, deps.strings);
 

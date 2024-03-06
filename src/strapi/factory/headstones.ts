@@ -1,7 +1,14 @@
-import {D4Dependencies, StrapiItemReq,} from "./common.js";
-import {CLASS_TYPES, D4Actor, D4StoreProduct, getTextFromStl, resolveStoreProduct, resolveStringsList} from "../d4.js";
+import {D4Dependencies, ItemReq,} from "../common.js";
+import {
+    CLASS_TYPES,
+    D4Actor,
+    D4StoreProduct,
+    getTextFromStl,
+    resolveStoreProduct,
+    resolveStringsList
+} from "../../d4.js";
 
-export function headstoneFactory(deps: D4Dependencies, media: Map<string, number>): (headstone: D4Actor) => StrapiItemReq {
+export function headstoneFactory(deps: D4Dependencies, media: Map<string, number>): (headstone: D4Actor) => ItemReq {
     function chooseIcon(headstone: D4Actor, storeProduct?: D4StoreProduct): number {
         if (storeProduct?.hStoreIconOverride) {
             return storeProduct.hStoreIconOverride;
@@ -10,7 +17,7 @@ export function headstoneFactory(deps: D4Dependencies, media: Map<string, number
         }
     }
 
-    return (headstone: D4Actor): StrapiItemReq => {
+    return (headstone: D4Actor): ItemReq => {
         const stringsList = resolveStringsList(headstone, deps.strings);
         const storeProduct = resolveStoreProduct(headstone, deps.storeProducts);
 

@@ -27,14 +27,15 @@ import {
 } from "./config.js";
 import {getMediaIndex, uploadImage} from "./strapi/media.js";
 import {D4Dependencies} from "./strapi/common.js";
-import {itemFactory} from "./strapi/items.js";
-import {emoteFactory} from "./strapi/emotes.js";
-import {headstoneFactory} from "./strapi/headstones.js";
-import {portalFactory} from "./strapi/portals.js";
-import {emblemFactory} from "./strapi/emblems.js";
-import {markingShapeFactory} from "./strapi/marking.js";
-import {syncItems} from "./strapi/commands.js";
-import {playerTitleFactory} from "./strapi/title.js";
+import {itemFactory} from "./strapi/factory/items.js";
+import {emoteFactory} from "./strapi/factory/emotes.js";
+import {headstoneFactory} from "./strapi/factory/headstones.js";
+import {portalFactory} from "./strapi/factory/portals.js";
+import {emblemFactory} from "./strapi/factory/emblems.js";
+import {markingShapeFactory} from "./strapi/factory/marking.js";
+import {cleanUpItems, syncBundleItems, syncBundles, syncItems} from "./strapi/commands.js";
+import {playerTitleFactory} from "./strapi/factory/title.js";
+import {bundleFactory} from "./strapi/factory/bundles.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -49,7 +50,7 @@ const emblems = parseFiles<D4Emblem>(PATH_TO_D4EMBLEMS);
 const playerTitles = parseFiles<D4PlayerTitle>(PATH_TO_D4PLAYER_TITLE);
 const headstones = new Map(Array.of(...actors.entries()).filter(([_, a]) => a.__fileName__.includes("headstone")));
 
-const deps: D4Dependencies = { itemTypes, actors, strings, powers, storeProducts };
+const deps: D4Dependencies = { itemTypes, actors, strings, powers, storeProducts, portals, items, emotes, markings, emblems };
 
 console.log("Read " + items.size + " items...");
 console.log("Read " + itemTypes.size + " item types...");
@@ -63,20 +64,7 @@ console.log("Read " + storeProducts.size + " store products...");
 console.log("Read " + playerTitles.size + " player titles...");
 
 const app = async () => {
-    // sync media to strapi server
     const media = await getMediaIndex();
-    // const files = getTextures(PATH_TO_D4TEXTURES);
-    // const filesSynced = await syncImages(PATH_TO_D4TEXTURES, files, media);
-
-    // update media list with new uploads
-    // filesSynced.forEach((v: number, k: string) => {
-    //     media.set(k, v);
-    // })
-
-    // finished with media
-    // const message = filesSynced.size  ? filesSynced.size + " files uploaded." : "All media up-to-date.";
-    // console.log(message, { num_files: files.length, num_media: media.size });
-
     const itemsToKeep: number[] = [];
 
     console.log("Syncing items...")
@@ -100,8 +88,14 @@ const app = async () => {
     console.log("Syncing player titles...");
     itemsToKeep.push(...await syncItems(playerTitles, playerTitleFactory(deps, media), uploadImage(media)));
 
-    // console.log("Cleaning up DB...");
-    // await cleanUpItems(itemsToKeep);
+    console.log("Syncing bundles...");
+    const bundlesToSync = await syncBundles(storeProducts, bundleFactory(deps));
+
+    console.log("Syncing bundles items...");
+    await syncBundleItems(storeProducts, bundlesToSync, deps);
+
+    console.log("Cleaning up DB...");
+    await cleanUpItems(itemsToKeep);
 }
 
 app().then(() => {

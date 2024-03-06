@@ -1,4 +1,4 @@
-import {D4Dependencies, StrapiItemReq,} from "./common.js";
+import {D4Dependencies, ItemReq,} from "../common.js";
 import {
     CLASS_TYPES,
     D4StoreProduct,
@@ -6,9 +6,9 @@ import {
     getTextFromStl,
     resolveStoreProduct,
     resolveStringsList
-} from "../d4.js";
+} from "../../d4.js";
 
-export function portalFactory(deps: D4Dependencies, media: Map<string, number>): (portal: D4TownPortalCosmetic) => StrapiItemReq {
+export function portalFactory(deps: D4Dependencies, media: Map<string, number>): (portal: D4TownPortalCosmetic) => ItemReq {
     function chooseIcon(portal: D4TownPortalCosmetic, storeProduct?: D4StoreProduct): number {
         if (storeProduct?.hStoreIconOverride) {
             return storeProduct.hStoreIconOverride;
@@ -31,7 +31,7 @@ export function portalFactory(deps: D4Dependencies, media: Map<string, number>):
         return portal;
     }
 
-    return (portal: D4TownPortalCosmetic): StrapiItemReq => {
+    return (portal: D4TownPortalCosmetic): ItemReq => {
         portal = patchPortal(portal);
 
         const storeProduct = resolveStoreProduct(portal, deps.storeProducts);

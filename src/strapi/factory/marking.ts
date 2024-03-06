@@ -5,10 +5,10 @@ import {
     getTextFromStl,
     resolveStoreProduct,
     resolveStringsList
-} from "../d4.js";
-import {D4Dependencies, StrapiItemReq} from "./common.js";
+} from "../../d4.js";
+import {D4Dependencies, ItemReq} from "../common.js";
 
-export function markingShapeFactory(deps: D4Dependencies, media: Map<string, number>): (marking: D4MarkingShape) => StrapiItemReq {
+export function markingShapeFactory(deps: D4Dependencies, media: Map<string, number>): (marking: D4MarkingShape) => ItemReq {
     function chooseIcon(marking: D4MarkingShape, storeProduct?: D4StoreProduct): number {
         if (storeProduct?.hStoreIconOverride) {
             return storeProduct.hStoreIconOverride;
@@ -17,14 +17,23 @@ export function markingShapeFactory(deps: D4Dependencies, media: Map<string, num
         }
     }
 
-    return (marking: D4MarkingShape): StrapiItemReq => {
+    function bruteForceProductRef(marking: D4MarkingShape): D4StoreProduct | undefined {
+        for (const product of deps.storeProducts.values()) {
+            if (product.snoMarkingShape?.__raw__ === marking.__snoID__) {
+                return product;
+            }
+        }
+    }
+
+    return (marking: D4MarkingShape): ItemReq => {
         const markingStringsList = resolveStringsList(marking, deps.strings);
-        const storeProduct = resolveStoreProduct(marking, deps.storeProducts);
+        const storeProduct = resolveStoreProduct(marking, deps.storeProducts) ?? bruteForceProductRef(marking);
+        const storeProductStringsList = resolveStringsList(storeProduct, deps.strings);
 
         const itemId = marking.__snoID__;
         const itemType = "Body Marking";
-        const name = getTextFromStl(markingStringsList, "Name");
-        const description = getTextFromStl(markingStringsList, "Description");
+        const name = getTextFromStl(markingStringsList, "Name", getTextFromStl(storeProductStringsList, "Name"));
+        const description = getTextFromStl(markingStringsList, "Description", getTextFromStl(storeProductStringsList, "Description"));
         const iconId = chooseIcon(marking, storeProduct);
         const icon = media.get(iconId + '.webp') ?? null;
         const transMog = false;
