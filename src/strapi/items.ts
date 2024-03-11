@@ -127,6 +127,28 @@ async function syncItems<T>(items: Map<string, T>, makeStrapiItem: (i: T) => Ite
     return itemsToKeep;
 }
 
+export async function publishAllItems(): Promise<void> {
+    const resp = await listItems(1, 100);
+    const itemsToPublish = [];
+
+    for (let i = 1; i <= resp.meta.pagination.pageCount; i++) {
+        const resp = await listItems(i, 100);
+        for (const item of resp.data) {
+            if (!item.attributes.publishedAt) {
+                itemsToPublish.push(item.id);
+            }
+        }
+    }
+
+    console.log("Number of items to publish: " + itemsToPublish.length);
+
+    for (const i of itemsToPublish) {
+        await updateItem(i, {
+            publishedAt: new Date().toISOString(),
+        });
+    }
+}
+
 async function cleanUpItems(itemsToKeep: number[]): Promise<void> {
     const itemsToDelete: number[] = [];
     const resp = await listItems(1, 100);
@@ -139,16 +161,6 @@ async function cleanUpItems(itemsToKeep: number[]): Promise<void> {
                 if (!itemsToDelete.includes(item.id)) {
                     itemsToDelete.push(item.id);
                 }
-                continue;
-            }
-
-            // ensure all items are in published state
-            if (!item.attributes.publishedAt) {
-                const resp = await updateItem(item.id, {
-                    publishedAt: new Date().toISOString(),
-                });
-
-                console.log("Published item.", resp);
             }
         }
     }

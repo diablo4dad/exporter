@@ -41,6 +41,10 @@ export function doSyncBundle(base: CollectionReq, product: D4StoreProduct): bool
         return false;
     }
 
+    if (product.arBundledProducts.length <= 1) {
+        return false;
+    }
+
     return base.name !== '';
 }
 

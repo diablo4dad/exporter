@@ -33,7 +33,7 @@ import {headstoneFactory} from "./strapi/factory/headstones.js";
 import {portalFactory} from "./strapi/factory/portals.js";
 import {emblemFactory} from "./strapi/factory/emblems.js";
 import {markingShapeFactory} from "./strapi/factory/marking.js";
-import {cleanUpItems, syncItems} from "./strapi/items.js";
+import {cleanUpItems, publishAllItems, syncItems} from "./strapi/items.js";
 import {playerTitleFactory} from "./strapi/factory/title.js";
 import {bundleFactory} from "./strapi/factory/bundles.js";
 import {syncBundles} from "./strapi/collections.js";
@@ -79,6 +79,9 @@ console.log("Read " + playerTitles.size + " player titles...");
 const app = async () => {
     const media = await getMediaIndex();
     const itemsToKeep: number[] = [];
+
+    console.log("Publishing all items...");
+    await publishAllItems();
 
     console.log("Syncing items...")
     itemsToKeep.push(...await syncItems(items, itemFactory(deps, media), uploadImage(media)));

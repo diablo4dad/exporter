@@ -25,13 +25,14 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
         // composite cms friendly item
         const itemId = item.__snoID__;
         const name = getTextFromStl(itemActorStringsList, 'Name', getTextFromStl(itemStringsList, 'Name'));
-        const description = getTextFromStl(itemActorStringsList, 'Description', getTextFromStl(itemStringsList, 'Description'));
+        const description = getTextFromStl(itemStringsList, 'Description');
         const itemType = getTextFromStl(itemTypeStringsList, 'Name');
         const transMog = item.bIsTransmog;
         const usableByClass = arrayToClassList(item.fUsableByClass);
         const magicType = toMagicType(item.eMagicType);
         const iconId = chooseBestIconHandle(item, itemActor);
         const icon = media.get(iconId + '.webp') ?? null;
+        const publishedAt = new Date().toISOString();
 
         return {
             itemId,
@@ -43,6 +44,7 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
             magicType,
             iconId,
             icon,
+            publishedAt,
         }
     }
 }

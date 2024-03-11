@@ -22,7 +22,7 @@ export async function syncBundleItems(
     bundles: Map<string, D4StoreProduct>,
     bundlesToSync: number[],
     deps: D4Dependencies,
-) {
+): Promise<void> {
     for (const product of bundles.values()) {
         if (!bundlesToSync.includes(product.__snoID__)) {
             continue;

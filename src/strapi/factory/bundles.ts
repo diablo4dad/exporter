@@ -33,11 +33,13 @@ export function bundleItemFactory(deps: D4Dependencies): (bundle: D4StoreProduct
         const collectionId = bundle.__snoID__;
         const items = itemId ? [itemId] : [];
         const collection = collectionId;
+        const claim = "Cash Shop";
 
         return {
             items,
             collection,
             premium,
+            claim,
         }
     }
 }
