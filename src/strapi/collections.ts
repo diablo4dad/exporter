@@ -50,12 +50,13 @@ export function doSyncBundle(base: CollectionReq, product: D4StoreProduct): bool
 
 export async function syncBundles(
     bundles: Map<string, D4StoreProduct>,
-    makeBundle: (i: D4StoreProduct) => CollectionReq,
+    makeBundle: (i: D4StoreProduct, delta: number) => CollectionReq,
 ): Promise<number[]> {
     const collections: number[] = [];
 
+    let i = 0;
     for (const product of bundles.values()) {
-        const base = makeBundle(product);
+        const base = makeBundle(product, i++);
         if (!doSyncBundle(base, product)) {
             continue;
         }

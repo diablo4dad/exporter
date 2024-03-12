@@ -90,8 +90,7 @@ export async function syncBundleItems(
             }
 
             // @ts-ignore
-            const createResp = await createCollectionItem(bundleItemReq);
-            console.log("Create Collection response", createResp);
+            await createCollectionItem(bundleItemReq);
         }
     }
 }

@@ -1,8 +1,8 @@
 import {CollectionItemReq, CollectionReq, D4Dependencies} from "../common.js";
 import {D4Ref, D4StoreProduct, D4Type, getTextFromStl, resolveSno, resolveStringsList} from "../../d4.js";
 
-export function bundleFactory(deps: D4Dependencies): (product: D4StoreProduct) => CollectionReq {
-    return (product: D4StoreProduct): CollectionReq => {
+export function bundleFactory(deps: D4Dependencies): (product: D4StoreProduct, delta: number) => CollectionReq {
+    return (product: D4StoreProduct, delta: number = 0): CollectionReq => {
         const productStringsList = resolveStringsList(product, deps.strings);
 
         const storeProductId = product.__snoID__;
@@ -10,7 +10,7 @@ export function bundleFactory(deps: D4Dependencies): (product: D4StoreProduct) =
         const name = getTextFromStl(productStringsList, "Name");
         const description = getTextFromStl(productStringsList, "Description");
         const collectionItems: number[] = [];
-        const order = 2000;
+        const order = 2000 + delta;
         const platinum = 0;
 
         return {
