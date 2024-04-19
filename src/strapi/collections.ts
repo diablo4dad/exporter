@@ -81,6 +81,9 @@ export async function syncBundles(
         // update collection
         const remote = resp.data[0];
         if (!areCollectionsEqual(base, remote.attributes)) {
+            // prevent disconnection of collection items
+            delete base.collectionItems;
+
             await updateCollection(remote.id, base);
         }
     }

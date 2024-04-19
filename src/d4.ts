@@ -99,6 +99,7 @@ type D4StoreProduct = D4Ref & D4Type & {
     snoHeadstone: D4SnoRef | null,
     snoTownPortal: D4SnoRef | null,
     arBundledProducts: D4SnoRef[],
+    arAddOnBundles: D4SnoRef[],
 }
 
 type D4TownPortalCosmetic = D4Ref & D4Type & {

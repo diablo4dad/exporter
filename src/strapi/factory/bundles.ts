@@ -8,7 +8,7 @@ export function bundleFactory(deps: D4Dependencies): (product: D4StoreProduct, d
         const storeProductId = product.__snoID__;
         const category = "Shop";
         const name = getTextFromStl(productStringsList, "Name");
-        const description = getTextFromStl(productStringsList, "Description");
+        const description = getTextFromStl(productStringsList, "Series");
         const collectionItems: number[] = [];
         const order = 2000 + delta;
         const platinum = 0;
