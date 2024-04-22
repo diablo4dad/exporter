@@ -34,11 +34,13 @@ export function markingShapeFactory(deps: D4Dependencies, media: Map<string, num
         const itemType = "Body Marking";
         const name = getTextFromStl(markingStringsList, "Name", getTextFromStl(storeProductStringsList, "Name"));
         const description = getTextFromStl(markingStringsList, "Description", getTextFromStl(storeProductStringsList, "Description"));
+        const series = getTextFromStl(storeProductStringsList, 'Series');
         const iconId = chooseIcon(marking, storeProduct);
         const icon = media.get(iconId + '.webp') ?? null;
         const transMog = false;
         const magicType = "Common";
         const usableByClass = CLASS_TYPES;
+        const transmogName = "";
 
         return {
             itemId,
@@ -50,6 +52,8 @@ export function markingShapeFactory(deps: D4Dependencies, media: Map<string, num
             itemType,
             transMog,
             magicType,
+            series,
+            transmogName,
         }
     }
 }

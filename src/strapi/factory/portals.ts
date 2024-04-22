@@ -43,9 +43,11 @@ export function portalFactory(deps: D4Dependencies, media: Map<string, number>):
         const transMog = false;
         const name = getTextFromStl(stringsList, "Name");
         const description = getTextFromStl(stringsList, "Description");
+        const series = getTextFromStl(stringsList, 'Series');
         const iconId = chooseIcon(portal, storeProduct);
         const icon = iconId ? (media.get(iconId + '.webp') ?? null) : null;
         const usableByClass = CLASS_TYPES;
+        const transmogName = "";
 
         return {
             itemType,
@@ -57,6 +59,8 @@ export function portalFactory(deps: D4Dependencies, media: Map<string, number>):
             usableByClass,
             transMog,
             magicType,
+            series,
+            transmogName,
         }
     }
 }

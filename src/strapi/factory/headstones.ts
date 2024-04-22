@@ -20,16 +20,19 @@ export function headstoneFactory(deps: D4Dependencies, media: Map<string, number
     return (headstone: D4Actor): ItemReq => {
         const stringsList = resolveStringsList(headstone, deps.strings);
         const storeProduct = resolveStoreProduct(headstone, deps.storeProducts);
+        const storeProductStringsList = resolveStringsList(storeProduct, deps.strings);
 
         const itemId = headstone.__snoID__;
         const name = getTextFromStl(stringsList, "Name");
         const description = getTextFromStl(stringsList, "Description");
+        const series = getTextFromStl(storeProductStringsList, 'Series');
         const iconId = chooseIcon(headstone, storeProduct);
         const icon = iconId ? (media.get(iconId + '.webp') ?? null) : null;
         const usableByClass = CLASS_TYPES;
         const itemType = "Headstone";
         const transMog = false;
         const magicType = "Common";
+        const transmogName = '';
 
         return {
             itemId,
@@ -41,6 +44,8 @@ export function headstoneFactory(deps: D4Dependencies, media: Map<string, number
             itemType,
             transMog,
             magicType,
+            series,
+            transmogName,
         }
     }
 }

@@ -16,6 +16,8 @@ export function playerTitleFactory(deps: D4Dependencies, media: Map<string, numb
         const transMog = false;
         const magicType = "Common";
         const usableByClass = CLASS_TYPES;
+        const series = "";
+        const transmogName = "";
 
         return {
             itemId,
@@ -27,6 +29,8 @@ export function playerTitleFactory(deps: D4Dependencies, media: Map<string, numb
             itemType,
             transMog,
             magicType,
+            series,
+            transmogName,
         }
     }
 }

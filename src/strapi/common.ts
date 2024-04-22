@@ -216,6 +216,8 @@ type StrapiBase<IconT> = {
 type StrapiItemType<IconT> = StrapiBase<IconT> & StrapiPublishedMeta & {
     transMog: boolean,
     magicType: string,
+    series: string,
+    transmogName: string,
     // images
 }
 

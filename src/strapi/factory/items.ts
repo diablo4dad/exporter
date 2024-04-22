@@ -4,6 +4,7 @@ import {
     D4Item,
     getTextFromStl,
     resolveSno,
+    resolveStoreProduct,
     resolveStringsList,
     toMagicType
 } from "../../d4.js";
@@ -14,13 +15,17 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
         // item strings
         const itemStringsList = resolveStringsList(item, deps.strings);
 
+        if (item.__snoID__ == 1402306) {
+            console.log("Found Token of Hellish Influence");
+        }
+
         // (optional) get item type + actor
         const itemActor = resolveSno(item.snoMount ?? item.snoActor, deps.actors);
         const itemActorStringsList = resolveStringsList(itemActor, deps.strings);
         const itemTypeSno = resolveSno(item.snoItemType, deps.itemTypes);
         const itemTypeStringsList = resolveStringsList(itemTypeSno, deps.strings);
-        // const storeProduct = resolveStoreProduct(item, deps.storeProducts);
-        // const storeProductStringsList = resolveStringsList(storeProduct, deps.strings);
+        const storeProduct = resolveStoreProduct(item, deps.storeProducts);
+        const storeProductStringsList = resolveStringsList(storeProduct, deps.strings);
 
         // composite cms friendly item
         const itemId = item.__snoID__;
@@ -33,6 +38,8 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
         const iconId = chooseBestIconHandle(item, itemActor);
         const icon = media.get(iconId + '.webp') ?? null;
         const publishedAt = new Date().toISOString();
+        const series = getTextFromStl(storeProductStringsList, 'Series');
+        const transmogName = getTextFromStl(itemStringsList, 'TransmogName');
 
         return {
             itemId,
@@ -45,6 +52,8 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
             iconId,
             icon,
             publishedAt,
+            series,
+            transmogName,
         }
     }
 }

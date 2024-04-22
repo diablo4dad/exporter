@@ -42,6 +42,8 @@ export function areItemsEqual(base: ItemReq, strapi: ItemResp): boolean {
     if (base.name !== strapi.name) return false;
     if (base.description !== strapi.description) return false;
     if (base.itemType !== strapi.itemType) return false;
+    if (base.series !== strapi.series) return false;
+    if (base.transmogName !== strapi.transmogName) return false;
 
     // if icon is missing, no compare
     // these are patched manually in the cms
