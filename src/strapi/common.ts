@@ -218,6 +218,9 @@ type StrapiItemType<IconT> = StrapiBase<IconT> & StrapiPublishedMeta & {
     magicType: string,
     series: string,
     transmogName: string,
+    dropMinWorldTier?: number,
+    dropMinLevel?: number,
+    dropMaxLevel?: number,
     // images
 }
 

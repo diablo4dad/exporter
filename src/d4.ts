@@ -21,9 +21,14 @@ type D4Item = D4Ref & D4Type & {
     eMagicType: number,
     fUsableByClass: number[],
     eDropMinWorldTier: number,
+    nDropMinLevel: number,
+    nDropMaxLevel: number,
+    nVendorDropMinLevel: number,
+    nVendorDropMaxLevel: number,
     bSeasonItem: boolean,
     nCustomDropWeight: number,
     bIsTransmog: boolean,
+    eDisplayedQualityLevel: number,
 }
 
 type D4InventoryImages = D4Type & {
@@ -134,7 +139,7 @@ const EMPTY_STRINGS_LIST: D4Translation = {
     __typeHash__: 'missing',
 }
 
-const MAGIC_TYPES = ["Common", "Legendary", "Unique"];
+const MAGIC_TYPES = ["Common", "Legendary", "Unique", "Magic", "Rare"];
 const CLASS_TYPES = ["Sorcerer", "Druid", "Barbarian", "Rogue", "Necromancer"];
 
 function getStlFileName(ref: D4Ref & D4Type): string {
@@ -160,6 +165,7 @@ const STORE_MAP = new Map([
     ['TownPortalCosmeticDefinition', ['TownPortalCosmetic', '.tpc']],
     ['EmblemDefinition', ['Emblem', '.emb']],
     ['MarkingShapeDefinition', ['MarkingShape', '.msh']],
+    ['ItemDefinition', ['Item', '.itm']],
 ]);
 
 function resolveStoreProduct(ref: D4Ref & D4Type, lookup: Map<string, D4StoreProduct>): D4StoreProduct | undefined {
@@ -207,8 +213,16 @@ function arrayToClassList(classes: number[]): string[] {
     return classes.map((v, i) => v === 0 ? false : CLASS_TYPES[i]).filter(c => c  !== false) as string[];
 }
 
-function toMagicType(magicType: number): string {
-    return MAGIC_TYPES[magicType] ?? '';
+function toMagicType(magicType: number, itemId: number): string {
+    // hack to map qualities to items
+    switch (itemId) {
+        case 1093991: // Mace of Blazing Furor
+        case 1472930: // Paladin Lord's Bulwark
+        case 1103798: // Broodmother's Stinger
+            return "Rare";
+        default:
+            return MAGIC_TYPES[magicType] ?? "";
+    }
 }
 
 function chooseBestIconHandle(item: D4Item, actor: D4Actor | undefined): number | null {

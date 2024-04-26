@@ -15,10 +15,6 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
         // item strings
         const itemStringsList = resolveStringsList(item, deps.strings);
 
-        if (item.__snoID__ == 1402306) {
-            console.log("Found Token of Hellish Influence");
-        }
-
         // (optional) get item type + actor
         const itemActor = resolveSno(item.snoMount ?? item.snoActor, deps.actors);
         const itemActorStringsList = resolveStringsList(itemActor, deps.strings);
@@ -34,12 +30,15 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
         const itemType = getTextFromStl(itemTypeStringsList, 'Name');
         const transMog = item.bIsTransmog;
         const usableByClass = arrayToClassList(item.fUsableByClass);
-        const magicType = toMagicType(item.eMagicType);
+        const magicType = toMagicType(item.eMagicType, item.__snoID__);
         const iconId = chooseBestIconHandle(item, itemActor);
         const icon = media.get(iconId + '.webp') ?? null;
         const publishedAt = new Date().toISOString();
         const series = getTextFromStl(storeProductStringsList, 'Series');
         const transmogName = getTextFromStl(itemStringsList, 'TransmogName');
+        const dropMinWorldTier = item.eDropMinWorldTier;
+        const dropMinLevel = item.nDropMinLevel;
+        const dropMaxLevel = item.nDropMaxLevel;
 
         return {
             itemId,
@@ -54,6 +53,9 @@ export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (
             publishedAt,
             series,
             transmogName,
+            dropMinWorldTier,
+            dropMinLevel,
+            dropMaxLevel,
         }
     }
 }
