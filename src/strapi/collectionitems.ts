@@ -42,6 +42,10 @@ export async function syncBundleItems(
 
         const collection: StrapiEntry<CollectionResp> = resp.data[0];
 
+        if (product.__snoID__ === 1827797) {
+            console.log("Winter");
+        }
+
         for (const productItem of product.arBundledProducts) {
             const innerProduct = resolveSno(productItem, bundles);
             if (innerProduct === undefined) {
@@ -54,6 +58,7 @@ export async function syncBundleItems(
                 // this is expected
                 // filter out items store items that only
                 // give platinum, battle pass tiers etc
+                // console.warn("No items found for inner product.", innerProduct.__fileName__);
                 continue;
             }
 
@@ -75,6 +80,7 @@ export async function syncBundleItems(
 
             if (noResults) {
                 console.log('Item ' + product.__snoID__ + ' does not exist.', item.__fileName__);
+                continue;
             }
 
             if (dupDetected) {

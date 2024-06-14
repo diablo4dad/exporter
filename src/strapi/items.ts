@@ -63,12 +63,13 @@ export function areItemsEqual(base: ItemReq, strapi: ItemResp): boolean {
 
 const ITEM_TYPES_TO_SYNC = [
     "Mount",
-    "Horse Armor",
+    "Horse Armor", "Cat Armor",
     "Trophy", "Back Trophy",
     "Axe", "Dagger", "Focus", "Mace", "Scythe", "Shield", "Sword", "Totem", "Wand", "Two-Handed Axe", "Bow", "Crossbow", "Two-Handed Mace", "Polearm", "Two-Handed Scythe", "Staff", "Two-Handed Sword",
     "Chest Armor", "Boots", "Gloves", "Helm", "Pants",
     "Body Marking", "Emote", "Town Portal", "Headstone", "Emblem",
-    "Player Title (Prefix)", "Player Title (Suffix)"
+    "Player Title (Prefix)", "Player Title (Suffix)",
+    "Pet"
 ]
 
 function doNotSyncItem(item: ItemReq): boolean {
