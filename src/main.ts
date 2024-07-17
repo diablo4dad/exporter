@@ -1,5 +1,6 @@
 import {
     D4Actor,
+    D4ChallengeDefinition,
     D4Emblem,
     D4Emote,
     D4Item,
@@ -14,6 +15,7 @@ import {
 import {parseFiles} from "./loader.js";
 import {
     PATH_TO_D4ACTOR,
+    PATH_TO_D4CHALLENGE,
     PATH_TO_D4EMBLEMS,
     PATH_TO_D4EMOTE,
     PATH_TO_D4ITEM,
@@ -50,7 +52,8 @@ const powers = parseFiles<D4Power>(PATH_TO_D4POWER);
 const storeProducts = parseFiles<D4StoreProduct>(PATH_TO_D4STORE_PRODUCT);
 const emblems = parseFiles<D4Emblem>(PATH_TO_D4EMBLEMS);
 const playerTitles = parseFiles<D4PlayerTitle>(PATH_TO_D4PLAYER_TITLE);
-const headstones = new Map(Array.of(...actors.entries()).filter(([_, a]) => a.__fileName__.includes("headstone")));
+const headstones = new Map(Array.of(...actors.entries()).filter(([, a]) => a.__fileName__.includes("headstone")));
+const challenges = parseFiles<D4ChallengeDefinition>(PATH_TO_D4CHALLENGE);
 
 const deps: D4Dependencies = {
     actors,
@@ -75,12 +78,14 @@ console.log("Read " + markings.size + " markings...");
 console.log("Read " + powers.size + " powers...");
 console.log("Read " + storeProducts.size + " store products...");
 console.log("Read " + playerTitles.size + " player titles...");
+console.log("Read " + challenges.size + "challenges...");
 
-const app = async () => {
-    // writeToCsv(aggregateTransmogsList(deps, new Map()));
-
+const syncStrapi = async () => {
     const media = await getMediaIndex();
     const itemsToKeep: number[] = [];
+
+    // console.log("Syncing challenges...");
+    // await syncChallenges(challenges, challengeFactory(deps));
 
     // console.log("Publishing all items...");
     // await publishAllItems();
@@ -116,6 +121,6 @@ const app = async () => {
     // await cleanUpItems(itemsToKeep);
 }
 
-app().then(() => {
+syncStrapi().then(() => {
     console.log("Process complete.");
 });

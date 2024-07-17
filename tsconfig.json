@@ -7,4 +7,10 @@
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
+  "references": [
+    {
+      "path": "../d4log-common",
+      "prepend": true,
+    }
+  ]
 }

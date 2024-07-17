@@ -2,12 +2,12 @@ import Path from 'path'
 import path from 'path'
 import {PATH_TO_D4STRING_LIST} from "./config.js";
 
-type D4Type = {
+interface D4Type {
     __type__: string,
     __typeHash__: string,
 }
 
-type D4Ref = {
+interface D4Ref {
     __fileName__: string,
     __snoID__: number,
 }
@@ -131,6 +131,28 @@ type D4PlayerTitle = D4Ref & D4Type & {
     bIsSeasonal: boolean,
 }
 
+type D4ChallengeDefinition = D4Ref & D4Type & {
+    arCategories: D4ChallengeCategory[],
+}
+
+type D4ChallengeCategory = D4Type & {
+    dwID: number,
+    arCategories: D4ChallengeCategory[],
+    arAchievementSnos: D4SnoRef[],
+}
+
+type D4Achievement =  D4Ref & D4Type & {
+    arRewardList: D4RewardDefinition[],
+}
+
+type D4RewardDefinition = D4Type & {
+    snoItem: D4SnoRef | null,
+    snoPlayerTitle: D4SnoRef | null,
+    snoStoreProduct: D4SnoRef | null,
+    snoTrackedReward: D4SnoRef | null,
+    snoEmblem: D4SnoRef | null,
+}
+
 const EMPTY_STRINGS_LIST: D4Translation = {
     arStrings: [],
     __snoID__: -1,
@@ -152,7 +174,7 @@ function getStlFileName(ref: D4Ref & D4Type): string {
     return `${slicedType}_${baseFileName}.stl.json`;
 }
 
-function getTextFromStl(stl: D4Translation, label: string, fallback: string = ''): string {
+function getTextFromStl(stl: D4Translation, label: string, fallback = ''): string {
     return stl.arStrings
         .filter(s => s.szLabel === label)
         .map(s => s.szText)
@@ -281,4 +303,7 @@ export type {
     D4StoreProduct,
     D4Emblem,
     D4PlayerTitle,
+    D4ChallengeDefinition,
+    D4ChallengeCategory,
+    D4Achievement,
 };

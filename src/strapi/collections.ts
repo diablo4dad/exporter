@@ -9,7 +9,7 @@ import {
     StrapiQueryResult,
     updateEntity
 } from "./common.js";
-import {D4StoreProduct} from "../d4.js";
+import {D4ChallengeCategory, D4ChallengeDefinition, D4StoreProduct} from "../d4.js";
 
 export async function findCollection(diabloId: number): Promise<StrapiQueryResult<CollectionResp>> {
     return findEntity('collections', diabloId, {
@@ -48,6 +48,87 @@ export function doSyncBundle(base: CollectionReq, product: D4StoreProduct): bool
     return base.name !== '';
 }
 
+export function doSyncChallengeDefinition(challenge: D4ChallengeDefinition): boolean {
+    return challenge.__fileName__.includes("Global");
+}
+
+export function doSyncChallengeCategory(category: D4ChallengeCategory): boolean {
+    return category.dwID !== -1;
+}
+
+async function syncCollection(
+  base: CollectionReq,
+): Promise<StrapiEntry<CollectionResp>> {
+    const resp = await findCollection(base.itemId);
+    const dupDetected = resp.meta.pagination.total > 1;
+    const noResults = resp.meta.pagination.total === 0;
+
+    // handle duplicates
+    if (dupDetected) {
+        await Promise.all(resp.data.map((e: StrapiEntry<CollectionResp>) => deleteCollection(e.id)));
+    }
+
+    // create collection
+    if (dupDetected || noResults) {
+        const result = await createCollection(base);
+
+        return result.data;
+    }
+
+    // update collection
+    const remote = resp.data[0];
+    if (areCollectionsEqual(base, remote.attributes)) {
+        // prevent disconnection of collection items
+        delete base.collectionItems;
+
+        await updateCollection(remote.id, base);
+    }
+
+    return remote;
+}
+
+export async function syncChallenges(
+  challenges: Map<string, D4ChallengeDefinition>,
+  makeChallenge: (definition: D4ChallengeDefinition, category: D4ChallengeCategory, delta: number) => CollectionReq,
+): Promise<number[]> {
+    const collections: number[] = [];
+
+    let i = 0;
+    for (const definition of challenges.values()) {
+        if (!doSyncChallengeDefinition(definition)) {
+            continue;
+        }
+
+        for (const category of definition.arCategories) {
+            if (!doSyncChallengeCategory(category)) {
+                continue;
+            }
+
+            const base = makeChallenge(definition, category, i++);
+            const remote = await syncCollection(base);
+
+            collections.push(base.itemId);
+
+            for (const subCategory of category.arCategories) {
+                if (!doSyncChallengeCategory(subCategory)) {
+                    continue;
+                }
+
+                const subBase = makeChallenge(definition, subCategory, i++);
+                const subBaseConnect = {
+                    ...subBase,
+                    subcollection: remote.id,
+                }
+
+                await syncCollection(subBaseConnect);
+                collections.push(subBase.itemId);
+            }
+        }
+    }
+
+    return collections;
+}
+
 export async function syncBundles(
     bundles: Map<string, D4StoreProduct>,
     makeBundle: (i: D4StoreProduct, delta: number) => CollectionReq,
@@ -61,31 +142,9 @@ export async function syncBundles(
             continue;
         }
 
+        await syncCollection(base);
+
         collections.push(base.itemId);
-
-        const resp = await findCollection(base.itemId);
-        const dupDetected = resp.meta.pagination.total > 1;
-        const noResults = resp.meta.pagination.total === 0;
-
-        // handle duplicates
-        if (dupDetected) {
-            await Promise.all(resp.data.map((e: StrapiEntry<CollectionResp>) => deleteCollection(e.id)));
-        }
-
-        // create collection
-        if (dupDetected || noResults) {
-            await createCollection(base);
-            continue;
-        }
-
-        // update collection
-        const remote = resp.data[0];
-        if (!areCollectionsEqual(base, remote.attributes)) {
-            // prevent disconnection of collection items
-            delete base.collectionItems;
-
-            await updateCollection(remote.id, base);
-        }
     }
 
     return collections;
