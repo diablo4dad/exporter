@@ -9,7 +9,7 @@ import {
     StrapiQueryResult,
     updateEntity
 } from "./common.js";
-import {D4ChallengeCategory, D4ChallengeDefinition, D4StoreProduct} from "../d4.js";
+import {D4ChallengeCategory, D4ChallengeDefinition, D4StoreProduct,} from "../d4.js";
 
 export async function findCollection(diabloId: number): Promise<StrapiQueryResult<CollectionResp>> {
     return findEntity('collections', diabloId, {
@@ -77,7 +77,7 @@ async function syncCollection(
 
     // update collection
     const remote = resp.data[0];
-    if (areCollectionsEqual(base, remote.attributes)) {
+    if (!areCollectionsEqual(base, remote.attributes)) {
         // prevent disconnection of collection items
         delete base.collectionItems;
 
@@ -104,10 +104,10 @@ export async function syncChallenges(
                 continue;
             }
 
+            collections.push(category.dwID);
+
             const base = makeChallenge(definition, category, i++);
             const remote = await syncCollection(base);
-
-            collections.push(base.itemId);
 
             for (const subCategory of category.arCategories) {
                 if (!doSyncChallengeCategory(subCategory)) {

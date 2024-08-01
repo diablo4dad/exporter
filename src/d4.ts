@@ -306,4 +306,5 @@ export type {
     D4ChallengeDefinition,
     D4ChallengeCategory,
     D4Achievement,
+    D4RewardDefinition,
 };

@@ -1,4 +1,5 @@
 import {
+    D4Achievement,
     D4Actor,
     D4ChallengeDefinition,
     D4Emblem,
@@ -14,6 +15,7 @@ import {
 } from "./d4.js";
 import {parseFiles} from "./loader.js";
 import {
+    PATH_TO_D4ACHIEVEMENT,
     PATH_TO_D4ACTOR,
     PATH_TO_D4CHALLENGE,
     PATH_TO_D4EMBLEMS,
@@ -38,8 +40,9 @@ import {markingShapeFactory} from "./strapi/factory/marking.js";
 import {syncItems} from "./strapi/items.js";
 import {playerTitleFactory} from "./strapi/factory/title.js";
 import {bundleFactory} from "./strapi/factory/bundles.js";
-import {syncBundles} from "./strapi/collections.js";
-import {syncBundleItems} from "./strapi/collectionitems.js";
+import {syncBundles, syncChallenges} from "./strapi/collections.js";
+import {syncBundleItems, syncChallengeAchievements} from "./strapi/collectionitems.js";
+import {challengeFactory} from "./strapi/factory/challenges.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -54,6 +57,7 @@ const emblems = parseFiles<D4Emblem>(PATH_TO_D4EMBLEMS);
 const playerTitles = parseFiles<D4PlayerTitle>(PATH_TO_D4PLAYER_TITLE);
 const headstones = new Map(Array.of(...actors.entries()).filter(([, a]) => a.__fileName__.includes("headstone")));
 const challenges = parseFiles<D4ChallengeDefinition>(PATH_TO_D4CHALLENGE);
+const achievements = parseFiles<D4Achievement>(PATH_TO_D4ACHIEVEMENT);
 
 const deps: D4Dependencies = {
     actors,
@@ -66,6 +70,8 @@ const deps: D4Dependencies = {
     powers,
     storeProducts,
     strings,
+    achievements,
+    playerTitles,
 };
 
 console.log("Read " + items.size + " items...");
@@ -78,14 +84,11 @@ console.log("Read " + markings.size + " markings...");
 console.log("Read " + powers.size + " powers...");
 console.log("Read " + storeProducts.size + " store products...");
 console.log("Read " + playerTitles.size + " player titles...");
-console.log("Read " + challenges.size + "challenges...");
+console.log("Read " + challenges.size + " challenges...");
 
 const syncStrapi = async () => {
     const media = await getMediaIndex();
     const itemsToKeep: number[] = [];
-
-    // console.log("Syncing challenges...");
-    // await syncChallenges(challenges, challengeFactory(deps));
 
     // console.log("Publishing all items...");
     // await publishAllItems();
@@ -116,6 +119,12 @@ const syncStrapi = async () => {
 
     console.log("Syncing bundle items...");
     await syncBundleItems(storeProducts, bundlesToSync, deps);
+
+    console.log("Syncing challenges...");
+    const challengesToSync = await syncChallenges(challenges, challengeFactory(deps));
+
+    console.log("Syncing achievements...");
+    await syncChallengeAchievements(challenges, challengesToSync, deps);
 
     // console.log("Cleaning up DB...");
     // await cleanUpItems(itemsToKeep);

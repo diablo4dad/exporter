@@ -9,13 +9,120 @@ import {
     StrapiEntry,
     StrapiPostData,
 } from "./common.js";
-import {D4StoreProduct, resolveSno} from "../d4.js";
-import {findCollection} from "./collections.js";
+import {D4ChallengeCategory, D4ChallengeDefinition, D4SnoRef, D4StoreProduct, resolveSno} from "../d4.js";
+import {doSyncChallengeDefinition, findCollection} from "./collections.js";
 import {bundleItemFactory, extractItemFromProduct} from "./factory/bundles.js";
 import {findItem} from "./items.js";
+import {challengeRewardFactory} from "./factory/challenges.js";
 
 export async function createCollectionItem(data: CollectionItemReq): Promise<StrapiActionResult<CollectionItemResp>> {
     return createEntity('collection-items', 'Collection Item', data);
+}
+
+async function locateItem(diabloId: number): Promise<StrapiEntry<ItemResp>>  {
+    const resp = await findItem(diabloId);
+    const dupDetected = resp.meta.pagination.total > 1;
+    const noResults = resp.meta.pagination.total === 0;
+
+    if (noResults) {
+        throw new Error('Item ' + diabloId + ' does not exist.');
+    }
+
+    if (dupDetected) {
+        throw new Error('Item ' + diabloId + ' duplicated.');
+    }
+
+    return resp.data[0];
+}
+
+async function locateCollection(diabloId: number): Promise<StrapiEntry<CollectionResp>> {
+    const resp = await findCollection(diabloId);
+    const dupDetected = resp.meta.pagination.total > 1;
+    const noResults = resp.meta.pagination.total === 0;
+
+    if (noResults) {
+        throw new Error('Collection ' + diabloId + ' does not exist.');
+    }
+
+    if (dupDetected) {
+        throw new Error('Collection ' + diabloId + ' duplicated.');
+    }
+
+    return resp.data[0];
+}
+
+function doesCollectionHaveItem(collection: StrapiEntry<CollectionResp>, itemId: number): boolean {
+    const collectionItems: StrapiPostData<StrapiEntry<CollectionItemResp>[]> = collection.attributes.collectionItems;
+    const existing = collectionItems.data.find((ci: StrapiEntry<CollectionItemResp>) =>
+      ci.attributes.items.data.find(
+        (i: StrapiEntry<ItemResp>) => i.attributes.itemId == itemId
+      )
+    );
+
+    return existing !== undefined;
+}
+
+async function connectItemToCollection(baseReq: CollectionItemReq, collectionId: number, itemIds: number[]) {
+    const bundleItemReq = {
+        ...baseReq,
+        collection: {connect: [{ "id": collectionId }]},
+        items: {connect: itemIds.map(i => ({ "id": i }))},
+    }
+
+    console.log("Connect Item", bundleItemReq);
+
+    await createCollectionItem(bundleItemReq);
+}
+
+
+
+export async function syncChallengeAchievements(
+  challenges: Map<string, D4ChallengeDefinition>,
+  challengesToSync: number[],
+  deps: D4Dependencies,
+): Promise<void> {
+    for (const definition of challenges.values()) {
+        // Global.cha
+        if (!doSyncChallengeDefinition(definition)) {
+            continue;
+        }
+
+        const doSync = async (achievementSno: D4SnoRef, subCategory: D4ChallengeCategory) => {
+            const achievement = resolveSno(achievementSno, deps.achievements);
+            if (achievement === undefined) {
+                console.warn("Detached achievement.", achievementSno.__targetFileName__);
+                return;
+            }
+
+            const collection = await locateCollection(subCategory.dwID);
+            const rewards = challengeRewardFactory(deps)(subCategory, achievement);
+
+            rewards.forEach(async r => {
+                const items = r.items as number[];
+                const strapiItems = await Promise.all(items.map(locateItem));
+                const strapiItemIds = strapiItems.map(i => i.id);
+                const itemsToConnect = strapiItemIds.filter(i => !doesCollectionHaveItem(collection, i));
+                if (itemsToConnect) {
+                    await connectItemToCollection(r, collection.id, itemsToConnect);
+                    console.log("Connected Items!");
+                }
+            });
+        }
+
+        // Classes
+        for (const category of definition.arCategories) {
+            for (const achievementSno of category.arAchievementSnos) {
+                await doSync(achievementSno, category);
+            }
+
+            // Barbarian
+            for (const subCategory of category.arCategories) {
+                for (const achievementSno of subCategory.arAchievementSnos) {
+                    await doSync(achievementSno, subCategory);
+                }
+            }
+        }
+    }
 }
 
 export async function syncBundleItems(

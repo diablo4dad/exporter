@@ -1,10 +1,12 @@
 import {
+    D4Achievement,
     D4Actor,
     D4Emblem,
     D4Emote,
     D4Item,
     D4ItemType,
     D4MarkingShape,
+    D4PlayerTitle,
     D4Power,
     D4StoreProduct,
     D4TownPortalCosmetic,
@@ -23,6 +25,8 @@ export type D4Dependencies = {
     markings: Map<string, D4MarkingShape>,
     portals: Map<string, D4TownPortalCosmetic>,
     emblems: Map<string, D4Emblem>,
+    achievements: Map<string, D4Achievement>,
+    playerTitles: Map<string, D4PlayerTitle>,
 }
 
 export function appendAuth(headers: Record<string, string> = {}) {
@@ -244,14 +248,14 @@ type StrapiCollectionItem<ItemT, CollectionT> = {
     premium?: boolean,
     promotional?: boolean,
     season?: number,
-    items?: ItemT[],
+    items?: ItemT,
     collection?: CollectionT,
 }
 
 type IconReq = number | null;
 type IconResp = StrapiPostData<StrapiEntry<StrapiMediaItem | null>>;
 
-type CollectionItemReq = StrapiCollectionItem<number | null, number | null>;
+type CollectionItemReq = StrapiCollectionItem<number[] | { connect: number[] } | null, number | { connect: number[] } | null>;
 // @ts-ignore
 type CollectionItemResp = StrapiCollectionItem<StrapiPostData<StrapiEntry<ItemResp | null>>, StrapiPostData<CollectionResp | null>>;
 
