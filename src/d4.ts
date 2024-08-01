@@ -37,7 +37,7 @@ type D4InventoryImages = D4Type & {
 }
 
 type D4ItemType = D4Ref & D4Type & {
-    fUseableByClass: number[],
+    fUsableByClass: number[],
 }
 
 type D4SnoRef = D4Type & {
@@ -179,6 +179,10 @@ function getTextFromStl(stl: D4Translation, label: string, fallback = ''): strin
         .filter(s => s.szLabel === label)
         .map(s => s.szText)
         .pop() ?? fallback;
+}
+
+export function stu(string: string): string | undefined {
+    return string === "" ? undefined : string;
 }
 
 const STORE_MAP = new Map([

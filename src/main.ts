@@ -1,3 +1,5 @@
+import fs from "fs";
+
 import {
     D4Achievement,
     D4Actor,
@@ -12,10 +14,11 @@ import {
     D4Power,
     D4StoreProduct,
     D4TownPortalCosmetic,
-    D4Translation
+    D4Translation,
 } from "./d4.js";
 import {parseFiles} from "./loader.js";
 import {
+    ITEM_TYPES_TO_SYNC,
     PATH_TO_D4ACHIEVEMENT,
     PATH_TO_D4ACTOR,
     PATH_TO_D4CHALLENGE,
@@ -43,6 +46,15 @@ import {bundleFactory} from "./strapi/factory/bundles.js";
 import {syncBundles, syncChallenges} from "./strapi/collections.js";
 import {syncBundleItems, syncChallengeAchievements} from "./strapi/collectionitems.js";
 import {challengeFactory} from "./strapi/factory/challenges.js";
+import {itemToDad} from "./json/factory/items.js";
+import {itemTypeToDad} from "./json/factory/itemTypes.js";
+import {D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE} from "./json/index.js";
+import {emblemToDad} from "./json/factory/emblems.js";
+import {emoteToDad} from "./json/factory/emotes.js";
+import {headstoneToDad} from "./json/factory/headstones.js";
+import {markingShapeToDad} from "./json/factory/marking.js";
+import {playerTitleToDad} from "./json/factory/title.js";
+import {portalToDad} from "./json/factory/portals.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -131,13 +143,92 @@ const syncStrapi = async () => {
     // await cleanUpItems(itemsToKeep);
 }
 
-const dumpItems = async () => {
+const dumpItems = () => {
+    const itemTypesOut = Array
+      .from(itemTypes.values())
+      .map(itemTypeToDad(deps))
+      .concat(ITEM_TYPE_APPENDAGE)
+      .filter(([, t]) => ITEM_TYPES_TO_SYNC.includes(t.name));
+    const itemTypeIds = itemTypesOut.map(([i]) => i.id);
 
+    const itemsOut = Array
+      .from(items.values())
+      .map(itemToDad(deps))
+      .filter(([i]) => itemTypeIds.includes(i.typeId));
+
+    const emblemsOut = Array
+      .from(emblems.values())
+      .map(emblemToDad(deps));
+
+    const emotesOut = Array
+      .from(emotes.values())
+      .map(emoteToDad(deps));
+
+    const headstonesOut = Array
+      .from(headstones.values())
+      .map(headstoneToDad(deps));
+
+    const markingsOut = Array
+      .from(markings.values())
+      .map(markingShapeToDad(deps));
+
+    const portalsOut = Array
+      .from(portals.values())
+      .map(portalToDad(deps));
+
+    const titlesOut = Array
+      .from(playerTitles.values())
+      .map(playerTitleToDad(deps));
+
+    const mapEntities = ([entity]: [D4DadEntity, D4DadTranslation]) => entity;
+    const mapTranslations = ([entity, i18n]: [D4DadEntity, D4DadTranslation]) => ([entity.id, i18n]);
+    const mapEntitiesCoalesce = ([entity, i18n]: [D4DadEntity, D4DadTranslation]) => ({...i18n, ...entity});
+
+    const d4dadI18n = Object.fromEntries([
+      ...itemTypesOut.map(mapTranslations),
+      ...itemsOut.map(mapTranslations),
+      ...emblemsOut.map(mapTranslations),
+      ...emotesOut.map(mapTranslations),
+      ...headstonesOut.map(mapTranslations),
+      ...markingsOut.map(mapTranslations),
+      ...portalsOut.map(mapTranslations),
+      ...titlesOut.map(mapTranslations),
+    ]);
+
+    const d4dad = {
+        itemTypes: itemTypesOut.map(mapEntities),
+        items: [
+          ...itemsOut.map(mapEntities),
+          ...emblemsOut.map(mapEntities),
+          ...emotesOut.map(mapEntities),
+          ...headstonesOut.map(mapEntities),
+          ...markingsOut.map(mapEntities),
+          ...portalsOut.map(mapEntities),
+          ...titlesOut.map(mapEntities),
+      ],
+    };
+
+    const d4dadJoin = {
+        itemTypes: itemTypesOut.map(mapEntitiesCoalesce),
+        items: [
+            ...itemsOut.map(mapEntitiesCoalesce),
+            ...emblemsOut.map(mapEntitiesCoalesce),
+            ...emotesOut.map(mapEntitiesCoalesce),
+            ...headstonesOut.map(mapEntitiesCoalesce),
+            ...markingsOut.map(mapEntitiesCoalesce),
+            ...portalsOut.map(mapEntitiesCoalesce),
+            ...titlesOut.map(mapEntitiesCoalesce),
+        ],
+    };
+
+    fs.writeFileSync("d4dad.json", JSON.stringify(d4dad));
+    fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
+    fs.writeFileSync("d4dad_full.json", JSON.stringify(d4dadJoin));
+
+    console.log("Dump complete.");
 }
 
-dumpItems().then(() => {
-    console.log("Dump complete.");
-});
+dumpItems();
 
 // syncStrapi().then(() => {
 //     console.log("Process complete.");

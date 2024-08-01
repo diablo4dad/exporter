@@ -11,6 +11,7 @@ import {
     StrapiQueryResult,
     updateEntity
 } from "./common.js";
+import {ITEM_TYPES_TO_SYNC} from "../config.js";
 
 export async function findItem(diabloId: number): Promise<StrapiQueryResult<ItemResp>> {
     return findEntity('items', diabloId, {
@@ -60,17 +61,6 @@ export function areItemsEqual(base: ItemReq, strapi: ItemResp): boolean {
     if (base.magicType !== strapi.magicType) return false;
     return (base.transMog === strapi.transMog);
 }
-
-const ITEM_TYPES_TO_SYNC = [
-    "Mount",
-    "Horse Armor", "Cat Armor",
-    "Trophy", "Back Trophy",
-    "Axe", "Dagger", "Focus", "Mace", "Scythe", "Shield", "Sword", "Totem", "Wand", "Two-Handed Axe", "Bow", "Crossbow", "Two-Handed Mace", "Polearm", "Two-Handed Scythe", "Staff", "Two-Handed Sword",
-    "Chest Armor", "Boots", "Gloves", "Helm", "Pants",
-    "Body Marking", "Emote", "Town Portal", "Headstone", "Emblem",
-    "Player Title (Prefix)", "Player Title (Suffix)",
-    "Pet"
-]
 
 function doNotSyncItem(item: ItemReq): boolean {
     if (!ITEM_TYPES_TO_SYNC.includes(item.itemType)) {
