@@ -1,5 +1,13 @@
-import {CollectionItemReq, CollectionReq, D4Dependencies} from "../common.js";
-import {D4Ref, D4StoreProduct, D4Type, getTextFromStl, resolveSno, resolveStringsList} from "../../d4.js";
+import {CollectionItemReq, CollectionReq} from "../common.js";
+import {
+    D4Dependencies,
+    D4Ref,
+    D4StoreProduct,
+    D4Type,
+    getTextFromStl,
+    resolveSno,
+    resolveStringsList
+} from "../../d4.js";
 
 export function bundleFactory(deps: D4Dependencies): (product: D4StoreProduct, delta: number) => CollectionReq {
     return (product: D4StoreProduct, delta: number = 0): CollectionReq => {

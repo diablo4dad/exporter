@@ -1,5 +1,6 @@
 import {
     CLASS_TYPES,
+    D4Dependencies,
     D4Emote,
     D4StoreProduct,
     getTextFromStl,
@@ -7,7 +8,7 @@ import {
     resolveStoreProduct,
     resolveStringsList
 } from "../../d4.js";
-import {D4Dependencies, ItemReq,} from "../common.js";
+import {ItemReq,} from "../common.js";
 
 export function emoteFactory(deps: D4Dependencies, media: Map<string, number>): (item: D4Emote) => ItemReq {
     function chooseIcon(emote: D4Emote, storeProduct?: D4StoreProduct): number {

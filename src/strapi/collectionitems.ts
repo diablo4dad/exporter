@@ -3,13 +3,19 @@ import {
     CollectionItemResp,
     CollectionResp,
     createEntity,
-    D4Dependencies,
     ItemResp,
     StrapiActionResult,
     StrapiEntry,
     StrapiPostData,
 } from "./common.js";
-import {D4ChallengeCategory, D4ChallengeDefinition, D4SnoRef, D4StoreProduct, resolveSno} from "../d4.js";
+import {
+    D4ChallengeCategory,
+    D4ChallengeDefinition,
+    D4Dependencies,
+    D4SnoRef,
+    D4StoreProduct,
+    resolveSno
+} from "../d4.js";
 import {doSyncChallengeDefinition, findCollection} from "./collections.js";
 import {bundleItemFactory, extractItemFromProduct} from "./factory/bundles.js";
 import {findItem} from "./items.js";

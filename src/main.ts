@@ -2,6 +2,7 @@ import {
     D4Achievement,
     D4Actor,
     D4ChallengeDefinition,
+    D4Dependencies,
     D4Emblem,
     D4Emote,
     D4Item,
@@ -30,7 +31,6 @@ import {
     PATH_TO_D4TOWN_PORTAL
 } from "./config.js";
 import {getMediaIndex, uploadImage} from "./strapi/media.js";
-import {D4Dependencies} from "./strapi/common.js";
 import {itemFactory} from "./strapi/factory/items.js";
 import {emoteFactory} from "./strapi/factory/emotes.js";
 import {headstoneFactory} from "./strapi/factory/headstones.js";
@@ -86,6 +86,7 @@ console.log("Read " + storeProducts.size + " store products...");
 console.log("Read " + playerTitles.size + " player titles...");
 console.log("Read " + challenges.size + " challenges...");
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const syncStrapi = async () => {
     const media = await getMediaIndex();
     const itemsToKeep: number[] = [];
@@ -130,6 +131,14 @@ const syncStrapi = async () => {
     // await cleanUpItems(itemsToKeep);
 }
 
-syncStrapi().then(() => {
-    console.log("Process complete.");
+const dumpItems = async () => {
+
+}
+
+dumpItems().then(() => {
+    console.log("Dump complete.");
 });
+
+// syncStrapi().then(() => {
+//     console.log("Process complete.");
+// });

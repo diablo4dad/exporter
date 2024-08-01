@@ -1,12 +1,13 @@
 import {
     CLASS_TYPES,
+    D4Dependencies,
     D4MarkingShape,
     D4StoreProduct,
     getTextFromStl,
     resolveStoreProduct,
     resolveStringsList
 } from "../../d4.js";
-import {D4Dependencies, ItemReq} from "../common.js";
+import {ItemReq} from "../common.js";
 
 export function markingShapeFactory(deps: D4Dependencies, media: Map<string, number>): (marking: D4MarkingShape) => ItemReq {
     function chooseIcon(marking: D4MarkingShape, storeProduct?: D4StoreProduct): number {

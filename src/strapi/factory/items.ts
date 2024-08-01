@@ -1,6 +1,7 @@
 import {
     arrayToClassList,
     chooseBestIconHandle,
+    D4Dependencies,
     D4Item,
     getTextFromStl,
     resolveSno,
@@ -8,7 +9,7 @@ import {
     resolveStringsList,
     toMagicType
 } from "../../d4.js";
-import {D4Dependencies, ItemReq} from "../common.js";
+import {ItemReq} from "../common.js";
 
 export function itemFactory(deps: D4Dependencies, media: Map<string, number>): (item: D4Item) => ItemReq {
     return (item: D4Item): ItemReq => {

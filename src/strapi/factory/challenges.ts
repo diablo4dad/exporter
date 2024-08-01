@@ -1,8 +1,9 @@
-import {CollectionItemReq, CollectionReq, D4Dependencies} from "../common.js";
+import {CollectionItemReq, CollectionReq} from "../common.js";
 import {
   D4Achievement,
   D4ChallengeCategory,
   D4ChallengeDefinition,
+  D4Dependencies,
   D4RewardDefinition,
   getTextFromStl,
   resolveSno,

@@ -1,7 +1,8 @@
-import {D4Dependencies, ItemReq,} from "../common.js";
+import {ItemReq,} from "../common.js";
 import {
     CLASS_TYPES,
     D4Actor,
+    D4Dependencies,
     D4StoreProduct,
     getTextFromStl,
     resolveStoreProduct,
