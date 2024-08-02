@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 
 import {
     D4Achievement,
@@ -31,7 +32,9 @@ import {
     PATH_TO_D4POWER,
     PATH_TO_D4STORE_PRODUCT,
     PATH_TO_D4STRING_LIST,
-    PATH_TO_D4TOWN_PORTAL
+    PATH_TO_D4TEXTURES,
+    PATH_TO_D4TOWN_PORTAL,
+    PATH_TO_PUBLIC_DIR
 } from "./config.js";
 import {getMediaIndex, uploadImage} from "./strapi/media.js";
 import {itemFactory} from "./strapi/factory/items.js";
@@ -48,13 +51,21 @@ import {syncBundleItems, syncChallengeAchievements} from "./strapi/collectionite
 import {challengeFactory} from "./strapi/factory/challenges.js";
 import {itemToDad} from "./json/factory/items.js";
 import {itemTypeToDad} from "./json/factory/itemTypes.js";
-import {D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE} from "./json/index.js";
+import {
+    D4DadCollection,
+    D4DadCollectionItem,
+    D4DadDb,
+    D4DadEntity,
+    D4DadTranslation,
+    ITEM_TYPE_APPENDAGE
+} from "./json/index.js";
 import {emblemToDad} from "./json/factory/emblems.js";
 import {emoteToDad} from "./json/factory/emotes.js";
 import {headstoneToDad} from "./json/factory/headstones.js";
 import {markingShapeToDad} from "./json/factory/marking.js";
 import {playerTitleToDad} from "./json/factory/title.js";
 import {portalToDad} from "./json/factory/portals.js";
+import {CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryResult} from "./strapi/common.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -143,6 +154,51 @@ const syncStrapi = async () => {
     // await cleanUpItems(itemsToKeep);
 }
 
+
+const inputs = [
+    "C:\\Users\\Sam\\Documents\\d4log\\public\\general.json",
+    "C:\\Users\\Sam\\Documents\\d4log\\public\\season.json",
+    "C:\\Users\\Sam\\Documents\\d4log\\public\\shop.json",
+    "C:\\Users\\Sam\\Documents\\d4log\\public\\challenge.json",
+    "C:\\Users\\Sam\\Documents\\d4log\\public\\promotional.json",
+];
+
+const parseLegacy = (p: string): D4DadCollection[] => {
+    const buffer = fs.readFileSync(p);
+    const data: StrapiQueryResult<CollectionResp> = JSON.parse(buffer.toString());
+
+    const parseCollection = (se: StrapiEntry<CollectionResp>): D4DadCollection => {
+        return {
+            id: se.id,
+            name: se.attributes.name,
+            description: se.attributes.description ?? undefined,
+            category: se.attributes.category ?? undefined,
+            bundleId: se.attributes.itemId ?? undefined,
+            subcollections: se.attributes.subcollections?.data.map(parseCollection),
+            collectionItems: se.attributes.collectionItems.data.map((ci: StrapiEntry<CollectionItemResp>): D4DadCollectionItem => {
+                return {
+                    id: ci.id,
+                    name: ci.attributes.name,
+                    claim: ci.attributes.claim ?? undefined,
+                    claimDescription: ci.attributes.claimDescription ?? undefined,
+                    claimZone: ci.attributes.claimZone ?? undefined,
+                    claimMonster: ci.attributes.claimMonster ?? undefined,
+                    outOfRotation: ci.attributes.outOfRotation ?? undefined,
+                    premium: ci.attributes.premium ?? undefined,
+                    promotional: ci.attributes.promotional ?? undefined,
+                    unobtainable: ci.attributes.unobtainable ?? undefined,
+                    season: ci.attributes.season ?? undefined,
+                    items: ci.attributes.items.data.map(((d: StrapiEntry<ItemResp>) => {
+                        return Number(d.attributes.itemId);
+                    })),
+                };
+            }),
+        }
+    }
+
+    return data.data.map(parseCollection);
+}
+
 const dumpItems = () => {
     const itemTypesOut = Array
       .from(itemTypes.values())
@@ -154,7 +210,7 @@ const dumpItems = () => {
     const itemsOut = Array
       .from(items.values())
       .map(itemToDad(deps))
-      .filter(([i]) => itemTypeIds.includes(i.typeId));
+      .filter(([i]) => itemTypeIds.includes(i.itemType));
 
     const emblemsOut = Array
       .from(emblems.values())
@@ -180,9 +236,9 @@ const dumpItems = () => {
       .from(playerTitles.values())
       .map(playerTitleToDad(deps));
 
-    const mapEntities = ([entity]: [D4DadEntity, D4DadTranslation]) => entity;
-    const mapTranslations = ([entity, i18n]: [D4DadEntity, D4DadTranslation]) => ([entity.id, i18n]);
-    const mapEntitiesCoalesce = ([entity, i18n]: [D4DadEntity, D4DadTranslation]) => ({...i18n, ...entity});
+    const mapEntities = <T extends D4DadEntity>([entity]: [T, D4DadTranslation]): T => entity;
+    const mapTranslations = <T extends D4DadEntity>([entity, i18n]: [T, D4DadTranslation]): [number, D4DadTranslation] => ([entity.id, i18n]);
+    const mapEntitiesCoalesce = <T extends D4DadEntity>([entity, i18n]: [T, D4DadTranslation]): T & D4DadTranslation => ({...i18n, ...entity});
 
     const d4dadI18n = Object.fromEntries([
       ...itemTypesOut.map(mapTranslations),
@@ -208,7 +264,8 @@ const dumpItems = () => {
       ],
     };
 
-    const d4dadJoin = {
+    const d4dadJoin: D4DadDb = {
+        collections: inputs.map(parseLegacy).flat(),
         itemTypes: itemTypesOut.map(mapEntitiesCoalesce),
         items: [
             ...itemsOut.map(mapEntitiesCoalesce),
@@ -221,9 +278,35 @@ const dumpItems = () => {
         ],
     };
 
-    fs.writeFileSync("d4dad.json", JSON.stringify(d4dad));
+    fs.writeFileSync("d4dad.json", JSON.stringify(d4dadJoin));
     fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
-    fs.writeFileSync("d4dad_full.json", JSON.stringify(d4dadJoin));
+
+    const allImgHandles: Set<number> = d4dad.items.reduce((a, c) => {
+        a.add(c.icon);
+        if (c.invImages) {
+            c.invImages.flat().map(i => a.add(i));
+        }
+        return a;
+    }, new Set<number>());
+
+    allImgHandles.delete(0);
+
+    const failedImages: number[] = [];
+
+    allImgHandles.forEach(iconId => {
+        const filename = path.join(PATH_TO_D4TEXTURES, iconId + '.webp');
+        try {
+            fs.accessSync(filename, fs.constants.R_OK);
+        } catch (err) {
+            console.warn('Unable to read file ' + filename + '...');
+            failedImages.push(iconId);
+            return;
+        }
+
+        fs.copyFileSync(filename, path.join(PATH_TO_PUBLIC_DIR, iconId + ".webp"));
+    });
+
+    console.log("Missing Icons...", failedImages);
 
     console.log("Dump complete.");
 }

@@ -42,8 +42,8 @@ export function itemToDad(deps: D4Dependencies): (_: D4Item) => [D4DadItem, D4Da
     return [{
       id,
       filename,
-      typeId,
-      iconId,
+      itemType: typeId,
+      icon: iconId,
       magicType,
       isTransmog,
       usableByClass,

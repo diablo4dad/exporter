@@ -11,17 +11,15 @@ export function playerTitleToDad(deps: D4Dependencies): (item: D4PlayerTitle) =>
             ? PLAYER_TITLE_PREFIX
             : PLAYER_TITLE_SUFFIX;
         const name = getTextFromStl(playerTitleStringsList, "Name");
-        const description = getTextFromStl(playerTitleStringsList, "Description"); // always blank
         const iconId = 2613320257; // placeholder, not the proper battle pass icon
 
         return [{
             id,
             filename,
-            typeId,
-            iconId,
+            itemType: typeId,
+            icon: iconId,
         }, {
             name,
-            description,
         }];
     }
 }

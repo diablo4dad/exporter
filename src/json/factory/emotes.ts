@@ -1,12 +1,13 @@
 import {
-    CLASS_TYPES,
-    D4Dependencies,
-    D4Emote,
-    D4StoreProduct,
-    getTextFromStl,
-    resolveSno,
-    resolveStoreProduct,
-    resolveStringsList
+  CLASS_TYPES,
+  D4Dependencies,
+  D4Emote,
+  D4StoreProduct,
+  getTextFromStl,
+  resolveSno,
+  resolveStoreProduct,
+  resolveStringsList,
+  stu
 } from "../../d4.js";
 import {D4DadItem, D4DadTranslation, EMOTE} from "../index.js";
 
@@ -29,8 +30,8 @@ export function emoteToDad(deps: D4Dependencies): (_: D4Emote) => [D4DadItem, D4
         const filename = emote.__fileName__;
         const typeId = EMOTE;
         const name = getTextFromStl(emoteStringsList, "Name");
-        const description = getTextFromStl(emoteStringsList, "Description");
-        const series = getTextFromStl(storeProductStringsList, 'Series');
+        const description = stu(getTextFromStl(emoteStringsList, "Description"));
+        const series = stu(getTextFromStl(storeProductStringsList, 'Series'));
         const iconId = chooseIcon(emote, storeProduct);
         const usableByClass =
           powerSno?.snoClassRequirement?.name ?
@@ -40,8 +41,8 @@ export function emoteToDad(deps: D4Dependencies): (_: D4Emote) => [D4DadItem, D4
         return [{
             id,
             filename,
-            typeId,
-            iconId,
+            itemType: typeId,
+            icon: iconId,
             usableByClass,
         }, {
             name,

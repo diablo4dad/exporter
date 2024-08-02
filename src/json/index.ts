@@ -30,17 +30,54 @@ export type D4DadTranslation = {
   transmogName?: string,
 }
 
+export type D4DadCollection = {
+  id: number,
+  name: string,
+  description?: string,
+  category?: string,
+  bundleId?: number,
+  subcollections: D4DadCollection[],
+  collectionItems: D4DadCollectionItem[],
+}
+
+export type D4DadCollectionItem = {
+  id: number,
+  name: string, // debug only
+
+  claim: string,
+  claimDescription?: string,
+  claimZone?: string,
+  claimMonster?: string,
+
+  outOfRotation?: boolean,
+  premium?: boolean,
+  promotional?: boolean,
+  season?: number,
+  unobtainable?: boolean,
+
+  items: number[],
+}
+
+export enum D4DadCollectionCategory {
+  GENERAL = "general",
+  SEASONS = "seasons",
+  CHALLENGES = "challenges",
+  PROMOTIONAL = "promotional",
+  STORE = "store",
+}
+
 export type D4DadDb = {
   itemTypes: D4DadItemType[],
   items: D4DadItem[],
+  collections: D4DadCollection[],
 }
 
 export type D4DadTranslations = Record<number, D4DadTranslation>;
 export type D4DadGenderSpecificImages = [number, number];
 
 export type D4DadItem = D4DadEntity & {
-  typeId: number,
-  iconId: number,
+  itemType: number,
+  icon: number,
   usableByClass?: number[],
   invImages?: D4DadGenderSpecificImages[],
   magicType?: number,

@@ -203,6 +203,7 @@ type StrapiCollection<CollectionItemT> = {
     order: number,
     name: string,
     description: string,
+    subcollections?: StrapiPostData<StrapiEntry<StrapiCollection<CollectionItemT>>[]>,
     collectionItems?: CollectionItemT[],
     category: string,
     itemId: number,

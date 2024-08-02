@@ -1,10 +1,11 @@
 import {
-    D4Dependencies,
-    D4StoreProduct,
-    D4TownPortalCosmetic,
-    getTextFromStl,
-    resolveStoreProduct,
-    resolveStringsList
+  D4Dependencies,
+  D4StoreProduct,
+  D4TownPortalCosmetic,
+  getTextFromStl,
+  resolveStoreProduct,
+  resolveStringsList,
+  stu
 } from "../../d4.js";
 import {D4DadItem, D4DadTranslation, TOWN_PORTAL} from "../index.js";
 
@@ -41,15 +42,15 @@ export function portalToDad(deps: D4Dependencies): (portal: D4TownPortalCosmetic
         const filename = portal.__fileName__;
         const typeId = TOWN_PORTAL;
         const name = getTextFromStl(stringsList, "Name");
-        const description = getTextFromStl(stringsList, "Description");
-        const series = getTextFromStl(stringsList, 'Series');
+        const description = stu(getTextFromStl(stringsList, "Description"));
+        const series = stu(getTextFromStl(stringsList, 'Series'));
         const iconId = chooseIcon(portal, storeProduct);
 
         return [{
             id,
             filename,
-            typeId,
-            iconId,
+            itemType: typeId,
+            icon: iconId,
         }, {
             name,
             description,

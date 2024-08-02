@@ -1,6 +1,7 @@
 // master directories
 const PATH_TO_D4DATA = 'C:\\Users\\Sam\\Documents\\d4data'
 const PATH_TO_D4TEXTURES = 'C:\\Users\\Sam\\Documents\\d4-texture-extractor\\webp'
+const PATH_TO_PUBLIC_DIR = "C:\\Users\\Sam\\Documents\\d4log\\public\\icons"
 
 // key data files
 const PATH_TO_D4ITEM = "json\\base\\meta\\Item";
@@ -43,6 +44,7 @@ export {
     PATH_TO_D4PLAYER_TITLE,
     PATH_TO_D4CHALLENGE,
     PATH_TO_D4ACHIEVEMENT,
+    PATH_TO_PUBLIC_DIR,
 };
 
 export const ITEM_TYPES_TO_SYNC = [
