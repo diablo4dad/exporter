@@ -5,7 +5,6 @@ export const HEADSTONE = 7203;
 export const EMBLEM = 7204;
 export const PLAYER_TITLE_PREFIX = 7205;
 export const PLAYER_TITLE_SUFFIX = 7206;
-export const PET = 7207;
 
 export const ITEM_TYPE_APPENDAGE: [D4DadItemType, D4DadTranslation][] = [
   [{id: 7200}, {name: "Body Marking"}],
@@ -15,7 +14,6 @@ export const ITEM_TYPE_APPENDAGE: [D4DadItemType, D4DadTranslation][] = [
   [{id: 7204}, {name: "Emblem"}],
   [{id: 7205}, {name: "Player Title (Prefix)"}],
   [{id: 7206}, {name: "Player Title (Suffix)"}],
-  [{id: 7207}, {name: "Pet"}],
 ]
 
 export type D4DadEntity = {
@@ -24,7 +22,7 @@ export type D4DadEntity = {
 }
 
 export type D4DadTranslation = {
-  name: string,
+  name?: string,
   description?: string,
   series?: string,
   transmogName?: string,
@@ -69,7 +67,35 @@ export enum D4DadCollectionCategory {
 export type D4DadDb = {
   itemTypes: D4DadItemType[],
   items: D4DadItem[],
+  products: D4DadStoreProduct[],
   collections: D4DadCollection[],
+  achievements: D4DadAchievement[],
+  challenges: D4DadChallenge[],
+}
+
+export type D4DadStoreProduct = D4DadEntity & {
+  item?: number,
+  bundledProducts?: number[],
+}
+
+export type D4DadChallenge = D4DadEntity & {
+  categories: D4DadChallengeCategory[],
+}
+
+export type D4DadChallengeCategory = {
+  name?: string,  // move to translations somehow
+  categoryId: number,
+  categories?: D4DadChallengeCategory[],
+  achievements?: number[],
+}
+
+export type D4DadAchievement = D4DadEntity & {
+  rewards?: D4DadAchievementRewards,
+}
+
+export type D4DadAchievementRewards = {
+  items?: number[],
+  products?: number[],
 }
 
 export type D4DadTranslations = Record<number, D4DadTranslation>;

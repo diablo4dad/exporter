@@ -66,6 +66,9 @@ import {markingShapeToDad} from "./json/factory/marking.js";
 import {playerTitleToDad} from "./json/factory/title.js";
 import {portalToDad} from "./json/factory/portals.js";
 import {CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryResult} from "./strapi/common.js";
+import {productToDad} from "./json/factory/bundles.js";
+import {achievementToDad} from "./json/factory/achievements.js";
+import {challengeToDad} from "./json/factory/challenges.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -236,6 +239,21 @@ const dumpItems = () => {
       .from(playerTitles.values())
       .map(playerTitleToDad(deps));
 
+    const productsOut = Array
+      .from(storeProducts.values())
+      .map(productToDad(deps))
+      .filter(([sp]) => sp.item || sp.bundledProducts);
+
+    const achievementsOut = Array
+      .from(achievements.values())
+      .map(achievementToDad(deps));
+
+    const challengeOut = Array
+      .from(challenges.values())
+      .map(challengeToDad(deps));
+
+    const collections = inputs.map(parseLegacy).flat();
+
     const mapEntities = <T extends D4DadEntity>([entity]: [T, D4DadTranslation]): T => entity;
     const mapTranslations = <T extends D4DadEntity>([entity, i18n]: [T, D4DadTranslation]): [number, D4DadTranslation] => ([entity.id, i18n]);
     const mapEntitiesCoalesce = <T extends D4DadEntity>([entity, i18n]: [T, D4DadTranslation]): T & D4DadTranslation => ({...i18n, ...entity});
@@ -249,10 +267,17 @@ const dumpItems = () => {
       ...markingsOut.map(mapTranslations),
       ...portalsOut.map(mapTranslations),
       ...titlesOut.map(mapTranslations),
+      ...productsOut.map(mapTranslations),
+      ...challengeOut.map(mapTranslations),
+      ...achievementsOut.map(mapTranslations),
     ]);
 
-    const d4dad = {
+    const d4dad: D4DadDb = {
+        collections: collections,
+        products: productsOut.map(mapEntities),
         itemTypes: itemTypesOut.map(mapEntities),
+        achievements: achievementsOut.map(mapEntities),
+        challenges: challengeOut.map(mapEntities),
         items: [
           ...itemsOut.map(mapEntities),
           ...emblemsOut.map(mapEntities),
@@ -265,8 +290,11 @@ const dumpItems = () => {
     };
 
     const d4dadJoin: D4DadDb = {
-        collections: inputs.map(parseLegacy).flat(),
+        collections: collections,
         itemTypes: itemTypesOut.map(mapEntitiesCoalesce),
+        products: productsOut.map(mapEntitiesCoalesce),
+        achievements: achievementsOut.map(mapEntities),
+        challenges: challengeOut.map(mapEntitiesCoalesce),
         items: [
             ...itemsOut.map(mapEntitiesCoalesce),
             ...emblemsOut.map(mapEntitiesCoalesce),
@@ -278,9 +306,14 @@ const dumpItems = () => {
         ],
     };
 
-    fs.writeFileSync("d4dad.json", JSON.stringify(d4dadJoin));
+    fs.writeFileSync("d4dad.json", JSON.stringify(d4dad));
     fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
+    fs.writeFileSync("d4dad_full.json", JSON.stringify(d4dadJoin));
 
+    console.log("Dump complete.");
+}
+
+const copyImages = (d4dad: D4DadDb) => {
     const allImgHandles: Set<number> = d4dad.items.reduce((a, c) => {
         a.add(c.icon);
         if (c.invImages) {
@@ -308,7 +341,6 @@ const dumpItems = () => {
 
     console.log("Missing Icons...", failedImages);
 
-    console.log("Dump complete.");
 }
 
 dumpItems();
