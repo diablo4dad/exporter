@@ -69,6 +69,7 @@ import {CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryRe
 import {productToDad} from "./json/factory/bundles.js";
 import {achievementToDad} from "./json/factory/achievements.js";
 import {challengeToDad} from "./json/factory/challenges.js";
+import {parseSeasonCollections} from "./json/collection.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -98,6 +99,7 @@ const deps: D4Dependencies = {
     strings,
     achievements,
     playerTitles,
+    challenges,
 };
 
 console.log("Read " + items.size + " items...");
@@ -306,9 +308,12 @@ const dumpItems = () => {
         ],
     };
 
+    const seasons = parseSeasonCollections(deps);
+
     fs.writeFileSync("d4dad.json", JSON.stringify(d4dad));
     fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
     fs.writeFileSync("d4dad_full.json", JSON.stringify(d4dadJoin));
+    fs.writeFileSync("d4dad_seasons.json", JSON.stringify(seasons));
 
     console.log("Dump complete.");
 }

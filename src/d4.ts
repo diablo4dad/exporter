@@ -143,6 +143,7 @@ type D4ChallengeCategory = D4Type & {
 
 type D4Achievement =  D4Ref & D4Type & {
     arRewardList: D4RewardDefinition[],
+    tBattlePassTrack: number,
 }
 
 type D4RewardDefinition = D4Type & {
@@ -163,6 +164,38 @@ const EMPTY_STRINGS_LIST: D4Translation = {
 
 const MAGIC_TYPES = ["Common", "Legendary", "Unique", "Magic", "Rare"];
 const CLASS_TYPES = ["Sorcerer", "Druid", "Barbarian", "Rogue", "Necromancer"];
+
+export function isItem(snoRef: D4Type): snoRef is D4Item {
+    return snoRef.__type__ === "ItemDefinition";
+}
+
+export function isEmote(snoRef: D4Type): snoRef is D4Emote {
+    return snoRef.__type__ === "EmoteDefinition";
+}
+
+export function isActor(snoRef: D4Type): snoRef is D4Actor {
+    return snoRef.__type__ === "ActorDefinition";
+}
+
+export function isPortal(snoRef: D4Type): snoRef is D4TownPortalCosmetic {
+    return snoRef.__type__ === "TownPortalCosmeticDefinition";
+}
+
+export function isEmblem(snoRef: D4Type): snoRef is D4Emblem {
+    return snoRef.__type__ === "EmblemDefinition";
+}
+
+export function isMarking(snoRef: D4Type): snoRef is D4MarkingShape {
+    return snoRef.__type__ === "MarkingShapeDefinition";
+}
+
+export function isStoreProduct(snoRef: D4Type): snoRef is D4StoreProduct {
+    return snoRef.__type__ === "StoreProductDefinition";
+}
+
+export function isTitle(snoRef: D4Type): snoRef is D4PlayerTitle {
+    return snoRef.__type__ === "PlayerTitleDefinition";
+}
 
 function getStlFileName(ref: D4Ref & D4Type): string {
     const type = ref.__type__;
@@ -326,4 +359,5 @@ export type D4Dependencies = {
     emblems: Map<string, D4Emblem>,
     achievements: Map<string, D4Achievement>,
     playerTitles: Map<string, D4PlayerTitle>,
+    challenges: Map<string, D4ChallengeDefinition>,
 }
