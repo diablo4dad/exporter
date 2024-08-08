@@ -69,7 +69,7 @@ import {CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryRe
 import {productToDad} from "./json/factory/bundles.js";
 import {achievementToDad} from "./json/factory/achievements.js";
 import {challengeToDad} from "./json/factory/challenges.js";
-import {parseSeasonCollections} from "./json/collection.js";
+import {buildSeasonCollection, SEASONS} from "./json/collections/seasons.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -162,7 +162,7 @@ const syncStrapi = async () => {
 
 const inputs = [
     "C:\\Users\\Sam\\Documents\\d4log\\public\\general.json",
-    "C:\\Users\\Sam\\Documents\\d4log\\public\\season.json",
+    // "C:\\Users\\Sam\\Documents\\d4log\\public\\season.json",
     "C:\\Users\\Sam\\Documents\\d4log\\public\\shop.json",
     "C:\\Users\\Sam\\Documents\\d4log\\public\\challenge.json",
     "C:\\Users\\Sam\\Documents\\d4log\\public\\promotional.json",
@@ -209,7 +209,7 @@ const dumpItems = () => {
       .from(itemTypes.values())
       .map(itemTypeToDad(deps))
       .concat(ITEM_TYPE_APPENDAGE)
-      .filter(([, t]) => ITEM_TYPES_TO_SYNC.includes(t.name));
+      .filter(([, t]) => ITEM_TYPES_TO_SYNC.includes(t.name ?? ""));
     const itemTypeIds = itemTypesOut.map(([i]) => i.id);
 
     const itemsOut = Array
@@ -254,7 +254,8 @@ const dumpItems = () => {
       .from(challenges.values())
       .map(challengeToDad(deps));
 
-    const collections = inputs.map(parseLegacy).flat();
+    const seasons = SEASONS.map(buildSeasonCollection(deps));
+    const collections = inputs.map(parseLegacy).flat().concat(...seasons);
 
     const mapEntities = <T extends D4DadEntity>([entity]: [T, D4DadTranslation]): T => entity;
     const mapTranslations = <T extends D4DadEntity>([entity, i18n]: [T, D4DadTranslation]): [number, D4DadTranslation] => ([entity.id, i18n]);
@@ -294,9 +295,9 @@ const dumpItems = () => {
     const d4dadJoin: D4DadDb = {
         collections: collections,
         itemTypes: itemTypesOut.map(mapEntitiesCoalesce),
-        products: productsOut.map(mapEntitiesCoalesce),
-        achievements: achievementsOut.map(mapEntities),
-        challenges: challengeOut.map(mapEntitiesCoalesce),
+        products: [],
+        achievements: [],
+        challenges: [],
         items: [
             ...itemsOut.map(mapEntitiesCoalesce),
             ...emblemsOut.map(mapEntitiesCoalesce),
@@ -308,14 +309,14 @@ const dumpItems = () => {
         ],
     };
 
-    const seasons = parseSeasonCollections(deps);
-
-    fs.writeFileSync("d4dad.json", JSON.stringify(d4dad));
+    fs.writeFileSync("C:\\Users\\Sam\\Documents\\d4log\\public\\d4dad.json", JSON.stringify(d4dadJoin));
     fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
-    fs.writeFileSync("d4dad_full.json", JSON.stringify(d4dadJoin));
+    // fs.writeFileSync("d4dad_full.json", JSON.stringify(d4dadJoin));
     fs.writeFileSync("d4dad_seasons.json", JSON.stringify(seasons));
-
     console.log("Dump complete.");
+
+    // copyImages(d4dad);
+    // console.log("Copy Images complete.");
 }
 
 const copyImages = (d4dad: D4DadDb) => {
@@ -344,11 +345,13 @@ const copyImages = (d4dad: D4DadDb) => {
         fs.copyFileSync(filename, path.join(PATH_TO_PUBLIC_DIR, iconId + ".webp"));
     });
 
-    console.log("Missing Icons...", failedImages);
-
+    if (failedImages.length) {
+        console.log("Missing Icons...", failedImages);
+    }
 }
 
 dumpItems();
+
 
 // syncStrapi().then(() => {
 //     console.log("Process complete.");

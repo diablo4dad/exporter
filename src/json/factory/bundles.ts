@@ -8,7 +8,14 @@ import {
     resolveStringsList,
     stu
 } from "../../d4.js";
-import {D4DadStoreProduct, D4DadTranslation} from "../index.js";
+import {
+    aggregateItemList,
+    composeName,
+    D4DadCollectionItem,
+    D4DadStoreProduct,
+    D4DadTranslation,
+    unpackStoreProduct
+} from "../index.js";
 
 export function productToDad(deps: D4Dependencies): (product: D4StoreProduct) => [D4DadStoreProduct, D4DadTranslation] {
     return (product: D4StoreProduct): [D4DadStoreProduct, D4DadTranslation] => {
@@ -36,6 +43,22 @@ export function productToDad(deps: D4Dependencies): (product: D4StoreProduct) =>
             description,
             series,
         }]
+    }
+}
+
+export function storeToCollectionItems(deps: D4Dependencies) {
+    return (product: D4StoreProduct): D4DadCollectionItem[] => {
+        const itemList = unpackStoreProduct(deps)(product);
+        const itemListGroups = aggregateItemList(deps)(itemList);
+
+        return itemListGroups
+          .map((items, index) => ({
+              id: index,
+              name: composeName(deps)(...items),
+              items: items.map(i => i.__snoID__),
+              claim: "TODO",
+          }))
+          .filter(ci => ci.items.length);
     }
 }
 
