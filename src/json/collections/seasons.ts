@@ -5,92 +5,91 @@ import {storeToCollectionItems} from "../factory/bundles.js";
 import {hashCode, identity, pipe} from "../../helper.js";
 import {achievementToCollectionItems} from "../factory/achievements.js";
 
-enum CollectionType {
-  SEASON,
-  BATTLE_PASS,
-  SEASON_JOURNEY,
-  REPUTATION,
-  SEASON_FEATS,
+enum Category {
+  GENERAL = "General",
+  SHOP_ITEMS = "Shop",
+  PROMOTIONAL = "Promotional",
+  SEASONS = "Season",
+  CHALLENGE = "Challenge",
+  // sub-categories
+  BATTLE_PASS = "Battle Pass",
+  SEASON_JOURNEY = "Season Journey",
+  REPUTATION = "Reputation",
 }
 
 type CollectionDescriptor = {
   name: string,
-  type: CollectionType,
+  category: Category,
   description?: string,
+  season?: number,
   outOfRotation?: boolean,
-  collections?: CollectionDescriptor[],
+  children?: CollectionDescriptor[],
   postHook?: (collection: D4DadCollection) => D4DadCollection,
-  inclusions?: string[][],
+  challengeFile?: string,
+  challengeFileFlatten?: boolean,
+  reputationFile?: string,
+  storeProducts?: string[],
+  achievements?: string[],
+  items?: string[][],
 }
 
-type SeasonCollectionDescriptor = Omit<CollectionDescriptor, "collections" | "type"> & {
-  type: CollectionType.SEASON,
-  season: number,
-  children: SeasonCollections[],
-}
-
-type SeasonCollections =
-  BattlePassCollectionDescriptor |
-  SeasonJourneyCollectionDescriptor |
-  ReputationCollectionDescriptor |
-  SeasonFeatsCollectionDescriptor;
-
-type BattlePassCollectionDescriptor = Omit<CollectionDescriptor, "builderFunc"> & {
-  type: CollectionType.BATTLE_PASS,
-  challengeFile: string,
-  acceleratedBattlePassFile: string,
-}
-
-type SeasonJourneyCollectionDescriptor = Omit<CollectionDescriptor, "builderFunc"> & {
-  type: CollectionType.SEASON_JOURNEY,
-  challengeFile: string,
-}
-
-type ReputationCollectionDescriptor = CollectionDescriptor & {
-  type: CollectionType.REPUTATION,
-  reputationFile: string,
-}
-
-type SeasonFeatsCollectionDescriptor = CollectionDescriptor & {
-  type: CollectionType.SEASON_FEATS,
-  achievements: string[],
-}
-
-function mapClaim(descriptor: CollectionDescriptor) {
-  switch (descriptor.type) {
-    case CollectionType.BATTLE_PASS:
-      return "Battle Pass";
-    case CollectionType.SEASON_JOURNEY:
-      return "Season Journey";
-    case CollectionType.REPUTATION:
-      return "Reputation Board";
-    case CollectionType.SEASON_FEATS:
-      return "Feat of Strength";
-    case CollectionType.SEASON:
-      return "Season";
-  }
-}
-
-function mixInInherentFieldsToItem<T extends CollectionDescriptor>(descriptor: T) {
+function generateIdForItem() {
   return (collectionItem: D4DadCollectionItem) => ({
     ...collectionItem,
     id: generateId(),
-    claim: mapClaim(descriptor),
-    outOfRotation: descriptor.outOfRotation ? true : undefined,
   });
 }
 
-function mixInInherentFieldsToCollection(descriptor: CollectionDescriptor) {
-  return (collection: D4DadCollection): D4DadCollection => ({
-    ...collection,
-    subcollections: collection.subcollections.map(mixInInherentFieldsToCollection(descriptor)),
-    collectionItems: collection.collectionItems.map(mixInInherentFieldsToItem(descriptor)),
-  });
+function generateClaim(deps: D4Dependencies) {
+  return (descriptor: CollectionDescriptor) => {
+    return (ci: D4DadCollectionItem) => {
+      return ci;
+    }
+  }
+}
+
+function parseChallengeFile(deps: D4Dependencies) {
+  return (descriptor: CollectionDescriptor): D4DadCollection[] => {
+    if (descriptor.challengeFile === undefined) {
+      return [];
+    }
+
+    return pipe(
+      getEntity(descriptor.challengeFile, deps.challenges),
+      (c) => c.arCategories.map(challengeToCollection(deps)(c)),
+    );
+  }
+}
+
+function parseStoreFiles(deps: D4Dependencies) {
+  return (descriptor: CollectionDescriptor): D4DadCollectionItem[] => {
+    if (descriptor.storeProducts === undefined) {
+      return [];
+    }
+
+    return descriptor.storeProducts
+      .map(sp => getEntity(sp, deps.storeProducts))
+      .map(storeToCollectionItems(deps))
+      .flat();
+  }
+}
+
+function parseAchievementFiles(deps: D4Dependencies) {
+  return (descriptor: CollectionDescriptor): D4DadCollectionItem[] => {
+    if (descriptor.achievements === undefined) {
+      return [];
+    }
+
+    return descriptor.achievements
+      .map(a => getEntity(a, deps.achievements))
+      .map(achievementToCollectionItems(deps))
+      .flat();
+  };
 }
 
 function parseExtraItems(deps: D4Dependencies) {
   return (descriptor: CollectionDescriptor): D4DadCollectionItem[] => {
-    return (descriptor.inclusions ?? []).map(g => {
+    return (descriptor.items ?? []).map(g => {
       const items = g.map(i => getEntity(i, deps.items));
 
       return {
@@ -103,245 +102,208 @@ function parseExtraItems(deps: D4Dependencies) {
   };
 }
 
-function buildBattlePassCollection(deps: D4Dependencies) {
-  return (descriptor: BattlePassCollectionDescriptor): D4DadCollection => {
-    const challengeFile = deps.challenges.get(descriptor.challengeFile);
-    if (challengeFile === undefined) {
-      throw new Error(descriptor.challengeFile + " not found.");
-    }
+function parseCollectionItems(deps: D4Dependencies) {
+  return (descriptor: CollectionDescriptor): D4DadCollectionItem[] => {
+    const challengesItems = descriptor.challengeFileFlatten
+      ? parseChallengeFile(deps)(descriptor).map(c => c.collectionItems).flat()
+      : [];
+    const storeItems = parseStoreFiles(deps)(descriptor);
+    const achievementItems = parseAchievementFiles(deps)(descriptor);
+    const extraItems = parseExtraItems(deps)(descriptor);
 
-    const storeFile = deps.storeProducts.get(descriptor.acceleratedBattlePassFile);
-    if (storeFile === undefined) {
-      throw new Error(descriptor.acceleratedBattlePassFile + " not found.");
-    }
+    return [
+      ...challengesItems,
+      ...storeItems,
+      ...achievementItems,
+      ...extraItems,
+    ];
+  }
+}
 
-    return {
-      id: challengeFile.__snoID__,
+function buildCollection(deps: D4Dependencies) {
+  return (descriptor: CollectionDescriptor): D4DadCollection => {
+    const challenges = descriptor.challengeFileFlatten ? [] : parseChallengeFile(deps)(descriptor);
+    const postHook = descriptor.postHook ?? identity;
+
+    const collection = {
+      id: hashCode(descriptor.name + descriptor.description),
       name: descriptor.name,
+      category: descriptor.category,
       description: descriptor.description,
-      subcollections: [],
-      collectionItems: challengeFile.arCategories
-        .map(challengeToCollection(deps)(challengeFile))
-        .map(c => c.collectionItems)
-        .flat()
-        .concat(...storeToCollectionItems(deps)(storeFile)
-          .map(ci => ({
-            ...ci,
-            claimDescription: "Included with the Accelerated Battle Pass.",
-          }))),
+      collectionItems: parseCollectionItems(deps)(descriptor)
+        .map(generateIdForItem())
+        .map(generateClaim(deps)(descriptor)),
+      subcollections: challenges.concat(...(descriptor.children?.map(buildCollection(deps)) ?? [])),
     };
-  }
-}
 
-function buildSeasonJourneyCollection(deps: D4Dependencies) {
-  return (descriptor: SeasonJourneyCollectionDescriptor): D4DadCollection => {
-    const challengeFile = deps.challenges.get(descriptor.challengeFile);
-    if (challengeFile === undefined) {
-      throw new Error(descriptor.challengeFile + " not found.");
-    }
-
-    return {
-      id: challengeFile.__snoID__,
-      name: descriptor.name,
-      description: descriptor.description,
-      collectionItems: challengeFile.arCategories
-        .map(challengeToCollection(deps)(challengeFile))
-        .map(c => c.collectionItems)
-        .flat(),
-      subcollections: [],
-    }
-  }
-}
-
-function buildReputationCollection(deps: D4Dependencies) {
-  return (descriptor: ReputationCollectionDescriptor): D4DadCollection => {
-    const reputationFile = deps.reputation.get(descriptor.reputationFile);
-    if (reputationFile === undefined) {
-      throw new Error(descriptor.reputationFile + " not found.");
-    }
-
-    return {
-      id: reputationFile.__snoID__,
-      name: descriptor.name,
-      description: descriptor.description,
-      // reputation files only contain treasure classes
-      // these collections must be constructed explicitly
-      collectionItems: [],
-      subcollections: [],
-    }
-  }
-}
-
-function buildSeasonFeatsOfStrengthCollection(deps: D4Dependencies) {
-  return (descriptor: SeasonFeatsCollectionDescriptor): D4DadCollection => {
-    return {
-      id: hashCode(descriptor.name),
-      name: descriptor.name,
-      description: descriptor.description,
-      collectionItems: descriptor.achievements
-        .map(a => getEntity(a, deps.achievements))
-        .map(achievementToCollectionItems(deps))
-        .flat(),
-      subcollections: [],
-    };
+    return pipe(
+      collection,
+      postHook,
+    );
   }
 }
 
 export function buildSeasonsCollection(deps: D4Dependencies) {
-  return createSeasonManifest(deps).map(buildSeasonCollection(deps));
+  return MANIFEST.map(buildCollection(deps));
 }
 
-function buildSeasonCollection(deps: D4Dependencies) {
-  return (descriptor: SeasonCollectionDescriptor): D4DadCollection => {
-     return {
-       id: descriptor.season + 15000,
-       name: descriptor.name,
-       category: "Season",
-       description: descriptor.description,
-       collectionItems: [],
-       subcollections: descriptor.children
-         .map(dc => pipe(dc,
-           buildSeasonCollectionType(deps),
-           (dc.postHook ?? identity),
-           (value => ({
-             ...value,
-             collectionItems: value.collectionItems
-               .concat(...parseExtraItems(deps)(dc))
-               .map(mixInInherentFieldsToItem(dc)),
-           }))
-         )),
-     };
-  }
-}
-
-function buildSeasonCollectionType(deps: D4Dependencies) {
-  return (descriptor: SeasonCollections): D4DadCollection => {
-    switch (descriptor.type) {
-      case CollectionType.BATTLE_PASS:
-        return buildBattlePassCollection(deps)(descriptor);
-      case CollectionType.SEASON_JOURNEY:
-        return buildSeasonJourneyCollection(deps)(descriptor);
-      case CollectionType.REPUTATION:
-        return buildReputationCollection(deps)(descriptor);
-      case CollectionType.SEASON_FEATS:
-        return buildSeasonFeatsOfStrengthCollection(deps)(descriptor);
-    }
-  }
-}
-
-export function createSeasonManifest(deps: D4Dependencies): SeasonCollectionDescriptor[] {
-  return [{
-    name: "Season of the Infernal Hordes",
-    description: "Season 5 starting August 6th, 2024",
-    type: CollectionType.SEASON,
-    season: 5,
-    children: [{
+const SEASON05: CollectionDescriptor = {
+  name: "Season of the Infernal Hordes",
+  description: "Season 5 starting August 6th, 2024",
+  category: Category.SEASONS,
+  season: 5,
+  children: [
+    {
       name: "Battle Pass #5",
-      type: CollectionType.BATTLE_PASS,
+      category: Category.BATTLE_PASS,
+      challengeFileFlatten: true,
       challengeFile: "json\\base\\meta\\Challenge\\Season5_Rewards.cha.json",
-      acceleratedBattlePassFile: "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s05.prd.json",
-    }, {
-      name: "Season Journey #5",
-      type: CollectionType.SEASON_JOURNEY,
-      challengeFile: "json\\base\\meta\\Challenge\\Season5.cha.json",
-    }],
-  }, {
-    name: "Season of Loot Reborn",
-    description: "Season 4 starting May 14th, 2024",
-    type: CollectionType.SEASON,
-    season: 4,
-    outOfRotation: true,
-    children: [{
-      name: "Battle Pass #4",
-      type: CollectionType.BATTLE_PASS,
-      challengeFile: "json\\base\\meta\\Challenge\\Season4_Rewards.cha.json",
-      acceleratedBattlePassFile: "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s04.prd.json",
-    }, {
-      name: "Season Journey #4",
-      type: CollectionType.SEASON_JOURNEY,
-      challengeFile: "json\\base\\meta\\Challenge\\Season4.cha.json",
-      postHook: (collection: D4DadCollection) => ({
-        ...collection,
-        collectionItems: [
-          ...collection.collectionItems,
-          {
-            id: generateId(),
-            name: "Reinforced Demonbane",
-            items: [1907417, 1907429],
-            claim: "Season Journey",
-            claimDescription: "Complete every Season Journey objective.",
-          }, {
-            id: generateId(),
-            name: "Blood Maiden's Mantle",
-            items: [1891999],
-            claim: "Season Journey",
-            claimDescription: "Dropped by the last boss of the Seasonal Questline.",
-          },
-        ],
-      }),
-    }, {
-      name: "Reputation Board #4",
-      type: CollectionType.REPUTATION,
-      reputationFile: "json\\base\\meta\\Reputation\\IronWolves_Helltide_Reputation.rep.json",
-      inclusions: [
-        ["json\\base\\meta\\Item\\mnt_stor232_trophy.itm.json"],
+      storeProducts: [
+        "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s05.prd.json",
       ],
-    }],
-  }, {
-    name: "Season of the Construct",
-    description: "Season 3 starting January 23rd, 2024",
-    type: CollectionType.SEASON,
-    season: 3,
-    outOfRotation: true,
-    children: [{
-      name: "Battle Pass #3",
-      type: CollectionType.BATTLE_PASS,
-      challengeFile: "json\\base\\meta\\Challenge\\Season3_Rewards.cha.json",
-      acceleratedBattlePassFile: "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s03.prd.json",
-    }, {
-      name: "Season Journey #3",
-      type: CollectionType.SEASON_JOURNEY,
-      challengeFile: "json\\base\\meta\\Challenge\\Season3.cha.json",
+    },
+    {
+      name: "Season Journey #5",
+      category: Category.SEASON_JOURNEY,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season5.cha.json",
+    },
+  ],
+}
 
-    }, {
-      name: "Feats of Strength #3",
-      type: CollectionType.SEASON_FEATS,
+const SEASON04: CollectionDescriptor = {
+  name: "Season of Loot Reborn",
+  description: "Season 4 starting May 14th, 2024",
+  category: Category.SEASONS,
+  season: 4,
+  outOfRotation: true,
+  children: [
+    {
+      name: "Battle Pass #4",
+      category: Category.BATTLE_PASS,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season4_Rewards.cha.json",
+      storeProducts: ["json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s04.prd.json"],
+    },
+    {
+      name: "Season Journey #4",
+      category: Category.SEASON_JOURNEY,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season4.cha.json",
+      achievements: ["json\\base\\meta\\Achievement\\Feat_S04_AllJourneyTasks.ach.json"],
+      items: [["json\\base\\meta\\Item\\mnt_uniq28_trophy.itm.json"]],
+    },
+    {
+      name: "Reputation Board #4",
+      category: Category.REPUTATION,
+      reputationFile: "json\\base\\meta\\Reputation\\IronWolves_Helltide_Reputation.rep.json",
+      items: [["json\\base\\meta\\Item\\mnt_stor232_trophy.itm.json"]],
+    },
+  ],
+}
+
+const SEASON03 = {
+  name: "Season of the Construct",
+  description: "Season 3 starting January 23rd, 2024",
+  category: Category.SEASONS,
+  season: 3,
+  outOfRotation: true,
+  children: [
+    {
+      name: "Battle Pass #3",
+      category: Category.BATTLE_PASS,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season3_Rewards.cha.json",
+      storeProducts: [
+        "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s03.prd.json",
+      ],
+    },
+    {
+      name: "Season Journey #3",
+      category: Category.SEASON_JOURNEY,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season3.cha.json",
       achievements: [
         "json\\base\\meta\\Achievement\\Feat_S03_AllJourneyTasks.ach.json",
         "json\\base\\meta\\Achievement\\Feat_S03_QuestComplete.ach.json",
       ],
-    }],
-  }, {
-    name: "Season of Blood",
-    description: "Season 2 starting October 17th, 2023",
-    type: CollectionType.SEASON,
-    season: 2,
-    outOfRotation: true,
-    children: [{
-      name: "Battle Pass #2",
-      type: CollectionType.BATTLE_PASS,
-      challengeFile: "json\\base\\meta\\Challenge\\Season2_Rewards.cha.json",
-      acceleratedBattlePassFile: "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s02.prd.json",
-    }, {
-      name: "Season Journey #2",
-      type: CollectionType.SEASON_JOURNEY,
-      challengeFile: "json\\base\\meta\\Challenge\\Season2.cha.json",
-    }],
-  }, {
-    name: "Season of Malignant",
-    description: "Season 1 starting July 20th, 2023",
-    type: CollectionType.SEASON,
-    season: 1,
-    outOfRotation: true,
-    children: [{
-      name: "Battle Pass #1",
-      type: CollectionType.BATTLE_PASS,
-      challengeFile: "json\\base\\meta\\Challenge\\Season1_Rewards.cha.json",
-      acceleratedBattlePassFile: "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s01.prd.json",
-    }, {
-      name: "Season Journey #1",
-      type: CollectionType.SEASON_JOURNEY,
-      challengeFile: "json\\base\\meta\\Challenge\\Season1.cha.json",
-    }],
-  }];
+    },
+  ],
 }
+
+const SEASON02: CollectionDescriptor = {
+  name: "Season of Blood",
+  description: "Season 2 starting October 17th, 2023",
+  category: Category.SEASONS,
+  season: 2,
+  outOfRotation: true,
+  children: [
+    {
+      name: "Battle Pass #2",
+      category: Category.BATTLE_PASS,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season2_Rewards.cha.json",
+      storeProducts: [
+        "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s02.prd.json",
+      ],
+    },
+    {
+      name: "Season Journey #2",
+      category: Category.SEASON_JOURNEY,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season2.cha.json",
+      achievements: [
+        "json\\base\\meta\\Achievement\\Feat_S02_AllJourneyTasks.ach.json",
+        "json\\base\\meta\\Achievement\\Feat_S02_QuestComplete.ach.json",
+        "json\\base\\meta\\Achievement\\Hidden_S02_QuestComplete_MountTrophy.ach.json",
+      ],
+    },
+    {
+      name: "Reputation Board #2",
+      category: Category.REPUTATION,
+      reputationFile: "json\\base\\meta\\Reputation\\SME_Vampzone_Reputation.rep.json",
+      achievements: [
+        "json\\base\\meta\\Achievement\\S02_Hidden_Reputation_Level4Titles.ach.json",
+        "json\\base\\meta\\Achievement\\S02_Hidden_Reputation_Level18Titles.ach.json",
+      ],
+    },
+  ],
+}
+
+const SEASON01: CollectionDescriptor = {
+  name: "Season of Malignant",
+  description: "Season 1 starting July 20th, 2023",
+  category: Category.SEASONS,
+  season: 1,
+  outOfRotation: true,
+  children: [
+    {
+      name: "Battle Pass #1",
+      category: Category.BATTLE_PASS,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season1_Rewards.cha.json",
+      storeProducts: [
+        "json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s01.prd.json",
+      ],
+    },
+    {
+      name: "Season Journey #1",
+      category: Category.SEASON_JOURNEY,
+      challengeFileFlatten: true,
+      challengeFile: "json\\base\\meta\\Challenge\\Season1.cha.json",
+      achievements: [
+        "json\\base\\meta\\Achievement\\Feat_S01_QuestComplete.ach.json",
+        "json\\base\\meta\\Achievement\\Feat_S01_AllJourneyTasks.ach.json",
+        "json\\base\\meta\\Achievement\\Hidden_S01_QuestComplete_MountTrophy.ach.json",
+      ],
+    },
+  ],
+}
+
+const MANIFEST: CollectionDescriptor[] = [
+  SEASON05,
+  SEASON04,
+  SEASON03,
+  SEASON02,
+  SEASON01,
+]
