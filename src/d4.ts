@@ -141,10 +141,12 @@ type D4ChallengeCategory = D4Type & {
     arAchievementSnos: D4SnoRef[],
 }
 
-type D4Achievement =  D4Ref & D4Type & {
+type D4Achievement = D4Ref & D4Type & {
     arRewardList: D4RewardDefinition[],
     tBattlePassTrack: number,
 }
+
+type D4Reputation = D4Ref & D4Type;
 
 type D4RewardDefinition = D4Type & {
     snoItem: D4SnoRef | null,
@@ -164,6 +166,15 @@ const EMPTY_STRINGS_LIST: D4Translation = {
 
 const MAGIC_TYPES = ["Common", "Legendary", "Unique", "Magic", "Rare"];
 const CLASS_TYPES = ["Sorcerer", "Druid", "Barbarian", "Rogue", "Necromancer"];
+
+export function getEntity<T>(key: string, lookup: Map<string, T>): T {
+    const e = lookup.get(key);
+    if (e === undefined) {
+        throw new Error(key + " not found.");
+    }
+
+    return e;
+}
 
 export function isItem(snoRef: D4Type): snoRef is D4Item {
     return snoRef.__type__ === "ItemDefinition";
@@ -344,6 +355,7 @@ export type {
     D4ChallengeCategory,
     D4Achievement,
     D4RewardDefinition,
+    D4Reputation,
 };
 
 export type D4Dependencies = {
@@ -360,4 +372,5 @@ export type D4Dependencies = {
     achievements: Map<string, D4Achievement>,
     playerTitles: Map<string, D4PlayerTitle>,
     challenges: Map<string, D4ChallengeDefinition>,
+    reputation: Map<string, D4Reputation>,
 }

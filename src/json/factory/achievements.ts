@@ -1,12 +1,26 @@
 import {
   D4Achievement,
   D4Dependencies,
+  D4Ref,
   D4RewardDefinition,
+  D4Type,
   getTextFromStl,
   resolveSno,
   resolveStringsList
 } from "../../d4.js";
-import {D4DadAchievement, D4DadAchievementRewards, D4DadTranslation} from "../index.js";
+import {
+  aggregateItemList,
+  composeName,
+  createItemList,
+  D4DadAchievement,
+  D4DadAchievementRewards,
+  D4DadCollectionItem,
+  D4DadTranslation,
+  filterItemList,
+  ItemList,
+  mergeItemLists,
+  pushToItemList
+} from "../index.js";
 
 export function achievementToDad(deps: D4Dependencies): (achievement: D4Achievement) => [D4DadAchievement, D4DadTranslation] {
   return (achievement: D4Achievement): [D4DadAchievement, D4DadTranslation] => {
@@ -73,4 +87,38 @@ export function achievementToDad(deps: D4Dependencies): (achievement: D4Achievem
       description,
     }];
   }
+}
+
+function unpackRewardList(deps: D4Dependencies): (rewards: D4RewardDefinition) => ItemList {
+  return (a: D4RewardDefinition): ItemList => {
+    let itemList = createItemList();
+
+    itemList = pushToItemList(itemList, resolveSno(a.snoItem, deps.items));
+    itemList = pushToItemList(itemList, resolveSno(a.snoPlayerTitle, deps.playerTitles));
+    itemList = pushToItemList(itemList, resolveSno(a.snoEmblem, deps.emblems));
+    itemList = pushToItemList(itemList, resolveSno(a.snoStoreProduct, deps.storeProducts));
+
+    itemList = filterItemList(itemList);
+
+    return itemList;
+  }
+}
+
+export function achievementToCollectionItems(deps: D4Dependencies): (achievement: D4Achievement) => D4DadCollectionItem[] {
+  return (achievement: D4Achievement): D4DadCollectionItem[] => {
+    const toCollectionItem = (...items: (D4Type & D4Ref)[]): D4DadCollectionItem => ({
+      id: -1,
+      name: composeName(deps)(...items),
+      claim: "TODO",
+      premium: achievement.tBattlePassTrack === 1 ? true : undefined,
+      items: items.map(i => i.__snoID__),
+    });
+
+    const il = achievement
+      .arRewardList
+      .map(unpackRewardList(deps))
+      .reduce(mergeItemLists, createItemList());
+
+    return aggregateItemList(deps)(il).map(i => toCollectionItem(...i));
+  };
 }

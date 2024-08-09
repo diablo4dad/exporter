@@ -13,6 +13,7 @@ import {
     D4MarkingShape,
     D4PlayerTitle,
     D4Power,
+    D4Reputation,
     D4StoreProduct,
     D4TownPortalCosmetic,
     D4Translation,
@@ -30,6 +31,7 @@ import {
     PATH_TO_D4MARKING_SHAPE,
     PATH_TO_D4PLAYER_TITLE,
     PATH_TO_D4POWER,
+    PATH_TO_D4REPUTATION,
     PATH_TO_D4STORE_PRODUCT,
     PATH_TO_D4STRING_LIST,
     PATH_TO_D4TEXTURES,
@@ -69,7 +71,7 @@ import {CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryRe
 import {productToDad} from "./json/factory/bundles.js";
 import {achievementToDad} from "./json/factory/achievements.js";
 import {challengeToDad} from "./json/factory/challenges.js";
-import {buildSeasonCollection, SEASONS} from "./json/collections/seasons.js";
+import {buildSeasonsCollection} from "./json/collections/seasons.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -85,6 +87,7 @@ const playerTitles = parseFiles<D4PlayerTitle>(PATH_TO_D4PLAYER_TITLE);
 const headstones = new Map(Array.of(...actors.entries()).filter(([, a]) => a.__fileName__.includes("headstone")));
 const challenges = parseFiles<D4ChallengeDefinition>(PATH_TO_D4CHALLENGE);
 const achievements = parseFiles<D4Achievement>(PATH_TO_D4ACHIEVEMENT);
+const reputation = parseFiles<D4Reputation>(PATH_TO_D4REPUTATION);
 
 const deps: D4Dependencies = {
     actors,
@@ -100,6 +103,7 @@ const deps: D4Dependencies = {
     achievements,
     playerTitles,
     challenges,
+    reputation,
 };
 
 console.log("Read " + items.size + " items...");
@@ -254,7 +258,7 @@ const dumpItems = () => {
       .from(challenges.values())
       .map(challengeToDad(deps));
 
-    const seasons = SEASONS.map(buildSeasonCollection(deps));
+    const seasons = buildSeasonsCollection(deps);
     const collections = inputs.map(parseLegacy).flat().concat(...seasons);
 
     const mapEntities = <T extends D4DadEntity>([entity]: [T, D4DadTranslation]): T => entity;
