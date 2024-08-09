@@ -17,6 +17,12 @@ enum Category {
   REPUTATION = "Reputation",
 }
 
+enum Source {
+  CHALLENGE_FILE,
+  ACHIEVEMENT,
+  STORE_PRODUCT,
+}
+
 type CollectionDescriptor = {
   name: string,
   category: Category,
@@ -33,19 +39,75 @@ type CollectionDescriptor = {
   items?: string[][],
 }
 
-function generateIdForItem() {
+function inferClaim(descriptor: CollectionDescriptor, source?: Source) {
+  if (descriptor.category === Category.BATTLE_PASS) {
+    switch (source) {
+      case Source.CHALLENGE_FILE:
+        return "Battle Pass";
+      case Source.STORE_PRODUCT:
+        return "Accelerated Battle Pass";
+    }
+  }
+
+  if (descriptor.category === Category.SEASON_JOURNEY) {
+    switch (source) {
+      case Source.CHALLENGE_FILE:
+        return "Season Journey";
+      case Source.ACHIEVEMENT:
+        return "Feat of Strength";
+    }
+  }
+
+  switch (descriptor.category) {
+    case Category.GENERAL:
+      return "General";
+    case Category.SHOP_ITEMS:
+      return "Cash Shop";
+    case Category.PROMOTIONAL:
+      return "Promotional";
+    case Category.SEASONS:
+      return "Seasonal";
+    case Category.CHALLENGE:
+      return "Challenge";
+    case Category.BATTLE_PASS:
+      return "Battle Pass";
+    case Category.SEASON_JOURNEY:
+      return "Season Journey";
+    case Category.REPUTATION:
+      return "Reputation Board";
+    default:
+      return "Unknown";
+  }
+}
+
+function checkPremium(descriptor: CollectionDescriptor, source?: Source) {
+  if (descriptor.category === Category.BATTLE_PASS) {
+    if (source === Source.STORE_PRODUCT) {
+      return true;
+    }
+  }
+}
+
+function assignIdToItem() {
   return (collectionItem: D4DadCollectionItem) => ({
     ...collectionItem,
     id: generateId(),
   });
 }
 
-function generateClaim(deps: D4Dependencies) {
-  return (descriptor: CollectionDescriptor) => {
-    return (ci: D4DadCollectionItem) => {
-      return ci;
-    }
-  }
+function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: Source) {
+  return (ci: D4DadCollectionItem): D4DadCollectionItem => ({
+    ...ci,
+    claim: inferClaim(descriptor, source),
+    premium: ci.premium ?? checkPremium(descriptor, source),
+  });
+}
+
+function assignComputedValuesToCollection(descriptor: CollectionDescriptor, source?: Source) {
+  return (collection: D4DadCollection): D4DadCollection => ({
+    ...collection,
+    collectionItems: collection.collectionItems.map(assignComputedValuesToItem(descriptor, source)),
+  });
 }
 
 function parseChallengeFile(deps: D4Dependencies) {
@@ -57,6 +119,7 @@ function parseChallengeFile(deps: D4Dependencies) {
     return pipe(
       getEntity(descriptor.challengeFile, deps.challenges),
       (c) => c.arCategories.map(challengeToCollection(deps)(c)),
+      (c) => c.map(assignComputedValuesToCollection(descriptor, Source.CHALLENGE_FILE)),
     );
   }
 }
@@ -70,7 +133,8 @@ function parseStoreFiles(deps: D4Dependencies) {
     return descriptor.storeProducts
       .map(sp => getEntity(sp, deps.storeProducts))
       .map(storeToCollectionItems(deps))
-      .flat();
+      .flat()
+      .map(assignComputedValuesToItem(descriptor, Source.STORE_PRODUCT));
   }
 }
 
@@ -83,7 +147,8 @@ function parseAchievementFiles(deps: D4Dependencies) {
     return descriptor.achievements
       .map(a => getEntity(a, deps.achievements))
       .map(achievementToCollectionItems(deps))
-      .flat();
+      .flat()
+      .map(assignComputedValuesToItem(descriptor, Source.ACHIEVEMENT));
   };
 }
 
@@ -130,9 +195,7 @@ function buildCollection(deps: D4Dependencies) {
       name: descriptor.name,
       category: descriptor.category,
       description: descriptor.description,
-      collectionItems: parseCollectionItems(deps)(descriptor)
-        .map(generateIdForItem())
-        .map(generateClaim(deps)(descriptor)),
+      collectionItems: parseCollectionItems(deps)(descriptor).map(assignIdToItem()),
       subcollections: challenges.concat(...(descriptor.children?.map(buildCollection(deps)) ?? [])),
     };
 
