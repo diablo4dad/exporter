@@ -1360,7 +1360,7 @@ export function buildEssentialCollection(deps: D4Dependencies): D4DadCollection[
         "id": 2530,
         "name": "[Two-Handed Mace] Doom Hammer",
         "claim": "World Drop",
-        "unobtainable": true,
+        "claimDescription": "Obtained by opening the Chapter 2 Season Journey cache using a Necromancer in Season 5.",
         "items": [592302]
       }, {
         "id": 2286,
@@ -2278,7 +2278,7 @@ export function buildEssentialCollection(deps: D4Dependencies): D4DadCollection[
         "id": 2592,
         "name": "[Focus] Tome",
         "claim": "World Drop",
-        "unobtainable": true,
+        "claimDescription": "Salvage Istel's Grimoire from the Season 5 questline.",
         "items": [459858]
       }, {
         "id": 2593,
@@ -2290,19 +2290,16 @@ export function buildEssentialCollection(deps: D4Dependencies): D4DadCollection[
         "id": 2594,
         "name": "[Focus] Prophetic Urn",
         "claim": "World Drop",
-        "claimDescription": "Acquired by finding a \"Keepsake\" on a Sorcerer then salvaging it with a Necromancer.",
         "items": [790584]
       }, {
         "id": 2595,
         "name": "[Focus] Sinner's Skull",
         "claim": "World Drop",
-        "claimDescription": "Acquired by finding an \"Augur\" on a Sorcerer then salvaging it with a Necromancer.",
         "items": [494592]
       }, {
         "id": 2596,
         "name": "[Focus] Death Charm",
         "claim": "World Drop",
-        "unobtainable": true,
         "items": [494591]
       }, {"id": 2597, "name": "[Focus] Balance Icon", "claim": "World Drop", "items": [494590]}, {
         "id": 2598,
