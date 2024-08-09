@@ -100,6 +100,7 @@ function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: S
     ...ci,
     claim: inferClaim(descriptor, source),
     premium: ci.premium ?? checkPremium(descriptor, source),
+    outOfRotation: descriptor.outOfRotation,
   });
 }
 
@@ -190,9 +191,11 @@ function buildCollection(deps: D4Dependencies) {
     const challenges = descriptor.challengeFileFlatten ? [] : parseChallengeFile(deps)(descriptor);
     const postHook = descriptor.postHook ?? identity;
 
-    const collection = {
+    const collection: D4DadCollection = {
       id: hashCode(descriptor.name + descriptor.description),
       name: descriptor.name,
+      season: descriptor.season,
+      outOfRotation: descriptor.outOfRotation,
       category: descriptor.category,
       description: descriptor.description,
       collectionItems: parseCollectionItems(deps)(descriptor).map(assignIdToItem()),
@@ -255,12 +258,40 @@ const SEASON04: CollectionDescriptor = {
       challengeFile: "json\\base\\meta\\Challenge\\Season4.cha.json",
       achievements: ["json\\base\\meta\\Achievement\\Feat_S04_AllJourneyTasks.ach.json"],
       items: [["json\\base\\meta\\Item\\mnt_uniq28_trophy.itm.json"]],
+      postHook: (collection): D4DadCollection => ({
+        ...collection,
+        collectionItems: collection.collectionItems.map((ci): D4DadCollectionItem => {
+          if (ci.items.includes(1891999)) {
+            return {
+              ...ci,
+              claim: "Boss Drop",
+              claimDescription: "Dropped by the Blood Maiden in the final Season Journey quest.",
+            };
+          }
+
+          return ci;
+        }),
+      }),
     },
     {
       name: "Reputation Board #4",
       category: Category.REPUTATION,
       reputationFile: "json\\base\\meta\\Reputation\\IronWolves_Helltide_Reputation.rep.json",
       items: [["json\\base\\meta\\Item\\mnt_stor232_trophy.itm.json"]],
+      postHook: (collection): D4DadCollection => ({
+        ...collection,
+        collectionItems: collection.collectionItems.map((ci): D4DadCollectionItem => {
+          if (ci.items.includes(1867325)) {
+            return {
+              ...ci,
+              claim: "Reputation Board",
+              claimDescription: "Complete the Iron Wolf's Reputation Board."
+            };
+          }
+
+          return ci;
+        }),
+      }),
     },
   ],
 }

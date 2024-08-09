@@ -58,6 +58,8 @@ export type D4DadTranslation = {
 export type D4DadCollection = {
   id: number,
   name: string,
+  season?: number,
+  outOfRotation?: boolean,
   description?: string,
   category?: string,
   bundleId?: number,
