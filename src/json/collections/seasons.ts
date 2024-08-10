@@ -233,6 +233,25 @@ const SEASON05: CollectionDescriptor = {
       category: Category.SEASON_JOURNEY,
       challengeFileFlatten: true,
       challengeFile: "json\\base\\meta\\Challenge\\Season5.cha.json",
+      storeProducts: ["json\\base\\meta\\StoreProduct\\mnt_uniq29_trophy.prd.json"],
+      achievements: [
+        "json\\base\\meta\\Achievement\\Feat_S05_AllJourneyTasks.ach.json",
+        "json\\base\\meta\\Achievement\\Feat_S05_QuestComplete.ach.json",
+      ],
+      postHook: (collection): D4DadCollection => ({
+        ...collection,
+        collectionItems: collection.collectionItems.map((ci): D4DadCollectionItem => {
+          if (ci.items.includes(1989995)) {
+            return {
+              ...ci,
+              claim: "Season Journey",
+              claimDescription: "Obtained from the final Season Journey cache.",
+            };
+          }
+
+          return ci;
+        }),
+      }),
     },
   ],
 }

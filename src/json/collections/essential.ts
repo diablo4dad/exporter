@@ -2495,6 +2495,13 @@ export function buildEssentialCollection(deps: D4Dependencies): D4DadCollection[
         "claimDescription": "Occasionally redeemable from the shop as a gift.",
         "items": [1581940]
       }, {
+        "id": 25000,
+        "name": "",
+        "name": "[Returning Champion] Orichalcum Defender",
+        "claim": "Cash Shop",
+        "claimDescription": "Occasionally redeemable from the shop as a gift.",
+        "items": [1583356],
+      }, {
         "id": 3028,
         "name": "[Returning Champion] Vermilion Bolt Thrower",
         "claim": "Cash Shop",
@@ -2519,6 +2526,63 @@ export function buildEssentialCollection(deps: D4Dependencies): D4DadCollection[
         "claimDescription": "Occasionally redeemable from the shop as a gift.",
         "items": [1463512]
       }]
+    }, {
+      "id": 23,
+      "name": "The Hunger",
+      "description": "Weapon Cosmetics",
+      "category": "General",
+      "collectionItems": [
+        {
+          "id": 25000,
+          "name": "[KFC Launch] Dread Pheasant Slayer",
+          "claim": "Cash Shop",
+          "claimDescription": "Occasionally redeemable from the shop as a gift.",
+          "promotional": true,
+          "items": [
+            1238959
+          ]
+        },
+        {
+          "id": 25001,
+          "name": "[KFC Launch] Thrumming Axle",
+          "claim": "Cash Shop",
+          "claimDescription": "Occasionally redeemable from the shop as a gift.",
+          "promotional": true,
+          "items": [
+            1239031
+          ]
+        },
+        {
+          "id": 25002,
+          "name": "[KFC Launch] Hand of Gallus",
+          "claim": "Cash Shop",
+          "claimDescription": "Occasionally redeemable from the shop as a gift.",
+          "promotional": true,
+          "items": [
+            1238894
+          ]
+        },
+        {
+          "id": 25003,
+          "name": "[KFC Launch] Vessel of the Eleven",
+          "claim": "Cash Shop",
+          "claimDescription": "Occasionally redeemable from the shop as a gift.",
+          "promotional": true,
+          "items": [
+            1238907
+          ]
+        },
+        {
+          "id": 25004,
+          "name": "[KFC Launch] Foul Reaper",
+          "claim": "Cash Shop",
+          "claimDescription": "Occasionally redeemable from the shop as a gift.",
+          "promotional": true,
+          "items": [
+            1325207
+          ]
+        }
+      ]
     }],
     "collectionItems": []
   }, {

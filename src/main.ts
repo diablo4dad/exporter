@@ -72,6 +72,7 @@ import {productToDad} from "./json/factory/bundles.js";
 import {achievementToDad} from "./json/factory/achievements.js";
 import {challengeToDad} from "./json/factory/challenges.js";
 import {buildSeasonsCollection} from "./json/collections/seasons.js";
+import {buildEssentialCollection} from "./json/collections/essential.js";
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -165,7 +166,7 @@ const syncStrapi = async () => {
 
 
 const inputs = [
-    "C:\\Users\\Sam\\Documents\\d4log\\public\\general.json",
+    // "C:\\Users\\Sam\\Documents\\d4log\\public\\general.json",
     // "C:\\Users\\Sam\\Documents\\d4log\\public\\season.json",
     "C:\\Users\\Sam\\Documents\\d4log\\public\\shop.json",
     "C:\\Users\\Sam\\Documents\\d4log\\public\\challenge.json",
@@ -258,8 +259,9 @@ const dumpItems = () => {
       .from(challenges.values())
       .map(challengeToDad(deps));
 
+    const general = buildEssentialCollection(deps);
     const seasons = buildSeasonsCollection(deps);
-    const collections = inputs.map(parseLegacy).flat().concat(...seasons);
+    const collections = inputs.map(parseLegacy).flat().concat(...general).concat(...seasons);
 
     const mapEntities = <T extends D4DadEntity>([entity]: [T, D4DadTranslation]): T => entity;
     const mapTranslations = <T extends D4DadEntity>([entity, i18n]: [T, D4DadTranslation]): [number, D4DadTranslation] => ([entity.id, i18n]);
