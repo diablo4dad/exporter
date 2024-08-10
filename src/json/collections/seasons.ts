@@ -31,6 +31,7 @@ type CollectionDescriptor = {
   outOfRotation?: boolean,
   children?: CollectionDescriptor[],
   postHook?: (collection: D4DadCollection) => D4DadCollection,
+  patches?: Partial<D4DadCollectionItem>[],
   challengeFile?: string,
   challengeFileFlatten?: boolean,
   reputationFile?: string,
@@ -186,10 +187,29 @@ function parseCollectionItems(deps: D4Dependencies) {
   }
 }
 
+function patchCollectionItem(patches: Partial<D4DadCollectionItem>[]) {
+  return (collectionItem: D4DadCollectionItem): D4DadCollectionItem => {
+    return patches
+      .filter(patch => patch.items?.every(i => collectionItem.items.includes(i)) ?? false)
+      .reduce((a, c) => ({
+        ...c,
+        ...a,
+      }), collectionItem) as D4DadCollectionItem;
+  }
+}
+
+function patchCollection(patches: Partial<D4DadCollectionItem>[]) {
+  return (collection: D4DadCollection): D4DadCollection => ({
+    ...collection,
+    collectionItems: collection.collectionItems.map(patchCollectionItem(patches)),
+  });
+}
+
 function buildCollection(deps: D4Dependencies) {
   return (descriptor: CollectionDescriptor): D4DadCollection => {
     const challenges = descriptor.challengeFileFlatten ? [] : parseChallengeFile(deps)(descriptor);
     const postHook = descriptor.postHook ?? identity;
+    const patches = descriptor.patches ?? [];
 
     const collection: D4DadCollection = {
       id: hashCode(descriptor.name + descriptor.description),
@@ -204,6 +224,7 @@ function buildCollection(deps: D4Dependencies) {
 
     return pipe(
       collection,
+      patchCollection(patches),
       postHook,
     );
   }
@@ -238,20 +259,11 @@ const SEASON05: CollectionDescriptor = {
         "json\\base\\meta\\Achievement\\Feat_S05_AllJourneyTasks.ach.json",
         "json\\base\\meta\\Achievement\\Feat_S05_QuestComplete.ach.json",
       ],
-      postHook: (collection): D4DadCollection => ({
-        ...collection,
-        collectionItems: collection.collectionItems.map((ci): D4DadCollectionItem => {
-          if (ci.items.includes(1989995)) {
-            return {
-              ...ci,
-              claim: "Season Journey",
-              claimDescription: "Obtained from the final Season Journey cache.",
-            };
-          }
-
-          return ci;
-        }),
-      }),
+      patches: [{
+        items: [1989995],
+        claim: "Season Journey",
+        claimDescription: "Obtained from the final Season Journey cache.",
+      }],
     },
   ],
 }
@@ -277,40 +289,22 @@ const SEASON04: CollectionDescriptor = {
       challengeFile: "json\\base\\meta\\Challenge\\Season4.cha.json",
       achievements: ["json\\base\\meta\\Achievement\\Feat_S04_AllJourneyTasks.ach.json"],
       items: [["json\\base\\meta\\Item\\mnt_uniq28_trophy.itm.json"]],
-      postHook: (collection): D4DadCollection => ({
-        ...collection,
-        collectionItems: collection.collectionItems.map((ci): D4DadCollectionItem => {
-          if (ci.items.includes(1891999)) {
-            return {
-              ...ci,
-              claim: "Boss Drop",
-              claimDescription: "Dropped by the Blood Maiden in the final Season Journey quest.",
-            };
-          }
-
-          return ci;
-        }),
-      }),
+      patches: [{
+        items: [1891999],
+        claim: "Boss Drop",
+        claimDescription: "Dropped by the Blood Maiden in the final Season Journey quest.",
+      }],
     },
     {
       name: "Reputation Board #4",
       category: Category.REPUTATION,
       reputationFile: "json\\base\\meta\\Reputation\\IronWolves_Helltide_Reputation.rep.json",
       items: [["json\\base\\meta\\Item\\mnt_stor232_trophy.itm.json"]],
-      postHook: (collection): D4DadCollection => ({
-        ...collection,
-        collectionItems: collection.collectionItems.map((ci): D4DadCollectionItem => {
-          if (ci.items.includes(1867325)) {
-            return {
-              ...ci,
-              claim: "Reputation Board",
-              claimDescription: "Complete the Iron Wolf's Reputation Board."
-            };
-          }
-
-          return ci;
-        }),
-      }),
+      patches: [{
+        items: [1867325],
+        claim: "Reputation Board",
+        claimDescription: "Complete the Iron Wolf's Reputation Board."
+      }],
     },
   ],
 }
