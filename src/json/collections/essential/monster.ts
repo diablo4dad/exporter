@@ -128,7 +128,7 @@ const RARE_MONSTER: CollectionDescriptor = {
   ],
 };
 
-const MONSTERS: CollectionDescriptor = {
+const MONSTER: CollectionDescriptor = {
   name: 'Monsters',
   description: 'Transmogs dropped from monsters',
   category: Category.GENERAL,
@@ -139,4 +139,4 @@ const MONSTERS: CollectionDescriptor = {
   ],
 };
 
-export default MONSTERS;
+export default MONSTER;
