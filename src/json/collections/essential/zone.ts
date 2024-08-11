@@ -185,6 +185,20 @@ const OPEN_WORLD = {
     ["json\\base\\meta\\Item\\mnt_amor19_horse.itm.json"],
     ["json\\base\\meta\\Item\\mnt_amor02_horse.itm.json"],
   ],
+  "patches": [
+    {
+      "items": [505582],
+      "claimDescription": "Dropped from monsters and chests throughout Sanctuary.",
+    },
+    {
+      "items": [616349],
+      "claimDescription": "Dropped from monsters and chests throughout Sanctuary.",
+    },
+    {
+      "items": [426643],
+      "claimDescription": "Dropped from monsters and chests throughout Sanctuary.",
+    },
+  ]
 };
 
 const NIGHTMARE_DUNGEON = {
@@ -194,6 +208,12 @@ const NIGHTMARE_DUNGEON = {
   "items": [
     ["json\\base\\meta\\Item\\MountReins_CaldeumHorse.itm.json"],
   ],
+  "patches": [
+    {
+      "items": [623170],
+      "claimDescription": "Dropped from monsters and chests within Nightmare Dungeons.",
+    }
+  ]
 };
 
 const ZONE = {

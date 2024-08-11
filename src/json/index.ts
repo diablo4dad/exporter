@@ -445,6 +445,8 @@ function inferClaim(descriptor: CollectionDescriptor, source?: Source) {
       return "Reputation Board";
     case Category.ZONE:
       return "Zone Drop";
+    case Category.MONSTER_DROP:
+      return "Monster Drop";
     default:
       return "Unknown";
   }
@@ -531,7 +533,7 @@ function parseExtraItems(deps: D4Dependencies) {
       return {
         id: -1,
         name: composeName(deps)(...items),
-        claim: "TODO",
+        claim: inferClaim(descriptor),
         items: items.map(i => i.__snoID__),
       };
     });

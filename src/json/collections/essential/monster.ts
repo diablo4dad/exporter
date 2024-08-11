@@ -1,4 +1,4 @@
-import {Category} from "../../index.js";
+import {Category, CollectionDescriptor} from "../../index.js";
 
 const WORLD_BOSS = {
   "name": "World Boss",
@@ -46,7 +46,7 @@ const WORLD_BOSS = {
   ],
 };
 
-const DUNGEON_BOSS = {
+const DUNGEON_BOSS: CollectionDescriptor = {
   "name": "Dungeon Boss",
   "description": "Transmogs dropped by dungeon bosses",
   "category": Category.MONSTER_DROP,
@@ -60,8 +60,34 @@ const DUNGEON_BOSS = {
   ],
   "patches": [
     {
+      "items": [1555173],
+      "claim": "Dungeon Boss",
+      "claimDescription": "Dropped by Echo of Varshan.",
+    },
+    {
+      "items": [1278727],
+      "claim": "Dungeon Boss",
+      "claimDescription": "Dropped by Grigoire the Galvanic Saint.",
+    },
+    {
+      "items": [1689310],
+      "claim": "Dungeon Boss",
+      "claimDescription": "Dropped by Lord Zir.",
+    },
+    {
+      "items": [1463239],
+      "claim": "Dungeon Boss",
+      "claimDescription": "Dropped by The Beast in the Ice.",
+    },
+    {
+      "items": [1588046],
+      "claim": "Dungeon Boss",
+      "claimDescription": "Dropped by The Beast in the Ice.",
+    },
+    {
       "items": [1583610],
       "claim": "Uber Boss Drop",
+      "claimDescription": "Dropped by Duriel, King of Maggots.",
     },
   ],
 };
@@ -82,39 +108,32 @@ const RARE_MONSTER = {
   "patches": [
     {
       "items": [1327374],
-      "claim": "Monster Drop",
       "claimDescription": "Dropped by Treasure Goblins."
     },
     {
       "items": [1221732],
-      "claim": "Monster Drop",
       "claimDescription": "Dropped by Treasure Goblins."
     },
     {
       "items": [1222154],
-      "claim": "Monster Drop",
       "claimDescription": "Dropped by Treasure Goblins."
     },
     {
       "items": [1221727],
-      "claim": "Monster Drop",
       "claimDescription": "Dropped by The Butcher.",
     },
     {
       "items": [1222146],
-      "claim": "Monster Drop",
       "claimDescription": "Dropped by The Butcher."
     },
     {
       "items": [1103798],
-      "claim": "Monster Drop",
       "claimDescription": "Dropped by Nine-Eyes.",
     },
     {
       "items": [1093991],
-      "claim": "Monster Drop",
       "claimDescription": "Dropped by \"Wrathful\" Osgar Reede.",
-    }
+    },
   ],
 };
 
