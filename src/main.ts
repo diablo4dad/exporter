@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-
+import fs from 'fs';
+import path from 'path';
+import admin from 'firebase-admin';
 import {
     D4Achievement,
     D4Actor,
@@ -17,8 +17,8 @@ import {
     D4StoreProduct,
     D4TownPortalCosmetic,
     D4Translation,
-} from "./d4.js";
-import {parseFiles} from "./loader.js";
+} from './d4.js';
+import { parseFiles } from './loader.js';
 import {
     ITEM_TYPES_TO_SYNC,
     PATH_TO_D4ACHIEVEMENT,
@@ -36,43 +36,55 @@ import {
     PATH_TO_D4STRING_LIST,
     PATH_TO_D4TEXTURES,
     PATH_TO_D4TOWN_PORTAL,
-    PATH_TO_PUBLIC_DIR
-} from "./config.js";
-import {getMediaIndex, uploadImage} from "./strapi/media.js";
-import {itemFactory} from "./strapi/factory/items.js";
-import {emoteFactory} from "./strapi/factory/emotes.js";
-import {headstoneFactory} from "./strapi/factory/headstones.js";
-import {portalFactory} from "./strapi/factory/portals.js";
-import {emblemFactory} from "./strapi/factory/emblems.js";
-import {markingShapeFactory} from "./strapi/factory/marking.js";
-import {syncItems} from "./strapi/items.js";
-import {playerTitleFactory} from "./strapi/factory/title.js";
-import {bundleFactory} from "./strapi/factory/bundles.js";
-import {syncBundles, syncChallenges} from "./strapi/collections.js";
-import {syncBundleItems, syncChallengeAchievements} from "./strapi/collectionitems.js";
-import {challengeFactory} from "./strapi/factory/challenges.js";
-import {itemToDad} from "./json/factory/items.js";
-import {itemTypeToDad} from "./json/factory/itemTypes.js";
+    PATH_TO_PUBLIC_DIR,
+} from './config.js';
+import { getMediaIndex, uploadImage } from './strapi/media.js';
+import { itemFactory } from './strapi/factory/items.js';
+import { emoteFactory } from './strapi/factory/emotes.js';
+import { headstoneFactory } from './strapi/factory/headstones.js';
+import { portalFactory } from './strapi/factory/portals.js';
+import { emblemFactory } from './strapi/factory/emblems.js';
+import { markingShapeFactory } from './strapi/factory/marking.js';
+import { syncItems } from './strapi/items.js';
+import { playerTitleFactory } from './strapi/factory/title.js';
+import { bundleFactory } from './strapi/factory/bundles.js';
+import { syncBundles, syncChallenges } from './strapi/collections.js';
+import { syncBundleItems, syncChallengeAchievements } from './strapi/collectionitems.js';
+import { challengeFactory } from './strapi/factory/challenges.js';
+import { itemToDad } from './json/factory/items.js';
+import { itemTypeToDad } from './json/factory/itemTypes.js';
 import {
     D4DadCollection,
     D4DadCollectionItem,
     D4DadDb,
     D4DadEntity,
     D4DadTranslation,
-    ITEM_TYPE_APPENDAGE
-} from "./json/index.js";
-import {emblemToDad} from "./json/factory/emblems.js";
-import {emoteToDad} from "./json/factory/emotes.js";
-import {headstoneToDad} from "./json/factory/headstones.js";
-import {markingShapeToDad} from "./json/factory/marking.js";
-import {playerTitleToDad} from "./json/factory/title.js";
-import {portalToDad} from "./json/factory/portals.js";
-import {CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryResult} from "./strapi/common.js";
-import {productToDad} from "./json/factory/bundles.js";
-import {achievementToDad} from "./json/factory/achievements.js";
-import {challengeToDad} from "./json/factory/challenges.js";
-import {buildSeasonsCollection} from "./json/collections/seasons.js";
-import {buildEssentialCollection} from "./json/collections/essential.js";
+    ITEM_TYPE_APPENDAGE,
+} from './json/index.js';
+import { emblemToDad } from './json/factory/emblems.js';
+import { emoteToDad } from './json/factory/emotes.js';
+import { headstoneToDad } from './json/factory/headstones.js';
+import { markingShapeToDad } from './json/factory/marking.js';
+import { playerTitleToDad } from './json/factory/title.js';
+import { portalToDad } from './json/factory/portals.js';
+import { CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryResult } from './strapi/common.js';
+import { productToDad } from './json/factory/bundles.js';
+import { achievementToDad } from './json/factory/achievements.js';
+import { challengeToDad } from './json/factory/challenges.js';
+import { buildSeasonsCollection } from './json/collections/season/index.js';
+import {
+    buildEssentialCollection,
+    buildEssentialCollection2,
+    retroactiveParse,
+} from './json/collections/essential/index.js';
+import { getStorage } from 'firebase-admin/storage';
+
+const serviceAccount = "d4log-bfc60-firebase-adminsdk-nnye7-46c1153ebe.json"
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    storageBucket: 'd4log-bfc60.appspot.com',
+});
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -259,9 +271,12 @@ const dumpItems = () => {
       .from(challenges.values())
       .map(challengeToDad(deps));
 
-    const general = buildEssentialCollection(deps);
+    const general = buildEssentialCollection2(deps);
     const seasons = buildSeasonsCollection(deps);
-    const collections = inputs.map(parseLegacy).flat().concat(...general).concat(...seasons);
+    const collections = inputs.map(parseLegacy)
+      .flat()
+      .concat(...general)
+      .concat(...seasons);
 
     const mapEntities = <T extends D4DadEntity>([entity]: [T, D4DadTranslation]): T => entity;
     const mapTranslations = <T extends D4DadEntity>([entity, i18n]: [T, D4DadTranslation]): [number, D4DadTranslation] => ([entity.id, i18n]);
@@ -315,17 +330,21 @@ const dumpItems = () => {
         ],
     };
 
+    const dump = retroactiveParse(deps, buildEssentialCollection(deps));
+
+
     fs.writeFileSync("C:\\Users\\Sam\\Documents\\d4log\\public\\d4dad.json", JSON.stringify(d4dadJoin));
     fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
     // fs.writeFileSync("d4dad_full.json", JSON.stringify(d4dadJoin));
     fs.writeFileSync("d4dad_seasons.json", JSON.stringify(seasons));
+    fs.writeFileSync("d4dad_essential.json", JSON.stringify(dump));
     console.log("Dump complete.");
-
+    //
     // copyImages(d4dad);
     // console.log("Copy Images complete.");
 }
 
-const copyImages = (d4dad: D4DadDb) => {
+const copyImages = async (d4dad: D4DadDb) => {
     const allImgHandles: Set<number> = d4dad.items.reduce((a, c) => {
         a.add(c.icon);
         if (c.invImages) {
@@ -338,6 +357,9 @@ const copyImages = (d4dad: D4DadDb) => {
 
     const failedImages: number[] = [];
 
+    const bucket = getStorage().bucket("assets");
+
+
     allImgHandles.forEach(iconId => {
         const filename = path.join(PATH_TO_D4TEXTURES, iconId + '.webp');
         try {
@@ -349,6 +371,13 @@ const copyImages = (d4dad: D4DadDb) => {
         }
 
         fs.copyFileSync(filename, path.join(PATH_TO_PUBLIC_DIR, iconId + ".webp"));
+        //
+        // console.log("Uploading " + filename + "...");
+        // const resp = await bucket.upload(filename, {
+        //     metadata: {
+        //         cacheControl: 'public, max-age=31536000',
+        //     }
+        // });
     });
 
     if (failedImages.length) {
