@@ -4,6 +4,7 @@ const WORLD_BOSS: CollectionDescriptor = {
   name: 'World Boss',
   description: 'Transmogs dropped by Ashava, Avarice and Wandering Death',
   category: Category.MONSTER_DROP,
+  claim: 'World Boss Drop',
   items: [
     ['json\\base\\meta\\Item\\mnt_amor53_horse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_uniq53_trophy.itm.json'],
@@ -15,32 +16,26 @@ const WORLD_BOSS: CollectionDescriptor = {
   patches: [
     {
       items: [1221715],
-      claim: 'World Boss Drop',
       claimDescription: 'Dropped by Ashava.',
     },
     {
       items: [1222125],
-      claim: 'World Boss Drop',
       claimDescription: 'Dropped by Ashava.',
     },
     {
       items: [1221723],
-      claim: 'World Boss Drop',
       claimDescription: 'Dropped by Wandering Death.',
     },
     {
       items: [1222138],
-      claim: 'World Boss Drop',
       claimDescription: 'Dropped by Wandering Death.',
     },
     {
       items: [1221719],
-      claim: 'World Boss Drop',
       claimDescription: 'Dropped by Wandering Avarice.',
     },
     {
       items: [1222132],
-      claim: 'World Boss Drop',
       claimDescription: 'Dropped by Wandering Avarice.',
     },
   ],
@@ -50,6 +45,7 @@ const DUNGEON_BOSS: CollectionDescriptor = {
   name: 'Dungeon Boss',
   description: 'Transmogs dropped by dungeon bosses',
   category: Category.MONSTER_DROP,
+  claim: 'Dungeon Boss',
   items: [
     ['json\\base\\meta\\Item\\mnt_stor111_trophy.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor103_horse_stor.itm.json'],
@@ -61,27 +57,22 @@ const DUNGEON_BOSS: CollectionDescriptor = {
   patches: [
     {
       items: [1555173],
-      claim: 'Dungeon Boss',
       claimDescription: 'Dropped by Echo of Varshan.',
     },
     {
       items: [1278727],
-      claim: 'Dungeon Boss',
       claimDescription: 'Dropped by Grigoire the Galvanic Saint.',
     },
     {
       items: [1689310],
-      claim: 'Dungeon Boss',
       claimDescription: 'Dropped by Lord Zir.',
     },
     {
       items: [1463239],
-      claim: 'Dungeon Boss',
       claimDescription: 'Dropped by The Beast in the Ice.',
     },
     {
       items: [1588046],
-      claim: 'Dungeon Boss',
       claimDescription: 'Dropped by The Beast in the Ice.',
     },
     {

@@ -180,24 +180,11 @@ const OPEN_WORLD: CollectionDescriptor = {
   name: 'Open World',
   description: 'Transmogs dropped throughout Sanctuary',
   category: Category.ZONE,
+  claimDescription: 'Dropped from monsters and chests throughout Sanctuary.',
   items: [
     ['json\\base\\meta\\Item\\MountReins_SpectralHorse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor19_horse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor02_horse.itm.json'],
-  ],
-  patches: [
-    {
-      items: [505582],
-      claimDescription: 'Dropped from monsters and chests throughout Sanctuary.',
-    },
-    {
-      items: [616349],
-      claimDescription: 'Dropped from monsters and chests throughout Sanctuary.',
-    },
-    {
-      items: [426643],
-      claimDescription: 'Dropped from monsters and chests throughout Sanctuary.',
-    },
   ],
 };
 
@@ -205,14 +192,9 @@ const NIGHTMARE_DUNGEON: CollectionDescriptor = {
   name: 'Nightmare Dungeon',
   description: 'Transmogs dropped within Nightmare Dungeons',
   category: Category.ZONE,
+  claimDescription: 'Dropped from monsters and chests within Nightmare Dungeons.',
   items: [
     ['json\\base\\meta\\Item\\MountReins_CaldeumHorse.itm.json'],
-  ],
-  patches: [
-    {
-      items: [623170],
-      claimDescription: 'Dropped from monsters and chests within Nightmare Dungeons.',
-    },
   ],
 };
 

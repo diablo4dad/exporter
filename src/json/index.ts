@@ -23,13 +23,13 @@ import {
   isTitle,
   resolveSno,
   resolveStoreProduct,
-  resolveStringsList
-} from "../d4.js";
-import {extractItemFromProduct} from "../strapi/factory/bundles.js";
-import {storeToCollectionItems} from "./factory/bundles.js";
-import {achievementToCollectionItems} from "./factory/achievements.js";
-import {hashCode, identity, pipe} from "../helper.js";
-import {challengeToCollection} from "./factory/challenges.js";
+  resolveStringsList,
+} from '../d4.js';
+import { extractItemFromProduct } from '../strapi/factory/bundles.js';
+import { storeToCollectionItems } from './factory/bundles.js';
+import { achievementToCollectionItems } from './factory/achievements.js';
+import { hashCode, identity, pipe } from '../helper.js';
+import { challengeToCollection } from './factory/challenges.js';
 
 export const BODY_MARKING = 7200;
 export const EMOTE = 7201;
@@ -396,6 +396,8 @@ export type CollectionDescriptor = {
   description?: string,
   season?: number,
   outOfRotation?: boolean,
+  claim?: string,
+  claimDescription?: string,
   children?: CollectionDescriptor[],
   postHook?: (collection: D4DadCollection) => D4DadCollection,
   patches?: Partial<D4DadCollectionItem>[],
@@ -470,7 +472,7 @@ export function assignIdToItem() {
 function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: Source) {
   return (ci: D4DadCollectionItem): D4DadCollectionItem => ({
     ...ci,
-    claim: inferClaim(descriptor, source),
+    claim: descriptor.claim ?? inferClaim(descriptor, source),
     premium: ci.premium ?? checkPremium(descriptor, source),
     outOfRotation: descriptor.outOfRotation,
   });
@@ -533,7 +535,8 @@ function parseExtraItems(deps: D4Dependencies) {
       return {
         id: -1,
         name: composeName(deps)(...items),
-        claim: inferClaim(descriptor),
+        claim: descriptor.claim ?? inferClaim(descriptor),
+        claimDescription: descriptor.claimDescription,
         items: items.map(i => i.__snoID__),
       };
     });
