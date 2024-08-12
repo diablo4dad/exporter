@@ -54,6 +54,7 @@ import { challengeFactory } from './strapi/factory/challenges.js';
 import { itemToDad } from './json/factory/items.js';
 import { itemTypeToDad } from './json/factory/itemTypes.js';
 import {
+    buildCollection,
     D4DadCollection,
     D4DadCollectionItem,
     D4DadDb,
@@ -71,13 +72,9 @@ import { CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryR
 import { productToDad } from './json/factory/bundles.js';
 import { achievementToDad } from './json/factory/achievements.js';
 import { challengeToDad } from './json/factory/challenges.js';
-import { buildSeasonsCollection } from './json/collections/season/index.js';
-import {
-    buildEssentialCollection,
-    buildEssentialCollection2,
-    retroactiveParse,
-} from './json/collections/essential/index.js';
 import { getStorage } from 'firebase-admin/storage';
+import SEASON from './json/collections/season/index.js';
+import ESSENTIAL from './json/collections/essential/index.js';
 
 const serviceAccount = "d4log-bfc60-firebase-adminsdk-nnye7-46c1153ebe.json"
 
@@ -271,8 +268,8 @@ const dumpItems = () => {
       .from(challenges.values())
       .map(challengeToDad(deps));
 
-    const general = buildEssentialCollection2(deps);
-    const seasons = buildSeasonsCollection(deps);
+    const general = ESSENTIAL.map(buildCollection(deps));
+    const seasons = SEASON.map(buildCollection(deps));
     const collections = inputs.map(parseLegacy)
       .flat()
       .concat(...general)
@@ -296,23 +293,6 @@ const dumpItems = () => {
       ...achievementsOut.map(mapTranslations),
     ]);
 
-    const d4dad: D4DadDb = {
-        collections: collections,
-        products: productsOut.map(mapEntities),
-        itemTypes: itemTypesOut.map(mapEntities),
-        achievements: achievementsOut.map(mapEntities),
-        challenges: challengeOut.map(mapEntities),
-        items: [
-          ...itemsOut.map(mapEntities),
-          ...emblemsOut.map(mapEntities),
-          ...emotesOut.map(mapEntities),
-          ...headstonesOut.map(mapEntities),
-          ...markingsOut.map(mapEntities),
-          ...portalsOut.map(mapEntities),
-          ...titlesOut.map(mapEntities),
-      ],
-    };
-
     const d4dadJoin: D4DadDb = {
         collections: collections,
         itemTypes: itemTypesOut.map(mapEntitiesCoalesce),
@@ -330,14 +310,8 @@ const dumpItems = () => {
         ],
     };
 
-    const dump = retroactiveParse(deps, buildEssentialCollection(deps));
-
-
     fs.writeFileSync("C:\\Users\\Sam\\Documents\\d4log\\public\\d4dad.json", JSON.stringify(d4dadJoin));
     fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
-    // fs.writeFileSync("d4dad_full.json", JSON.stringify(d4dadJoin));
-    fs.writeFileSync("d4dad_seasons.json", JSON.stringify(seasons));
-    fs.writeFileSync("d4dad_essential.json", JSON.stringify(dump));
     console.log("Dump complete.");
     //
     // copyImages(d4dad);
