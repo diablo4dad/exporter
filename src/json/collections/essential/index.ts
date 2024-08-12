@@ -44,7 +44,7 @@ function buildItemIdMap(lookup: Map<String, D4Ref>): [number, String][] {
 }
 
 export function buildEssentialCollection2(deps: D4Dependencies) {
-  return [ZONE, MONSTER, EVENT, PVP, ACTIVITY, ARMOR, WEAPON].map(buildCollection(deps));
+  return BRIDGE.map(buildCollection(deps));
 }
 
 const BRIDGE = [

@@ -30,10 +30,15 @@ const SEASON05: CollectionDescriptor = {
         'json\\base\\meta\\Achievement\\Feat_S05_AllJourneyTasks.ach.json',
         'json\\base\\meta\\Achievement\\Feat_S05_QuestComplete.ach.json',
       ],
+      items: [
+        ['json\\base\\meta\\Item\\2HMace_Legendary_Generic_003.itm.json'],
+      ],
       patches: [{
         items: [1989995],
-        claim: 'Season Journey',
         claimDescription: 'Obtained from the final Season Journey cache.',
+      }, {
+        items: [592302],
+        claimDescription: 'Obtained in Season 5 by opening the Chapter 2 Season Journey cache using a Necromancer.',
       }],
     },
   ],
