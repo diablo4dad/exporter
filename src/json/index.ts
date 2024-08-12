@@ -384,6 +384,7 @@ export enum Category {
   MONSTER_DROP = "Monster Drop",
   LIMITED_EVENT = "Limited Event",
   PVP = "PvP",
+  ACTIVITY = "Activity",
 }
 
 enum Source {

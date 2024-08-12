@@ -4,6 +4,7 @@ import ZONE from './zone.js';
 import MONSTER from './monster.js';
 import EVENT from './event.js';
 import PVP from './pvp.js';
+import ACTIVITY from './activity.js';
 
 export function retroactiveParse(deps: D4Dependencies, collections: D4DadCollection[]): CollectionDescriptor[] {
   const lookup = new Map(
@@ -38,7 +39,7 @@ function buildItemIdMap(lookup: Map<String, D4Ref>): [number, String][] {
 }
 
 export function buildEssentialCollection2(deps: D4Dependencies) {
-  return [ZONE, MONSTER, EVENT, PVP].map(buildCollection(deps));
+  return [ZONE, MONSTER, EVENT, PVP, ACTIVITY].map(buildCollection(deps));
 }
 
 const BRIDGE = [
@@ -46,145 +47,7 @@ const BRIDGE = [
   MONSTER,
   EVENT,
   PVP,
-  {
-    "name": "Activities",
-    "description": "Transmogs acquired through various activities",
-    "category": Category.GENERAL,
-    "items": [],
-    "patches": [],
-    "children": [
-      {
-        "name": "Quest",
-        "description": "Transmogs rewarded for completing quests",
-        "category": Category.GENERAL,
-        "items": [
-          [
-            "json\\base\\meta\\Item\\MountReins_OldNellHorse.itm.json"
-          ],
-          [
-            "json\\base\\meta\\Item\\MountReins_BloodyLiquidMount.itm.json"
-          ],
-          [
-            "json\\base\\meta\\Item\\1HShield_QST_Hawe_ZakFort_Carthas_01.itm.json"
-          ],
-          [
-            "json\\base\\meta\\Item\\cmp_base00_dog.itm.json"
-          ]
-        ],
-        "patches": [
-          {
-            "items": [
-              623168
-            ],
-            "claim": "Quest Reward",
-            "claimDescription": "Complete the mount introduction quest \"Donan's Favor\"."
-          },
-          {
-            "items": [
-              1257432
-            ],
-            "claim": "Quest Reward",
-            "claimDescription": "Complete the \"Echo of Hatred\" quest by killing Lilith."
-          },
-          {
-            "items": [
-              1472930
-            ],
-            "claim": "Quest Reward",
-            "claimDescription": "Complete the \"Remembering the Fallen\" side quest in Zarbinzet."
-          },
-          {
-            "items": [
-              1867815
-            ],
-            "claim": "Quest Reward",
-            "claimDescription": "Complete the \"Faithful Companion\" quest in Kyovashad."
-          }
-        ],
-        "children": []
-      },
-      {
-        "name": "Vendor",
-        "description": "Transmogs purchased from vendors",
-        "category": Category.GENERAL,
-        "items": [
-          [
-            "json\\base\\meta\\Item\\MountReins_WhiteHorse.itm.json"
-          ],
-          [
-            "json\\base\\meta\\Item\\MountReins_MottledHorse.itm.json"
-          ],
-          [
-            "json\\base\\meta\\Item\\mnt_amor01_horse.itm.json"
-          ]
-        ],
-        "patches": [
-          {
-            "items": [
-              449948
-            ],
-            "claim": "Vendor",
-            "claimDescription": "Purchased from the Stable Master."
-          },
-          {
-            "items": [
-              623169
-            ],
-            "claim": "Vendor",
-            "claimDescription": "Purchased from the Stable Master."
-          },
-          {
-            "items": [
-              426372
-            ],
-            "claim": "Vendor",
-            "claimDescription": "Purchased from the Stable Master."
-          }
-        ],
-        "children": []
-      },
-      {
-        "name": "Tree of Whispers",
-        "description": "Transmogs looted from Tree of Whispers caches",
-        "category": Category.GENERAL,
-        "items": [
-          [
-            "json\\base\\meta\\Item\\mnt_amor64_horse.itm.json"
-          ],
-          [
-            "json\\base\\meta\\Item\\mnt_amor62_horse.itm.json"
-          ],
-          [
-            "json\\base\\meta\\Item\\mnt_uniq62_trophy.itm.json"
-          ]
-        ],
-        "patches": [
-          {
-            "items": [
-              1091847
-            ],
-            "claim": "Quest Reward",
-            "claimDescription": "Drops from Tree of Whispers Caches."
-          },
-          {
-            "items": [
-              1091840
-            ],
-            "claim": "Quest Reward",
-            "claimDescription": "Drops from Tree of Whispers Caches."
-          },
-          {
-            "items": [
-              1048636
-            ],
-            "claim": "Quest Reward",
-            "claimDescription": "Drops from Tree of Whispers Caches."
-          }
-        ],
-        "children": []
-      }
-    ]
-  },
+  ACTIVITY,
   {
     "name": "Armor",
     "description": "Transmogs found throughout sanctuary",
