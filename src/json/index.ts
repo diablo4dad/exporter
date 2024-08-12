@@ -386,6 +386,7 @@ export enum Category {
   PVP = "PvP",
   ACTIVITY = "Activity",
   ARMOR = "Armor",
+  WEAPON = "Weapon",
 }
 
 enum Source {
@@ -441,6 +442,15 @@ function inferClaim(descriptor: CollectionDescriptor, source?: Source) {
   }
 
   switch (descriptor.category) {
+    case Category.LIMITED_EVENT:
+      return "Limited Event";
+    case Category.PVP:
+      return "Vendor";
+    case Category.ACTIVITY:
+      return "Activity";
+    case Category.ARMOR:
+    case Category.WEAPON:
+      return "World Drop";
     case Category.GENERAL:
       return "General";
     case Category.SHOP_ITEMS:

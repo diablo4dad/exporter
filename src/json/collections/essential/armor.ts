@@ -62,7 +62,7 @@ const CHEST_ARMOR: CollectionDescriptor = {
 
 const GLOVES: CollectionDescriptor = {
   name: 'Gloves',
-  category: Category.GENERAL,
+  category: Category.ARMOR,
   items: [
     ['json\\base\\meta\\Item\\Gloves_Legendary_Generic_Crafted028.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Legendary_Generic_056.itm.json'],
@@ -95,7 +95,7 @@ const GLOVES: CollectionDescriptor = {
 
 const PANTS: CollectionDescriptor = {
   name: 'Pants',
-  category: Category.GENERAL,
+  category: Category.ARMOR,
   items: [
     ['json\\base\\meta\\Item\\Pants_Rare_Generic_028Crafted_L25.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Legendary_Generic_056.itm.json'],
@@ -126,7 +126,7 @@ const PANTS: CollectionDescriptor = {
 
 const BOOTS: CollectionDescriptor = {
   name: 'Boots',
-  category: Category.GENERAL,
+  category: Category.ARMOR,
   items: [
     ['json\\base\\meta\\Item\\Boots_Rare_Generic_028Crafted_L23.itm.json'],
     ['json\\base\\meta\\Item\\Boots_Legendary_Generic_056.itm.json'],
