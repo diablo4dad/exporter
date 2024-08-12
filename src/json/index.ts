@@ -383,6 +383,7 @@ export enum Category {
   ZONE = "Zone",
   MONSTER_DROP = "Monster Drop",
   LIMITED_EVENT = "Limited Event",
+  PVP = "PvP",
 }
 
 enum Source {
