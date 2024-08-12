@@ -3,7 +3,8 @@ import { Category, CollectionDescriptor } from '../../index.js';
 const FIRST_YEAR_ANNIVERSARY: CollectionDescriptor = {
   name: '1st Year Anniversary',
   description: 'Free from Tejal\'s Shop from June 6th, 2024 until June 20th, 2024',
-  category: Category.GENERAL,
+  category: Category.SHOP_ITEMS,
+  claimDescription: '1st Year Anniversary gift free in the cash shop.',
   outOfRotation: true,
   items: [
     ['json\\base\\meta\\Item\\mnt_stor045_horse.itm.json'],
@@ -19,10 +20,10 @@ const FIRST_YEAR_ANNIVERSARY: CollectionDescriptor = {
 const LUNARY_AWAKENING: CollectionDescriptor = {
   name: 'Lunar Awakening',
   description: 'Chinese new year event from February 6th, 2024 until February 20th, 2024',
-  category: Category.GENERAL,
+  category: Category.LIMITED_EVENT,
   outOfRotation: true,
   claim: 'Quest Reward',
-  claimDescription: "Lunar Awakening event reward.",
+  claimDescription: "Lunar Awakening Event quest reward.",
   achievements: [
     "json\\base\\meta\\Achievement\\LTE_LNY_Challenge_AllShrines.ach.json",
   ],
@@ -39,7 +40,7 @@ const LUNARY_AWAKENING: CollectionDescriptor = {
 const DARK_GIFTS: CollectionDescriptor = {
   name: 'Dark Gifts',
   description: 'Free from Tejal\'s Shop from December 20th, 2023 until December 26th 2023',
-  category: Category.GENERAL,
+  category: Category.SHOP_ITEMS,
   claim: "Cash Shop",
   claimDescription: 'Free in the cash shop for a limited time.',
   outOfRotation: true,
@@ -55,7 +56,7 @@ const MIDWINTER_BLIGHT: CollectionDescriptor = {
   description: 'Holiday event from December 12th, 2023 until January 2nd, 2024',
   category: Category.GENERAL,
   claim: 'Vendor',
-  claimDescription: 'Purchased using Midwinter Proof\'s.',
+  claimDescription: 'Purchased with Midwinter Proof\'s from the event vendor.',
   outOfRotation: true,
   achievements: [
     'json\\base\\meta\\Achievement\\LTE_Hibernal_Challenge_II_KillRCH.ach.json',
@@ -81,9 +82,8 @@ const MIDWINTER_BLIGHT: CollectionDescriptor = {
 const DONATE_BLOOD_HARVEST: CollectionDescriptor = {
   name: 'Donate to the Blood Harvest',
   description: 'Rewards distributed to all players on November 22nd, 2023',
-  category: Category.GENERAL,
-  claim: 'Promotional',
-  claimDescription: 'Distributed to players for the Blood Harvest event.',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Distributed to players for the Blood Harvest Event.',
   outOfRotation: true,
   items: [
     ['json\\base\\meta\\Item\\Dagger_stor016.itm.json'],

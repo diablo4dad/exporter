@@ -6,8 +6,8 @@ import {
   D4Type,
   getTextFromStl,
   resolveSno,
-  resolveStringsList
-} from "../../d4.js";
+  resolveStringsList,
+} from '../../d4.js';
 import {
   aggregateItemList,
   composeName,
@@ -19,8 +19,8 @@ import {
   filterItemList,
   ItemList,
   mergeItemLists,
-  pushToItemList
-} from "../index.js";
+  pushToItemList,
+} from '../index.js';
 
 export function achievementToDad(deps: D4Dependencies): (achievement: D4Achievement) => [D4DadAchievement, D4DadTranslation] {
   return (achievement: D4Achievement): [D4DadAchievement, D4DadTranslation] => {
@@ -107,7 +107,7 @@ function unpackRewardList(deps: D4Dependencies): (rewards: D4RewardDefinition) =
 export function achievementToCollectionItems(deps: D4Dependencies): (achievement: D4Achievement) => D4DadCollectionItem[] {
   return (achievement: D4Achievement): D4DadCollectionItem[] => {
     const achievementStrings = resolveStringsList(achievement, deps.strings);
-    const name = getTextFromStl(achievementStrings, "Name");
+    const name = ""; // getTextFromStl(achievementStrings, "Name");
     const description = getTextFromStl(achievementStrings, "DescShort", getTextFromStl(achievementStrings, "Desc"));
 
     const toCollectionItem = (...items: (D4Type & D4Ref)[]): D4DadCollectionItem => ({

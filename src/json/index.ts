@@ -382,6 +382,7 @@ export enum Category {
   REPUTATION = "Reputation",
   ZONE = "Zone",
   MONSTER_DROP = "Monster Drop",
+  LIMITED_EVENT = "Limited Event",
 }
 
 enum Source {
@@ -428,6 +429,14 @@ function inferClaim(descriptor: CollectionDescriptor, source?: Source) {
     }
   }
 
+  if (source === Source.ACHIEVEMENT) {
+    return "Challenge";
+  }
+
+  if (descriptor.claim) {
+    return descriptor.claim;
+  }
+
   switch (descriptor.category) {
     case Category.GENERAL:
       return "General";
@@ -472,7 +481,7 @@ export function assignIdToItem() {
 function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: Source) {
   return (ci: D4DadCollectionItem): D4DadCollectionItem => ({
     ...ci,
-    claim: descriptor.claim ?? inferClaim(descriptor, source),
+    claim: inferClaim(descriptor, source),
     premium: ci.premium ?? checkPremium(descriptor, source),
     outOfRotation: descriptor.outOfRotation,
   });
