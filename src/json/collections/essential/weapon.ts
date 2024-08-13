@@ -184,6 +184,7 @@ const SWORD: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HSword_Rare_Barb_Crafted_39.itm.json'],
     ['json\\base\\meta\\Item\\1HSword_Unique_Generic_100.itm.json'],
     ['json\\base\\meta\\Item\\1HSword_Unique_Barb_101.itm.json'],
+    ['json\\base\\meta\\Item\\S05_BSK_1HSword_uniq16_TransmogItem.itm.json'],
     ['json\\base\\meta\\Item\\1HSword_Unique_Generic_001.itm.json'],
   ],
 };
@@ -411,6 +412,7 @@ const DAGGER: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HDagger_Legendary_Generic_009.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Unique_Rogue_002.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Unique_Rogue_001.itm.json'],
+    ['json\\base\\meta\\Item\\S05_BSK_1HDagger_uniq17_TransmogItem.itm.json'],
   ],
   patches: [
     {
@@ -480,6 +482,7 @@ const STAFF: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\2HStaff_Unique_Sorc_100.itm.json'],
     ['json\\base\\meta\\Item\\2HStaff_Unique_Sorc_002.itm.json'],
     ['json\\base\\meta\\Item\\2HStaff_Unique_Druid_001.itm.json'],
+    ['json\\base\\meta\\Item\\S05_BSK_2HStaff_uniq11_TransmogItem.itm.json'],
     ['json\\base\\meta\\Item\\2HStaff_Unique_Generic_100.itm.json'],
   ],
   patches: [
