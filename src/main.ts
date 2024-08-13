@@ -314,6 +314,12 @@ const dumpItems = () => {
     fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
     console.log("Dump complete.");
 
+    // uploadMissingIcons().then(() => {
+    //     console.log("Uploaded missing icons.");
+    // }).catch(e => {
+    //     console.error("Error uploading icons", e);
+    // });
+
     // copyImages(d4dadJoin).then(() => {
     //     console.log("Copy Images complete.");
     // }).catch(e => {
@@ -362,6 +368,22 @@ const copyImages = async (d4dad: D4DadDb) => {
 
     if (failedImages.length) {
         console.log("Missing Icons...", failedImages);
+    }
+}
+
+const MISSING_ICONS = "C:\\Users\\Sam\\Documents\\d4log\\missing_icons";
+
+const uploadMissingIcons = async () => {
+    const bucket = getStorage(app).bucket();
+    for (const pathToIcon of fs.readdirSync(MISSING_ICONS)) {
+        const fileName = path.basename(pathToIcon);
+        const resp = await bucket.upload(path.join(MISSING_ICONS, pathToIcon), {
+            destination: "icons/" + fileName,
+            metadata: {
+                contentType: 'image/webp',
+                cacheControl: 'public, max-age=31536000',
+            }
+        });
     }
 }
 
