@@ -27,14 +27,22 @@ const SEASON05: CollectionDescriptor = {
       ],
       items: [
         ['json\\base\\meta\\Item\\2HMace_Legendary_Generic_003.itm.json'],
+        ['json\\base\\meta\\Item\\1HFocus_Rare_Sorc_Crafted_25.itm.json'],
       ],
-      patches: [{
-        items: [1989995],
-        claimDescription: 'Obtained from the final Season Journey cache.',
-      }, {
-        items: [592302],
-        claimDescription: 'Obtained in Season 5 by opening the Chapter 2 Season Journey cache using a Necromancer.',
-      }],
+      patches: [
+        {
+          items: [1989995],
+          claimDescription: 'Obtained during Season 5 from the final Season Journey cache.',
+        },
+        {
+          items: [592302],
+          claimDescription: 'Obtained during Season 5 from a Season Journey Chapter 2 cache, only if opened with a Necromancer.',
+        },
+        {
+          items: [459858],
+          claimDescription: 'Obtained during Season 5 by salvaging "Istel\'s Grimoire" from the seasonal quest line.',
+        },
+      ],
     },
   ],
 };

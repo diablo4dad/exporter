@@ -28,7 +28,6 @@ const TWO_HANDED_MACE: CollectionDescriptor = {
   items: [
     ['json\\base\\meta\\Item\\2HMace_Legendary_Generic_006.itm.json'],
     ['json\\base\\meta\\Item\\2HMace_Rare_Generic_002.itm.json'],
-    ['json\\base\\meta\\Item\\2HMace_Legendary_Generic_003.itm.json'],
     ['json\\base\\meta\\Item\\2HMace_Legendary_Generic_002.itm.json'],
     ['json\\base\\meta\\Item\\2HMace_Rare_Barb_Crafted_27.itm.json'],
     ['json\\base\\meta\\Item\\2HMace_Rare_Generic_006.itm.json'],
@@ -44,12 +43,6 @@ const TWO_HANDED_MACE: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\2HMace_Rare_Barb_Crafted_49.itm.json'],
     ['json\\base\\meta\\Item\\2HMace_Unique_Barb_001.itm.json'],
     ['json\\base\\meta\\Item\\2HMace_Unique_Barb_100.itm.json'],
-  ],
-  patches: [
-    {
-      items: [592302],
-      claimDescription: 'Obtained by opening the Chapter 2 Season Journey cache using a Necromancer in Season 5.',
-    },
   ],
 };
 
@@ -264,7 +257,6 @@ const MACE: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HMace_Rare_Generic_006.itm.json'],
     ['json\\base\\meta\\Item\\1HMace_Rare_Barb_Crafted_45.itm.json'],
     ['json\\base\\meta\\Item\\1HMace_Rare_Barb_Crafted_41.itm.json'],
-    ['json\\base\\meta\\Item\\1HMace_Rare_Barb_Crafted_37.itm.json'],
     ['json\\base\\meta\\Item\\1HMace_Rare_Barb_Crafted_33.itm.json'],
     ['json\\base\\meta\\Item\\1HMace_Rare_Barb_Crafted_27.itm.json'],
     ['json\\base\\meta\\Item\\1HMace_Unique_Druid_001.itm.json'],
@@ -277,10 +269,6 @@ const MACE: CollectionDescriptor = {
     {
       items: [784740],
       unobtainable: true,
-    },
-    {
-      items: [459998],
-      claimDescription: 'Acquired by receiving "Borza’s Bonecrusher" from the side quest "A Pound of Flesh" and then salvaging on a Barbarian or Druid.',
     },
     {
       items: [459997],
@@ -402,11 +390,9 @@ const DAGGER: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HDagger_Normal_Generic_000.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Legendary_Generic_007.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_49.itm.json'],
-    ['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_43.itm.json'],
-    ['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_39.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_35.itm.json'],
-    ['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_27.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Rare_Necro_Crafted_29.itm.json'],
+    ['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_43.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Rare_Generic_002.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Legendary_Generic_010.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Legendary_Generic_009.itm.json'],
@@ -416,20 +402,8 @@ const DAGGER: CollectionDescriptor = {
   ],
   patches: [
     {
-      items: [459945],
-      claimDescription: 'Acquired from a Season 2 cache.',
-    },
-    {
       items: [459944],
       unobtainable: true,
-    },
-    {
-      items: [459943],
-      claimDescription: 'Acquired by receiving “Mohlon’s Fang” dagger from Act 5 “Cold Blood” quest, then salvaged with a Rogue.',
-    },
-    {
-      items: [495769],
-      claimDescription: 'Acquired by finding a "Stiletto" on a Rogue, then salvaging it with a Necromancer.',
     },
     {
       items: [1267078],
@@ -558,13 +532,11 @@ const FOCUS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HFocus_Rare_Sorc_Crafted_45.itm.json'],
     ['json\\base\\meta\\Item\\1HFocus_Rare_Sorc_Crafted_41.itm.json'],
     ['json\\base\\meta\\Item\\1HFocus_Rare_Sorc_Crafted_29.itm.json'],
-    ['json\\base\\meta\\Item\\1HFocus_Rare_Sorc_Crafted_25.itm.json'],
     ['json\\base\\meta\\Item\\1HFocus_Rare_Sorc_Crafted_21.itm.json'],
     ['json\\base\\meta\\Item\\1HFocus_Rare_Necro_Crafted_47.itm.json'],
     ['json\\base\\meta\\Item\\1HFocus_Rare_Necro_Crafted_37.itm.json'],
     ['json\\base\\meta\\Item\\1HFocus_Rare_Necro_Crafted_33.itm.json'],
     ['json\\base\\meta\\Item\\1HFocus_Rare_Necro_Crafted_25.itm.json'],
-    ['json\\base\\meta\\Item\\1HFocus_Legendary_Generic_006.itm.json'],
   ],
   patches: [
     {
@@ -572,16 +544,8 @@ const FOCUS: CollectionDescriptor = {
       unobtainable: true,
     },
     {
-      items: [459858],
-      claimDescription: 'Salvage Istel\'s Grimoire from the Season 5 questline.',
-    },
-    {
       items: [459857],
       unobtainable: true,
-    },
-    {
-      items: [1266836],
-      claimDescription: 'Obtained from a Iron Wolves bounty cache in Season 4.',
     },
   ],
 };

@@ -26,6 +26,12 @@ const SEASON01: CollectionDescriptor = {
         'json\\base\\meta\\Achievement\\Feat_S01_AllJourneyTasks.ach.json',
         'json\\base\\meta\\Achievement\\Hidden_S01_QuestComplete_MountTrophy.ach.json',
       ],
+      patches: [
+        {
+          items: [921365],
+          claimDescription: "Complete the Season 1 Season Journey.",
+        },
+      ]
     },
   ],
 };

@@ -9,6 +9,8 @@ const QUEST: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\MountReins_OldNellHorse.itm.json'],
     ['json\\base\\meta\\Item\\MountReins_BloodyLiquidMount.itm.json'],
     ['json\\base\\meta\\Item\\1HShield_QST_Hawe_ZakFort_Carthas_01.itm.json'],
+    ['json\\base\\meta\\Item\\1HMace_Rare_Barb_Crafted_37.itm.json'],
+    ['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_27.itm.json'],
     ['json\\base\\meta\\Item\\cmp_base00_dog.itm.json'],
   ],
   patches: [
@@ -27,6 +29,14 @@ const QUEST: CollectionDescriptor = {
     {
       items: [1867815],
       claimDescription: 'Complete the "Faithful Companion" quest in Kyovashad.',
+    },
+    {
+      items: [459998],
+      claimDescription: 'Complete the "A Pound of Flesh" side quest in Dry Steppes.',
+    },
+    {
+      items: [459943],
+      claimDescription: 'Complete the Act 5 “Cold Blood” quest.',
     },
   ],
 };

@@ -78,7 +78,7 @@ import ESSENTIAL from './json/collections/essential/index.js';
 
 const serviceAccount = "d4log-bfc60-firebase-adminsdk-nnye7-46c1153ebe.json"
 
-admin.initializeApp({
+const app = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     storageBucket: 'd4log-bfc60.appspot.com',
 });
@@ -313,9 +313,12 @@ const dumpItems = () => {
     fs.writeFileSync("C:\\Users\\Sam\\Documents\\d4log\\public\\d4dad.json", JSON.stringify(d4dadJoin));
     fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
     console.log("Dump complete.");
-    //
-    // copyImages(d4dad);
-    // console.log("Copy Images complete.");
+
+    // copyImages(d4dadJoin).then(() => {
+    //     console.log("Copy Images complete.");
+    // }).catch(e => {
+    //     console.error("Error", e);
+    // })
 }
 
 const copyImages = async (d4dad: D4DadDb) => {
@@ -331,28 +334,31 @@ const copyImages = async (d4dad: D4DadDb) => {
 
     const failedImages: number[] = [];
 
-    const bucket = getStorage().bucket("assets");
+    const bucket = getStorage(app).bucket();
 
 
-    allImgHandles.forEach(iconId => {
+    let i = 0;
+    for (const iconId of allImgHandles) {
         const filename = path.join(PATH_TO_D4TEXTURES, iconId + '.webp');
         try {
             fs.accessSync(filename, fs.constants.R_OK);
         } catch (err) {
             console.warn('Unable to read file ' + filename + '...');
             failedImages.push(iconId);
-            return;
+            continue;
         }
-
+``
         fs.copyFileSync(filename, path.join(PATH_TO_PUBLIC_DIR, iconId + ".webp"));
-        //
-        // console.log("Uploading " + filename + "...");
-        // const resp = await bucket.upload(filename, {
-        //     metadata: {
-        //         cacheControl: 'public, max-age=31536000',
-        //     }
-        // });
-    });
+
+        console.log("[" + ++i + "] Uploading " + filename + "...");
+        const resp = await bucket.upload(filename, {
+            destination: "icons/" + iconId + ".webp",
+            metadata: {
+                contentType: 'image/webp',
+                cacheControl: 'public, max-age=31536000',
+            }
+        });
+    }
 
     if (failedImages.length) {
         console.log("Missing Icons...", failedImages);

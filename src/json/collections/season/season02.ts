@@ -26,6 +26,17 @@ const SEASON02: CollectionDescriptor = {
         'json\\base\\meta\\Achievement\\Feat_S02_QuestComplete.ach.json',
         'json\\base\\meta\\Achievement\\Hidden_S02_QuestComplete_MountTrophy.ach.json',
       ],
+      items: [['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_39.itm.json']],
+      patches: [
+        {
+          items: [459945],
+          claimDescription: 'Obtained during Season 2 from a Season Journey cache, only if opened as a Rogue.',
+        },
+        {
+          items: [843632],
+          claimDescription: "Complete the Season 2 Season Journey.",
+        }
+      ],
     },
     {
       name: 'Reputation Board #2',
