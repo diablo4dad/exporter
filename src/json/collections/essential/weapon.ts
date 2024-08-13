@@ -300,16 +300,11 @@ const SHIELD: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HShield_Rare_Barb_Crafted_47.itm.json'],
     ['json\\base\\meta\\Item\\1HShield_Rare_Necro_Crafted_39.itm.json'],
     ['json\\base\\meta\\Item\\1HShield_Rare_Necro_Crafted_21.itm.json'],
-    ['json\\base\\meta\\Item\\shield_stor013.itm.json'],
     ['json\\base\\meta\\Item\\1HShield_Rare_Generic_003.itm.json'],
     ['json\\base\\meta\\Item\\1HShield_Legendary_Generic_005.itm.json'],
     ['json\\base\\meta\\Item\\1HShield_Unique_Necro_100.itm.json'],
   ],
   patches: [
-    {
-      items: [1583356],
-      unobtainable: true,
-    },
     {
       items: [1307045],
       unobtainable: true,
