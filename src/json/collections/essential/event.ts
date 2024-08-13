@@ -1,22 +1,5 @@
 import { Category, CollectionDescriptor } from '../../index.js';
 
-const FIRST_YEAR_ANNIVERSARY: CollectionDescriptor = {
-  name: '1st Year Anniversary',
-  description: 'Free from Tejal\'s Shop from June 6th, 2024 until June 20th, 2024',
-  category: Category.SHOP_ITEMS,
-  claimDescription: '1st Year Anniversary gift free in the cash shop.',
-  outOfRotation: true,
-  items: [
-    ['json\\base\\meta\\Item\\mnt_stor045_horse.itm.json'],
-    ['json\\base\\meta\\Item\\mnt_amor197_horse_stor.itm.json'],
-    ['json\\base\\meta\\Item\\mnt_stor200_trophy.itm.json'],
-    ['json\\base\\meta\\Item\\mnt_stor201_trophy.itm.json'],
-    ['json\\base\\meta\\Item\\twoHandSorcStaff_stor027.itm.json'],
-    ['json\\base\\meta\\Item\\sword_stor066.itm.json'],
-    ['json\\base\\meta\\Item\\Axe_stor028.itm.json'],
-  ],
-};
-
 const LUNARY_AWAKENING: CollectionDescriptor = {
   name: 'Lunar Awakening',
   description: 'Chinese new year event from February 6th, 2024 until February 20th, 2024',
@@ -34,20 +17,6 @@ const LUNARY_AWAKENING: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\LTE_LNY_Rep_MarkingReward.itm.json'],
     ['json\\base\\meta\\Item\\mnt_lunar001_trophy_lte.itm.json'],
     ['json\\base\\meta\\Item\\mnt_lunar001_horse.itm.json'],
-  ],
-};
-
-const DARK_GIFTS: CollectionDescriptor = {
-  name: 'Dark Gifts',
-  description: 'Free from Tejal\'s Shop from December 20th, 2023 until December 26th 2023',
-  category: Category.SHOP_ITEMS,
-  claim: "Cash Shop",
-  claimDescription: 'Free in the cash shop for a limited time.',
-  outOfRotation: true,
-  items: [
-    ['json\\base\\meta\\Item\\mnt_amor102_horse_stor.itm.json'],
-    ['json\\base\\meta\\Item\\mnt_stor002_trophy.itm.json'],
-    ['json\\base\\meta\\Item\\mnt_stor001_trophy.itm.json'],
   ],
 };
 
@@ -105,9 +74,7 @@ const EVENT: CollectionDescriptor = {
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
   children: [
-    FIRST_YEAR_ANNIVERSARY,
     LUNARY_AWAKENING,
-    DARK_GIFTS,
     MIDWINTER_BLIGHT,
     DONATE_BLOOD_HARVEST,
   ],
