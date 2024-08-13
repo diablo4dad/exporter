@@ -20,7 +20,6 @@ const SEASON05: CollectionDescriptor = {
       category: Category.SEASON_JOURNEY,
       challengeFileFlatten: true,
       challengeFile: 'json\\base\\meta\\Challenge\\Season5.cha.json',
-      storeProducts: ['json\\base\\meta\\StoreProduct\\mnt_uniq29_trophy.prd.json'],
       achievements: [
         'json\\base\\meta\\Achievement\\Feat_S05_AllJourneyTasks.ach.json',
         'json\\base\\meta\\Achievement\\Feat_S05_QuestComplete.ach.json',
@@ -31,16 +30,24 @@ const SEASON05: CollectionDescriptor = {
       ],
       patches: [
         {
-          items: [1989995],
-          claimDescription: 'Obtained during Season 5 from the final Season Journey cache.',
-        },
-        {
           items: [592302],
           claimDescription: 'Obtained during Season 5 from a Season Journey Chapter 2 cache, only if opened with a Necromancer.',
         },
         {
           items: [459858],
           claimDescription: 'Obtained during Season 5 by salvaging "Istel\'s Grimoire" from the seasonal quest line.',
+        },
+      ],
+    },
+    {
+      name: 'Reputation Board #5',
+      category: Category.REPUTATION,
+      reputationFile: 'json\\base\\meta\\Reputation\\S05_Cultist_Helltide_Reputation.rep.json',
+      storeProducts: ['json\\base\\meta\\StoreProduct\\mnt_uniq29_trophy.prd.json'],
+      patches: [
+        {
+          items: [1989995],
+          claimDescription: 'Obtained during Season 5 from the "Greater Triune Arms Cache", the final reward on the Mother\s Gift Board.',
         },
       ],
     },
