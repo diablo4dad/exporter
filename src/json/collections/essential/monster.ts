@@ -85,7 +85,7 @@ const DUNGEON_BOSS: CollectionDescriptor = {
 
 const RARE_MONSTER: CollectionDescriptor = {
   name: 'Rare Monster',
-  description: 'Transmogs dropped by Treasure Goblins, The Butcher and Rare Spawns.',
+  description: 'Transmogs dropped by Treasure Goblins, The Butcher and Rare Spawns',
   category: Category.MONSTER_DROP,
   items: [
     ['json\\base\\meta\\Item\\MountReins_DecayHorse.itm.json'],
@@ -129,8 +129,8 @@ const RARE_MONSTER: CollectionDescriptor = {
 };
 
 const MONSTER: CollectionDescriptor = {
-  name: 'Monsters',
-  description: 'Transmogs dropped from monsters',
+  name: 'Monster',
+  description: 'Transmogs dropped by monsters',
   category: Category.GENERAL,
   children: [
     WORLD_BOSS,
