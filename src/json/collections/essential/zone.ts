@@ -199,8 +199,8 @@ const NIGHTMARE_DUNGEON: CollectionDescriptor = {
 };
 
 const ZONE: CollectionDescriptor = {
-  name: 'Zones',
-  description: 'Transmogs dropped within particular zones',
+  name: 'Zone',
+  description: 'Transmogs dropped within regions',
   category: Category.GENERAL,
   children: [
     FRACTURED_PEAKS,
