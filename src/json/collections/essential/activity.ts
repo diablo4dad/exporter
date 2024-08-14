@@ -43,7 +43,7 @@ const QUEST: CollectionDescriptor = {
 
 const GAUNTLET: CollectionDescriptor = {
   name: 'Gauntlet',
-  description: 'Transmogs earned for ranking in the gauntlet leaderboards.',
+  description: 'Transmogs earned by ranking in the gauntlet leaderboards',
   category: Category.ACTIVITY,
   claim: "Gauntlet",
   claimDescription: "Appear in the first 100 places in the solo or party leaderboard.",
@@ -92,14 +92,14 @@ const TREE_OF_WHISPERS: CollectionDescriptor = {
 };
 
 const ACTIVITY: CollectionDescriptor = {
-  name: 'Activities',
+  name: 'Activity',
   description: 'Transmogs acquired through various activities',
   category: Category.GENERAL,
   children: [
-    QUEST,
-    VENDOR,
     TREE_OF_WHISPERS,
     GAUNTLET,
+    QUEST,
+    VENDOR,
   ],
 };
 
