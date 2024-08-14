@@ -573,7 +573,7 @@ const TOTEM: CollectionDescriptor = {
 };
 
 const WEAPON: CollectionDescriptor = {
-  name: 'Weapons',
+  name: 'Weapon',
   description: 'Transmogs found throughout sanctuary',
   category: Category.GENERAL,
   children: [
