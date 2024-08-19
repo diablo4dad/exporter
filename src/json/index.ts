@@ -484,16 +484,10 @@ function checkPremium(descriptor: CollectionDescriptor, source?: Source) {
   }
 }
 
-export function assignIdToItem() {
-  return (collectionItem: D4DadCollectionItem) => ({
-    ...collectionItem,
-    id: generateId(),
-  });
-}
-
 function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: Source) {
   return (ci: D4DadCollectionItem): D4DadCollectionItem => ({
     ...ci,
+    id: ci.id === -1 ? generateId() : ci.id,
     claim: inferClaim(descriptor, source),
     premium: ci.premium ?? checkPremium(descriptor, source),
     outOfRotation: descriptor.outOfRotation,
@@ -503,7 +497,9 @@ function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: S
 function assignComputedValuesToCollection(descriptor: CollectionDescriptor, source?: Source) {
   return (collection: D4DadCollection): D4DadCollection => ({
     ...collection,
+    category: collection.category ?? descriptor.category,
     collectionItems: collection.collectionItems.map(assignComputedValuesToItem(descriptor, source)),
+    subcollections: collection.subcollections.map(assignComputedValuesToCollection(descriptor, source)),
   });
 }
 
@@ -598,6 +594,7 @@ export function patchCollection(patches: Partial<D4DadCollectionItem>[]) {
   return (collection: D4DadCollection): D4DadCollection => ({
     ...collection,
     collectionItems: collection.collectionItems.map(patchCollectionItem(patches)),
+    subcollections: collection.subcollections.map(patchCollection(patches)),
   });
 }
 
@@ -614,7 +611,7 @@ export function buildCollection(deps: D4Dependencies) {
       outOfRotation: descriptor.outOfRotation,
       category: descriptor.category,
       description: descriptor.description,
-      collectionItems: parseCollectionItems(deps)(descriptor).map(assignIdToItem()),
+      collectionItems: parseCollectionItems(deps)(descriptor),
       subcollections: challenges.concat(...(descriptor.children?.map(buildCollection(deps)) ?? [])),
     };
 
