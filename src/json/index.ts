@@ -401,6 +401,7 @@ export type CollectionDescriptor = {
   description?: string,
   season?: number,
   outOfRotation?: boolean,
+  premium?: boolean,
   claim?: string,
   claimDescription?: string,
   children?: CollectionDescriptor[],
@@ -551,7 +552,7 @@ function parseExtraItems(deps: D4Dependencies) {
       const items = g.map(i => getEntityFuzzy(i, deps));
 
       return {
-        id: -1,
+        id: generateId(),
         name: composeName(deps)(...items),
         claim: descriptor.claim ?? inferClaim(descriptor),
         claimDescription: descriptor.claimDescription,

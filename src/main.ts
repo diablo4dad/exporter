@@ -75,6 +75,9 @@ import { challengeToDad } from './json/factory/challenges.js';
 import { getStorage } from 'firebase-admin/storage';
 import SEASON from './json/collections/season/index.js';
 import ESSENTIAL from './json/collections/essential/index.js';
+import CHALLENGE from './json/collections/challenge/index.js';
+import { pipe } from './helper.js';
+import PROMOTIONAL from './json/collections/promotional/index.js';
 
 const serviceAccount = "d4log-bfc60-firebase-adminsdk-nnye7-46c1153ebe.json"
 
@@ -178,8 +181,8 @@ const inputs = [
     // "C:\\Users\\Sam\\Documents\\d4log\\public\\general.json",
     // "C:\\Users\\Sam\\Documents\\d4log\\public\\season.json",
     "C:\\Users\\Sam\\Documents\\d4log\\public\\shop.json",
-    "C:\\Users\\Sam\\Documents\\d4log\\public\\challenge.json",
-    "C:\\Users\\Sam\\Documents\\d4log\\public\\promotional.json",
+    // "C:\\Users\\Sam\\Documents\\d4log\\public\\challenge.json",
+    // "C:\\Users\\Sam\\Documents\\d4log\\public\\promotional.json",
 ];
 
 const parseLegacy = (p: string): D4DadCollection[] => {
@@ -270,10 +273,14 @@ const dumpItems = () => {
 
     const general = ESSENTIAL.map(buildCollection(deps));
     const seasons = SEASON.map(buildCollection(deps));
+    const challenge = pipe(CHALLENGE, buildCollection(deps)).subcollections;
+    const promotional = PROMOTIONAL.map(buildCollection(deps));
     const collections = inputs.map(parseLegacy)
       .flat()
       .concat(...general)
-      .concat(...seasons);
+      .concat(...seasons)
+      .concat(...challenge)
+      .concat(...promotional);
 
     const mapEntities = <T extends D4DadEntity>([entity]: [T, D4DadTranslation]): T => entity;
     const mapTranslations = <T extends D4DadEntity>([entity, i18n]: [T, D4DadTranslation]): [number, D4DadTranslation] => ([entity.id, i18n]);
@@ -375,7 +382,9 @@ const MISSING_ICONS = "C:\\Users\\Sam\\Documents\\d4log\\missing_icons";
 
 const uploadMissingIcons = async () => {
     const bucket = getStorage(app).bucket();
+    let i = 0;
     for (const pathToIcon of fs.readdirSync(MISSING_ICONS)) {
+        console.log("[" + ++i + "] Uploading " + pathToIcon + "...");
         const fileName = path.basename(pathToIcon);
         const resp = await bucket.upload(path.join(MISSING_ICONS, pathToIcon), {
             destination: "icons/" + fileName,
