@@ -1399,6 +1399,11 @@ const MOUNTS: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor019.prd.json'],
     },
     {
+      // encrypted
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor034.prd.json'],
+      // workaround
+      name: 'Vitreous Scourge',
+      description: 'Prestige Mount & Mount Armor',
       items: [
         ['json\\base\\meta\\Item\\mnt_stor034_horse.itm.json'],
         ['json\\base\\meta\\Item\\mnt_amor162_horse_stor.itm.json'],
@@ -1440,7 +1445,18 @@ const WEAPONS: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_nec_stor002.prd.json'],
     },
     {
+      // encrypted
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MagmaticArmaments.prd.json'],
+      // workaround
+      name: 'Magmatic Armaments',
+      description: '"Shards of Vulcan" Weapons',
+      items: [
+        ['json\\base\\meta\\Item\\offHandsDruid_stor021.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandCrossbow_stor023.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandPolearm_stor017.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandScythe_stor013.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandSorcStaff_stor021.itm.json'],
+      ],
     },
   ],
 };
@@ -1452,7 +1468,18 @@ const PORTALS: CollectionDescriptor = {
   premium: true,
   children: [
     {
+      // encrypted
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortals_stor001.prd.json'],
+      // workaround
+      name: 'Hell and Back',
+      description: 'Prestige Portals',
+      items: [
+        ['json\\base\\meta\\TownPortalCosmetic\\portal_sor001_stor.tpc.json'],
+        ['json\\base\\meta\\TownPortalCosmetic\\portal_rog001_stor.tpc.json'],
+        ['json\\base\\meta\\TownPortalCosmetic\\portal_nec001_stor.tpc.json'],
+        ['json\\base\\meta\\TownPortalCosmetic\\portal_dru001_stor.tpc.json'],
+        ['json\\base\\meta\\TownPortalCosmetic\\portal_bar001_stor.tpc.json'],
+      ],
     },
     {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_bar_stor001.prd.json'],

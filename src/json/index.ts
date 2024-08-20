@@ -176,6 +176,13 @@ export function unpackStoreProduct(deps: D4Dependencies): (product: D4StoreProdu
       }
     });
 
+    product.arAddOnBundles.forEach(ao => {
+      const addOn = resolveSno(ao, deps.storeProducts);
+      if (addOn) {
+        itemList = mergeItemLists(itemList, unpackStoreProduct(deps)(addOn));
+      }
+    });
+
     return itemList;
   }
 }
