@@ -107,14 +107,13 @@ function unpackRewardList(deps: D4Dependencies): (rewards: D4RewardDefinition) =
 export function achievementToCollectionItems(deps: D4Dependencies): (achievement: D4Achievement) => D4DadCollectionItem[] {
   return (achievement: D4Achievement): D4DadCollectionItem[] => {
     const achievementStrings = resolveStringsList(achievement, deps.strings);
-    const name = ""; // getTextFromStl(achievementStrings, "Name");
-    const description = getTextFromStl(achievementStrings, "DescShort", getTextFromStl(achievementStrings, "Desc"));
+    const description = getTextFromStl(achievementStrings, "DescShort", getTextFromStl(achievementStrings, "Desc", getTextFromStl(achievementStrings, "Name")));
 
     const toCollectionItem = (...items: (D4Type & D4Ref)[]): D4DadCollectionItem => ({
       id: -1,
       name: composeName(deps)(...items),
       claim: "Challenge",
-      claimDescription: [name, description].filter(s => !!s).join(": "),
+      claimDescription: description,
       premium: achievement.tBattlePassTrack === 1 ? true : undefined,
       items: items.map(i => i.__snoID__),
     });
