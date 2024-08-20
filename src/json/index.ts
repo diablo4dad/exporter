@@ -63,9 +63,11 @@ export type D4DadTranslation = {
 
 export type D4DadCollection = {
   id: number,
+  itemId?: number,
   name: string,
   season?: number,
   outOfRotation?: boolean,
+  premium?: boolean,
   description?: string,
   category?: string,
   bundleId?: number,
@@ -396,8 +398,8 @@ enum Source {
 }
 
 export type CollectionDescriptor = {
-  name: string,
-  category: Category,
+  name?: string,
+  category?: Category,
   description?: string,
   season?: number,
   outOfRotation?: boolean,
@@ -599,19 +601,48 @@ export function patchCollection(patches: Partial<D4DadCollectionItem>[]) {
   });
 }
 
+function deriveCollectionNameAndDesc(deps: D4Dependencies) {
+  return (descriptor: CollectionDescriptor): [string, string] => {
+    if (descriptor.storeProducts?.length) {
+      const storeProductId = descriptor.storeProducts[0];
+      const storeProductSno = deps.storeProducts.get(storeProductId);
+      if (!storeProductSno) {
+        throw new Error(storeProductId + " not found");
+      }
+
+      const storeStrings = resolveStringsList(storeProductSno, deps.strings);
+
+      const name = getTextFromStl(storeStrings, "Name");
+      const desc = getTextFromStl(storeStrings, "Series");
+
+      return [
+        name,
+        desc,
+      ];
+    }
+
+    return ["", ""];
+  }
+}
+
 export function buildCollection(deps: D4Dependencies) {
   return (descriptor: CollectionDescriptor): D4DadCollection => {
     const challenges = descriptor.challengeFileFlatten ? [] : parseChallengeFile(deps)(descriptor);
     const postHook = descriptor.postHook ?? identity;
     const patches = descriptor.patches ?? [];
 
+    const derivedNames = deriveCollectionNameAndDesc(deps)(descriptor);
+    const name = descriptor.name ?? derivedNames[0];
+    const description = descriptor.description ?? derivedNames[1];
+
     const collection: D4DadCollection = {
-      id: hashCode(descriptor.name + descriptor.description),
-      name: descriptor.name,
+      id: hashCode(name + description),
+      name: name,
+      description: description,
+      category: descriptor.category,
       season: descriptor.season,
       outOfRotation: descriptor.outOfRotation,
-      category: descriptor.category,
-      description: descriptor.description,
+      premium: descriptor.premium,
       collectionItems: parseCollectionItems(deps)(descriptor),
       subcollections: challenges.concat(...(descriptor.children?.map(buildCollection(deps)) ?? [])),
     };
