@@ -245,6 +245,43 @@ const BARBARIAN: CollectionDescriptor = {
         'json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor215.prd.json',
       ],
     },
+    {
+      // The Scrapper
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor175.prd.json',
+      ],
+    },
+    {
+      // Reign of the Wicked
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor213.prd.json',
+      ],
+    },
+    {
+      // The Ivory Titan
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor222.prd.json',
+      ],
+    },
+    {
+      // The Obsidian Beast
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor224.prd.json',
+      ],
+    },
+    {
+      // Hands of Judgement
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor214.prd.json',
+      ],
+    },
+    {
+      // The Gladiator-King
+      // # Warcraft Legends
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor221.prd.json',
+      ],
+    },
   ],
 };
 
@@ -451,6 +488,18 @@ const DRUID: CollectionDescriptor = {
     {
       storeProducts: [
         'json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor168.prd.json',
+      ],
+    },
+    {
+      // The Churning Earth
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor215.prd.json',
+      ],
+    },
+    {
+      // The First Satyr # Warcraft Legends
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor214.prd.json',
       ],
     },
   ],
@@ -699,6 +748,42 @@ const NECROMANCER: CollectionDescriptor = {
     {
       storeProducts: [
         'json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor207.prd.json',
+      ],
+    },
+    {
+      // Enraptured in Gold
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor211.prd.json',
+      ],
+    },
+    {
+      // The Blackthorn Arbiter
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor170.prd.json',
+      ],
+    },
+    {
+      // Sins of the Flesh
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor215.prd.json',
+      ],
+    },
+    {
+      // The Red Confessor
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor178.prd.json',
+      ],
+    },
+    {
+      // The Carrion Flower
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor218.prd.json',
+      ],
+    },
+    {
+      // The Blade # Warcraft Legends
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor216.prd.json',
       ],
     },
   ],
@@ -952,6 +1037,30 @@ const ROGUE: CollectionDescriptor = {
     {
       storeProducts: [
         'json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor213.prd.json',
+      ],
+    },
+    {
+      // Mark of the Bloodhawk
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor180.prd.json',
+      ],
+    },
+    {
+      // Skin of the Viper
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor212.prd.json',
+      ],
+    },
+    {
+      // The Scarlet Bard
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor168.prd.json',
+      ],
+    },
+    {
+      // The Banshee Queen
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor219.prd.json',
       ],
     },
   ],
@@ -1217,6 +1326,30 @@ const SORCERER: CollectionDescriptor = {
         'json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor212.prd.json',
       ],
     },
+    {
+      // Sins of Ambition
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor218.prd.json',
+      ],
+    },
+    {
+      // The Infernomancer
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor221.prd.json',
+      ],
+    },
+    {
+      // The Phantom Oracle [encrypted]
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor210.prd.json',
+      ],
+    },
+    {
+      // The Sun King
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor219.prd.json',
+      ],
+    },
   ],
 };
 
@@ -1402,8 +1535,6 @@ const MOUNTS: CollectionDescriptor = {
       // encrypted
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor034.prd.json'],
       // workaround
-      name: 'Vitreous Scourge',
-      description: 'Prestige Mount & Mount Armor',
       items: [
         ['json\\base\\meta\\Item\\mnt_stor034_horse.itm.json'],
         ['json\\base\\meta\\Item\\mnt_amor162_horse_stor.itm.json'],
@@ -1422,6 +1553,41 @@ const MOUNTS: CollectionDescriptor = {
     },
     {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor043.prd.json'],
+    },
+    {
+      // Charge of the Devastators
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor200.prd.json'],
+    },
+    {
+      // Fire and Ash
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor204.prd.json'],
+    },
+    {
+      // Tears of Nocturne
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor042.prd.json'],
+    },
+    {
+      // Shadow Kinesis [encrypted]
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor049.prd.json'],
+      items: [
+        ['json\\base\\meta\\Item\\mnt_stor049_horse.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_amor206_horse_stor.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_stor216_trophy.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_stor217_trophy.itm.json'],
+      ],
+    },
+    {
+      // Born of the Stars
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor052.prd.json'],
+    },
+    {
+      // Father's Blasphemy [encrypted]
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor202.prd.json'],
+      items: [
+        ['json\\base\\meta\\Item\\mnt_amor202_horse_stor.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_stor210_trophy.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_stor211_trophy.itm.json'],
+      ],
     },
   ],
 };
@@ -1448,8 +1614,7 @@ const WEAPONS: CollectionDescriptor = {
       // encrypted
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MagmaticArmaments.prd.json'],
       // workaround
-      name: 'Magmatic Armaments',
-      description: '"Shards of Vulcan" Weapons',
+      claim: 'Cash Shop',
       items: [
         ['json\\base\\meta\\Item\\offHandsDruid_stor021.itm.json'],
         ['json\\base\\meta\\Item\\twoHandCrossbow_stor023.itm.json'],
@@ -1470,9 +1635,9 @@ const PORTALS: CollectionDescriptor = {
     {
       // encrypted
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortals_stor001.prd.json'],
+      outOfRotation: true,
       // workaround
-      name: 'Hell and Back',
-      description: 'Prestige Portals',
+      claim: 'Cash Shop',
       items: [
         ['json\\base\\meta\\TownPortalCosmetic\\portal_sor001_stor.tpc.json'],
         ['json\\base\\meta\\TownPortalCosmetic\\portal_rog001_stor.tpc.json'],
@@ -1482,19 +1647,34 @@ const PORTALS: CollectionDescriptor = {
       ],
     },
     {
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_bar_stor001.prd.json'],
+      outOfRotation: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_bar_stor001.prd.json',
+      ],
     },
     {
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_dru_stor001.prd.json'],
+      outOfRotation: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_dru_stor001.prd.json',
+      ],
     },
     {
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_nec_stor001.prd.json'],
+      outOfRotation: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_nec_stor001.prd.json',
+      ],
     },
     {
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_rog_stor001.prd.json'],
+      outOfRotation: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_rog_stor001.prd.json',
+      ],
     },
     {
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_sor_stor001.prd.json'],
+      outOfRotation: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_sor_stor001.prd.json',
+      ],
     },
   ],
 };

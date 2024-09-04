@@ -43,7 +43,7 @@ const SEASON05: CollectionDescriptor = {
       name: 'Reputation Board #5',
       category: Category.REPUTATION,
       reputationFile: 'json\\base\\meta\\Reputation\\S05_Cultist_Helltide_Reputation.rep.json',
-      storeProducts: ['json\\base\\meta\\StoreProduct\\mnt_uniq29_trophy.prd.json'],
+      items: [['json\\base\\meta\\Item\\mnt_uniq29_trophy.itm.json']],
       patches: [
         {
           items: [1989995],

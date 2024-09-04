@@ -36,7 +36,6 @@ import {
     PATH_TO_D4STRING_LIST,
     PATH_TO_D4TEXTURES,
     PATH_TO_D4TOWN_PORTAL,
-    PATH_TO_PUBLIC_DIR,
 } from './config.js';
 import { getMediaIndex, uploadImage } from './strapi/media.js';
 import { itemFactory } from './strapi/factory/items.js';
@@ -355,6 +354,8 @@ const copyImages = async (d4dad: D4DadDb) => {
 
     let i = 0;
     for (const iconId of allImgHandles) {
+        ++i;
+
         const filename = path.join(PATH_TO_D4TEXTURES, iconId + '.webp');
         try {
             fs.accessSync(filename, fs.constants.R_OK);
@@ -363,10 +364,15 @@ const copyImages = async (d4dad: D4DadDb) => {
             failedImages.push(iconId);
             continue;
         }
-``
-        fs.copyFileSync(filename, path.join(PATH_TO_PUBLIC_DIR, iconId + ".webp"));
 
-        console.log("[" + ++i + "] Uploading " + filename + "...");
+        // fs.copyFileSync(filename, path.join(PATH_TO_PUBLIC_DIR, iconId + ".webp"));
+
+        if (await bucket.file(filename).exists()) {
+            console.log(`[${i}] Skipping ${filename}...`);
+            continue;
+        }
+
+        console.log(`[${i}] Uploading ${filename}...`);
         const resp = await bucket.upload(filename, {
             destination: "icons/" + iconId + ".webp",
             metadata: {

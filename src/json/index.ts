@@ -447,6 +447,10 @@ function inferClaim(descriptor: CollectionDescriptor, source?: Source) {
     return "Challenge";
   }
 
+  if (source === Source.STORE_PRODUCT) {
+    return "Cash Shop";
+  }
+
   if (descriptor.claim) {
     return descriptor.claim;
   }
@@ -497,7 +501,7 @@ function checkPremium(descriptor: CollectionDescriptor, source?: Source) {
 function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: Source) {
   return (ci: D4DadCollectionItem): D4DadCollectionItem => ({
     ...ci,
-    id: ci.id === -1 ? generateId() : ci.id,
+    id: generateId(),
     claim: inferClaim(descriptor, source),
     premium: ci.premium ?? checkPremium(descriptor, source),
     outOfRotation: descriptor.outOfRotation,
@@ -643,7 +647,7 @@ export function buildCollection(deps: D4Dependencies) {
     const description = descriptor.description ?? derivedNames[1];
 
     const collection: D4DadCollection = {
-      id: hashCode(name + description),
+      id: Math.abs(hashCode(name + description)),
       name: name,
       description: description,
       category: descriptor.category,

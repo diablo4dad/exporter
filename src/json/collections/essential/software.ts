@@ -34,6 +34,9 @@ const SOFTWARE: CollectionDescriptor = {
           'json\\base\\meta\\Item\\trophy_glo002_stor.itm.json',
         ],
         [
+          'json\\base\\meta\\Item\\trophy_glo003_stor.itm.json',
+        ],
+        [
           'json\\base\\meta\\TownPortalCosmetic\\portal_glo013_stor.tpc.json',
         ],
         [
@@ -167,6 +170,14 @@ const SOFTWARE: CollectionDescriptor = {
           ],
           claim: 'Promotional',
           claimDescription: 'Included with the Vessel of Hatred Ultimate edition.',
+          premium: true,
+        },
+        {
+          items: [
+            1971329,
+          ],
+          claim: 'Promotional',
+          claimDescription: 'Included with the Vessel of Hatred Deluxe and Ultimate editions.',
           premium: true,
         },
         {
