@@ -6,6 +6,7 @@ import SEASON02 from './season02.js';
 import SEASON01 from './season01.js';
 
 const SEASON: ReadonlyArray<CollectionDescriptor> = [
+  // SEASON06,
   SEASON05,
   SEASON04,
   SEASON03,
