@@ -179,9 +179,10 @@ const MOUNTS: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor019.prd.json'],
     },
     {
-      // encrypted
+      // Crystal and Bone [encrypted]
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor034.prd.json'],
-      // workaround
+      // workaround:
+      claim: 'Cash Shop',
       items: [
         ['json\\base\\meta\\Item\\mnt_stor034_horse.itm.json'],
         ['json\\base\\meta\\Item\\mnt_amor162_horse_stor.itm.json'],
@@ -214,14 +215,8 @@ const MOUNTS: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor042.prd.json'],
     },
     {
-      // Shadow Kinesis [encrypted]
+      // Shadow Kinesis
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor049.prd.json'],
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor049_horse.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor206_horse_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor216_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor217_trophy.itm.json'],
-      ],
     },
     {
       // Born of the Stars
@@ -230,6 +225,8 @@ const MOUNTS: CollectionDescriptor = {
     {
       // Father's Blasphemy [encrypted]
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor202.prd.json'],
+      // workaround:
+      claim: 'Cash Shop',
       items: [
         ['json\\base\\meta\\Item\\mnt_amor202_horse_stor.itm.json'],
         ['json\\base\\meta\\Item\\mnt_stor210_trophy.itm.json'],
