@@ -443,6 +443,10 @@ function inferClaim(descriptor: CollectionDescriptor, source?: Source) {
     }
   }
 
+  if (descriptor.category === Category.PROMOTIONAL) {
+    return "Promotional";
+  }
+
   if (source === Source.ACHIEVEMENT) {
     return "Challenge";
   }
@@ -503,6 +507,7 @@ function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: S
     ...ci,
     id: generateId(),
     claim: inferClaim(descriptor, source),
+    claimDescription: descriptor.claimDescription,
     premium: ci.premium ?? checkPremium(descriptor, source),
     outOfRotation: descriptor.outOfRotation,
   });
@@ -625,6 +630,11 @@ function deriveCollectionNameAndDesc(deps: D4Dependencies) {
 
       const name = getTextFromStl(storeStrings, "Name");
       const desc = getTextFromStl(storeStrings, "Series");
+
+      // do not infer description from shop bundle for promotions
+      if (descriptor.category === Category.PROMOTIONAL) {
+        return [name, ""];
+      }
 
       return [
         name,

@@ -218,6 +218,15 @@ const FRANCHISE: CollectionDescriptor = {
   category: Category.PROMOTIONAL,
   children: [
     {
+      name: "CU Demon's Blood & Angel's Tears",
+      category: Category.PROMOTIONAL,
+      claimDescription: 'Redeemable from wine bottles purchased in Korea.',
+      premium: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_KR_RedWine_stor001.prd.json',
+      ]
+    },
+    {
       name: 'Coco Fresh Tea',
       category: Category.PROMOTIONAL,
       claimDescription: 'Redeemable from the Coco Fresh Tea promotion.',
