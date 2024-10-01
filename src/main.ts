@@ -1,23 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import {
-  D4Achievement,
-  D4Actor,
-  D4ChallengeDefinition,
-  D4Dependencies,
-  D4Emblem,
-  D4Emote,
-  D4Item,
-  D4ItemType,
-  D4MarkingShape,
-  D4PlayerTitle,
-  D4Power,
-  D4Reputation,
-  D4StoreProduct,
-  D4TownPortalCosmetic,
-  D4Translation,
-} from './d4data/struct.js';
-import { parseFiles } from './loader.js';
 import { BUILD_DIR, ITEM_TYPES_TO_SYNC } from './config.js';
 import { itemToDad } from './factory/items.js';
 import { itemTypeToDad } from './factory/itemTypes.js';
@@ -37,98 +19,40 @@ import ESSENTIAL from './json/collections/essential/index.js';
 import CHALLENGE from './json/collections/challenge/index.js';
 import PROMOTIONAL from './json/collections/promotional/index.js';
 import STORE from './json/collections/shop/index.js';
-import {
-  PATH_TO_D4ACHIEVEMENT,
-  PATH_TO_D4ACTOR,
-  PATH_TO_D4CHALLENGE,
-  PATH_TO_D4EMBLEMS,
-  PATH_TO_D4EMOTE,
-  PATH_TO_D4ITEM,
-  PATH_TO_D4ITEM_TYPE,
-  PATH_TO_D4MARKING_SHAPE,
-  PATH_TO_D4PLAYER_TITLE,
-  PATH_TO_D4POWER,
-  PATH_TO_D4REPUTATION,
-  PATH_TO_D4STORE_PRODUCT,
-  PATH_TO_D4STRING_LIST,
-  PATH_TO_D4TOWN_PORTAL,
-} from './d4data/constant.js';
+import { readD4Data } from './d4reader/client.js';
 
-const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
-const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
-const actors = parseFiles<D4Actor>(PATH_TO_D4ACTOR);
-const strings = parseFiles<D4Translation>(PATH_TO_D4STRING_LIST);
-const emotes = parseFiles<D4Emote>(PATH_TO_D4EMOTE);
-const portals = parseFiles<D4TownPortalCosmetic>(PATH_TO_D4TOWN_PORTAL);
-const markings = parseFiles<D4MarkingShape>(PATH_TO_D4MARKING_SHAPE);
-const powers = parseFiles<D4Power>(PATH_TO_D4POWER);
-const storeProducts = parseFiles<D4StoreProduct>(PATH_TO_D4STORE_PRODUCT);
-const emblems = parseFiles<D4Emblem>(PATH_TO_D4EMBLEMS);
-const playerTitles = parseFiles<D4PlayerTitle>(PATH_TO_D4PLAYER_TITLE);
-const headstones = new Map(Array.of(...actors.entries()).filter(([, a]) => a.__fileName__.includes('headstone')));
-const challenges = parseFiles<D4ChallengeDefinition>(PATH_TO_D4CHALLENGE);
-const achievements = parseFiles<D4Achievement>(PATH_TO_D4ACHIEVEMENT);
-const reputation = parseFiles<D4Reputation>(PATH_TO_D4REPUTATION);
-
-const deps: D4Dependencies = {
-  actors,
-  emblems,
-  emotes,
-  itemTypes,
-  items,
-  markings,
-  portals,
-  powers,
-  storeProducts,
-  strings,
-  achievements,
-  playerTitles,
-  challenges,
-  reputation,
-};
-
-console.log('Read ' + items.size + ' items...');
-console.log('Read ' + itemTypes.size + ' item types...');
-console.log('Read ' + actors.size + ' actors...');
-console.log('Read ' + strings.size + ' translations...');
-console.log('Read ' + emotes.size + ' emotes...');
-console.log('Read ' + portals.size + ' portals...');
-console.log('Read ' + markings.size + ' markings...');
-console.log('Read ' + powers.size + ' powers...');
-console.log('Read ' + storeProducts.size + ' store products...');
-console.log('Read ' + playerTitles.size + ' player titles...');
-console.log('Read ' + challenges.size + ' challenges...');
+const deps = readD4Data();
 
 const dumpItems = () => {
-  const itemTypesOut = Array.from(itemTypes.values())
+  const itemTypesOut = Array.from(deps.itemTypes.values())
     .map(itemTypeToDad(deps))
     .concat(ITEM_TYPE_APPENDAGE)
     .filter(([, t]) => ITEM_TYPES_TO_SYNC.includes(t.name ?? ''));
   const itemTypeIds = itemTypesOut.map(([i]) => i.id);
 
-  const itemsOut = Array.from(items.values())
+  const itemsOut = Array.from(deps.items.values())
     .map(itemToDad(deps))
     .filter(([i]) => itemTypeIds.includes(i.itemType));
 
-  const emblemsOut = Array.from(emblems.values()).map(emblemToDad(deps));
+  const emblemsOut = Array.from(deps.emblems.values()).map(emblemToDad(deps));
 
-  const emotesOut = Array.from(emotes.values()).map(emoteToDad(deps));
+  const emotesOut = Array.from(deps.emotes.values()).map(emoteToDad(deps));
 
-  const headstonesOut = Array.from(headstones.values()).map(headstoneToDad(deps));
+  const headstonesOut = Array.from(deps.headstones.values()).map(headstoneToDad(deps));
 
-  const markingsOut = Array.from(markings.values()).map(markingShapeToDad(deps));
+  const markingsOut = Array.from(deps.markings.values()).map(markingShapeToDad(deps));
 
-  const portalsOut = Array.from(portals.values()).map(portalToDad(deps));
+  const portalsOut = Array.from(deps.portals.values()).map(portalToDad(deps));
 
-  const titlesOut = Array.from(playerTitles.values()).map(playerTitleToDad(deps));
+  const titlesOut = Array.from(deps.playerTitles.values()).map(playerTitleToDad(deps));
 
-  const productsOut = Array.from(storeProducts.values())
+  const productsOut = Array.from(deps.storeProducts.values())
     .map(productToDad(deps))
     .filter(([sp]) => sp.item || sp.bundledProducts);
 
-  const achievementsOut = Array.from(achievements.values()).map(achievementToDad(deps));
+  const achievementsOut = Array.from(deps.achievements.values()).map(achievementToDad(deps));
 
-  const challengeOut = Array.from(challenges.values()).map(challengeToDad(deps));
+  const challengeOut = Array.from(deps.challenges.values()).map(challengeToDad(deps));
 
   const general = ESSENTIAL.map(buildCollection(deps));
   const seasons = SEASON.map(buildCollection(deps));

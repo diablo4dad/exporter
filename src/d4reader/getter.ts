@@ -1,4 +1,5 @@
-import { D4Dependencies, D4Ref, D4Type } from './struct.js';
+import { D4Ref, D4Type } from '../d4data/struct.js';
+import { D4Dependencies } from './struct.js';
 
 export function getEntity<T>(key: string, lookup: Map<string, T>): T {
   const e = lookup.get(key);

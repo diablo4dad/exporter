@@ -1,6 +1,5 @@
 import {
   D4Actor,
-  D4Dependencies,
   D4Emblem,
   D4Emote,
   D4Item,
@@ -26,8 +25,9 @@ import {
   isTownPortalCosmetic,
 } from '../d4data/predicate.js';
 import { resolveSno, resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
-import { getTextFromStl } from '../d4data/strings.js';
-import { getEntity, getEntityFuzzy } from '../d4data/getter.js';
+import { getTextFromStl } from '../d4reader/strings.js';
+import { getEntity, getEntityFuzzy } from '../d4reader/getter.js';
+import { D4Dependencies } from '../d4reader/struct.js';
 
 export const BODY_MARKING = 7200;
 

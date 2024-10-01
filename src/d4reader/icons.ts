@@ -1,4 +1,4 @@
-import { D4Actor, D4Item } from './struct.js';
+import { D4Actor, D4Item } from '../d4data/struct.js';
 
 export function chooseBestIconHandle(item: D4Item, actor: D4Actor | undefined): number | null {
   // this seems to be the best icon when available

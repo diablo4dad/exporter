@@ -1,4 +1,4 @@
-import { D4Translation } from './struct.js';
+import { D4Translation } from '../d4data/struct.js';
 
 export function getTextFromStl(stl: D4Translation, label: string, fallback = ''): string {
   return (

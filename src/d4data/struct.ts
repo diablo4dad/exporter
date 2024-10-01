@@ -180,20 +180,3 @@ export type {
   D4Translation,
   D4Type,
 };
-
-export type D4Dependencies = {
-  actors: Map<string, D4Actor>;
-  strings: Map<string, D4Translation>;
-  items: Map<string, D4Item>;
-  itemTypes: Map<string, D4ItemType>;
-  powers: Map<string, D4Power>;
-  storeProducts: Map<string, D4StoreProduct>;
-  emotes: Map<string, D4Emote>;
-  markings: Map<string, D4MarkingShape>;
-  portals: Map<string, D4TownPortalCosmetic>;
-  emblems: Map<string, D4Emblem>;
-  achievements: Map<string, D4Achievement>;
-  playerTitles: Map<string, D4PlayerTitle>;
-  challenges: Map<string, D4ChallengeDefinition>;
-  reputation: Map<string, D4Reputation>;
-};
