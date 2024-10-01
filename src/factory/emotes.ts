@@ -1,15 +1,9 @@
-import {
-  CLASS_TYPES,
-  D4Dependencies,
-  D4Emote,
-  D4StoreProduct,
-  getTextFromStl,
-  resolveSno,
-  resolveStoreProduct,
-  resolveStringsList,
-  stu,
-} from '../d4.js';
+import { D4Dependencies, D4Emote, D4StoreProduct } from '../d4data/struct.js';
 import { D4DadItem, D4DadTranslation, EMOTE } from '../json/index.js';
+import { CLASS_TYPES } from '../d4data/constant.js';
+import { resolveSno, resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
+import { getTextFromStl } from '../d4data/strings.js';
+import { stu } from '../helper.js';
 
 function chooseIcon(emote: D4Emote, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

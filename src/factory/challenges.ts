@@ -1,15 +1,9 @@
-import {
-  D4Achievement,
-  D4ChallengeCategory,
-  D4ChallengeDefinition,
-  D4Dependencies,
-  getTextFromStl,
-  resolveSno,
-  resolveStringsList,
-  stu,
-} from '../d4.js';
+import { D4Achievement, D4ChallengeCategory, D4ChallengeDefinition, D4Dependencies } from '../d4data/struct.js';
 import { D4DadChallenge, D4DadChallengeCategory, D4DadCollection, D4DadTranslation } from '../json/index.js';
 import { achievementToCollectionItems } from './achievements.js';
+import { resolveSno, resolveStringsList } from '../d4data/resolver.js';
+import { getTextFromStl } from '../d4data/strings.js';
+import { stu } from '../helper.js';
 
 export function challengeToCollection(deps: D4Dependencies) {
   return (definition: D4ChallengeDefinition) => {

@@ -10,27 +10,27 @@ import {
   D4StoreProduct,
   D4TownPortalCosmetic,
   D4Type,
-  getEntity,
-  getEntityFuzzy,
-  getTextFromStl,
-  isActor,
-  isEmblem,
-  isEmote,
-  isItem,
-  isMarking,
-  isPortal,
-  isStoreProduct,
-  isTitle,
-  resolveSno,
-  resolveStoreProduct,
-  resolveStringsList,
-} from '../d4.js';
+} from '../d4data/struct.js';
 import { extractItemFromProduct, storeToCollectionItems } from '../factory/bundles.js';
 import { achievementToCollectionItems } from '../factory/achievements.js';
 import { hashCode, identity, pipe } from '../helper.js';
 import { challengeToCollection } from '../factory/challenges.js';
+import {
+  isActor,
+  isEmblem,
+  isEmote,
+  isItem,
+  isMarkingShape,
+  isPlayerTitle,
+  isStoreProduct,
+  isTownPortalCosmetic,
+} from '../d4data/predicate.js';
+import { resolveSno, resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
+import { getTextFromStl } from '../d4data/strings.js';
+import { getEntity, getEntityFuzzy } from '../d4data/getter.js';
 
 export const BODY_MARKING = 7200;
+
 export enum Category {
   GENERAL = 'General',
   SHOP_ITEMS = 'Shop',
@@ -49,6 +49,7 @@ export enum Category {
   ARMOR = 'Armor',
   WEAPON = 'Weapon',
 }
+
 export type CollectionDescriptor = {
   name?: string;
   category?: Category;
@@ -549,7 +550,7 @@ export function pushToItemList(itemList: ItemList, item?: D4Type): ItemList {
     return itemList;
   }
 
-  if (isTitle(item)) {
+  if (isPlayerTitle(item)) {
     return {
       ...itemList,
       titles: [...itemList.titles, item],
@@ -592,14 +593,14 @@ export function pushToItemList(itemList: ItemList, item?: D4Type): ItemList {
     };
   }
 
-  if (isPortal(item)) {
+  if (isTownPortalCosmetic(item)) {
     return {
       ...itemList,
       portals: [...itemList.portals, item],
     };
   }
 
-  if (isMarking(item)) {
+  if (isMarkingShape(item)) {
     return {
       ...itemList,
       markings: [...itemList.markings, item],

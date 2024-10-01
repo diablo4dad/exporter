@@ -16,7 +16,7 @@ import {
   D4StoreProduct,
   D4TownPortalCosmetic,
   D4Translation,
-} from './d4.js';
+} from './d4data/struct.js';
 import { parseFiles } from './loader.js';
 import { BUILD_DIR, ITEM_TYPES_TO_SYNC } from './config.js';
 import { itemToDad } from './factory/items.js';
@@ -52,7 +52,7 @@ import {
   PATH_TO_D4STORE_PRODUCT,
   PATH_TO_D4STRING_LIST,
   PATH_TO_D4TOWN_PORTAL,
-} from './constants.js';
+} from './d4data/constant.js';
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);

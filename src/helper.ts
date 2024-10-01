@@ -36,3 +36,7 @@ function hashCode(s: string) {
 }
 
 export { hashCode, identity, partition, pipe };
+
+export function stu(string: string): string | undefined {
+  return string === '' ? undefined : string;
+}

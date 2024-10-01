@@ -1,14 +1,9 @@
-import {
-  chooseBestIconHandle,
-  D4Dependencies,
-  D4Item,
-  getTextFromStl,
-  resolveSno,
-  resolveStoreProduct,
-  resolveStringsList,
-  stu,
-} from '../d4.js';
+import { D4Dependencies, D4Item } from '../d4data/struct.js';
 import { D4DadGenderSpecificImages, D4DadItem, D4DadTranslation } from '../json/index.js';
+import { resolveSno, resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
+import { chooseBestIconHandle } from '../d4data/icons.js';
+import { getTextFromStl } from '../d4data/strings.js';
+import { stu } from '../helper.js';
 
 export function itemToDad(deps: D4Dependencies): (_: D4Item) => [D4DadItem, D4DadTranslation] {
   return (item: D4Item): [D4DadItem, D4DadTranslation] => {

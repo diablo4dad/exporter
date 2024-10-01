@@ -1,13 +1,8 @@
-import {
-  D4Dependencies,
-  D4Emblem,
-  D4StoreProduct,
-  getTextFromStl,
-  resolveStoreProduct,
-  resolveStringsList,
-  stu,
-} from '../d4.js';
+import { D4Dependencies, D4Emblem, D4StoreProduct } from '../d4data/struct.js';
 import { D4DadItem, D4DadTranslation, EMBLEM } from '../json/index.js';
+import { resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
+import { getTextFromStl } from '../d4data/strings.js';
+import { stu } from '../helper.js';
 
 function chooseIcon(emblem: D4Emblem, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

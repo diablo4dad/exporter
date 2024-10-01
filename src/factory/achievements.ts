@@ -1,13 +1,4 @@
-import {
-  D4Achievement,
-  D4Dependencies,
-  D4Ref,
-  D4RewardDefinition,
-  D4Type,
-  getTextFromStl,
-  resolveSno,
-  resolveStringsList,
-} from '../d4.js';
+import { D4Achievement, D4Dependencies, D4Ref, D4RewardDefinition, D4Type } from '../d4data/struct.js';
 import {
   aggregateItemList,
   composeName,
@@ -21,6 +12,8 @@ import {
   mergeItemLists,
   pushToItemList,
 } from '../json/index.js';
+import { resolveSno, resolveStringsList } from '../d4data/resolver.js';
+import { getTextFromStl } from '../d4data/strings.js';
 
 export function achievementToCollectionItems(
   deps: D4Dependencies,
