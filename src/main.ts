@@ -20,6 +20,7 @@ import {
 } from './d4.js';
 import { parseFiles } from './loader.js';
 import {
+    BUILD_DIR,
     ITEM_TYPES_TO_SYNC,
     PATH_TO_D4ACHIEVEMENT,
     PATH_TO_D4ACTOR,
@@ -37,37 +38,15 @@ import {
     PATH_TO_D4TEXTURES,
     PATH_TO_D4TOWN_PORTAL,
 } from './config.js';
-import { getMediaIndex, uploadImage } from './strapi/media.js';
-import { itemFactory } from './strapi/factory/items.js';
-import { emoteFactory } from './strapi/factory/emotes.js';
-import { headstoneFactory } from './strapi/factory/headstones.js';
-import { portalFactory } from './strapi/factory/portals.js';
-import { emblemFactory } from './strapi/factory/emblems.js';
-import { markingShapeFactory } from './strapi/factory/marking.js';
-import { syncItems } from './strapi/items.js';
-import { playerTitleFactory } from './strapi/factory/title.js';
-import { bundleFactory } from './strapi/factory/bundles.js';
-import { syncBundles, syncChallenges } from './strapi/collections.js';
-import { syncBundleItems, syncChallengeAchievements } from './strapi/collectionitems.js';
-import { challengeFactory } from './strapi/factory/challenges.js';
 import { itemToDad } from './json/factory/items.js';
 import { itemTypeToDad } from './json/factory/itemTypes.js';
-import {
-    buildCollection,
-    D4DadCollection,
-    D4DadCollectionItem,
-    D4DadDb,
-    D4DadEntity,
-    D4DadTranslation,
-    ITEM_TYPE_APPENDAGE,
-} from './json/index.js';
+import { buildCollection, D4DadDb, D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE } from './json/index.js';
 import { emblemToDad } from './json/factory/emblems.js';
 import { emoteToDad } from './json/factory/emotes.js';
 import { headstoneToDad } from './json/factory/headstones.js';
 import { markingShapeToDad } from './json/factory/marking.js';
 import { playerTitleToDad } from './json/factory/title.js';
 import { portalToDad } from './json/factory/portals.js';
-import { CollectionItemResp, CollectionResp, ItemResp, StrapiEntry, StrapiQueryResult } from './strapi/common.js';
 import { productToDad } from './json/factory/bundles.js';
 import { achievementToDad } from './json/factory/achievements.js';
 import { challengeToDad } from './json/factory/challenges.js';
@@ -79,7 +58,7 @@ import CHALLENGE from './json/collections/challenge/index.js';
 import PROMOTIONAL from './json/collections/promotional/index.js';
 import STORE from './json/collections/shop/index.js';
 
-const serviceAccount = "d4log-bfc60-firebase-adminsdk-nnye7-46c1153ebe.json"
+const serviceAccount = process.env.SERVICE_ACCOUNT;
 
 const app = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -130,96 +109,6 @@ console.log("Read " + powers.size + " powers...");
 console.log("Read " + storeProducts.size + " store products...");
 console.log("Read " + playerTitles.size + " player titles...");
 console.log("Read " + challenges.size + " challenges...");
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const syncStrapi = async () => {
-    const media = await getMediaIndex();
-    const itemsToKeep: number[] = [];
-
-    // console.log("Publishing all items...");
-    // await publishAllItems();
-
-    console.log("Syncing items...")
-    itemsToKeep.push(...await syncItems(items, itemFactory(deps, media), uploadImage(media)));
-
-    console.log("Syncing emotes...")
-    itemsToKeep.push(...await syncItems(emotes, emoteFactory(deps, media), uploadImage(media)));
-
-    console.log("Syncing headstones...");
-    itemsToKeep.push(...await syncItems(headstones, headstoneFactory(deps, media), uploadImage(media)));
-
-    console.log("Syncing town portals...");
-    itemsToKeep.push(...await syncItems(portals, portalFactory(deps, media), uploadImage(media)));
-
-    console.log("Syncing emblems...");
-    itemsToKeep.push(...await syncItems(emblems, emblemFactory(deps, media), uploadImage(media)));
-
-    console.log("Syncing body markings...");
-    itemsToKeep.push(...await syncItems(markings, markingShapeFactory(deps, media), uploadImage(media)));
-
-    console.log("Syncing player titles...");
-    itemsToKeep.push(...await syncItems(playerTitles, playerTitleFactory(deps, media), uploadImage(media)));
-
-    console.log("Syncing bundles...");
-    const bundlesToSync = await syncBundles(storeProducts, bundleFactory(deps));
-
-    console.log("Syncing bundle items...");
-    await syncBundleItems(storeProducts, bundlesToSync, deps);
-
-    console.log("Syncing challenges...");
-    const challengesToSync = await syncChallenges(challenges, challengeFactory(deps));
-
-    console.log("Syncing achievements...");
-    await syncChallengeAchievements(challenges, challengesToSync, deps);
-
-    // console.log("Cleaning up DB...");
-    // await cleanUpItems(itemsToKeep);
-}
-
-
-const inputs = [
-    // "C:\\Users\\Sam\\Documents\\d4log\\public\\general.json",
-    // "C:\\Users\\Sam\\Documents\\d4log\\public\\season.json",
-    // "C:\\Users\\Sam\\Documents\\d4log\\public\\shop.json",
-    // "C:\\Users\\Sam\\Documents\\d4log\\public\\challenge.json",
-    // "C:\\Users\\Sam\\Documents\\d4log\\public\\promotional.json",
-];
-
-const parseLegacy = (p: string): D4DadCollection[] => {
-    const buffer = fs.readFileSync(p);
-    const data: StrapiQueryResult<CollectionResp> = JSON.parse(buffer.toString());
-
-    const parseCollection = (se: StrapiEntry<CollectionResp>): D4DadCollection => {
-        return {
-            id: se.id,
-            name: se.attributes.name,
-            description: se.attributes.description ?? undefined,
-            category: se.attributes.category ?? undefined,
-            itemId: se.attributes.itemId ?? undefined,
-            subcollections: se.attributes.subcollections?.data.map(parseCollection),
-            collectionItems: se.attributes.collectionItems.data.map((ci: StrapiEntry<CollectionItemResp>): D4DadCollectionItem => {
-                return {
-                    id: ci.id,
-                    name: ci.attributes.name,
-                    claim: ci.attributes.claim ?? undefined,
-                    claimDescription: ci.attributes.claimDescription ?? undefined,
-                    claimZone: ci.attributes.claimZone ?? undefined,
-                    claimMonster: ci.attributes.claimMonster ?? undefined,
-                    outOfRotation: ci.attributes.outOfRotation ?? undefined,
-                    premium: ci.attributes.premium ?? undefined,
-                    promotional: ci.attributes.promotional ?? undefined,
-                    unobtainable: ci.attributes.unobtainable ?? undefined,
-                    season: ci.attributes.season ?? undefined,
-                    items: ci.attributes.items.data.map(((d: StrapiEntry<ItemResp>) => {
-                        return Number(d.attributes.itemId);
-                    })),
-                };
-            }),
-        }
-    }
-
-    return data.data.map(parseCollection);
-}
 
 const dumpItems = () => {
     const itemTypesOut = Array
@@ -319,8 +208,13 @@ const dumpItems = () => {
         ],
     };
 
-    fs.writeFileSync("C:\\Users\\Sam\\Documents\\d4log\\public\\d4dad.json", JSON.stringify(d4dadJoin));
-    fs.writeFileSync("d4dad_enUS.json", JSON.stringify(d4dadI18n));
+    if (!fs.existsSync(BUILD_DIR)) {
+        fs.mkdirSync(BUILD_DIR);
+    }
+
+    fs.writeFileSync(path.join(BUILD_DIR, "d4dad.json"), JSON.stringify(d4dadJoin));
+    fs.writeFileSync(path.join(BUILD_DIR, "d4dad_enUS.json"), JSON.stringify(d4dadI18n));
+
     console.log("Dump complete.");
 
     // uploadMissingIcons().then(() => {
@@ -406,8 +300,3 @@ const uploadMissingIcons = async () => {
 }
 
 dumpItems();
-
-
-// syncStrapi().then(() => {
-//     console.log("Process complete.");
-// });

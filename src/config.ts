@@ -1,7 +1,8 @@
 // master directories
 const PATH_TO_D4DATA = 'C:\\Users\\Sam\\Documents\\d4data'
 const PATH_TO_D4TEXTURES = 'C:\\Users\\Sam\\Documents\\d4-texture-extractor\\webp'
-const PATH_TO_PUBLIC_DIR = "C:\\Users\\Sam\\Documents\\d4log\\public\\icons"
+
+const BUILD_DIR = "build";
 
 // key data files
 const PATH_TO_D4ITEM = "json\\base\\meta\\Item";
@@ -19,16 +20,9 @@ const PATH_TO_D4CHALLENGE = "json\\base\\meta\\Challenge";
 const PATH_TO_D4ACHIEVEMENT = "json\\base\\meta\\Achievement";
 const PATH_TO_D4REPUTATION = "json\\base\\meta\\Reputation";
 
-// strapi server
-const STRAPI_API_TOKEN = 'ad5f8c923a182469b1f8e1401661bf1b42fda5f7451184629e7e2044745e3d87ae3c4fcfb96ed2d4286efd0e0b6632b3a4b9ee0f5bd2f483ab206e0238da00fa6e8431e3d0f79887112b83753c7c3116e5015fe0af7dbb61f0b730df42bc9df261e52d26d31c9df9fcb4b87c6305443c506de26919dce3ffa4b5850d248e1d39'
-const STRAPI_SERVER = 'http://localhost:1337'
-// const STRAPI_SERVER = 'https://db.diablo4.dad'
-
 const MAX_HYDRATE_DEPTH_RECURSION = 0;
 
 export {
-  STRAPI_SERVER,
-  STRAPI_API_TOKEN,
   PATH_TO_D4DATA,
   PATH_TO_D4ITEM,
   PATH_TO_D4STRING_LIST,
@@ -45,8 +39,8 @@ export {
   PATH_TO_D4PLAYER_TITLE,
   PATH_TO_D4CHALLENGE,
   PATH_TO_D4ACHIEVEMENT,
-  PATH_TO_PUBLIC_DIR,
   PATH_TO_D4REPUTATION,
+  BUILD_DIR,
 };
 
 export const ITEM_TYPES_TO_SYNC = [

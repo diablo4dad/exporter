@@ -25,8 +25,7 @@ import {
   resolveStoreProduct,
   resolveStringsList,
 } from '../d4.js';
-import { extractItemFromProduct } from '../strapi/factory/bundles.js';
-import { storeToCollectionItems } from './factory/bundles.js';
+import { extractItemFromProduct, storeToCollectionItems } from './factory/bundles.js';
 import { achievementToCollectionItems } from './factory/achievements.js';
 import { hashCode, identity, pipe } from '../helper.js';
 import { challengeToCollection } from './factory/challenges.js';
