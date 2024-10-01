@@ -182,6 +182,71 @@ const EMPTY_STRINGS_LIST: D4Translation = {
 const MAGIC_TYPES = ['Common', 'Legendary', 'Unique', 'Magic', 'Rare'];
 const CLASS_TYPES = ['Sorcerer', 'Druid', 'Barbarian', 'Rogue', 'Necromancer'];
 
+export {
+  CLASS_TYPES,
+  arrayToClassList,
+  chooseBestIconHandle,
+  getStlFileName,
+  getTextFromStl,
+  resolveSno,
+  resolveStoreProduct,
+  resolveStringsList,
+  toMagicType,
+};
+
+export type {
+  D4Achievement,
+  D4Actor,
+  D4ActorItemData,
+  D4ChallengeCategory,
+  D4ChallengeDefinition,
+  D4Emblem,
+  D4Emote,
+  D4InventoryImages,
+  D4Item,
+  D4ItemType,
+  D4MarkingShape,
+  D4PlayerTitle,
+  D4Power,
+  D4Ref,
+  D4Reputation,
+  D4RewardDefinition,
+  D4SnoRef,
+  D4StoreProduct,
+  D4String,
+  D4Texture,
+  D4TextureFrame,
+  D4TownPortalCosmetic,
+  D4Translation,
+  D4Type,
+};
+
+export type D4Dependencies = {
+  actors: Map<string, D4Actor>;
+  strings: Map<string, D4Translation>;
+  items: Map<string, D4Item>;
+  itemTypes: Map<string, D4ItemType>;
+  powers: Map<string, D4Power>;
+  storeProducts: Map<string, D4StoreProduct>;
+  emotes: Map<string, D4Emote>;
+  markings: Map<string, D4MarkingShape>;
+  portals: Map<string, D4TownPortalCosmetic>;
+  emblems: Map<string, D4Emblem>;
+  achievements: Map<string, D4Achievement>;
+  playerTitles: Map<string, D4PlayerTitle>;
+  challenges: Map<string, D4ChallengeDefinition>;
+  reputation: Map<string, D4Reputation>;
+};
+
+export function getEntity<T>(key: string, lookup: Map<string, T>): T {
+  const e = lookup.get(key);
+  if (e === undefined) {
+    throw new Error(key + ' not found.');
+  }
+
+  return e;
+}
+
 export function getEntityFuzzy(key: string, deps: D4Dependencies): D4Ref & D4Type {
   if (deps.items.has(key)) {
     return getEntity(key, deps.items);
@@ -210,45 +275,24 @@ export function getEntityFuzzy(key: string, deps: D4Dependencies): D4Ref & D4Typ
   throw new Error(key + ' not found.');
 }
 
-export function getEntity<T>(key: string, lookup: Map<string, T>): T {
-  const e = lookup.get(key);
-  if (e === undefined) {
-    throw new Error(key + ' not found.');
-  }
-
-  return e;
-}
-
-export function isItem(snoRef: D4Type): snoRef is D4Item {
-  return snoRef.__type__ === 'ItemDefinition';
-}
-
-export function isEmote(snoRef: D4Type): snoRef is D4Emote {
-  return snoRef.__type__ === 'EmoteDefinition';
-}
-
 export function isActor(snoRef: D4Type): snoRef is D4Actor {
   return snoRef.__type__ === 'ActorDefinition';
-}
-
-export function isPortal(snoRef: D4Type): snoRef is D4TownPortalCosmetic {
-  return snoRef.__type__ === 'TownPortalCosmeticDefinition';
 }
 
 export function isEmblem(snoRef: D4Type): snoRef is D4Emblem {
   return snoRef.__type__ === 'EmblemDefinition';
 }
 
+export function isEmote(snoRef: D4Type): snoRef is D4Emote {
+  return snoRef.__type__ === 'EmoteDefinition';
+}
+
+export function isItem(snoRef: D4Type): snoRef is D4Item {
+  return snoRef.__type__ === 'ItemDefinition';
+}
+
 export function isMarking(snoRef: D4Type): snoRef is D4MarkingShape {
   return snoRef.__type__ === 'MarkingShapeDefinition';
-}
-
-export function isStoreProduct(snoRef: D4Type): snoRef is D4StoreProduct {
-  return snoRef.__type__ === 'StoreProductDefinition';
-}
-
-export function isTitle(snoRef: D4Type): snoRef is D4PlayerTitle {
-  return snoRef.__type__ === 'PlayerTitleDefinition';
 }
 
 function getStlFileName(ref: D4Ref & D4Type): string {
@@ -270,8 +314,8 @@ function getTextFromStl(stl: D4Translation, label: string, fallback = ''): strin
   );
 }
 
-export function stu(string: string): string | undefined {
-  return string === '' ? undefined : string;
+export function isPortal(snoRef: D4Type): snoRef is D4TownPortalCosmetic {
+  return snoRef.__type__ === 'TownPortalCosmeticDefinition';
 }
 
 const STORE_MAP = new Map([
@@ -369,57 +413,13 @@ function chooseBestIconHandle(item: D4Item, actor: D4Actor | undefined): number 
   return null;
 }
 
-export {
-  getStlFileName,
-  getTextFromStl,
-  resolveSno,
-  resolveStringsList,
-  arrayToClassList,
-  toMagicType,
-  chooseBestIconHandle,
-  CLASS_TYPES,
-  resolveStoreProduct,
-};
-export type {
-  D4ItemType,
-  D4Item,
-  D4Type,
-  D4TextureFrame,
-  D4Texture,
-  D4Translation,
-  D4String,
-  D4Actor,
-  D4ActorItemData,
-  D4Ref,
-  D4SnoRef,
-  D4InventoryImages,
-  D4Emote,
-  D4MarkingShape,
-  D4TownPortalCosmetic,
-  D4Power,
-  D4StoreProduct,
-  D4Emblem,
-  D4PlayerTitle,
-  D4ChallengeDefinition,
-  D4ChallengeCategory,
-  D4Achievement,
-  D4RewardDefinition,
-  D4Reputation,
-};
+export function isStoreProduct(snoRef: D4Type): snoRef is D4StoreProduct {
+  return snoRef.__type__ === 'StoreProductDefinition';
+}
+export function isTitle(snoRef: D4Type): snoRef is D4PlayerTitle {
+  return snoRef.__type__ === 'PlayerTitleDefinition';
+}
 
-export type D4Dependencies = {
-  actors: Map<string, D4Actor>;
-  strings: Map<string, D4Translation>;
-  items: Map<string, D4Item>;
-  itemTypes: Map<string, D4ItemType>;
-  powers: Map<string, D4Power>;
-  storeProducts: Map<string, D4StoreProduct>;
-  emotes: Map<string, D4Emote>;
-  markings: Map<string, D4MarkingShape>;
-  portals: Map<string, D4TownPortalCosmetic>;
-  emblems: Map<string, D4Emblem>;
-  achievements: Map<string, D4Achievement>;
-  playerTitles: Map<string, D4PlayerTitle>;
-  challenges: Map<string, D4ChallengeDefinition>;
-  reputation: Map<string, D4Reputation>;
-};
+export function stu(string: string): string | undefined {
+  return string === '' ? undefined : string;
+}

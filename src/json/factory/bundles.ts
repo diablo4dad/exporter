@@ -17,6 +17,40 @@ import {
   unpackStoreProduct,
 } from '../index.js';
 
+export function extractItemFromProduct(
+  deps: D4Dependencies,
+): (product: D4StoreProduct) => (D4Ref & D4Type) | undefined {
+  return (product: D4StoreProduct): (D4Ref & D4Type) | undefined => {
+    if (product.snoEmote) {
+      return resolveSno(product.snoEmote, deps.emotes);
+    }
+
+    if (product.snoItemTransmog) {
+      return resolveSno(product.snoItemTransmog, deps.items);
+    }
+
+    if (product.snoHeadstone) {
+      return resolveSno(product.snoHeadstone, deps.actors);
+    }
+
+    if (product.snoMount) {
+      return resolveSno(product.snoMount, deps.items);
+    }
+
+    if (product.snoTownPortal) {
+      return resolveSno(product.snoTownPortal, deps.portals);
+    }
+
+    if (product.snoEmblem) {
+      return resolveSno(product.snoEmblem, deps.emblems);
+    }
+
+    if (product.snoMarkingShape) {
+      return resolveSno(product.snoMarkingShape, deps.markings);
+    }
+  };
+}
+
 export function productToDad(deps: D4Dependencies): (product: D4StoreProduct) => [D4DadStoreProduct, D4DadTranslation] {
   return (product: D4StoreProduct): [D4DadStoreProduct, D4DadTranslation] => {
     const productStringsList = resolveStringsList(product, deps.strings);
@@ -62,39 +96,5 @@ export function storeToCollectionItems(deps: D4Dependencies) {
         claim: 'TODO',
       }))
       .filter((ci) => ci.items.length);
-  };
-}
-
-export function extractItemFromProduct(
-  deps: D4Dependencies,
-): (product: D4StoreProduct) => (D4Ref & D4Type) | undefined {
-  return (product: D4StoreProduct): (D4Ref & D4Type) | undefined => {
-    if (product.snoEmote) {
-      return resolveSno(product.snoEmote, deps.emotes);
-    }
-
-    if (product.snoItemTransmog) {
-      return resolveSno(product.snoItemTransmog, deps.items);
-    }
-
-    if (product.snoHeadstone) {
-      return resolveSno(product.snoHeadstone, deps.actors);
-    }
-
-    if (product.snoMount) {
-      return resolveSno(product.snoMount, deps.items);
-    }
-
-    if (product.snoTownPortal) {
-      return resolveSno(product.snoTownPortal, deps.portals);
-    }
-
-    if (product.snoEmblem) {
-      return resolveSno(product.snoEmblem, deps.emblems);
-    }
-
-    if (product.snoMarkingShape) {
-      return resolveSno(product.snoMarkingShape, deps.markings);
-    }
   };
 }

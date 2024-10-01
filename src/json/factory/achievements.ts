@@ -22,6 +22,47 @@ import {
   pushToItemList,
 } from '../index.js';
 
+export function achievementToCollectionItems(
+  deps: D4Dependencies,
+): (achievement: D4Achievement) => D4DadCollectionItem[] {
+  return (achievement: D4Achievement): D4DadCollectionItem[] => {
+    const achievementStrings = resolveStringsList(achievement, deps.strings);
+    const description = getTextFromStl(
+      achievementStrings,
+      'DescShort',
+      getTextFromStl(achievementStrings, 'Desc', getTextFromStl(achievementStrings, 'Name')),
+    );
+
+    const toCollectionItem = (...items: (D4Type & D4Ref)[]): D4DadCollectionItem => ({
+      id: -1,
+      name: composeName(deps)(...items),
+      claim: 'Challenge',
+      claimDescription: description,
+      premium: achievement.tBattlePassTrack === 1 ? true : undefined,
+      items: items.map((i) => i.__snoID__),
+    });
+
+    const il = achievement.arRewardList.map(unpackRewardList(deps)).reduce(mergeItemLists, createItemList());
+
+    return aggregateItemList(deps)(il).map((i) => toCollectionItem(...i));
+  };
+}
+
+function unpackRewardList(deps: D4Dependencies): (rewards: D4RewardDefinition) => ItemList {
+  return (a: D4RewardDefinition): ItemList => {
+    let itemList = createItemList();
+
+    itemList = pushToItemList(itemList, resolveSno(a.snoItem, deps.items));
+    itemList = pushToItemList(itemList, resolveSno(a.snoPlayerTitle, deps.playerTitles));
+    itemList = pushToItemList(itemList, resolveSno(a.snoEmblem, deps.emblems));
+    itemList = pushToItemList(itemList, resolveSno(a.snoStoreProduct, deps.storeProducts));
+
+    itemList = filterItemList(itemList);
+
+    return itemList;
+  };
+}
+
 export function achievementToDad(
   deps: D4Dependencies,
 ): (achievement: D4Achievement) => [D4DadAchievement, D4DadTranslation] {
@@ -91,46 +132,5 @@ export function achievementToDad(
         description,
       },
     ];
-  };
-}
-
-function unpackRewardList(deps: D4Dependencies): (rewards: D4RewardDefinition) => ItemList {
-  return (a: D4RewardDefinition): ItemList => {
-    let itemList = createItemList();
-
-    itemList = pushToItemList(itemList, resolveSno(a.snoItem, deps.items));
-    itemList = pushToItemList(itemList, resolveSno(a.snoPlayerTitle, deps.playerTitles));
-    itemList = pushToItemList(itemList, resolveSno(a.snoEmblem, deps.emblems));
-    itemList = pushToItemList(itemList, resolveSno(a.snoStoreProduct, deps.storeProducts));
-
-    itemList = filterItemList(itemList);
-
-    return itemList;
-  };
-}
-
-export function achievementToCollectionItems(
-  deps: D4Dependencies,
-): (achievement: D4Achievement) => D4DadCollectionItem[] {
-  return (achievement: D4Achievement): D4DadCollectionItem[] => {
-    const achievementStrings = resolveStringsList(achievement, deps.strings);
-    const description = getTextFromStl(
-      achievementStrings,
-      'DescShort',
-      getTextFromStl(achievementStrings, 'Desc', getTextFromStl(achievementStrings, 'Name')),
-    );
-
-    const toCollectionItem = (...items: (D4Type & D4Ref)[]): D4DadCollectionItem => ({
-      id: -1,
-      name: composeName(deps)(...items),
-      claim: 'Challenge',
-      claimDescription: description,
-      premium: achievement.tBattlePassTrack === 1 ? true : undefined,
-      items: items.map((i) => i.__snoID__),
-    });
-
-    const il = achievement.arRewardList.map(unpackRewardList(deps)).reduce(mergeItemLists, createItemList());
-
-    return aggregateItemList(deps)(il).map((i) => toCollectionItem(...i));
   };
 }

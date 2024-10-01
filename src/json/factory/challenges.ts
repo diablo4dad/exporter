@@ -11,6 +11,28 @@ import {
 import { D4DadChallenge, D4DadChallengeCategory, D4DadCollection, D4DadTranslation } from '../index.js';
 import { achievementToCollectionItems } from './achievements.js';
 
+export function challengeToCollection(deps: D4Dependencies) {
+  return (definition: D4ChallengeDefinition) => {
+    return (category: D4ChallengeCategory): D4DadCollection => {
+      const challengeStringsList = resolveStringsList(definition, deps.strings);
+      const name = getTextFromStl(challengeStringsList, 'Challenge_Category_' + category.dwID);
+      const achievements = category.arAchievementSnos
+        .map((a) => resolveSno(a, deps.achievements))
+        .filter((a): a is D4Achievement => a !== undefined);
+
+      return {
+        id: category.dwID,
+        name: name,
+        subcollections: category.arCategories.map(challengeToCollection(deps)(definition)),
+        collectionItems: achievements
+          .map(achievementToCollectionItems(deps))
+          .flat()
+          .filter((ci) => ci.items.length),
+      };
+    };
+  };
+}
+
 export function challengeToDad(
   deps: D4Dependencies,
 ): (definition: D4ChallengeDefinition) => [D4DadChallenge, D4DadTranslation] {
@@ -49,27 +71,5 @@ export function challengeToDad(
         // empty
       },
     ];
-  };
-}
-
-export function challengeToCollection(deps: D4Dependencies) {
-  return (definition: D4ChallengeDefinition) => {
-    return (category: D4ChallengeCategory): D4DadCollection => {
-      const challengeStringsList = resolveStringsList(definition, deps.strings);
-      const name = getTextFromStl(challengeStringsList, 'Challenge_Category_' + category.dwID);
-      const achievements = category.arAchievementSnos
-        .map((a) => resolveSno(a, deps.achievements))
-        .filter((a): a is D4Achievement => a !== undefined);
-
-      return {
-        id: category.dwID,
-        name: name,
-        subcollections: category.arCategories.map(challengeToCollection(deps)(definition)),
-        collectionItems: achievements
-          .map(achievementToCollectionItems(deps))
-          .flat()
-          .filter((ci) => ci.items.length),
-      };
-    };
   };
 }
