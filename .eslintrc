@@ -9,20 +9,11 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "prettier",
-    "sort-exports"
+    "prettier"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
-  ],
-  "rules": {
-    "sort-exports/sort-exports": [
-      "error",
-      {
-        "sortDir": "asc"
-      }
-    ]
-  }
+  ]
 }
