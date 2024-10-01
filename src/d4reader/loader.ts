@@ -1,4 +1,4 @@
-import { MAX_HYDRATE_DEPTH_RECURSION, PATH_TO_D4DATA } from './config.js';
+import { MAX_HYDRATE_DEPTH_RECURSION, PATH_TO_D4DATA } from '../config.js';
 
 import fs from 'fs';
 import path from 'path';
