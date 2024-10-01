@@ -22,7 +22,9 @@ import {
   pushToItemList,
 } from '../index.js';
 
-export function achievementToDad(deps: D4Dependencies): (achievement: D4Achievement) => [D4DadAchievement, D4DadTranslation] {
+export function achievementToDad(
+  deps: D4Dependencies,
+): (achievement: D4Achievement) => [D4DadAchievement, D4DadTranslation] {
   return (achievement: D4Achievement): [D4DadAchievement, D4DadTranslation] => {
     const rewards = achievement.arRewardList.reduce((c: D4DadAchievementRewards, a: D4RewardDefinition) => {
       if (a.snoPlayerTitle) {
@@ -70,23 +72,26 @@ export function achievementToDad(deps: D4Dependencies): (achievement: D4Achievem
       }
 
       return c;
-    }, { });
+    }, {});
 
     const id = achievement.__snoID__;
     const filename = achievement.__fileName__;
     const achievementStrings = resolveStringsList(achievement, deps.strings);
-    const name = getTextFromStl(achievementStrings, "Name");
-    const description = getTextFromStl(achievementStrings, "DescShort", getTextFromStl(achievementStrings, "Desc"));
+    const name = getTextFromStl(achievementStrings, 'Name');
+    const description = getTextFromStl(achievementStrings, 'DescShort', getTextFromStl(achievementStrings, 'Desc'));
 
-    return [{
-      id,
-      filename,
-      rewards,
-    }, {
-      name,
-      description,
-    }];
-  }
+    return [
+      {
+        id,
+        filename,
+        rewards,
+      },
+      {
+        name,
+        description,
+      },
+    ];
+  };
 }
 
 function unpackRewardList(deps: D4Dependencies): (rewards: D4RewardDefinition) => ItemList {
@@ -101,28 +106,31 @@ function unpackRewardList(deps: D4Dependencies): (rewards: D4RewardDefinition) =
     itemList = filterItemList(itemList);
 
     return itemList;
-  }
+  };
 }
 
-export function achievementToCollectionItems(deps: D4Dependencies): (achievement: D4Achievement) => D4DadCollectionItem[] {
+export function achievementToCollectionItems(
+  deps: D4Dependencies,
+): (achievement: D4Achievement) => D4DadCollectionItem[] {
   return (achievement: D4Achievement): D4DadCollectionItem[] => {
     const achievementStrings = resolveStringsList(achievement, deps.strings);
-    const description = getTextFromStl(achievementStrings, "DescShort", getTextFromStl(achievementStrings, "Desc", getTextFromStl(achievementStrings, "Name")));
+    const description = getTextFromStl(
+      achievementStrings,
+      'DescShort',
+      getTextFromStl(achievementStrings, 'Desc', getTextFromStl(achievementStrings, 'Name')),
+    );
 
     const toCollectionItem = (...items: (D4Type & D4Ref)[]): D4DadCollectionItem => ({
       id: -1,
       name: composeName(deps)(...items),
-      claim: "Challenge",
+      claim: 'Challenge',
       claimDescription: description,
       premium: achievement.tBattlePassTrack === 1 ? true : undefined,
-      items: items.map(i => i.__snoID__),
+      items: items.map((i) => i.__snoID__),
     });
 
-    const il = achievement
-      .arRewardList
-      .map(unpackRewardList(deps))
-      .reduce(mergeItemLists, createItemList());
+    const il = achievement.arRewardList.map(unpackRewardList(deps)).reduce(mergeItemLists, createItemList());
 
-    return aggregateItemList(deps)(il).map(i => toCollectionItem(...i));
+    return aggregateItemList(deps)(il).map((i) => toCollectionItem(...i));
   };
 }

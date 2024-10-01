@@ -7,15 +7,6 @@ import NECROMANCER from './necromancer.js';
 import DRUID from './druid.js';
 import BARBARIAN from './barbarian.js';
 
-const STORE = [
-  BARBARIAN,
-  DRUID,
-  NECROMANCER,
-  ROGUE,
-  SORCERER,
-  MOUNTS,
-  WEAPONS,
-  PORTALS,
-];
+const STORE = [BARBARIAN, DRUID, NECROMANCER, ROGUE, SORCERER, MOUNTS, WEAPONS, PORTALS];
 
 export default STORE;

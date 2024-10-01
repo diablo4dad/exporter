@@ -132,11 +132,7 @@ const MONSTER: CollectionDescriptor = {
   name: 'Monster',
   description: 'Transmogs dropped by monsters',
   category: Category.GENERAL,
-  children: [
-    WORLD_BOSS,
-    DUNGEON_BOSS,
-    RARE_MONSTER,
-  ],
+  children: [WORLD_BOSS, DUNGEON_BOSS, RARE_MONSTER],
 };
 
 export default MONSTER;

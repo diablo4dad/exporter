@@ -9,14 +9,8 @@ const BETA: CollectionDescriptor = {
   items: [
     ['json\\base\\meta\\Item\\mnt_stor125_trophy.itm.json'],
     ['json\\base\\meta\\Item\\trophy_glo001_stor.itm.json'],
-    [
-      'json\\base\\meta\\PlayerTitle\\prefix_initial.pt.json',
-      'json\\base\\meta\\PlayerTitle\\suffix_casualty.pt.json',
-    ],
-    [
-      'json\\base\\meta\\PlayerTitle\\prefix_early.pt.json',
-      'json\\base\\meta\\PlayerTitle\\suffix_voyager.pt.json',
-    ],
+    ['json\\base\\meta\\PlayerTitle\\prefix_initial.pt.json', 'json\\base\\meta\\PlayerTitle\\suffix_casualty.pt.json'],
+    ['json\\base\\meta\\PlayerTitle\\prefix_early.pt.json', 'json\\base\\meta\\PlayerTitle\\suffix_voyager.pt.json'],
   ],
   patches: [
     {

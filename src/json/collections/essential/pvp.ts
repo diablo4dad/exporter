@@ -61,11 +61,7 @@ const PVP: CollectionDescriptor = {
   name: 'PvP',
   description: 'Transmogs earned within the Fields of Hatred',
   category: Category.GENERAL,
-  children: [
-    ODDS_AND_ENDS,
-    UNCONVENTIONAL_MOUNT_ARMOR,
-    FIELDS_OF_HATRED,
-  ],
+  children: [ODDS_AND_ENDS, UNCONVENTIONAL_MOUNT_ARMOR, FIELDS_OF_HATRED],
 };
 
 export default PVP;

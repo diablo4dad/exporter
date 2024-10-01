@@ -22,33 +22,23 @@ const PORTALS: CollectionDescriptor = {
     },
     {
       outOfRotation: true,
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_bar_stor001.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_bar_stor001.prd.json'],
     },
     {
       outOfRotation: true,
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_dru_stor001.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_dru_stor001.prd.json'],
     },
     {
       outOfRotation: true,
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_nec_stor001.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_nec_stor001.prd.json'],
     },
     {
       outOfRotation: true,
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_rog_stor001.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_rog_stor001.prd.json'],
     },
     {
       outOfRotation: true,
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_TPortal_sor_stor001.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_sor_stor001.prd.json'],
     },
   ],
 };

@@ -7,30 +7,20 @@ const WEAPONS: CollectionDescriptor = {
   premium: true,
   children: [
     {
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_Weapons_bar_stor001.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_bar_stor001.prd.json'],
     },
     {
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_Weapons_bar_stor002.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_bar_stor002.prd.json'],
     },
     {
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_Weapons_nec_stor001.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_nec_stor001.prd.json'],
     },
     {
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_Weapons_nec_stor002.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_nec_stor002.prd.json'],
     },
     {
       // encrypted
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_MagmaticArmaments.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MagmaticArmaments.prd.json'],
       // workaround
       claim: 'Cash Shop',
       items: [

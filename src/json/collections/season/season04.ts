@@ -32,7 +32,8 @@ const SEASON04: CollectionDescriptor = {
         },
         {
           items: [1266836],
-          claimDescription: 'Obtained during Season 4 from a Season Journey Chapter 3 cache, only if opened with a Necromancer.',
+          claimDescription:
+            'Obtained during Season 4 from a Season Journey Chapter 3 cache, only if opened with a Necromancer.',
         },
       ],
     },
@@ -45,8 +46,8 @@ const SEASON04: CollectionDescriptor = {
         {
           items: [1867325],
           claim: 'Reputation Board',
-          claimDescription: 'Complete the Iron Wolf\'s Reputation Board.',
-        }
+          claimDescription: "Complete the Iron Wolf's Reputation Board.",
+        },
       ],
     },
   ],

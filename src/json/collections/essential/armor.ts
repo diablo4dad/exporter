@@ -166,13 +166,7 @@ const ARMOR: CollectionDescriptor = {
   name: 'Armor',
   description: 'Transmogs found throughout sanctuary',
   category: Category.GENERAL,
-  children: [
-    HELM,
-    CHEST_ARMOR,
-    GLOVES,
-    PANTS,
-    BOOTS,
-  ],
+  children: [HELM, CHEST_ARMOR, GLOVES, PANTS, BOOTS],
 };
 
 export default ARMOR;

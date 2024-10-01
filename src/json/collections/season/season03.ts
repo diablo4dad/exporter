@@ -12,9 +12,7 @@ const SEASON03 = {
       category: Category.BATTLE_PASS,
       challengeFileFlatten: true,
       challengeFile: 'json\\base\\meta\\Challenge\\Season3_Rewards.cha.json',
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s03.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s03.prd.json'],
     },
     {
       name: 'Season Journey #3',

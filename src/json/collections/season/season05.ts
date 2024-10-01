@@ -11,9 +11,7 @@ const SEASON05: CollectionDescriptor = {
       category: Category.BATTLE_PASS,
       challengeFileFlatten: true,
       challengeFile: 'json\\base\\meta\\Challenge\\Season5_Rewards.cha.json',
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s05.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s05.prd.json'],
     },
     {
       name: 'Season Journey #5',
@@ -31,7 +29,8 @@ const SEASON05: CollectionDescriptor = {
       patches: [
         {
           items: [592302],
-          claimDescription: 'Obtained during Season 5 from a Season Journey Chapter 2 cache, only if opened with a Necromancer.',
+          claimDescription:
+            'Obtained during Season 5 from a Season Journey Chapter 2 cache, only if opened with a Necromancer.',
         },
         {
           items: [459858],
@@ -47,7 +46,8 @@ const SEASON05: CollectionDescriptor = {
       patches: [
         {
           items: [1989995],
-          claimDescription: 'Obtained during Season 5 from the "Greater Triune Arms Cache", the final reward on the Mother\s Gift Board.',
+          claimDescription:
+            'Obtained during Season 5 from the "Greater Triune Arms Cache", the final reward on the Mothers Gift Board.',
         },
       ],
     },

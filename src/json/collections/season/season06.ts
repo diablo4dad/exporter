@@ -11,9 +11,7 @@ const SEASON06: CollectionDescriptor = {
       category: Category.BATTLE_PASS,
       challengeFileFlatten: true,
       challengeFile: 'json\\base\\meta\\Challenge\\Season6_Rewards.cha.json',
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s06.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s06.prd.json'],
     },
     {
       name: 'Season Journey #6',

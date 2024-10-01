@@ -12,9 +12,7 @@ const TWITCH: CollectionDescriptor = {
       claimDescription: 'Gift 2 subs during the Twitch promotion.',
       outOfRotation: true,
       premium: true,
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor030_horse.itm.json'],
-      ],
+      items: [['json\\base\\meta\\Item\\mnt_stor030_horse.itm.json']],
     },
     {
       name: 'Twitch Drops #2',
@@ -54,9 +52,7 @@ const TWITCH: CollectionDescriptor = {
       claimDescription: 'Gift 2 subs during Twitch launch promotion.',
       outOfRotation: true,
       premium: true,
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor014_horse.itm.json'],
-      ],
+      items: [['json\\base\\meta\\Item\\mnt_stor014_horse.itm.json']],
     },
     {
       name: 'Twitch Drops #1',
@@ -207,9 +203,7 @@ const CALL_OF_DUTY: CollectionDescriptor = {
   claimDescription: 'Kill "The Butcher" in Call of Duty.',
   outOfRotation: true,
   premium: true,
-  items: [
-    ['json\\base\\meta\\Item\\Scythe_stor007.itm.json'],
-  ],
+  items: [['json\\base\\meta\\Item\\Scythe_stor007.itm.json']],
 };
 
 const FRANCHISE: CollectionDescriptor = {
@@ -222,9 +216,7 @@ const FRANCHISE: CollectionDescriptor = {
       category: Category.PROMOTIONAL,
       claimDescription: 'Redeemable from wine bottles purchased in Korea.',
       premium: true,
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_KR_RedWine_stor001.prd.json',
-      ]
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_KR_RedWine_stor001.prd.json'],
     },
     {
       name: 'Coco Fresh Tea',
@@ -232,9 +224,7 @@ const FRANCHISE: CollectionDescriptor = {
       claimDescription: 'Redeemable from the Coco Fresh Tea promotion.',
       outOfRotation: true,
       premium: true,
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\marking_nec001_stor.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\marking_nec001_stor.prd.json'],
       items: [
         ['json\\base\\meta\\Item\\axe_stor007.itm.json'],
         ['json\\base\\meta\\Item\\Shield_stor004.itm.json'],
@@ -304,22 +294,17 @@ const HELL_STATION: CollectionDescriptor = {
   claim: 'Promotional',
   claimDescription: 'Reward for participating in escape rooms, Korea only.',
   outOfRotation: true,
-  items: [
-    ['json\\base\\meta\\Item\\Sword_stor011.itm.json'],
-  ],
+  items: [['json\\base\\meta\\Item\\Sword_stor011.itm.json']],
 };
 
 const HELL_INK: CollectionDescriptor = {
-  name: 'Hell\'s Ink',
+  name: "Hell's Ink",
   description: 'Receive either a flash tattoo or custom tattoo at a participating popup studio',
   category: Category.PROMOTIONAL,
-  claimDescription: 'Receive a tattoo during the Hell\'s Ink promotion.',
+  claimDescription: "Receive a tattoo during the Hell's Ink promotion.",
   outOfRotation: true,
   items: [
-    [
-      'json\\base\\meta\\PlayerTitle\\prefix_mothers.pt.json',
-      'json\\base\\meta\\PlayerTitle\\suffix_inked.pt.json',
-    ],
+    ['json\\base\\meta\\PlayerTitle\\prefix_mothers.pt.json', 'json\\base\\meta\\PlayerTitle\\suffix_inked.pt.json'],
   ],
 };
 
@@ -330,20 +315,9 @@ const STEEL_SERIES: CollectionDescriptor = {
   claimDescription: 'Included with SteelSeries hardware purchases.',
   outOfRotation: true,
   premium: true,
-  items: [
-    ['json\\base\\meta\\Item\\mnt_stor018_trophy.itm.json'],
-  ],
+  items: [['json\\base\\meta\\Item\\mnt_stor018_trophy.itm.json']],
 };
 
-const PROMOTIONAL = [
-  TWITCH,
-  PRIME,
-  BLIZZCON,
-  CALL_OF_DUTY,
-  FRANCHISE,
-  HELL_STATION,
-  HELL_INK,
-  STEEL_SERIES,
-];
+const PROMOTIONAL = [TWITCH, PRIME, BLIZZCON, CALL_OF_DUTY, FRANCHISE, HELL_STATION, HELL_INK, STEEL_SERIES];
 
 export default PROMOTIONAL;

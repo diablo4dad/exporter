@@ -193,24 +193,14 @@ const NIGHTMARE_DUNGEON: CollectionDescriptor = {
   description: 'Transmogs dropped within Nightmare Dungeons',
   category: Category.ZONE,
   claimDescription: 'Dropped from monsters and chests within Nightmare Dungeons.',
-  items: [
-    ['json\\base\\meta\\Item\\MountReins_CaldeumHorse.itm.json'],
-  ],
+  items: [['json\\base\\meta\\Item\\MountReins_CaldeumHorse.itm.json']],
 };
 
 const ZONE: CollectionDescriptor = {
   name: 'Zone',
   description: 'Transmogs dropped within regions',
   category: Category.GENERAL,
-  children: [
-    FRACTURED_PEAKS,
-    SCOSGLEN,
-    KEHJISTAN,
-    DRY_STEPPES,
-    HAWEZAR,
-    OPEN_WORLD,
-    NIGHTMARE_DUNGEON,
-  ],
+  children: [FRACTURED_PEAKS, SCOSGLEN, KEHJISTAN, DRY_STEPPES, HAWEZAR, OPEN_WORLD, NIGHTMARE_DUNGEON],
 };
 
 export default ZONE;

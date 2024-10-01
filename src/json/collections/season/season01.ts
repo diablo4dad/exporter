@@ -12,9 +12,7 @@ const SEASON01: CollectionDescriptor = {
       category: Category.BATTLE_PASS,
       challengeFileFlatten: true,
       challengeFile: 'json\\base\\meta\\Challenge\\Season1_Rewards.cha.json',
-      storeProducts: [
-        'json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s01.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Battlepass_Accelerated_s01.prd.json'],
     },
     {
       name: 'Season Journey #1',
@@ -29,9 +27,9 @@ const SEASON01: CollectionDescriptor = {
       patches: [
         {
           items: [921365],
-          claimDescription: "Complete the Season 1 Season Journey.",
+          claimDescription: 'Complete the Season 1 Season Journey.',
         },
-      ]
+      ],
     },
   ],
 };

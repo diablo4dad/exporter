@@ -6,10 +6,8 @@ const LUNARY_AWAKENING: CollectionDescriptor = {
   category: Category.LIMITED_EVENT,
   outOfRotation: true,
   claim: 'Quest Reward',
-  claimDescription: "Lunar Awakening Event quest reward.",
-  achievements: [
-    "json\\base\\meta\\Achievement\\LTE_LNY_Challenge_AllShrines.ach.json",
-  ],
+  claimDescription: 'Lunar Awakening Event quest reward.',
+  achievements: ['json\\base\\meta\\Achievement\\LTE_LNY_Challenge_AllShrines.ach.json'],
   items: [
     ['json\\base\\meta\\Item\\Wand_lunar001_lte.itm.json'],
     ['json\\base\\meta\\Item\\twoHandAxe_lunar001_lte.itm.json'],
@@ -25,11 +23,9 @@ const MIDWINTER_BLIGHT: CollectionDescriptor = {
   description: 'Holiday event from December 12th, 2023 until January 2nd, 2024',
   category: Category.GENERAL,
   claim: 'Vendor',
-  claimDescription: 'Purchased with Midwinter Proof\'s from the event vendor.',
+  claimDescription: "Purchased with Midwinter Proof's from the event vendor.",
   outOfRotation: true,
-  achievements: [
-    'json\\base\\meta\\Achievement\\LTE_Hibernal_Challenge_II_KillRCH.ach.json',
-  ],
+  achievements: ['json\\base\\meta\\Achievement\\LTE_Hibernal_Challenge_II_KillRCH.ach.json'],
   items: [
     ['json\\base\\meta\\Item\\trophy_bar001_hibernal_lte.itm.json'],
     ['json\\base\\meta\\Item\\trophy_dru001_hibernal_lte.itm.json'],
@@ -73,11 +69,7 @@ const EVENT: CollectionDescriptor = {
   name: 'Limited Event',
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
-  children: [
-    LUNARY_AWAKENING,
-    MIDWINTER_BLIGHT,
-    DONATE_BLOOD_HARVEST,
-  ],
+  children: [LUNARY_AWAKENING, MIDWINTER_BLIGHT, DONATE_BLOOD_HARVEST],
 };
 
 export default EVENT;

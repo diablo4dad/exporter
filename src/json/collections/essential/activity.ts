@@ -45,8 +45,8 @@ const GAUNTLET: CollectionDescriptor = {
   name: 'Gauntlet',
   description: 'Transmogs earned by ranking in the gauntlet leaderboards',
   category: Category.ACTIVITY,
-  claim: "Gauntlet",
-  claimDescription: "Appear in the first 100 places in the solo or party leaderboard.",
+  claim: 'Gauntlet',
+  claimDescription: 'Appear in the first 100 places in the solo or party leaderboard.',
   items: [
     ['json\\base\\meta\\Item\\mnt_chal003_trophy.itm.json'],
     ['json\\base\\meta\\Item\\mnt_chal004_trophy.itm.json'],
@@ -95,12 +95,7 @@ const ACTIVITY: CollectionDescriptor = {
   name: 'Activity',
   description: 'Transmogs acquired through various activities',
   category: Category.GENERAL,
-  children: [
-    TREE_OF_WHISPERS,
-    GAUNTLET,
-    QUEST,
-    VENDOR,
-  ],
+  children: [TREE_OF_WHISPERS, GAUNTLET, QUEST, VENDOR],
 };
 
 export default ACTIVITY;

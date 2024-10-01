@@ -2,27 +2,27 @@ import { Category, CollectionDescriptor, D4DadCollection, D4DadCollectionItem } 
 import { pipe } from '../../../helper.js';
 
 const DESCRIPTIONS: ReadonlyMap<string, string> = new Map([
-  ["Classes", "Class achievements"],
-  ["Monsters", "Monster achievements"],
-  ["Quests", "Quest achievements"],
+  ['Classes', 'Class achievements'],
+  ['Monsters', 'Monster achievements'],
+  ['Quests', 'Quest achievements'],
 ]);
 
 const MONSTER_ORDER: ReadonlyArray<string> = [
-  "Bandits",
-  "Cannibals",
-  "Cultists",
-  "Demons",
-  "Drowned",
-  "Fallen",
-  "Ghosts",
-  "Goatmen",
-  "Knights",
-  "Skeletons",
-  "Snakes",
-  "Spiders",
-  "Vampires",
-  "Werewolves",
-  "Zombies",
+  'Bandits',
+  'Cannibals',
+  'Cultists',
+  'Demons',
+  'Drowned',
+  'Fallen',
+  'Ghosts',
+  'Goatmen',
+  'Knights',
+  'Skeletons',
+  'Snakes',
+  'Spiders',
+  'Vampires',
+  'Werewolves',
+  'Zombies',
 ];
 
 const PATCHES: Partial<D4DadCollectionItem>[] = [
@@ -124,48 +124,47 @@ const PATCHES: Partial<D4DadCollectionItem>[] = [
   {
     // Triune Trouble
     items: [1287112, 1287114],
-    claimDescription: "[Hidden] Complete the Way of the Three questline in Kehjistan.",
+    claimDescription: '[Hidden] Complete the Way of the Three questline in Kehjistan.',
   },
   {
     // Iron Wolf
     items: [996341, 1287106],
-    claimDescription: "[Hidden] Complete quests for the Iron Wolves in Kehjistan.",
+    claimDescription: '[Hidden] Complete quests for the Iron Wolves in Kehjistan.',
   },
   {
     // Hatreds Chosen
     items: [1320174, 1320176],
     claimDescription: "[Hidden] Become Hatred's Chosen",
-  }
+  },
 ];
 
 const findNamedCollection = (collection: D4DadCollection, name: string) => {
-
-  const found1 = collection.subcollections.find(sc => sc.name === name);
+  const found1 = collection.subcollections.find((sc) => sc.name === name);
   if (found1) {
     return found1;
   }
 
-  const found2 = collection.subcollections.reduce((a, c) => c.subcollections.find(sc => sc.name === name) ?? a);
+  const found2 = collection.subcollections.reduce((a, c) => c.subcollections.find((sc) => sc.name === name) ?? a);
   if (found2) {
     return found2;
   }
 
-  throw new Error(`Collection "${name}" not found.`)
-}
+  throw new Error(`Collection "${name}" not found.`);
+};
 
 const findCollectionItem = (collection: D4DadCollection, itemIds: number[]) => {
-  const ci = collection.collectionItems.find(ci => ci.items.every(i => itemIds.includes(i)));
+  const ci = collection.collectionItems.find((ci) => ci.items.every((i) => itemIds.includes(i)));
   if (!ci) {
-    throw new Error(`Collection Items ${itemIds.join(", ")} not found.`)
+    throw new Error(`Collection Items ${itemIds.join(', ')} not found.`);
   }
 
   return ci;
-}
+};
 
 function assignDescription(collection: D4DadCollection): D4DadCollection {
   return {
     ...collection,
-    subcollections: collection.subcollections.map(sc => ({
+    subcollections: collection.subcollections.map((sc) => ({
       ...sc,
       description: DESCRIPTIONS.get(sc.name) ?? `${sc.name} achievements`,
     })),
@@ -175,8 +174,8 @@ function assignDescription(collection: D4DadCollection): D4DadCollection {
 function sortChallenges(collection: D4DadCollection): D4DadCollection {
   return {
     ...collection,
-    subcollections: collection.subcollections.map(sc => {
-      if (sc.name === "Monsters") {
+    subcollections: collection.subcollections.map((sc) => {
+      if (sc.name === 'Monsters') {
         return {
           ...sc,
           subcollections: sc.subcollections.sort((a, b) => {
@@ -194,29 +193,26 @@ function sortChallenges(collection: D4DadCollection): D4DadCollection {
 }
 
 function mergeConquerorsCrest(collection: D4DadCollection): D4DadCollection {
-  const challenge = findNamedCollection(collection, "Challenge");
-  const innerChallenge = findNamedCollection(challenge, "Challenge");
+  const challenge = findNamedCollection(collection, 'Challenge');
+  const innerChallenge = findNamedCollection(challenge, 'Challenge');
   const crest = findCollectionItem(innerChallenge, [1821571]);
 
-  const filteredItems = innerChallenge.collectionItems.filter(ci => !ci.items.every(i => i === 1821571));
+  const filteredItems = innerChallenge.collectionItems.filter((ci) => !ci.items.every((i) => i === 1821571));
   const mergedCrest = {
     ...crest,
-    claimDescription: "Appear in the first 100 places in any of the Trial leaderboards.",
+    claimDescription: 'Appear in the first 100 places in any of the Trial leaderboards.',
   };
 
   // impure!
-  innerChallenge.collectionItems =  [
-    ...filteredItems,
-    mergedCrest,
-  ];
+  innerChallenge.collectionItems = [...filteredItems, mergedCrest];
 
   return collection;
 }
 
 function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
-  const sideQuests = findNamedCollection(collection, "Side Quests");
-  const pvp = findNamedCollection(collection, "PvP");
-  const hidden = findNamedCollection(collection, "Hidden");
+  const sideQuests = findNamedCollection(collection, 'Side Quests');
+  const pvp = findNamedCollection(collection, 'PvP');
+  const hidden = findNamedCollection(collection, 'Hidden');
 
   const triuneTrouble = findCollectionItem(hidden, [1287112, 1287114]);
   const ironWolf = findCollectionItem(hidden, [996341, 1287106]);
@@ -227,7 +223,7 @@ function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
   pvp.collectionItems.push(hatredsChosen);
 
   // impure! only keep well-wisher
-  hidden.collectionItems = hidden.collectionItems.filter(ci => ci.items.every(i => i === 1339653));
+  hidden.collectionItems = hidden.collectionItems.filter((ci) => ci.items.every((i) => i === 1339653));
 
   return collection;
 }
@@ -236,16 +232,10 @@ const CHALLENGE: CollectionDescriptor = {
   name: 'Challenge',
   description: 'Challenges',
   category: Category.CHALLENGE,
-  challengeFile: "json\\base\\meta\\Challenge\\Global.cha.json",
+  challengeFile: 'json\\base\\meta\\Challenge\\Global.cha.json',
   patches: PATCHES,
-  postHook: collection => {
-    return pipe(
-      collection,
-      moveHiddenAchievements,
-      mergeConquerorsCrest,
-      assignDescription,
-      sortChallenges,
-    );
+  postHook: (collection) => {
+    return pipe(collection, moveHiddenAchievements, mergeConquerorsCrest, assignDescription, sortChallenges);
   },
 };
 

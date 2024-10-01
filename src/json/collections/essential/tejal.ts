@@ -2,7 +2,7 @@ import { Category, CollectionDescriptor } from '../../index.js';
 
 const FIRST_YEAR_ANNIVERSARY: CollectionDescriptor = {
   name: '1st Year Anniversary',
-  description: 'Free from Tejal\'s Shop from June 6th, 2024 until June 20th, 2024',
+  description: "Free from Tejal's Shop from June 6th, 2024 until June 20th, 2024",
   category: Category.SHOP_ITEMS,
   claimDescription: 'Free from the cash shop for a limited time.',
   outOfRotation: true,
@@ -19,7 +19,7 @@ const FIRST_YEAR_ANNIVERSARY: CollectionDescriptor = {
 
 const DARK_GIFTS: CollectionDescriptor = {
   name: 'Dark Gifts',
-  description: 'Free from Tejal\'s Shop from December 20th, 2023 until December 26th 2023',
+  description: "Free from Tejal's Shop from December 20th, 2023 until December 26th 2023",
   category: Category.SHOP_ITEMS,
   claim: 'Cash Shop',
   claimDescription: 'Free from the cash shop for a limited time.',
@@ -32,7 +32,7 @@ const DARK_GIFTS: CollectionDescriptor = {
 };
 
 const MOTHERS_FAVOR: CollectionDescriptor = {
-  name: 'Mother\'s Favor',
+  name: "Mother's Favor",
   description: 'Free weapon cosmetics',
   category: Category.SHOP_ITEMS,
   claimDescription: 'Occasionally free from the cash shop.',
@@ -89,16 +89,10 @@ const THE_HUNGER: CollectionDescriptor = {
 };
 
 const TEJAL: CollectionDescriptor = {
-  name: 'Tejal\'s Gifts',
-  description: 'Transmogs acquired from Tejal\'s Shop on a limited basis',
+  name: "Tejal's Gifts",
+  description: "Transmogs acquired from Tejal's Shop on a limited basis",
   category: Category.GENERAL,
-  children: [
-    FIRST_YEAR_ANNIVERSARY,
-    DARK_GIFTS,
-    MOTHERS_FAVOR,
-    RETURNING_CHAMPION,
-    THE_HUNGER,
-  ],
+  children: [FIRST_YEAR_ANNIVERSARY, DARK_GIFTS, MOTHERS_FAVOR, RETURNING_CHAMPION, THE_HUNGER],
 };
 
 export default TEJAL;
