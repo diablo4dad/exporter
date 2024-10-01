@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import admin from 'firebase-admin';
 import {
   D4Achievement,
   D4Actor,
@@ -19,7 +18,7 @@ import {
   D4Translation,
 } from './d4.js';
 import { parseFiles } from './loader.js';
-import { BUILD_DIR, ITEM_TYPES_TO_SYNC, PATH_TO_D4TEXTURES, PATH_TO_SERVICE_ACCOUNT_KEY } from './config.js';
+import { BUILD_DIR, ITEM_TYPES_TO_SYNC } from './config.js';
 import { itemToDad } from './json/factory/items.js';
 import { itemTypeToDad } from './json/factory/itemTypes.js';
 import { buildCollection, D4DadDb, D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE } from './json/index.js';
@@ -32,7 +31,6 @@ import { portalToDad } from './json/factory/portals.js';
 import { productToDad } from './json/factory/bundles.js';
 import { achievementToDad } from './json/factory/achievements.js';
 import { challengeToDad } from './json/factory/challenges.js';
-import { getStorage } from 'firebase-admin/storage';
 import { pipe } from './helper.js';
 import SEASON from './json/collections/season/index.js';
 import ESSENTIAL from './json/collections/essential/index.js';
@@ -55,11 +53,6 @@ import {
   PATH_TO_D4STRING_LIST,
   PATH_TO_D4TOWN_PORTAL,
 } from './constants.js';
-
-const app = admin.initializeApp({
-  credential: admin.credential.cert(PATH_TO_SERVICE_ACCOUNT_KEY),
-  storageBucket: 'd4log-bfc60.appspot.com',
-});
 
 const items = parseFiles<D4Item>(PATH_TO_D4ITEM);
 const itemTypes = parseFiles<D4ItemType>(PATH_TO_D4ITEM_TYPE);
@@ -192,86 +185,6 @@ const dumpItems = () => {
   fs.writeFileSync(path.join(BUILD_DIR, 'd4dad_enUS.json'), JSON.stringify(d4dadI18n));
 
   console.log('Dump complete.');
-
-  // uploadMissingIcons().then(() => {
-  //     console.log("Uploaded missing icons.");
-  // }).catch(e => {
-  //     console.error("Error uploading icons", e);
-  // });
-
-  // copyImages(d4dadJoin).then(() => {
-  //     console.log("Copy Images complete.");
-  // }).catch(e => {
-  //     console.error("Error", e);
-  // })
-};
-
-const copyImages = async (d4dad: D4DadDb) => {
-  const allImgHandles: Set<number> = d4dad.items.reduce((a, c) => {
-    a.add(c.icon);
-    if (c.invImages) {
-      c.invImages.flat().map((i) => a.add(i));
-    }
-    return a;
-  }, new Set<number>());
-
-  allImgHandles.delete(0);
-
-  const failedImages: number[] = [];
-
-  const bucket = getStorage(app).bucket();
-
-  let i = 0;
-  for (const iconId of allImgHandles) {
-    ++i;
-
-    const filename = path.join(PATH_TO_D4TEXTURES, iconId + '.webp');
-    try {
-      fs.accessSync(filename, fs.constants.R_OK);
-    } catch (err) {
-      console.warn('Unable to read file ' + filename + '...');
-      failedImages.push(iconId);
-      continue;
-    }
-
-    // fs.copyFileSync(filename, path.join(PATH_TO_PUBLIC_DIR, iconId + ".webp"));
-
-    if (await bucket.file(filename).exists()) {
-      console.log(`[${i}] Skipping ${filename}...`);
-      continue;
-    }
-
-    console.log(`[${i}] Uploading ${filename}...`);
-    const resp = await bucket.upload(filename, {
-      destination: 'icons/' + iconId + '.webp',
-      metadata: {
-        contentType: 'image/webp',
-        cacheControl: 'public, max-age=31536000',
-      },
-    });
-  }
-
-  if (failedImages.length) {
-    console.log('Missing Icons...', failedImages);
-  }
-};
-
-const MISSING_ICONS = 'C:\\Users\\Sam\\Documents\\d4log\\missing_icons';
-
-const uploadMissingIcons = async () => {
-  const bucket = getStorage(app).bucket();
-  let i = 0;
-  for (const pathToIcon of fs.readdirSync(MISSING_ICONS)) {
-    console.log('[' + ++i + '] Uploading ' + pathToIcon + '...');
-    const fileName = path.basename(pathToIcon);
-    const resp = await bucket.upload(path.join(MISSING_ICONS, pathToIcon), {
-      destination: 'icons/' + fileName,
-      metadata: {
-        contentType: 'image/webp',
-        cacheControl: 'public, max-age=31536000',
-      },
-    });
-  }
 };
 
 dumpItems();
