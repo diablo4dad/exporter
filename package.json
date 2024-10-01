@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc",
-    "export": "npx tsx src/main.ts"
+    "build": "npx tsx --env-file .env src/main.ts"
   },
   "private": true,
   "devDependencies": {
