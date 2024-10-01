@@ -6,8 +6,8 @@ import {
   resolveStoreProduct,
   resolveStringsList,
   stu,
-} from '../../d4.js';
-import { D4DadItem, D4DadTranslation, TOWN_PORTAL } from '../index.js';
+} from '../d4.js';
+import { D4DadItem, D4DadTranslation, TOWN_PORTAL } from '../json/index.js';
 
 function chooseIcon(portal: D4TownPortalCosmetic, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

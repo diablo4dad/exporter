@@ -8,8 +8,8 @@ import {
   resolveStoreProduct,
   resolveStringsList,
   stu,
-} from '../../d4.js';
-import { D4DadItem, D4DadTranslation, EMOTE } from '../index.js';
+} from '../d4.js';
+import { D4DadItem, D4DadTranslation, EMOTE } from '../json/index.js';
 
 function chooseIcon(emote: D4Emote, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

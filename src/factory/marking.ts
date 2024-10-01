@@ -6,8 +6,8 @@ import {
   resolveStoreProduct,
   resolveStringsList,
   stu,
-} from '../../d4.js';
-import { BODY_MARKING, D4DadItem, D4DadTranslation } from '../index.js';
+} from '../d4.js';
+import { BODY_MARKING, D4DadItem, D4DadTranslation } from '../json/index.js';
 
 function chooseIcon(marking: D4MarkingShape, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

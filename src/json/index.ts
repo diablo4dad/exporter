@@ -25,10 +25,10 @@ import {
   resolveStoreProduct,
   resolveStringsList,
 } from '../d4.js';
-import { extractItemFromProduct, storeToCollectionItems } from './factory/bundles.js';
-import { achievementToCollectionItems } from './factory/achievements.js';
+import { extractItemFromProduct, storeToCollectionItems } from '../factory/bundles.js';
+import { achievementToCollectionItems } from '../factory/achievements.js';
 import { hashCode, identity, pipe } from '../helper.js';
-import { challengeToCollection } from './factory/challenges.js';
+import { challengeToCollection } from '../factory/challenges.js';
 
 export const BODY_MARKING = 7200;
 export enum Category {

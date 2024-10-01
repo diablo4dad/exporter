@@ -7,8 +7,8 @@ import {
   resolveSno,
   resolveStringsList,
   stu,
-} from '../../d4.js';
-import { D4DadChallenge, D4DadChallengeCategory, D4DadCollection, D4DadTranslation } from '../index.js';
+} from '../d4.js';
+import { D4DadChallenge, D4DadChallengeCategory, D4DadCollection, D4DadTranslation } from '../json/index.js';
 import { achievementToCollectionItems } from './achievements.js';
 
 export function challengeToCollection(deps: D4Dependencies) {

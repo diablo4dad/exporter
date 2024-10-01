@@ -7,7 +7,7 @@ import {
   getTextFromStl,
   resolveSno,
   resolveStringsList,
-} from '../../d4.js';
+} from '../d4.js';
 import {
   aggregateItemList,
   composeName,
@@ -20,7 +20,7 @@ import {
   ItemList,
   mergeItemLists,
   pushToItemList,
-} from '../index.js';
+} from '../json/index.js';
 
 export function achievementToCollectionItems(
   deps: D4Dependencies,

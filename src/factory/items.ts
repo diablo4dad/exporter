@@ -7,8 +7,8 @@ import {
   resolveStoreProduct,
   resolveStringsList,
   stu,
-} from '../../d4.js';
-import { D4DadGenderSpecificImages, D4DadItem, D4DadTranslation } from '../index.js';
+} from '../d4.js';
+import { D4DadGenderSpecificImages, D4DadItem, D4DadTranslation } from '../json/index.js';
 
 export function itemToDad(deps: D4Dependencies): (_: D4Item) => [D4DadItem, D4DadTranslation] {
   return (item: D4Item): [D4DadItem, D4DadTranslation] => {

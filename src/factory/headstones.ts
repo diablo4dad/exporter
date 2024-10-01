@@ -6,8 +6,8 @@ import {
   resolveStoreProduct,
   resolveStringsList,
   stu,
-} from '../../d4.js';
-import { D4DadItem, D4DadTranslation, HEADSTONE } from '../index.js';
+} from '../d4.js';
+import { D4DadItem, D4DadTranslation, HEADSTONE } from '../json/index.js';
 
 function chooseIcon(headstone: D4Actor, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

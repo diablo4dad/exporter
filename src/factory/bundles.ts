@@ -7,7 +7,7 @@ import {
   resolveSno,
   resolveStringsList,
   stu,
-} from '../../d4.js';
+} from '../d4.js';
 import {
   aggregateItemList,
   composeName,
@@ -15,7 +15,7 @@ import {
   D4DadStoreProduct,
   D4DadTranslation,
   unpackStoreProduct,
-} from '../index.js';
+} from '../json/index.js';
 
 export function extractItemFromProduct(
   deps: D4Dependencies,
