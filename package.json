@@ -1,14 +1,18 @@
 {
-  "name": "d4log-export",
+  "name": "d4dad-exporter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.ts",
   "type": "module",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix",
     "build": "npx tsx --env-file .env src/main.ts"
   },
-  "private": true,
+  "dependencies": {
+    "firebase-admin": "^12.3.1"
+  },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
     "@types/node": "^20.11.19",
@@ -16,11 +20,9 @@
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-sort-exports": "^0.9.1",
     "prettier": "^3.3.3",
     "typescript": "^5.3.3",
     "typescript-eslint": "^7.0.2"
-  },
-  "dependencies": {
-    "firebase-admin": "^12.3.1"
   }
 }

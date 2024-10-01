@@ -1,16 +1,11 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
     "outDir": "dist",
+    "target": "es2018",
+    "module": "commonjs",
     "sourceMap": true,
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"],
-  "references": [
-    {
-      "path": "../d4log-common",
-      "prepend": true,
-    }
-  ]
+  "exclude": ["node_modules"]
 }
