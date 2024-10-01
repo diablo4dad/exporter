@@ -1,6 +1,7 @@
-import Path from 'path'
-import path from 'path'
-import {PATH_TO_D4STRING_LIST} from "./config.js";
+import Path from 'path';
+import path from 'path';
+
+import { PATH_TO_D4STRING_LIST } from './constants.js';
 
 interface D4Type {
     __type__: string,

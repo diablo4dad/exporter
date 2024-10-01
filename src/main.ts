@@ -19,25 +19,7 @@ import {
     D4Translation,
 } from './d4.js';
 import { parseFiles } from './loader.js';
-import {
-    BUILD_DIR,
-    ITEM_TYPES_TO_SYNC,
-    PATH_TO_D4ACHIEVEMENT,
-    PATH_TO_D4ACTOR,
-    PATH_TO_D4CHALLENGE,
-    PATH_TO_D4EMBLEMS,
-    PATH_TO_D4EMOTE,
-    PATH_TO_D4ITEM,
-    PATH_TO_D4ITEM_TYPE,
-    PATH_TO_D4MARKING_SHAPE,
-    PATH_TO_D4PLAYER_TITLE,
-    PATH_TO_D4POWER,
-    PATH_TO_D4REPUTATION,
-    PATH_TO_D4STORE_PRODUCT,
-    PATH_TO_D4STRING_LIST,
-    PATH_TO_D4TEXTURES,
-    PATH_TO_D4TOWN_PORTAL,
-} from './config.js';
+import { BUILD_DIR, ITEM_TYPES_TO_SYNC, PATH_TO_D4TEXTURES, PATH_TO_SERVICE_ACCOUNT_KEY } from './config.js';
 import { itemToDad } from './json/factory/items.js';
 import { itemTypeToDad } from './json/factory/itemTypes.js';
 import { buildCollection, D4DadDb, D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE } from './json/index.js';
@@ -57,11 +39,25 @@ import ESSENTIAL from './json/collections/essential/index.js';
 import CHALLENGE from './json/collections/challenge/index.js';
 import PROMOTIONAL from './json/collections/promotional/index.js';
 import STORE from './json/collections/shop/index.js';
-
-const serviceAccount = process.env.SERVICE_ACCOUNT;
+import {
+    PATH_TO_D4ACHIEVEMENT,
+    PATH_TO_D4ACTOR,
+    PATH_TO_D4CHALLENGE,
+    PATH_TO_D4EMBLEMS,
+    PATH_TO_D4EMOTE,
+    PATH_TO_D4ITEM,
+    PATH_TO_D4ITEM_TYPE,
+    PATH_TO_D4MARKING_SHAPE,
+    PATH_TO_D4PLAYER_TITLE,
+    PATH_TO_D4POWER,
+    PATH_TO_D4REPUTATION,
+    PATH_TO_D4STORE_PRODUCT,
+    PATH_TO_D4STRING_LIST,
+    PATH_TO_D4TOWN_PORTAL,
+} from './constants.js';
 
 const app = admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.cert(PATH_TO_SERVICE_ACCOUNT_KEY),
     storageBucket: 'd4log-bfc60.appspot.com',
 });
 

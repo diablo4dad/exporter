@@ -1,45 +1,14 @@
-// master directories
-const PATH_TO_D4DATA = 'C:\\Users\\Sam\\Documents\\d4data'
-const PATH_TO_D4TEXTURES = 'C:\\Users\\Sam\\Documents\\d4-texture-extractor\\webp'
-
+const PATH_TO_D4DATA = process.env.D4DAD_D4DATA_DIR ?? "";
+const PATH_TO_D4TEXTURES = process.env.D4DAD_D4TEXTURES_DIR ?? "";
+const PATH_TO_SERVICE_ACCOUNT_KEY = process.env.D4DAD_SERVICE_ACCOUNT ?? "";
 const BUILD_DIR = "build";
-
-// key data files
-const PATH_TO_D4ITEM = "json\\base\\meta\\Item";
-const PATH_TO_D4ITEM_TYPE = "json\\base\\meta\\ItemType";
-const PATH_TO_D4ACTOR = "json\\base\\meta\\Actor";
-const PATH_TO_D4STRING_LIST = "json\\enUS_Text\\meta\\StringList";
-const PATH_TO_D4EMOTE = "json\\base\\meta\\Emote";
-const PATH_TO_D4TOWN_PORTAL = "json\\base\\meta\\TownPortalCosmetic";
-const PATH_TO_D4MARKING_SHAPE = "json\\base\\meta\\MarkingShape";
-const PATH_TO_D4POWER = "json\\base\\meta\\Power";
-const PATH_TO_D4EMBLEMS = "json\\base\\meta\\Emblem";
-const PATH_TO_D4STORE_PRODUCT = "json\\base\\meta\\StoreProduct";
-const PATH_TO_D4PLAYER_TITLE = "json\\base\\meta\\PlayerTitle";
-const PATH_TO_D4CHALLENGE = "json\\base\\meta\\Challenge";
-const PATH_TO_D4ACHIEVEMENT = "json\\base\\meta\\Achievement";
-const PATH_TO_D4REPUTATION = "json\\base\\meta\\Reputation";
-
 const MAX_HYDRATE_DEPTH_RECURSION = 0;
 
 export {
   PATH_TO_D4DATA,
-  PATH_TO_D4ITEM,
-  PATH_TO_D4STRING_LIST,
   PATH_TO_D4TEXTURES,
-  PATH_TO_D4ACTOR,
-  PATH_TO_D4ITEM_TYPE,
-  PATH_TO_D4EMOTE,
-  PATH_TO_D4MARKING_SHAPE,
-  PATH_TO_D4TOWN_PORTAL,
-  PATH_TO_D4STORE_PRODUCT,
+  PATH_TO_SERVICE_ACCOUNT_KEY,
   MAX_HYDRATE_DEPTH_RECURSION,
-  PATH_TO_D4EMBLEMS,
-  PATH_TO_D4POWER,
-  PATH_TO_D4PLAYER_TITLE,
-  PATH_TO_D4CHALLENGE,
-  PATH_TO_D4ACHIEVEMENT,
-  PATH_TO_D4REPUTATION,
   BUILD_DIR,
 };
 
