@@ -1,23 +1,25 @@
-import { itemTypeToDad } from './parser/itemTypes.js';
-import { buildCollection, D4DadDb, D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE } from './index.js';
-import { ITEM_TYPES_TO_SYNC } from '../config.js';
-import { itemToDad } from './parser/items.js';
+import CHALLENGE from './definition/challenge/index.js';
+import ESSENTIAL from './definition/essential/index.js';
+import PROMOTIONAL from './definition/promotional/index.js';
+import SEASON from './definition/season/index.js';
+import STORE from './definition/shop/index.js';
+import { achievementToDad } from './parser/achievements.js';
+import { productToDad } from './parser/bundles.js';
+import { challengeToDad } from './parser/challenges.js';
 import { emblemToDad } from './parser/emblems.js';
 import { emoteToDad } from './parser/emotes.js';
 import { headstoneToDad } from './parser/headstones.js';
+import { itemToDad } from './parser/items.js';
+import { itemTypeToDad } from './parser/itemTypes.js';
 import { markingShapeToDad } from './parser/marking.js';
 import { portalToDad } from './parser/portals.js';
 import { playerTitleToDad } from './parser/title.js';
-import { productToDad } from './parser/bundles.js';
-import { achievementToDad } from './parser/achievements.js';
-import { challengeToDad } from './parser/challenges.js';
-import ESSENTIAL from './definition/essential/index.js';
-import SEASON from './definition/season/index.js';
-import { pipe } from '../helper.js';
-import CHALLENGE from './definition/challenge/index.js';
-import STORE from './definition/shop/index.js';
-import PROMOTIONAL from './definition/promotional/index.js';
+
+import { ITEM_TYPES_TO_SYNC } from '../config.js';
 import { D4Dependencies } from '../d4reader/struct.js';
+import { pipe } from '../helper.js';
+
+import { buildCollection, D4DadDb, D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE } from './index.js';
 
 export function makeDb(deps: D4Dependencies): D4DadDb {
   const itemTypesOut = Array.from(deps.itemTypes.values())

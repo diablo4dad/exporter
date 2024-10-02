@@ -1,5 +1,5 @@
-import { Category, CollectionDescriptor, D4DadCollection, D4DadCollectionItem } from '../../index.js';
 import { pipe } from '../../../helper.js';
+import { Category, CollectionDescriptor, D4DadCollection, D4DadCollectionItem } from '../../index.js';
 
 const DESCRIPTIONS: ReadonlyMap<string, string> = new Map([
   ['Classes', 'Class achievements'],

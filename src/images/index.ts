@@ -1,9 +1,11 @@
-import { D4DadDb } from '../collection/index.js';
-import { getStorage } from 'firebase-admin/storage';
-import path from 'path';
-import { PATH_TO_D4TEXTURES, PATH_TO_SERVICE_ACCOUNT_KEY } from '../config.js';
 import fs from 'fs';
+import path from 'path';
+
 import admin from 'firebase-admin';
+import { getStorage } from 'firebase-admin/storage';
+
+import { D4DadDb } from '../collection/index.js';
+import { PATH_TO_D4TEXTURES, PATH_TO_SERVICE_ACCOUNT_KEY } from '../config.js';
 
 const app = admin.initializeApp({
   credential: admin.credential.cert(PATH_TO_SERVICE_ACCOUNT_KEY),

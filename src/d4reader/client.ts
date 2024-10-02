@@ -1,4 +1,6 @@
+import { parseFiles } from './loader.js';
 import { D4Dependencies } from './struct.js';
+
 import {
   PATH_TO_D4ACHIEVEMENT,
   PATH_TO_D4ACTOR,
@@ -15,7 +17,6 @@ import {
   PATH_TO_D4STRING_LIST,
   PATH_TO_D4TOWN_PORTAL,
 } from '../d4data/constant.js';
-import { parseFiles } from './loader.js';
 import {
   D4Achievement,
   D4Actor,

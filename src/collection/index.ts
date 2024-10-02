@@ -1,3 +1,18 @@
+import { achievementToCollectionItems } from './parser/achievements.js';
+import { extractItemFromProduct, storeToCollectionItems } from './parser/bundles.js';
+import { challengeToCollection } from './parser/challenges.js';
+
+import {
+  isActor,
+  isEmblem,
+  isEmote,
+  isItem,
+  isMarkingShape,
+  isPlayerTitle,
+  isStoreProduct,
+  isTownPortalCosmetic,
+} from '../d4data/predicate.js';
+import { resolveSno, resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
 import {
   D4Actor,
   D4Emblem,
@@ -10,24 +25,10 @@ import {
   D4TownPortalCosmetic,
   D4Type,
 } from '../d4data/struct.js';
-import { extractItemFromProduct, storeToCollectionItems } from './parser/bundles.js';
-import { achievementToCollectionItems } from './parser/achievements.js';
-import { hashCode, identity, pipe } from '../helper.js';
-import { challengeToCollection } from './parser/challenges.js';
-import {
-  isActor,
-  isEmblem,
-  isEmote,
-  isItem,
-  isMarkingShape,
-  isPlayerTitle,
-  isStoreProduct,
-  isTownPortalCosmetic,
-} from '../d4data/predicate.js';
-import { resolveSno, resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
-import { getTextFromStl } from '../d4reader/strings.js';
 import { getEntity, getEntityFuzzy } from '../d4reader/getter.js';
+import { getTextFromStl } from '../d4reader/strings.js';
 import { D4Dependencies } from '../d4reader/struct.js';
+import { hashCode, identity, pipe } from '../helper.js';
 
 export const BODY_MARKING = 7200;
 

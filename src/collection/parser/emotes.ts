@@ -1,10 +1,10 @@
-import { D4Emote, D4StoreProduct } from '../../d4data/struct.js';
-import { D4DadItem, D4DadTranslation, EMOTE } from '../index.js';
 import { CLASS_TYPES } from '../../d4data/constant.js';
 import { resolveSno, resolveStoreProduct, resolveStringsList } from '../../d4data/resolver.js';
+import { D4Emote, D4StoreProduct } from '../../d4data/struct.js';
 import { getTextFromStl } from '../../d4reader/strings.js';
-import { stu } from '../../helper.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
+import { stu } from '../../helper.js';
+import { D4DadItem, D4DadTranslation, EMOTE } from '../index.js';
 
 function chooseIcon(emote: D4Emote, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

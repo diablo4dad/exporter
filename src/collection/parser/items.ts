@@ -1,10 +1,10 @@
-import { D4Item } from '../../d4data/struct.js';
-import { D4DadGenderSpecificImages, D4DadItem, D4DadTranslation } from '../index.js';
 import { resolveSno, resolveStoreProduct, resolveStringsList } from '../../d4data/resolver.js';
+import { D4Item } from '../../d4data/struct.js';
 import { chooseBestIconHandle } from '../../d4reader/icons.js';
 import { getTextFromStl } from '../../d4reader/strings.js';
-import { stu } from '../../helper.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
+import { stu } from '../../helper.js';
+import { D4DadGenderSpecificImages, D4DadItem, D4DadTranslation } from '../index.js';
 
 export function itemToDad(deps: D4Dependencies): (_: D4Item) => [D4DadItem, D4DadTranslation] {
   return (item: D4Item): [D4DadItem, D4DadTranslation] => {

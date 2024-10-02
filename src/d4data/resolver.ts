@@ -1,5 +1,6 @@
-import { EMPTY_STRINGS_LIST, FILE_EXTENSIONS, PATH_TO_D4STRING_LIST } from './constant.js';
 import Path from 'path';
+
+import { EMPTY_STRINGS_LIST, FILE_EXTENSIONS, PATH_TO_D4STRING_LIST } from './constant.js';
 import { D4Ref, D4SnoRef, D4StoreProduct, D4Translation, D4Type } from './struct.js';
 
 export function resolveSno<T>(ref: D4SnoRef | null, lookup: Map<string, T>): T | undefined {

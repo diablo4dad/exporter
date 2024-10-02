@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+
+import { makeDb } from './collection/compiler.js';
 import { BUILD_DIR } from './config.js';
 import { readD4Data } from './d4reader/client.js';
-import { makeDb } from './collection/compiler.js';
 
 const deps = readD4Data();
 const dadDb = makeDb(deps);
