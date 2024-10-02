@@ -162,6 +162,7 @@ export type {
   D4ChallengeDefinition,
   D4Emblem,
   D4Emote,
+  D4Entity,
   D4InventoryImages,
   D4Item,
   D4ItemType,

@@ -1,11 +1,9 @@
-const PATH_TO_D4DATA = process.env.D4DAD_D4DATA_DIR ?? '';
-const PATH_TO_D4TEXTURES = process.env.D4DAD_D4TEXTURES_DIR ?? '';
-const PATH_TO_SERVICE_ACCOUNT_KEY = process.env.D4DAD_SERVICE_ACCOUNT ?? '';
-const BUILD_DIR = 'build';
-const MAX_HYDRATE_DEPTH_RECURSION = 0;
-
-export { BUILD_DIR, MAX_HYDRATE_DEPTH_RECURSION, PATH_TO_D4DATA, PATH_TO_D4TEXTURES, PATH_TO_SERVICE_ACCOUNT_KEY };
-
+export const PATH_TO_D4DATA = process.env.D4DAD_D4DATA_DIR ?? '';
+export const PATH_TO_D4TEXTURES = process.env.D4DAD_D4TEXTURES_DIR ?? '';
+export const PATH_TO_SERVICE_ACCOUNT_KEY = process.env.D4DAD_SERVICE_ACCOUNT ?? '';
+export const BUILD_DIR = 'build';
+export const MAX_HYDRATE_DEPTH_RECURSION = 0;
+export const RAISE_ON_ERROR = true;
 export const ITEM_TYPES_TO_SYNC = [
   'Mount',
   'Horse Armor',

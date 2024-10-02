@@ -1,55 +1,63 @@
-import Path from 'path';
+import path from 'path';
 
 import { EMPTY_STRINGS_LIST, FILE_EXTENSIONS, PATH_TO_D4STRING_LIST } from './constant.js';
-import { D4Ref, D4SnoRef, D4StoreProduct, D4Translation, D4Type } from './struct.js';
+import { D4Entity, D4SnoRef, D4StoreProduct, D4Translation } from './struct.js';
 
-export function resolveSno<T>(ref: D4SnoRef | null, lookup: Map<string, T>): T | undefined {
-  if (ref === null) {
-    return;
-  }
+import { captureError } from '../common/logger.js';
 
-  // normalise filename
-  const targetFileName = Path.join('json', ref.__targetFileName__ + '.json').replace('/', '\\');
+export function resolveSno<T>(ref: D4SnoRef, lookup: Map<string, T>): T | undefined {
+  // prettier-ignore
+  const targetFileName = path
+    .join('json', `${ref.__targetFileName__}.json`)
+    .replace('/', '\\');
 
   return lookup.get(targetFileName);
 }
 
-export function resolveStoreProduct(
-  ref: D4Ref & D4Type,
-  lookup: Map<string, D4StoreProduct>,
-): D4StoreProduct | undefined {
+export function resolveStoreProduct(ref: D4Entity, lookup: Map<string, D4StoreProduct>): D4StoreProduct | undefined {
   const ext = FILE_EXTENSIONS.get(ref.__type__);
   if (!ext) {
+    captureError('File extension not registered.', ref);
     return;
   }
 
   const type = ref.__type__.replace('Definition', '');
-  const targetFileName = ref.__fileName__.replace(type, 'StoreProduct').replace(ext, '.prd');
-  const targetFileNameKey = Path.join('json', targetFileName + '.json').replace('/', '\\');
+  // prettier-ignore
+  const targetFileName = ref.__fileName__
+    .replace(type, 'StoreProduct')
+    .replace(ext, '.prd');
+
+  // prettier-ignore
+  const targetFileNameKey = path
+    .join('json', targetFileName + '.json')
+    .replace('/', '\\');
 
   return lookup.get(targetFileNameKey);
 }
 
-export function resolveStringsList(
-  ref: (D4Ref & D4Type) | undefined,
-  lookup: Map<string, D4Translation>,
-): D4Translation {
+export function resolveStringsList(ref: D4Entity | undefined, lookup: Map<string, D4Translation>): D4Translation {
   if (!ref) {
     return EMPTY_STRINGS_LIST;
   }
 
-  const filename = inferStl(ref);
-  const relativeFilename = Path.join(PATH_TO_D4STRING_LIST, filename);
-  const stringsList = lookup.get(relativeFilename);
-  return stringsList ?? EMPTY_STRINGS_LIST;
+  const stlName = inferStl(ref);
+  const stlPath = path.join(PATH_TO_D4STRING_LIST, stlName);
+
+  const stl = lookup.get(stlPath);
+  if (!stl) {
+    captureError('StringsList not found.', stlPath);
+    return EMPTY_STRINGS_LIST;
+  }
+
+  return stl;
 }
 
-function inferStl(ref: D4Ref & D4Type): string {
-  const type = ref.__type__;
-  const fileName = ref.__fileName__;
+function inferStl(ref: D4Entity): string {
+  const refType = ref.__type__;
+  const refName = ref.__fileName__;
 
-  const slicedType = type.replace('Definition', '');
-  const baseFileName = Path.parse(fileName).name;
+  const type = refType.replace('Definition', '');
+  const name = path.parse(refName).name;
 
-  return `${slicedType}_${baseFileName}.stl.json`;
+  return `${type}_${name}.stl.json`;
 }
