@@ -1,4 +1,4 @@
-import { Category } from '../../index.js';
+import { Category } from '../../constants.js';
 
 const SEASON03 = {
   name: 'Season of the Construct',

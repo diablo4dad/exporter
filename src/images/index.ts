@@ -4,7 +4,7 @@ import path from 'path';
 import admin from 'firebase-admin';
 import { getStorage } from 'firebase-admin/storage';
 
-import { D4DadDb } from '../collection/index.js';
+import { D4DadDb } from '../collection/struct.js';
 import { PATH_TO_D4TEXTURES, PATH_TO_SERVICE_ACCOUNT_KEY } from '../config.js';
 
 const app = admin.initializeApp({

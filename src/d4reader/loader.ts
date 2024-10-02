@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import { MAX_HYDRATE_DEPTH_RECURSION, PATH_TO_D4DATA } from '../config.js';
+import { PATH_TO_D4DATA } from '../config.js';
+import { MAX_HYDRATE_DEPTH_RECURSION } from '../constants.js';
 
 function parseFile<T>(base: string, sub: string, fn: string, depth: number = 0): [string, T] {
   const relativePath = path.join(sub, fn);

@@ -3,7 +3,8 @@ import { D4StoreProduct, D4TownPortalCosmetic } from '../../d4data/struct.js';
 import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
 import { stu } from '../../helper.js';
-import { D4DadItem, D4DadTranslation, TOWN_PORTAL } from '../index.js';
+import { TOWN_PORTAL } from '../constants.js';
+import { D4DadItem, D4DadTranslation } from '../struct.js';
 
 function chooseIcon(portal: D4TownPortalCosmetic, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

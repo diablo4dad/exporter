@@ -4,7 +4,7 @@ import SEASON03 from './season03.js';
 import SEASON04 from './season04.js';
 import SEASON05 from './season05.js';
 
-import { CollectionDescriptor } from '../../index.js';
+import { CollectionDescriptor } from '../../struct.js';
 
 const SEASON: ReadonlyArray<CollectionDescriptor> = [
   // SEASON06,

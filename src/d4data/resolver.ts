@@ -5,7 +5,11 @@ import { D4Entity, D4SnoRef, D4StoreProduct, D4Translation } from './struct.js';
 
 import { captureError } from '../common/logger.js';
 
-export function resolveSno<T>(ref: D4SnoRef, lookup: Map<string, T>): T | undefined {
+export function resolveSno<T>(ref: D4SnoRef | null, lookup: Map<string, T>): T | undefined {
+  if (!ref) {
+    return;
+  }
+
   // prettier-ignore
   const targetFileName = path
     .join('json', `${ref.__targetFileName__}.json`)

@@ -2,7 +2,8 @@ import { resolveStringsList } from '../../d4data/resolver.js';
 import { D4PlayerTitle } from '../../d4data/struct.js';
 import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
-import { D4DadItem, D4DadTranslation, PLAYER_TITLE_PREFIX, PLAYER_TITLE_SUFFIX } from '../index.js';
+import { PLAYER_TITLE_PREFIX, PLAYER_TITLE_SUFFIX } from '../constants.js';
+import { D4DadItem, D4DadTranslation } from '../struct.js';
 
 export function playerTitleToDad(deps: D4Dependencies): (item: D4PlayerTitle) => [D4DadItem, D4DadTranslation] {
   return (title: D4PlayerTitle): [D4DadItem, D4DadTranslation] => {

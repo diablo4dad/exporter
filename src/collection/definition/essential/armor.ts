@@ -1,4 +1,5 @@
-import { Category, CollectionDescriptor } from '../../index.js';
+import { Category } from '../../constants.js';
+import { CollectionDescriptor } from '../../struct.js';
 
 const HELM: CollectionDescriptor = {
   name: 'Helm',

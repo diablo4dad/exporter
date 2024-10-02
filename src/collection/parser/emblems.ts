@@ -3,7 +3,8 @@ import { D4Emblem, D4StoreProduct } from '../../d4data/struct.js';
 import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
 import { stu } from '../../helper.js';
-import { D4DadItem, D4DadTranslation, EMBLEM } from '../index.js';
+import { EMBLEM } from '../constants.js';
+import { D4DadItem, D4DadTranslation } from '../struct.js';
 
 function chooseIcon(emblem: D4Emblem, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

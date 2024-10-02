@@ -5,7 +5,7 @@ import { D4Achievement, D4ChallengeCategory, D4ChallengeDefinition } from '../..
 import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
 import { stu } from '../../helper.js';
-import { D4DadChallenge, D4DadChallengeCategory, D4DadCollection, D4DadTranslation } from '../index.js';
+import { D4DadChallenge, D4DadChallengeCategory, D4DadCollection, D4DadTranslation } from '../struct.js';
 
 export function challengeToCollection(deps: D4Dependencies) {
   return (definition: D4ChallengeDefinition) => {

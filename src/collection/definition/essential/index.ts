@@ -9,7 +9,7 @@ import TEJAL from './tejal.js';
 import WEAPON from './weapon.js';
 import ZONE from './zone.js';
 
-import { CollectionDescriptor } from '../../index.js';
+import { CollectionDescriptor } from '../../struct.js';
 
 const ESSENTIAL: ReadonlyArray<CollectionDescriptor> = [
   ZONE,

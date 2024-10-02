@@ -1,4 +1,5 @@
-import { Category, CollectionDescriptor } from '../../index.js';
+import { Category } from '../../constants.js';
+import { CollectionDescriptor } from '../../struct.js';
 
 const SEASON04: CollectionDescriptor = {
   name: 'Season of Loot Reborn',

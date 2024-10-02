@@ -3,11 +3,6 @@ import { D4Achievement, D4Ref, D4RewardDefinition, D4Type } from '../../d4data/s
 import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
 import {
-  D4DadAchievement,
-  D4DadAchievementRewards,
-  D4DadCollectionItem,
-  D4DadTranslation,
-  ItemList,
   aggregateItemList,
   composeName,
   createItemList,
@@ -15,6 +10,13 @@ import {
   mergeItemLists,
   pushToItemList,
 } from '../index.js';
+import {
+  D4DadAchievement,
+  D4DadAchievementRewards,
+  D4DadCollectionItem,
+  D4DadTranslation,
+  ItemList,
+} from '../struct.js';
 
 export function achievementToCollectionItems(
   deps: D4Dependencies,

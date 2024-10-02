@@ -3,14 +3,8 @@ import { D4Entity, D4StoreProduct } from '../../d4data/struct.js';
 import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
 import { stu } from '../../helper.js';
-import {
-  D4DadCollectionItem,
-  D4DadStoreProduct,
-  D4DadTranslation,
-  aggregateItemList,
-  composeName,
-  unpackStoreProduct,
-} from '../index.js';
+import { aggregateItemList, composeName, unpackStoreProduct } from '../index.js';
+import { D4DadCollectionItem, D4DadStoreProduct, D4DadTranslation } from '../struct.js';
 
 export function extractItemFromProduct(deps: D4Dependencies): (product: D4StoreProduct) => D4Entity | undefined {
   return (product: D4StoreProduct): D4Entity | undefined => {

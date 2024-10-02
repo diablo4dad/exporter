@@ -4,7 +4,8 @@ import { D4Emote, D4StoreProduct } from '../../d4data/struct.js';
 import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
 import { stu } from '../../helper.js';
-import { D4DadItem, D4DadTranslation, EMOTE } from '../index.js';
+import { EMOTE } from '../constants.js';
+import { D4DadItem, D4DadTranslation } from '../struct.js';
 
 function chooseIcon(emote: D4Emote, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

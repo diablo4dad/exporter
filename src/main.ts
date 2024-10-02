@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { makeDb } from './collection/compiler.js';
-import { BUILD_DIR } from './config.js';
+import { ARTIFACT_NAME, BUILD_DIR } from './constants.js';
 import { readD4Data } from './d4reader/client.js';
 
 const deps = readD4Data();
@@ -12,6 +12,9 @@ if (!fs.existsSync(BUILD_DIR)) {
   fs.mkdirSync(BUILD_DIR);
 }
 
-fs.writeFileSync(path.join(BUILD_DIR, 'd4dad.json'), JSON.stringify(dadDb));
+const dest = path.join(BUILD_DIR, ARTIFACT_NAME);
+const blob = JSON.stringify(dadDb);
 
-console.log('Dump complete.');
+fs.writeFileSync(dest, blob);
+
+console.log(`Wrote ${dest}.`);
