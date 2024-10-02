@@ -1,4 +1,4 @@
-import { D4Achievement, D4Ref, D4RewardDefinition, D4Type } from '../d4data/struct.js';
+import { D4Achievement, D4Ref, D4RewardDefinition, D4Type } from '../../d4data/struct.js';
 import {
   aggregateItemList,
   composeName,
@@ -11,10 +11,10 @@ import {
   ItemList,
   mergeItemLists,
   pushToItemList,
-} from '../json/index.js';
-import { resolveSno, resolveStringsList } from '../d4data/resolver.js';
-import { getTextFromStl } from '../d4reader/strings.js';
-import { D4Dependencies } from '../d4reader/struct.js';
+} from '../index.js';
+import { resolveSno, resolveStringsList } from '../../d4data/resolver.js';
+import { getTextFromStl } from '../../d4reader/strings.js';
+import { D4Dependencies } from '../../d4reader/struct.js';
 
 export function achievementToCollectionItems(
   deps: D4Dependencies,

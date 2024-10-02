@@ -1,9 +1,9 @@
-import { D4MarkingShape, D4StoreProduct } from '../d4data/struct.js';
-import { BODY_MARKING, D4DadItem, D4DadTranslation } from '../json/index.js';
-import { resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
-import { getTextFromStl } from '../d4reader/strings.js';
-import { stu } from '../helper.js';
-import { D4Dependencies } from '../d4reader/struct.js';
+import { D4MarkingShape, D4StoreProduct } from '../../d4data/struct.js';
+import { BODY_MARKING, D4DadItem, D4DadTranslation } from '../index.js';
+import { resolveStoreProduct, resolveStringsList } from '../../d4data/resolver.js';
+import { getTextFromStl } from '../../d4reader/strings.js';
+import { stu } from '../../helper.js';
+import { D4Dependencies } from '../../d4reader/struct.js';
 
 function chooseIcon(marking: D4MarkingShape, storeProduct?: D4StoreProduct): number {
   if (storeProduct?.hStoreIconOverride) {

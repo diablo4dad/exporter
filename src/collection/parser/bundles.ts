@@ -1,4 +1,4 @@
-import { D4Ref, D4StoreProduct, D4Type } from '../d4data/struct.js';
+import { D4Ref, D4StoreProduct, D4Type } from '../../d4data/struct.js';
 import {
   aggregateItemList,
   composeName,
@@ -6,11 +6,11 @@ import {
   D4DadStoreProduct,
   D4DadTranslation,
   unpackStoreProduct,
-} from '../json/index.js';
-import { resolveSno, resolveStringsList } from '../d4data/resolver.js';
-import { getTextFromStl } from '../d4reader/strings.js';
-import { stu } from '../helper.js';
-import { D4Dependencies } from '../d4reader/struct.js';
+} from '../index.js';
+import { resolveSno, resolveStringsList } from '../../d4data/resolver.js';
+import { getTextFromStl } from '../../d4reader/strings.js';
+import { stu } from '../../helper.js';
+import { D4Dependencies } from '../../d4reader/struct.js';
 
 export function extractItemFromProduct(
   deps: D4Dependencies,

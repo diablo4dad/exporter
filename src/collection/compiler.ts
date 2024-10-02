@@ -1,22 +1,22 @@
-import { itemTypeToDad } from '../factory/itemTypes.js';
+import { itemTypeToDad } from './parser/itemTypes.js';
 import { buildCollection, D4DadDb, D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE } from './index.js';
 import { ITEM_TYPES_TO_SYNC } from '../config.js';
-import { itemToDad } from '../factory/items.js';
-import { emblemToDad } from '../factory/emblems.js';
-import { emoteToDad } from '../factory/emotes.js';
-import { headstoneToDad } from '../factory/headstones.js';
-import { markingShapeToDad } from '../factory/marking.js';
-import { portalToDad } from '../factory/portals.js';
-import { playerTitleToDad } from '../factory/title.js';
-import { productToDad } from '../factory/bundles.js';
-import { achievementToDad } from '../factory/achievements.js';
-import { challengeToDad } from '../factory/challenges.js';
-import ESSENTIAL from './collections/essential/index.js';
-import SEASON from './collections/season/index.js';
+import { itemToDad } from './parser/items.js';
+import { emblemToDad } from './parser/emblems.js';
+import { emoteToDad } from './parser/emotes.js';
+import { headstoneToDad } from './parser/headstones.js';
+import { markingShapeToDad } from './parser/marking.js';
+import { portalToDad } from './parser/portals.js';
+import { playerTitleToDad } from './parser/title.js';
+import { productToDad } from './parser/bundles.js';
+import { achievementToDad } from './parser/achievements.js';
+import { challengeToDad } from './parser/challenges.js';
+import ESSENTIAL from './definition/essential/index.js';
+import SEASON from './definition/season/index.js';
 import { pipe } from '../helper.js';
-import CHALLENGE from './collections/challenge/index.js';
-import STORE from './collections/shop/index.js';
-import PROMOTIONAL from './collections/promotional/index.js';
+import CHALLENGE from './definition/challenge/index.js';
+import STORE from './definition/shop/index.js';
+import PROMOTIONAL from './definition/promotional/index.js';
 import { D4Dependencies } from '../d4reader/struct.js';
 
 export function makeDb(deps: D4Dependencies): D4DadDb {

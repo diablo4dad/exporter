@@ -10,10 +10,10 @@ import {
   D4TownPortalCosmetic,
   D4Type,
 } from '../d4data/struct.js';
-import { extractItemFromProduct, storeToCollectionItems } from '../factory/bundles.js';
-import { achievementToCollectionItems } from '../factory/achievements.js';
+import { extractItemFromProduct, storeToCollectionItems } from './parser/bundles.js';
+import { achievementToCollectionItems } from './parser/achievements.js';
 import { hashCode, identity, pipe } from '../helper.js';
-import { challengeToCollection } from '../factory/challenges.js';
+import { challengeToCollection } from './parser/challenges.js';
 import {
   isActor,
   isEmblem,

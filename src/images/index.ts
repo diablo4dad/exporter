@@ -1,4 +1,4 @@
-import { D4DadDb } from '../json/index.js';
+import { D4DadDb } from '../collection/index.js';
 import { getStorage } from 'firebase-admin/storage';
 import path from 'path';
 import { PATH_TO_D4TEXTURES, PATH_TO_SERVICE_ACCOUNT_KEY } from '../config.js';
