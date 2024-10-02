@@ -415,8 +415,6 @@ function inferClaim(descriptor: CollectionDescriptor, source?: Source) {
       return 'General';
     case Category.SHOP_ITEMS:
       return 'Cash Shop';
-    case Category.PROMOTIONAL:
-      return 'Promotional';
     case Category.SEASONS:
       return 'Seasonal';
     case Category.CHALLENGE:
