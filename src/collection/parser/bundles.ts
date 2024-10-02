@@ -4,11 +4,11 @@ import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
 import { stu } from '../../helper.js';
 import {
-  aggregateItemList,
-  composeName,
   D4DadCollectionItem,
   D4DadStoreProduct,
   D4DadTranslation,
+  aggregateItemList,
+  composeName,
   unpackStoreProduct,
 } from '../index.js';
 

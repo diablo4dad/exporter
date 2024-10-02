@@ -19,7 +19,7 @@ import { ITEM_TYPES_TO_SYNC } from '../config.js';
 import { D4Dependencies } from '../d4reader/struct.js';
 import { pipe } from '../helper.js';
 
-import { buildCollection, D4DadDb, D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE } from './index.js';
+import { D4DadDb, D4DadEntity, D4DadTranslation, ITEM_TYPE_APPENDAGE, buildCollection } from './index.js';
 
 export function makeDb(deps: D4Dependencies): D4DadDb {
   const itemTypesOut = Array.from(deps.itemTypes.values())
