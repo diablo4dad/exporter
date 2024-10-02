@@ -1,5 +1,5 @@
 import { resolveSno, resolveStringsList } from '../../d4data/resolver.js';
-import { D4Ref, D4StoreProduct, D4Type } from '../../d4data/struct.js';
+import { D4Entity, D4StoreProduct } from '../../d4data/struct.js';
 import { getTextFromStl } from '../../d4reader/strings.js';
 import { D4Dependencies } from '../../d4reader/struct.js';
 import { stu } from '../../helper.js';
@@ -12,10 +12,8 @@ import {
   unpackStoreProduct,
 } from '../index.js';
 
-export function extractItemFromProduct(
-  deps: D4Dependencies,
-): (product: D4StoreProduct) => (D4Ref & D4Type) | undefined {
-  return (product: D4StoreProduct): (D4Ref & D4Type) | undefined => {
+export function extractItemFromProduct(deps: D4Dependencies): (product: D4StoreProduct) => D4Entity | undefined {
+  return (product: D4StoreProduct): D4Entity | undefined => {
     if (product.snoEmote) {
       return resolveSno(product.snoEmote, deps.emotes);
     }

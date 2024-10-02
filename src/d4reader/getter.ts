@@ -1,6 +1,6 @@
 import { D4Dependencies } from './struct.js';
 
-import { D4Ref, D4Type } from '../d4data/struct.js';
+import { D4Entity } from '../d4data/struct.js';
 
 export function getEntity<T>(key: string, lookup: Map<string, T>): T {
   const e = lookup.get(key);
@@ -11,7 +11,7 @@ export function getEntity<T>(key: string, lookup: Map<string, T>): T {
   return e;
 }
 
-export function getEntityFuzzy(key: string, deps: D4Dependencies): D4Ref & D4Type {
+export function getEntityFuzzy(key: string, deps: D4Dependencies): D4Entity {
   if (deps.items.has(key)) {
     return getEntity(key, deps.items);
   }

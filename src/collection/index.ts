@@ -17,10 +17,10 @@ import {
   D4Actor,
   D4Emblem,
   D4Emote,
+  D4Entity,
   D4Item,
   D4MarkingShape,
   D4PlayerTitle,
-  D4Ref,
   D4StoreProduct,
   D4TownPortalCosmetic,
   D4Type,
@@ -203,7 +203,7 @@ export const PLAYER_TITLE_SUFFIX = 7206;
 export const TOWN_PORTAL = 7202;
 
 export function aggregateItemList(deps: D4Dependencies) {
-  return (il: ItemList): (D4Ref & D4Type)[][] => {
+  return (il: ItemList): D4Entity[][] => {
     const collectionItems = [];
 
     if (il.items.length) {
@@ -275,7 +275,7 @@ export function buildCollection(deps: D4Dependencies) {
 }
 
 export function composeName(deps: D4Dependencies) {
-  return (...items: (D4Ref & D4Type)[]): string => {
+  return (...items: D4Entity[]): string => {
     return items
       .map((i) => {
         const itemStrings = resolveStringsList(i, deps.strings);
