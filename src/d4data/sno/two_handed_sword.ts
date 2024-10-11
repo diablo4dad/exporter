@@ -1,0 +1,1 @@
+export const RITUAL_IMPALER = 1833998;

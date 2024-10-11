@@ -1,6 +1,27 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const DARK_CITADEL: CollectionDescriptor = {
+  name: 'Dark Citadel Reveal',
+  description: 'Complete the Dark Citadel before November 8th, 2024',
+  category: Category.LIMITED_EVENT,
+  claimDescription: 'Complete the Dark Citadel.',
+  items: [['json\\base\\meta\\Item\\MountReins_RaidReward_Cat.itm.json']],
+};
+
+const DISCORD: CollectionDescriptor = {
+  name: 'Discord Stream',
+  description: 'Stream yourself playing Diablo IV on Discord from October 8th, 2024 until October 15th, 2024',
+  category: Category.PROMOTIONAL,
+  claim: 'Discord Reward',
+  claimDescription: 'Stream yourself playing Diablo IV on Discord.',
+  items: [
+    ['json\\base\\meta\\Item\\dagger_stor086.itm.json'],
+    ['json\\base\\meta\\Item\\sword_stor100.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandPolearm_stor068.itm.json'],
+  ],
+};
+
 const LUNARY_AWAKENING: CollectionDescriptor = {
   name: 'Lunar Awakening',
   description: 'Chinese new year event from February 6th, 2024 until February 20th, 2024',
@@ -70,7 +91,7 @@ const EVENT: CollectionDescriptor = {
   name: 'Limited Event',
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
-  children: [LUNARY_AWAKENING, MIDWINTER_BLIGHT, DONATE_BLOOD_HARVEST],
+  children: [DARK_CITADEL, DISCORD, LUNARY_AWAKENING, MIDWINTER_BLIGHT, DONATE_BLOOD_HARVEST],
 };
 
 export default EVENT;

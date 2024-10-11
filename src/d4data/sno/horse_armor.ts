@@ -1,0 +1,1 @@
+export const GLORY_OF_THE_VICTOR = 1807543;

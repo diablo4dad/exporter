@@ -2,7 +2,7 @@ import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
 const SEASON06: CollectionDescriptor = {
-  name: 'Season of Hatred',
+  name: 'Season of Hatred Rising',
   description: 'Season 6 starting October 8th, 2024',
   category: Category.SEASONS,
   season: 6,

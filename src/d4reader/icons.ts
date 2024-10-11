@@ -1,3 +1,4 @@
+import { CLASS_TYPES } from '../d4data/constant.js';
 import { D4Actor, D4Item } from '../d4data/struct.js';
 
 export function chooseBestIconHandle(item: D4Item, actor: D4Actor | undefined): number | null {
@@ -7,8 +8,8 @@ export function chooseBestIconHandle(item: D4Item, actor: D4Actor | undefined): 
   }
 
   if (item.tInvImages) {
-    if (item.tInvImages.length !== 5) {
-      console.warn('Expecting tInvImages to contain 5 images.');
+    if (item.tInvImages.length !== CLASS_TYPES.length) {
+      console.warn(`Expecting tInvImages to contain ${CLASS_TYPES.length} images.`);
     } else {
       // default to male barbarian image if available
       if (item.tInvImages[2].hDefaultImage) {

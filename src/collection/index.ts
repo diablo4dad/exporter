@@ -261,7 +261,7 @@ function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: S
     ...ci,
     id: generateId(),
     claim: inferClaim(descriptor, source),
-    claimDescription: descriptor.claimDescription,
+    claimDescription: ci.claimDescription ?? descriptor.claimDescription,
     premium: ci.premium ?? checkPremium(descriptor, source),
     outOfRotation: descriptor.outOfRotation,
   });
@@ -322,7 +322,7 @@ function parseAchievementFiles(deps: D4Dependencies) {
 function parseExtraItems(deps: D4Dependencies) {
   return (descriptor: CollectionDescriptor): D4DadCollectionItem[] => {
     return (descriptor.items ?? []).map((g) => {
-      const items = g.map((i) => getEntityFuzzy(i, deps));
+      const items = g.map((i) => getEntityFuzzy(i, deps)).filter((v): v is D4Entity => v !== null);
 
       return {
         id: generateId(),

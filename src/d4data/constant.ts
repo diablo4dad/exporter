@@ -1,7 +1,14 @@
 import { D4Translation } from './struct.js';
 
 export const MAGIC_TYPES: ReadonlyArray<string> = ['Common', 'Legendary', 'Unique', 'Magic', 'Rare'];
-export const CLASS_TYPES: ReadonlyArray<string> = ['Sorcerer', 'Druid', 'Barbarian', 'Rogue', 'Necromancer'];
+export const CLASS_TYPES: ReadonlyArray<string> = [
+  'Sorcerer',
+  'Druid',
+  'Barbarian',
+  'Rogue',
+  'Necromancer',
+  'Spiritborn',
+];
 
 export const PATH_TO_D4ITEM: Readonly<string> = 'json\\base\\meta\\Item';
 export const PATH_TO_D4ITEM_TYPE: Readonly<string> = 'json\\base\\meta\\ItemType';

@@ -1,3 +1,10 @@
+import * as back_trophy from '../../../d4data/sno/back_trophy.js';
+import * as bow from '../../../d4data/sno/bow.js';
+import * as horse_armor from '../../../d4data/sno/horse_armor.js';
+import * as mount from '../../../d4data/sno/mount.js';
+import * as scythe from '../../../d4data/sno/scythe.js';
+import * as two_handed_axe from '../../../d4data/sno/two_handed_axe.js';
+import * as two_handed_staff from '../../../d4data/sno/two_handed_staff.js';
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
@@ -7,7 +14,87 @@ const TWITCH: CollectionDescriptor = {
   category: Category.PROMOTIONAL,
   children: [
     {
-      name: 'Support a Streamer #2',
+      name: 'Support a Streamer #3',
+      description: 'Vessel of Hatred promotion from October 8th, 2024 until November 5th, 2024',
+      category: Category.PROMOTIONAL,
+      premium: true,
+      items: [
+        ['json\\base\\meta\\Item\\mnt_stor048_horse.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_amor205_horse_stor.itm.json'],
+      ],
+      patches: [
+        {
+          items: [mount.GHOST_OF_THE_CONQUERED],
+          claimDescription: 'Purchase or Gift 2 Twitch Subscriptions.',
+        },
+        {
+          items: [horse_armor.GLORY_OF_THE_VICTOR],
+          claimDescription: 'Purchase or Gift 4 Twitch Subscriptions.',
+        },
+      ],
+    },
+    {
+      name: 'Twitch Drops #3',
+      description: 'Vessel of Hatred promotion starting October 8th, 2024',
+      category: Category.PROMOTIONAL,
+      claim: 'Twitch Drop',
+      items: [
+        ['json\\base\\meta\\Item\\twoHandSorcStaff_stor046.itm.json'],
+        ['json\\base\\meta\\Item\\scythe_stor031.itm.json'],
+        ['json\\base\\meta\\Item\\trophy_sor036_stor.itm.json'],
+        ['json\\base\\meta\\Item\\trophy_nec032_stor.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandAxe_stor033.itm.json'],
+        ['json\\base\\meta\\Item\\trophy_bar037_stor.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandBow_stor035.itm.json'],
+        ['json\\base\\meta\\Item\\trophy_rog034_stor.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandDruidStaff_stor043.itm.json'],
+        ['json\\base\\meta\\Item\\trophy_dru032_stor.itm.json'],
+      ],
+      patches: [
+        {
+          items: [two_handed_staff.RINGMASTERS_WORD],
+          claimDescription: 'Week 1 Twitch Drop.',
+        },
+        {
+          items: [scythe.WRANGLERS_HOOK],
+          claimDescription: 'Week 1 Twitch Drop.',
+        },
+        {
+          items: [back_trophy.GUISE_OF_THE_GRAND_VIZIER],
+          claimDescription: 'Week 1 Twitch Drop.',
+        },
+        {
+          items: [back_trophy.GUISE_OF_THE_TOMBKEEPER],
+          claimDescription: 'Week 1 Twitch Drop.',
+        },
+        {
+          items: [two_handed_axe.COMPETITORS_PRIDE],
+          claimDescription: 'Week 2 Twitch Drop.',
+        },
+        {
+          items: [back_trophy.GUISE_OF_THE_GLADIATOR],
+          claimDescription: 'Week 2 Twitch Drop.',
+        },
+        {
+          items: [bow.EXECUTIONERS_REACH],
+          claimDescription: 'Week 3 Twitch Drop.',
+        },
+        {
+          items: [back_trophy.GUISE_OF_THE_EAGLE_CALLER],
+          claimDescription: 'Week 3 Twitch Drop.',
+        },
+        {
+          items: [two_handed_staff.BATTLECALLERS_CROOK],
+          claimDescription: 'Week 4 Twitch Drop.',
+        },
+        {
+          items: [back_trophy.GUISE_OF_THE_BEASTLORD],
+          claimDescription: 'Week 4 Twitch Drop.',
+        },
+      ],
+    },
+    {
+      name: 'Support a Streamer #3',
       description: 'Season of the Construct promotion from January 23rd, 2024 until February 26th, 2024',
       category: Category.PROMOTIONAL,
       claimDescription: 'Gift 2 subs during the Twitch promotion.',
@@ -209,9 +296,20 @@ const CALL_OF_DUTY: CollectionDescriptor = {
 
 const FRANCHISE: CollectionDescriptor = {
   name: 'Franchise Promotion',
-  description: 'Redeemable codes collected from fast food chains',
+  description: 'Transmogs collected from various franchise promotions',
   category: Category.PROMOTIONAL,
   children: [
+    {
+      name: 'Trolli',
+      category: Category.PROMOTIONAL,
+      claimDescription: 'Redeemable by submitting the barcode from Trolli candy packets.',
+      premium: true,
+      items: [
+        ['json\\base\\meta\\Item\\twoHandPolearm_stor042.itm.json'],
+        ['json\\base\\meta\\Item\\mace_stor044.itm.json'],
+        ['json\\base\\meta\\Item\\dagger_stor076.itm.json'],
+      ],
+    },
     {
       name: "CU Demon's Blood & Angel's Tears",
       category: Category.PROMOTIONAL,

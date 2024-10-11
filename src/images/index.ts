@@ -5,14 +5,19 @@ import admin from 'firebase-admin';
 import { getStorage } from 'firebase-admin/storage';
 
 import { D4DadDb } from '../collection/struct.js';
-import { PATH_TO_D4TEXTURES, PATH_TO_SERVICE_ACCOUNT_KEY } from '../config.js';
+import {
+  PATH_TO_D4TEXTURES,
+  PATH_TO_D4TEXTURES_EXTRA,
+  PATH_TO_SERVICE_ACCOUNT_KEY,
+  STORAGE_BUCKET,
+} from '../config.js';
 
 const app = admin.initializeApp({
   credential: admin.credential.cert(PATH_TO_SERVICE_ACCOUNT_KEY),
-  storageBucket: 'd4log-bfc60.appspot.com',
+  storageBucket: STORAGE_BUCKET,
 });
 
-const copyImages = async (d4dad: D4DadDb) => {
+export const copyImages = async (d4dad: D4DadDb, dest: string) => {
   const allImgHandles: Set<number> = d4dad.items.reduce((a, c) => {
     a.add(c.icon);
     if (c.invImages) {
@@ -24,8 +29,6 @@ const copyImages = async (d4dad: D4DadDb) => {
   allImgHandles.delete(0);
 
   const failedImages: number[] = [];
-
-  const bucket = getStorage(app).bucket();
 
   let i = 0;
   for (const iconId of allImgHandles) {
@@ -40,21 +43,23 @@ const copyImages = async (d4dad: D4DadDb) => {
       continue;
     }
 
-    // fs.copyFileSync(filename, path.join(PATH_TO_PUBLIC_DIR, iconId + ".webp"));
+    fs.copyFileSync(filename, path.join(dest, iconId + '.webp'));
 
-    if (await bucket.file(filename).exists()) {
-      console.log(`[${i}] Skipping ${filename}...`);
-      continue;
-    }
-
-    console.log(`[${i}] Uploading ${filename}...`);
-    const resp = await bucket.upload(filename, {
-      destination: 'icons/' + iconId + '.webp',
-      metadata: {
-        contentType: 'image/webp',
-        cacheControl: 'public, max-age=31536000',
-      },
-    });
+    // const bucket = getStorage(app).bucket();
+    //
+    // if (await bucket.file(filename).exists()) {
+    //   console.log(`[${i}] Skipping ${filename}...`);
+    //   continue;
+    // }
+    //
+    // console.log(`[${i}] Uploading ${filename}...`);
+    // const resp = await bucket.upload(filename, {
+    //   destination: 'icons/' + iconId + '.webp',
+    //   metadata: {
+    //     contentType: 'image/webp',
+    //     cacheControl: 'public, max-age=31536000',
+    //   },
+    // });
   }
 
   if (failedImages.length) {
@@ -62,32 +67,20 @@ const copyImages = async (d4dad: D4DadDb) => {
   }
 };
 
-const MISSING_ICONS = 'C:\\Users\\Sam\\Documents\\d4log\\missing_icons';
-
-const uploadMissingIcons = async () => {
+export const uploadMissingIcons = async (dest: string) => {
   const bucket = getStorage(app).bucket();
   let i = 0;
-  for (const pathToIcon of fs.readdirSync(MISSING_ICONS)) {
+  for (const pathToIcon of fs.readdirSync(PATH_TO_D4TEXTURES_EXTRA)) {
+    fs.copyFileSync(path.join(PATH_TO_D4TEXTURES_EXTRA, pathToIcon), path.join(dest, pathToIcon));
+
     console.log('[' + ++i + '] Uploading ' + pathToIcon + '...');
-    const fileName = path.basename(pathToIcon);
-    const resp = await bucket.upload(path.join(MISSING_ICONS, pathToIcon), {
-      destination: 'icons/' + fileName,
-      metadata: {
-        contentType: 'image/webp',
-        cacheControl: 'public, max-age=31536000',
-      },
-    });
+    // const fileName = path.basename(pathToIcon);
+    // const resp = await bucket.upload(path.join(PATH_TO_D4TEXTURES_EXTRA, pathToIcon), {
+    //   destination: 'icons/' + fileName,
+    //   metadata: {
+    //     contentType: 'image/webp',
+    //     cacheControl: 'public, max-age=31536000',
+    //   },
+    // });
   }
 };
-
-// uploadMissingIcons().then(() => {
-//     console.log("Uploaded missing icons.");
-// }).catch(e => {
-//     console.error("Error uploading icons", e);
-// });
-
-// copyImages(d4dadJoin).then(() => {
-//     console.log("Copy Images complete.");
-// }).catch(e => {
-//     console.error("Error", e);
-// })

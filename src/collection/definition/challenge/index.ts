@@ -194,8 +194,8 @@ function sortChallenges(collection: D4DadCollection): D4DadCollection {
 }
 
 function mergeConquerorsCrest(collection: D4DadCollection): D4DadCollection {
-  const challenge = findNamedCollection(collection, 'Challenge');
-  const innerChallenge = findNamedCollection(challenge, 'Challenge');
+  const challenge = findNamedCollection(collection, 'Feats of Strength');
+  const innerChallenge = findNamedCollection(challenge, 'Legacy');
   const crest = findCollectionItem(innerChallenge, [1821571]);
 
   const filteredItems = innerChallenge.collectionItems.filter((ci) => !ci.items.every((i) => i === 1821571));

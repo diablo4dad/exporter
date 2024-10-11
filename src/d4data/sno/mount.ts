@@ -1,0 +1,1 @@
+export const GHOST_OF_THE_CONQUERED = 1826175;

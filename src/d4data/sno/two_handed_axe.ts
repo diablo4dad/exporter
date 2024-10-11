@@ -1,0 +1,1 @@
+export const COMPETITORS_PRIDE = 1957240;

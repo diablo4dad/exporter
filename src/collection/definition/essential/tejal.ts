@@ -1,6 +1,18 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const VESSEL_OF_HATRED_FREEBIES: CollectionDescriptor = {
+  name: 'Vessel of Hatred Freebies',
+  description: "Free from Tejal's Shop from October 8th, 2024",
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Free from the cash shop for a limited time.',
+  items: [
+    ['json\\base\\meta\\Item\\twoHandPolearm_stor030.itm.json'],
+    ['json\\base\\meta\\Item\\sword_stor067.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandAxe_stor038.itm.json'],
+  ],
+};
+
 const FIRST_YEAR_ANNIVERSARY: CollectionDescriptor = {
   name: '1st Year Anniversary',
   description: "Free from Tejal's Shop from June 6th, 2024 until June 20th, 2024",
@@ -93,7 +105,14 @@ const TEJAL: CollectionDescriptor = {
   name: "Tejal's Gifts",
   description: "Transmogs acquired from Tejal's Shop on a limited basis",
   category: Category.GENERAL,
-  children: [FIRST_YEAR_ANNIVERSARY, DARK_GIFTS, MOTHERS_FAVOR, RETURNING_CHAMPION, THE_HUNGER],
+  children: [
+    VESSEL_OF_HATRED_FREEBIES,
+    FIRST_YEAR_ANNIVERSARY,
+    DARK_GIFTS,
+    MOTHERS_FAVOR,
+    RETURNING_CHAMPION,
+    THE_HUNGER,
+  ],
 };
 
 export default TEJAL;

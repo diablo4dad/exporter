@@ -1,5 +1,6 @@
 import { D4Dependencies } from './struct.js';
 
+import { captureError } from '../common/logger.js';
 import { D4Entity } from '../d4data/struct.js';
 
 export function getEntity<T>(key: string, lookup: Map<string, T>): T {
@@ -11,7 +12,7 @@ export function getEntity<T>(key: string, lookup: Map<string, T>): T {
   return e;
 }
 
-export function getEntityFuzzy(key: string, deps: D4Dependencies): D4Entity {
+export function getEntityFuzzy(key: string, deps: D4Dependencies): D4Entity | null {
   if (deps.items.has(key)) {
     return getEntity(key, deps.items);
   }
@@ -36,5 +37,7 @@ export function getEntityFuzzy(key: string, deps: D4Dependencies): D4Entity {
     return getEntity(key, deps.markings);
   }
 
-  throw new Error(key + ' not found.');
+  captureError(key + ' not found.');
+
+  return null;
 }
