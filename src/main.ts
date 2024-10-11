@@ -25,15 +25,15 @@ const iconDest = path.join(PATH_TO_PUBLIC_DIR, 'icons');
 copyImages(dadDb, iconDest)
   .then(() => {
     console.log('Copy Images complete.');
+
+    uploadMissingIcons(iconDest)
+      .then(() => {
+        console.log('Uploaded missing icons.');
+      })
+      .catch((e) => {
+        console.error('Error uploading icons', e);
+      });
   })
   .catch((e) => {
     console.error('Error', e);
-  });
-
-uploadMissingIcons(iconDest)
-  .then(() => {
-    console.log('Uploaded missing icons.');
-  })
-  .catch((e) => {
-    console.error('Error uploading icons', e);
   });

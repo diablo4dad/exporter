@@ -573,6 +573,57 @@ const TOTEM: CollectionDescriptor = {
   ],
 };
 
+const GLAIVE: CollectionDescriptor = {
+  name: 'Glaive',
+  category: Category.WEAPON,
+  items: [
+    ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_2HGlaive_Transmog.itm.json'],
+    ['json\\base\\meta\\Item\\X1_QST_Glaive_Legendary_Spiritborn_Akarats_Blade.itm.json'],
+    ['json\\base\\meta\\Item\\X1_QST_2HGlaive_Legendary_Spiritborn_010.itm.json'],
+    // ['json\\base\\meta\\Item\\X1_2HGlaive_Unique_Spiritborn_03.itm.json'],
+    // ['json\\base\\meta\\Item\\X1_2HGlaive_Unique_Spiritborn_02.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Rare_Spiritborn_05.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Rare_Spiritborn_04.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Rare_Spiritborn_03.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Normal_Spiritborn_00.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Magic_Spiritborn_02.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_009.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_006.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_005.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_001.itm.json'],
+    // ['json\\base\\meta\\Item\\NPC_Maka_WEP_Glaive.itm.json'],
+    ['json\\base\\meta\\Item\\Merc_Bartering_2HGlaive_Rare.itm.json'],
+    ['json\\base\\meta\\Item\\Merc_Bartering_2HGlaive_Legendary.itm.json'],
+    ['json\\base\\meta\\Item\\Glaive_Normal_Generic_000.itm.json'],
+    ['json\\base\\meta\\Item\\2HGlaive_Any_Generic_001_Gambling.itm.json'],
+    ['json\\base\\meta\\Item\\Glaive_Unique_Spiritborn_010_x1.itm.json'],
+  ],
+};
+
+const QUARTERSTAFF: CollectionDescriptor = {
+  name: 'Quarterstaff',
+  category: Category.WEAPON,
+  items: [
+    ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_2HQuarterstaff_Transmog.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Rare_Spiritborn_08.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Rare_Spiritborn_05.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Rare_Spiritborn_04.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Rare_Spiritborn_03.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Magic_Spiritborn_02.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_08.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_03.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_001.itm.json'],
+    // ['json\\base\\meta\\Item\\Quarterstaff_Normal_Generic_001.itm.json'],
+    ['json\\base\\meta\\Item\\Merc_Bartering_2HQuarterstaff_Rare.itm.json'],
+    ['json\\base\\meta\\Item\\Merc_Bartering_2HQuarterstaff_Legendary.itm.json'],
+    // ['json\\base\\meta\\Item\\2HQuarterstaff_Unique_Generic_001.itm.json'],
+    ['json\\base\\meta\\Item\\2HQuarterstaff_Any_Generic_001_Gambling.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Magic_Spiritborn_01.itm.json'],
+    ['json\\base\\meta\\Item\\Quarterstaff_Unique_Spiritborn_016_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Quarterstaff_Unique_Spiritborn_012_x1.itm.json'],
+  ],
+};
+
 const WEAPON: CollectionDescriptor = {
   name: 'Weapon',
   description: 'Transmogs found throughout sanctuary',
@@ -595,6 +646,8 @@ const WEAPON: CollectionDescriptor = {
     WAND,
     FOCUS,
     TOTEM,
+    GLAIVE,
+    QUARTERSTAFF,
   ],
 };
 

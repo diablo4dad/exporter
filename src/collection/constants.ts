@@ -88,4 +88,5 @@ export const USED_ITEM_TYPES: ReadonlyArray<string> = [
   'Player Title (Suffix)',
   'Pet',
   'Quarterstaff',
+  'Glaive',
 ];

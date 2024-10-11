@@ -32,25 +32,16 @@ export function makeDb(deps: D4Dependencies): D4DadDb {
   const itemsOut = Array.from(deps.items.values())
     .map(itemToDad(deps))
     .filter(([i]) => itemTypeIds.includes(i.itemType));
-
   const emblemsOut = Array.from(deps.emblems.values()).map(emblemToDad(deps));
-
   const emotesOut = Array.from(deps.emotes.values()).map(emoteToDad(deps));
-
   const headstonesOut = Array.from(deps.headstones.values()).map(headstoneToDad(deps));
-
   const markingsOut = Array.from(deps.markings.values()).map(markingShapeToDad(deps));
-
   const portalsOut = Array.from(deps.portals.values()).map(portalToDad(deps));
-
   const titlesOut = Array.from(deps.playerTitles.values()).map(playerTitleToDad(deps));
-
   const productsOut = Array.from(deps.storeProducts.values())
     .map(productToDad(deps))
     .filter(([sp]) => sp.item || sp.bundledProducts);
-
   const achievementsOut = Array.from(deps.achievements.values()).map(achievementToDad(deps));
-
   const challengeOut = Array.from(deps.challenges.values()).map(challengeToDad(deps));
 
   const general = ESSENTIAL.map(buildCollection(deps));
