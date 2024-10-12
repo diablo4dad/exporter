@@ -1,4 +1,5 @@
 import BARBARIAN from './barbarian.js';
+import CAT_MOUNTS from './catMount.js';
 import DRUID from './druid.js';
 import MOUNTS from './mount.js';
 import NECROMANCER from './necromancer.js';
@@ -8,6 +9,6 @@ import SORCERER from './sorcerer.js';
 import SPIRITBORN from './spiritborn.js';
 import WEAPONS from './weapon.js';
 
-const STORE = [BARBARIAN, DRUID, NECROMANCER, ROGUE, SORCERER, SPIRITBORN, MOUNTS, WEAPONS, PORTALS];
+const STORE = [BARBARIAN, DRUID, NECROMANCER, ROGUE, SORCERER, SPIRITBORN, MOUNTS, CAT_MOUNTS, WEAPONS, PORTALS];
 
 export default STORE;
