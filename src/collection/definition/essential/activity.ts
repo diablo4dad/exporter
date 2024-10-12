@@ -76,6 +76,8 @@ const VENDOR: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\MountReins_WhiteHorse.itm.json'],
     ['json\\base\\meta\\Item\\MountReins_MottledHorse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor01_horse.itm.json'],
+    ['json\\base\\meta\\Item\\MountReins_LeucisticLion_Cat.itm.json'],
+    ['json\\base\\meta\\Item\\MountReins_Cat.itm.json'],
   ],
 };
 

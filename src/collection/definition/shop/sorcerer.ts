@@ -177,6 +177,21 @@ const SORCERER: CollectionDescriptor = {
       // The Sun King
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor219.prd.json'],
     },
+    {
+      // The Luminarei [encrypted]
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor232.prd.json'],
+      claim: 'Cash Shop',
+      items: [
+        ['json\\base\\meta\\Item\\Helm_Cosmetic_Sorcerer_232_stor.itm.json'],
+        ['json\\base\\meta\\Item\\Chest_Cosmetic_Sorcerer_232_stor.itm.json'],
+        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Sorcerer_232_stor.itm.json'],
+        ['json\\base\\meta\\Item\\Pants_Cosmetic_Sorcerer_232_stor.itm.json'],
+        ['json\\base\\meta\\Item\\Boots_Cosmetic_Sorcerer_232_stor.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandSorcStaff_stor045.itm.json'],
+        ['json\\base\\meta\\Item\\offHandFocus_stor045.itm.json'],
+        ['json\\base\\meta\\MarkingShape\\bodymarking_sor049_stor.msh.json'],
+      ],
+    },
   ],
 };
 
