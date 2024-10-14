@@ -105,6 +105,7 @@ export type D4DadItem = D4DadEntity & {
   invImages?: D4DadGenderSpecificImages[];
   magicType?: number;
   isTransmog?: boolean;
+  vohItem?: boolean;
 };
 
 export type D4DadItemType = D4DadEntity & {

@@ -32,6 +32,7 @@ const RAID: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HDagger_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HAxe_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor05_cat.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_uniq70_trophy.itm.json'],
   ],
 };
 
