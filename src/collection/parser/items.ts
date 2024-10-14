@@ -25,6 +25,7 @@ export function itemToDad(deps: D4Dependencies): (_: D4Item) => [D4DadItem, D4Da
     const name = getTextFromStl(itemActorStringsList, 'Name', getTextFromStl(itemStringsList, 'Name'));
     const description = stu(getTextFromStl(itemStringsList, 'Description'));
     const isTransmog = !item.bIsTransmog ? undefined : true;
+    const vohItem = !item.unk_5e84277 ? undefined : true;
     const usableByClass = item.fUsableByClass.every((i) => i === 1) ? undefined : item.fUsableByClass;
     const magicType = !item.eMagicType ? undefined : item.eMagicType;
     const iconId = chooseBestIconHandle(item, itemActor) ?? 0;
@@ -44,6 +45,7 @@ export function itemToDad(deps: D4Dependencies): (_: D4Item) => [D4DadItem, D4Da
         icon: iconId,
         magicType,
         isTransmog,
+        vohItem,
         usableByClass,
         invImages,
       },

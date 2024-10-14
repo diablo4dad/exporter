@@ -27,6 +27,7 @@ type D4Item = D4Entity & {
   nCustomDropWeight: number;
   bIsTransmog: boolean;
   eDisplayedQualityLevel: number;
+  unk_5e84277: number; // voh item
 };
 
 type D4InventoryImages = D4Type & {
