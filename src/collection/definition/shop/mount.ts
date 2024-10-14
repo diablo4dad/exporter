@@ -180,16 +180,8 @@ const MOUNTS: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor019.prd.json'],
     },
     {
-      // Crystal and Bone [encrypted]
+      // Crystal and Bone
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor034.prd.json'],
-      // workaround:
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor034_horse.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor162_horse_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor126_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor127_trophy.itm.json'],
-      ],
     },
     {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor047.prd.json'],
@@ -224,15 +216,8 @@ const MOUNTS: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor052.prd.json'],
     },
     {
-      // Father's Blasphemy [encrypted]
+      // Father's Blasphemy
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor202.prd.json'],
-      // workaround:
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\mnt_amor202_horse_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor210_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor211_trophy.itm.json'],
-      ],
     },
     {
       // The Haunted Automaton [encrypted]

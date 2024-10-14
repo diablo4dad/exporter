@@ -11,15 +11,6 @@ const PORTALS: CollectionDescriptor = {
       // encrypted
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortals_stor001.prd.json'],
       outOfRotation: true,
-      // workaround
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\TownPortalCosmetic\\portal_sor001_stor.tpc.json'],
-        ['json\\base\\meta\\TownPortalCosmetic\\portal_rog001_stor.tpc.json'],
-        ['json\\base\\meta\\TownPortalCosmetic\\portal_nec001_stor.tpc.json'],
-        ['json\\base\\meta\\TownPortalCosmetic\\portal_dru001_stor.tpc.json'],
-        ['json\\base\\meta\\TownPortalCosmetic\\portal_bar001_stor.tpc.json'],
-      ],
     },
     {
       outOfRotation: true,

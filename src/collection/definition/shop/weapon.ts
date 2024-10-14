@@ -20,17 +20,7 @@ const WEAPONS: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_nec_stor002.prd.json'],
     },
     {
-      // encrypted
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MagmaticArmaments.prd.json'],
-      // workaround
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\offHandsDruid_stor021.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandCrossbow_stor023.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandPolearm_stor017.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandScythe_stor013.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandSorcStaff_stor021.itm.json'],
-      ],
     },
   ],
 };
