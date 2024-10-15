@@ -262,6 +262,8 @@ function assignComputedValuesToItem(descriptor: CollectionDescriptor, source?: S
     id: generateId(),
     claim: inferClaim(descriptor, source),
     claimDescription: ci.claimDescription ?? descriptor.claimDescription,
+    claimZone: ci.claimZone ?? descriptor.claimZone,
+    claimChest: ci.claimChest ?? descriptor.claimChest,
     premium: ci.premium ?? checkPremium(descriptor, source),
     outOfRotation: descriptor.outOfRotation,
   });
@@ -328,6 +330,7 @@ function parseExtraItems(deps: D4Dependencies) {
         id: generateId(),
         name: composeName(deps)(...items),
         claim: descriptor.claim ?? inferClaim(descriptor),
+        claimZone: descriptor.claimZone,
         claimDescription: descriptor.claimDescription,
         items: items.map((i) => i.__snoID__),
       };

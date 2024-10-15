@@ -1,4 +1,4 @@
-import { Category } from './constants.js';
+import { Category, Chest, Zone } from './constants.js';
 
 import {
   D4Actor,
@@ -20,6 +20,8 @@ export type CollectionDescriptor = {
   premium?: boolean;
   claim?: string;
   claimDescription?: string;
+  claimZone?: Zone;
+  claimChest?: Chest;
   children?: CollectionDescriptor[];
   postHook?: (collection: D4DadCollection) => D4DadCollection;
   patches?: Partial<D4DadCollectionItem>[];
@@ -71,8 +73,10 @@ export type D4DadCollectionItem = {
 
   claim: string;
   claimDescription?: string;
-  claimZone?: string;
+  claimZone?: Zone;
+  claimChest?: Chest;
   claimMonster?: string;
+  claimQuest?: string;
 
   outOfRotation?: boolean;
   premium?: boolean;

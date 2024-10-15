@@ -1,10 +1,11 @@
-import { Category } from '../../constants.js';
+import { Category, Chest, Zone } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
 const FRACTURED_PEAKS: CollectionDescriptor = {
   name: 'Fractured Peaks',
   description: 'Transmogs looted from chests within Fractured Peaks',
   category: Category.ZONE,
+  claimZone: Zone.FRACTURED_PEAKS,
   items: [
     ['json\\base\\meta\\Item\\mnt_amor05_horse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor06_horse.itm.json'],
@@ -15,24 +16,24 @@ const FRACTURED_PEAKS: CollectionDescriptor = {
   patches: [
     {
       items: [612546],
-      claimDescription: 'Drops from Silent Chests in the region.',
+      claimChest: Chest.SILENT,
     },
     {
       items: [581230],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1223987],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1223765],
-      claimDescription: 'Drops from Legion Chests in the region. BUGGED',
-      unobtainable: true,
+      claimChest: Chest.LEGION,
+      unobtainable: true, // this one appears to be bugged
     },
     {
       items: [667310],
-      claimDescription: 'Drops from World Event Chests in the region.',
+      claimChest: Chest.WORLD_EVENT,
     },
   ],
 };
@@ -41,6 +42,7 @@ const SCOSGLEN: CollectionDescriptor = {
   name: 'Scosglen',
   description: 'Transmogs looted from chests within Scosglen',
   category: Category.ZONE,
+  claimZone: Zone.SCOSGLEN,
   items: [
     ['json\\base\\meta\\Item\\mnt_amor03_horse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor04_horse.itm.json'],
@@ -51,23 +53,23 @@ const SCOSGLEN: CollectionDescriptor = {
   patches: [
     {
       items: [560087],
-      claimDescription: 'Drops from Silent Chests in the region.',
+      claimChest: Chest.SILENT,
     },
     {
       items: [569574],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1223978],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1040611],
-      claimDescription: 'Drops from Legion Chests in the region.',
+      claimChest: Chest.LEGION,
     },
     {
       items: [616554],
-      claimDescription: 'Drops from World Event Chests in the region.',
+      claimChest: Chest.WORLD_EVENT,
     },
   ],
 };
@@ -76,6 +78,7 @@ const KEHJISTAN: CollectionDescriptor = {
   name: 'Kehjistan',
   description: 'Transmogs looted from chests within Kehjistan',
   category: Category.ZONE,
+  claimZone: Zone.KEHJISTAN,
   items: [
     ['json\\base\\meta\\Item\\mnt_amor09_horse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor10_horse.itm.json'],
@@ -86,23 +89,23 @@ const KEHJISTAN: CollectionDescriptor = {
   patches: [
     {
       items: [581171],
-      claimDescription: 'Drops from Silent Chests in the region.',
+      claimChest: Chest.SILENT,
     },
     {
       items: [611219],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1224045],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1223769],
-      claimDescription: 'Drops from Legion Chests in the region.',
+      claimChest: Chest.LEGION,
     },
     {
       items: [582279],
-      claimDescription: 'Drops from World Event Chests in the region.',
+      claimChest: Chest.WORLD_EVENT,
     },
   ],
 };
@@ -111,6 +114,7 @@ const DRY_STEPPES: CollectionDescriptor = {
   name: 'Dry Steppes',
   description: 'Transmogs looted from chests within Dry Steppes',
   category: Category.ZONE,
+  claimZone: Zone.DRY_STEPPES,
   items: [
     ['json\\base\\meta\\Item\\mnt_amor07_horse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor08_horse.itm.json'],
@@ -121,23 +125,23 @@ const DRY_STEPPES: CollectionDescriptor = {
   patches: [
     {
       items: [569061],
-      claimDescription: 'Drops from Silent Chests in the region.',
+      claimChest: Chest.SILENT,
     },
     {
       items: [573657],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
-    },
-    {
-      items: [1040579],
-      claimDescription: 'Drops from Legion Chests in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1223974],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
+    },
+    {
+      items: [1040579],
+      claimChest: Chest.LEGION,
     },
     {
       items: [616557],
-      claimDescription: 'Drops from World Event Chests in the region.',
+      claimChest: Chest.WORLD_EVENT,
     },
   ],
 };
@@ -146,6 +150,7 @@ const HAWEZAR: CollectionDescriptor = {
   name: 'Hawezar',
   description: 'Transmogs looted from chests within Hawezar',
   category: Category.ZONE,
+  claimZone: Zone.HAWEZAR,
   items: [
     ['json\\base\\meta\\Item\\mnt_amor11_horse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor12_horse.itm.json'],
@@ -156,23 +161,23 @@ const HAWEZAR: CollectionDescriptor = {
   patches: [
     {
       items: [586579],
-      claimDescription: 'Drops from Silent Chests in the region.',
+      claimChest: Chest.SILENT,
     },
     {
       items: [588264],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1224020],
-      claimDescription: 'Drops from any Helltide Chest in the region.',
+      claimChest: Chest.HELLTIDE,
     },
     {
       items: [1223767],
-      claimDescription: 'Drops from Legion Chests in the region.',
+      claimChest: Chest.LEGION,
     },
     {
       items: [573583],
-      claimDescription: 'Drops from World Event Chests in the region.',
+      claimChest: Chest.WORLD_EVENT,
     },
   ],
 };
@@ -181,7 +186,7 @@ const OPEN_WORLD: CollectionDescriptor = {
   name: 'Open World',
   description: 'Transmogs dropped throughout Sanctuary',
   category: Category.ZONE,
-  claimDescription: 'Dropped from monsters and chests throughout Sanctuary.',
+  claimDescription: 'Dropped throughout Sanctuary.',
   items: [
     ['json\\base\\meta\\Item\\MountReins_SpectralHorse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor19_horse.itm.json'],
@@ -193,7 +198,7 @@ const NIGHTMARE_DUNGEON: CollectionDescriptor = {
   name: 'Nightmare Dungeon',
   description: 'Transmogs dropped within Nightmare Dungeons',
   category: Category.ZONE,
-  claimDescription: 'Dropped from monsters and chests within Nightmare Dungeons.',
+  claimDescription: 'Dropped within Nightmare Dungeons.',
   items: [['json\\base\\meta\\Item\\MountReins_CaldeumHorse.itm.json']],
 };
 

@@ -41,6 +41,22 @@ export const EMBLEM = 7204;
 export const PLAYER_TITLE_PREFIX = 7205;
 export const PLAYER_TITLE_SUFFIX = 7206;
 
+export enum Zone {
+  FRACTURED_PEAKS,
+  SCOSGLEN,
+  KEHJISTAN,
+  DRY_STEPPES,
+  HAWEZAR,
+  NAHANTU,
+}
+
+export enum Chest {
+  SILENT,
+  HELLTIDE,
+  LEGION,
+  WORLD_EVENT,
+}
+
 export const ITEM_TYPE_APPENDAGE: ReadonlyArray<[D4DadItemType, D4DadTranslation]> = [
   [{ id: BODY_MARKING }, { name: 'Body Marking' }],
   [{ id: EMOTE }, { name: 'Emote' }],

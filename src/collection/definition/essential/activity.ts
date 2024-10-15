@@ -1,4 +1,4 @@
-import { Category } from '../../constants.js';
+import { Category, Zone } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
 const QUEST: CollectionDescriptor = {
@@ -18,26 +18,32 @@ const QUEST: CollectionDescriptor = {
     {
       items: [623168],
       claimDescription: 'Complete the mount introduction quest "Donan\'s Favor".',
+      claimZone: Zone.FRACTURED_PEAKS,
     },
     {
       items: [1257432],
       claimDescription: 'Complete the "Echo of Hatred" quest by killing Lilith.',
+      claimZone: Zone.FRACTURED_PEAKS,
     },
     {
       items: [1472930],
-      claimDescription: 'Complete the "Remembering the Fallen" side quest in Zarbinzet.',
+      claimDescription: 'Complete the "Remembering the Fallen" side quest.',
+      claimZone: Zone.HAWEZAR,
     },
     {
       items: [1867815],
       claimDescription: 'Complete the "Faithful Companion" quest in Kyovashad.',
+      claimZone: Zone.FRACTURED_PEAKS,
     },
     {
       items: [459998],
       claimDescription: 'Complete the "A Pound of Flesh" side quest in Dry Steppes.',
+      claimZone: Zone.DRY_STEPPES,
     },
     {
       items: [459943],
       claimDescription: 'Complete the Act 5 “Cold Blood” quest.',
+      claimZone: Zone.HAWEZAR,
     },
   ],
 };
