@@ -28,10 +28,8 @@ const HELM: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Helm_Rare_Generic_Crafted026.itm.json'],
     // expansion
     ['json\\base\\meta\\Item\\Helm_Normal_Generic_010.itm.json'],
-    ['json\\base\\meta\\Item\\X1_QST_Helm_Legendary_Generic_HatredSet.itm.json'],
-    ['json\\base\\meta\\Item\\X1_Helm_Cosmetic_Urivar.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Normal_Generic_011.itm.json'],
-    ['json\\base\\meta\\Item\\X1_QST_Helm_Legendary_Generic_013.itm.json'],
+    ['json\\base\\meta\\Item\\X1_Helm_Cosmetic_Urivar.itm.json'],
     // uniques
     ['json\\base\\meta\\Item\\S05_BSK_Helm_Unique_Generic_001.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_002.itm.json'],
@@ -67,9 +65,9 @@ const CHEST_ARMOR: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Chest_Legendary_Generic_052.itm.json'],
     ['json\\base\\meta\\Item\\Chest_Rare_Generic_004.itm.json'],
     // expansion
-    ['json\\base\\meta\\Item\\X1_QST_Chest_Legendary_Generic_HatredSet.itm.json'],
+    ['json\\base\\meta\\Item\\Chest_Normal_Generic_010.itm.json'],
     ['json\\base\\meta\\Item\\Chest_Normal_Generic_011.itm.json'],
-    ['json\\base\\meta\\Item\\X1_QST_Chest_Legendary_Generic_013.itm.json'],
+
     // unique
     ['json\\base\\meta\\Item\\Chest_Unique_Rogue_101.itm.json'],
     ['json\\base\\meta\\Item\\Chest_Unique_Generic_127.itm.json'],
@@ -105,9 +103,8 @@ const GLOVES: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Gloves_Legendary_Generic_052.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Rare_Generic_004.itm.json'],
     // expansion
-    ['json\\base\\meta\\Item\\X1_QST_Gloves_Legendary_Generic_HatredSet.itm.json'],
-    ['json\\base\\meta\\Item\\X1_QST_Gloves_Legendary_Generic_013.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Normal_Generic_010.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Normal_Generic_011.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\Gloves_Unique_Druid_100.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Barb_100.itm.json'],
@@ -144,7 +141,8 @@ const PANTS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Pants_Legendary_Generic_052.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Rare_Generic_004.itm.json'],
     // expansion
-    ['json\\base\\meta\\Item\\X1_QST_Pants_Legendary_Generic_013.itm.json'],
+    ['json\\base\\meta\\Item\\Pants_Normal_Generic_010.itm.json'],
+    ['json\\base\\meta\\Item\\Pants_Normal_Generic_011.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\Pants_Unique_Barb_100.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Unique_Sorc_101.itm.json'],
@@ -179,8 +177,8 @@ const BOOTS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Boots_Legendary_Generic_052.itm.json'],
     ['json\\base\\meta\\Item\\Boots_Rare_Generic_004.itm.json'],
     // expansion
-    ['json\\base\\meta\\Item\\X1_QST_Boots_Legendary_Generic_HatredSet.itm.json'],
-    ['json\\base\\meta\\Item\\X1_QST_Boots_Legendary_Generic_013.itm.json'],
+    ['json\\base\\meta\\Item\\Boots_Normal_Generic_010.itm.json'],
+    ['json\\base\\meta\\Item\\Boots_Normal_Generic_011.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\Boots_Unique_Rogue_100.itm.json'],
     ['json\\base\\meta\\Item\\Boots_Unique_Generic_003.itm.json'],
