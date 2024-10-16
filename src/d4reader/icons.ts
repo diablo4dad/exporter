@@ -2,6 +2,16 @@ import { CLASS_TYPES } from '../d4data/constant.js';
 import { D4Actor, D4Item } from '../d4data/struct.js';
 
 export function chooseBestIconHandle(item: D4Item, actor: D4Actor | undefined): number | null {
+  // The Hunter's Perception - work around for encrypted actor file
+  if (item.__snoID__ == 1930787) {
+    return 3805421461;
+  }
+
+  // The Wild Eye - work around for encrypted actor file
+  if (item.__snoID__ == 1930368) {
+    return 4136651444;
+  }
+
   // this seems to be the best icon when available
   if (item.unk_75d565b) {
     return item.unk_75d565b;
