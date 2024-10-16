@@ -29,9 +29,11 @@ const HELM: CollectionDescriptor = {
     // expansion
     ['json\\base\\meta\\Item\\Helm_Normal_Generic_010.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Normal_Generic_011.itm.json'],
-    ['json\\base\\meta\\Item\\X1_Helm_Cosmetic_Urivar.itm.json'],
     // uniques
     ['json\\base\\meta\\Item\\S05_BSK_Helm_Unique_Generic_001.itm.json'],
+    ['json\\base\\meta\\Item\\Helm_Unique_Barb_101_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Helm_Unique_Necro_101_x1.itm.json'],
+    // mythic
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_002.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_004.itm.json'],
   ],
@@ -67,9 +69,9 @@ const CHEST_ARMOR: CollectionDescriptor = {
     // expansion
     ['json\\base\\meta\\Item\\Chest_Normal_Generic_010.itm.json'],
     ['json\\base\\meta\\Item\\Chest_Normal_Generic_011.itm.json'],
-
     // unique
     ['json\\base\\meta\\Item\\Chest_Unique_Rogue_101.itm.json'],
+    // mythic
     ['json\\base\\meta\\Item\\Chest_Unique_Generic_127.itm.json'],
     ['json\\base\\meta\\Item\\Chest_Unique_Generic_103.itm.json'],
   ],
@@ -110,6 +112,7 @@ const GLOVES: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Gloves_Unique_Barb_100.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Necro_101.itm.json'],
     ['json\\base\\meta\\Item\\S05_BSK_Gloves_Unique_Generic_001.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Unique_Sorc_143_x1.itm.json'],
   ],
 };
 

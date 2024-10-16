@@ -20,12 +20,13 @@ const QUEST: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_QST_2HScythe_FiveHills_Legendary_13.itm.json'],
     ['json\\base\\meta\\Item\\X1_QST_2HStaff_Treeman_Legendary_Druid_13.itm.json'],
     ['json\\base\\meta\\Item\\X1_QST_2HSword_Legendary_Generic_Hollow_Boss.itm.json'],
-    ['json\\base\\meta\\Item\\X1_QST_Glaive_Legendary_Spiritborn_Akarats_Blade.itm.json'],
     ['json\\base\\meta\\Item\\X1_QST_Sword_Legendary_Generic_Akarats_Sword.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HDagger_QST_16_Reward.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HBow_QST_Teganze_Reward_15.itm.json'],
     ['json\\base\\meta\\Item\\QST_Naha_EverythingOld_SwordReward.itm.json'],
     ['json\\base\\meta\\Item\\QST_Naha_ScalesOfHistory_DaggerReward.itm.json'],
+    ['json\\base\\meta\\Item\\X1_1HSword_Cosmetic_Urivar.itm.json'],
+    ['json\\base\\meta\\Item\\X1_Helm_Cosmetic_Urivar.itm.json'],
     // expansion armor
     ['json\\base\\meta\\Item\\X1_QST_Helm_Legendary_Generic_HatredSet.itm.json'],
     ['json\\base\\meta\\Item\\X1_QST_Chest_Legendary_Generic_HatredSet.itm.json'],
@@ -107,7 +108,60 @@ const QUEST: CollectionDescriptor = {
     },
     {
       items: [1913839],
-      claimDescription: 'VoH main campaign quest reward (clarification needed).',
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
+    // Hatred's Armor Set:
+    {
+      items: [2021219],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [2021223],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [2021211],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [2021221],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+      unobtainable: true, // no one seems to be able to get the pants
+    },
+    {
+      items: [2021191],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
+    // Baleful Intent Armor Set:
+    {
+      items: [1875355],
+      claimDescription: 'Complete the "Deeds of a Champion" epilogue quest line.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [1875351],
+      claimDescription: 'Complete the "Deeds of a Champion" epilogue quest line.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [1875353],
+      claimDescription: 'Complete the "Deeds of a Champion" epilogue quest line.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [1875357],
+      claimDescription: 'Complete the "Deeds of a Champion" epilogue quest line.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [1875349],
+      claimDescription: 'Complete the "Deeds of a Champion" epilogue quest line.',
       claimZone: Zone.NAHANTU,
     },
   ],

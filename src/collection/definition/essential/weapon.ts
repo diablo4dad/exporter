@@ -23,6 +23,7 @@ const TWO_HANDED_AXE: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_2HAxe_Legendary_Generic_08.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HAxe_Legendary_Druid_10.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HAxe_Legendary_Barb_09.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HAxe_Rare_Generic_08.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\2HAxe_Unique_Barb_001.itm.json'],
   ],
@@ -213,7 +214,6 @@ const SWORD: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HSword_Rare_Necro_Crafted_39.itm.json'],
     ['json\\base\\meta\\Item\\1HSword_Rare_Barb_Crafted_39.itm.json'],
     // expansion
-    ['json\\base\\meta\\Item\\X1_1HSword_Cosmetic_Urivar.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HSword_Legendary_Generic_14.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HSword_Legendary_Rogue_15.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HSword_Rare_Generic_08.itm.json'],
@@ -620,7 +620,7 @@ const FOCUS: CollectionDescriptor = {
     // expansion
     ['json\\base\\meta\\Item\\X1_1HFocus_Legendary_Generic_13.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HFocus_Legendary_Sorcerer_16.itm.json'],
-    ['json\\base\\meta\\Item\\X1_1HDagger_Rare_Generic_08.itm.json'],
+    ['json\\base\\meta\\Item\\X1_1HFocus_Rare_Generic_08.itm.json'],
   ],
   patches: [
     {
@@ -656,6 +656,8 @@ const TOTEM: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_1HTotem_Legendary_Druid_10.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HTotem_Legendary_Druid_13.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HTotem_Rare_Druid_08.itm.json'],
+    // uniques
+    ['json\\base\\meta\\Item\\Totem_Unique_Druid_101_x1.itm.json'],
   ],
   patches: [
     {
