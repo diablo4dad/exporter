@@ -25,7 +25,7 @@ const SEASON06: CollectionDescriptor = {
         {
           items: [592302],
           claimDescription:
-            'Obtained during Season 5 from a Season Journey Chapter 2 cache, only if opened with a Necromancer.',
+            'Obtained during Season 6 from a Season Journey Chapter 2 cache, only if opened with a Necromancer.',
         },
       ],
     },
