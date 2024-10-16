@@ -9,6 +9,8 @@ import { copyImages, uploadMissingIcons } from './images/index.js';
 
 const deps = readD4Data();
 const dadDb = makeDb(deps);
+const doUpload = false;
+const skipExisting = false;
 
 if (!fs.existsSync(BUILD_DIR)) {
   fs.mkdirSync(BUILD_DIR);
@@ -22,11 +24,11 @@ fs.writeFileSync(dest, blob);
 console.log(`Wrote ${dest}.`);
 
 const iconDest = path.join(PATH_TO_PUBLIC_DIR, 'icons');
-copyImages(dadDb, iconDest)
+copyImages(dadDb, iconDest, doUpload, skipExisting)
   .then(() => {
     console.log('Copy Images complete.');
 
-    uploadMissingIcons(iconDest)
+    uploadMissingIcons(iconDest, doUpload)
       .then(() => {
         console.log('Uploaded missing icons.');
       })

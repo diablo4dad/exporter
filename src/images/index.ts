@@ -17,7 +17,7 @@ const app = admin.initializeApp({
   storageBucket: STORAGE_BUCKET,
 });
 
-export const copyImages = async (d4dad: D4DadDb, dest: string, upload = false) => {
+export const copyImages = async (d4dad: D4DadDb, dest: string, upload = false, skipExisting = true) => {
   const allImgHandles: Set<number> = d4dad.items.reduce((a, c) => {
     a.add(c.icon);
     if (c.invImages) {
@@ -48,9 +48,11 @@ export const copyImages = async (d4dad: D4DadDb, dest: string, upload = false) =
     if (upload) {
       const bucket = getStorage(app).bucket();
 
-      if (await bucket.file(filename).exists()) {
-        console.log(`[${i}] Skipping ${filename}...`);
-        continue;
+      if (skipExisting) {
+        if (await bucket.file(filename).exists()) {
+          console.log(`[${i}] Skipping ${filename}...`);
+          continue;
+        }
       }
 
       console.log(`[${i}] Uploading ${filename}...`);
