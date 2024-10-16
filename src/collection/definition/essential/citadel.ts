@@ -8,7 +8,9 @@ import { CollectionDescriptor } from '../../struct.js';
 const RAID: CollectionDescriptor = {
   name: 'Raid Drops',
   description: 'Transmogs dropped within the Dark Citadel',
-  category: Category.GENERAL,
+  claim: 'Zone Drop',
+  claimDescription: 'Looted from middle chests and bosses in the Dark Citadel.',
+  category: Category.ACTIVITY,
   items: [
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier1_Helm_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier1_Chest_Transmog.itm.json'],
@@ -38,9 +40,10 @@ const RAID: CollectionDescriptor = {
 
 const RAID_TIER2: CollectionDescriptor = {
   name: 'Raid Drops (Tier II)',
-  description: 'Transmogs dropped within the Dark Citadel',
-  claimDescription: 'Drops within the Dark Citadel on Torment IV.',
-  category: Category.GENERAL,
+  description: 'Transmogs dropped within the Dark Citadel on Torment IV',
+  claim: 'Zone Drop',
+  claimDescription: 'Looted from middle chests and bosses in the Dark Citadel.',
+  category: Category.ACTIVITY,
   items: [
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Helm_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Chest_Transmog.itm.json'],
@@ -53,8 +56,8 @@ const RAID_TIER2: CollectionDescriptor = {
 const DARK_CITADEL_VENDOR: CollectionDescriptor = {
   name: 'Vendor',
   description: 'Transmogs purchased from the Dark Citadel Vendor',
-  category: Category.GENERAL,
   claim: 'Vendor',
+  category: Category.ACTIVITY,
   items: [
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HMace_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_2HSword_Transmog.itm.json'],
@@ -64,19 +67,19 @@ const DARK_CITADEL_VENDOR: CollectionDescriptor = {
   patches: [
     {
       items: [mace.DOOM_MACE],
-      claimDescription: 'Purchased for 15,000 coins.',
+      claimDescription: 'Purchased for 15,000 coins from the Dark Citadel vendor.',
     },
     {
       items: [two_handed_sword.RITUAL_IMPALER],
-      claimDescription: 'Purchased for 20,000 coins.',
+      claimDescription: 'Purchased for 20,000 coins from the Dark Citadel vendor.',
     },
     {
       items: [two_handed_staff.SCULPTED_QUARTERSTAFF],
-      claimDescription: 'Purchased for 20,000 coins.',
+      claimDescription: 'Purchased for 20,000 coins from the Dark Citadel vendor.',
     },
     {
       items: [wand.TWISTED_SPIRIT_WAND],
-      claimDescription: 'Purchased for 15,000 coins.',
+      claimDescription: 'Purchased for 15,000 coins from the Dark Citadel vendor.',
     },
   ],
 };

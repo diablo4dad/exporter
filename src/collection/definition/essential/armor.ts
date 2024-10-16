@@ -112,6 +112,7 @@ const GLOVES: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Gloves_Unique_Barb_100.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Necro_101.itm.json'],
     ['json\\base\\meta\\Item\\S05_BSK_Gloves_Unique_Generic_001.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Unique_Sorc_101.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Sorc_143_x1.itm.json'],
   ],
 };

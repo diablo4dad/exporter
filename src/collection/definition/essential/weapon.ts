@@ -671,15 +671,15 @@ const GLAIVE: CollectionDescriptor = {
   name: 'Glaive',
   category: Category.WEAPON,
   items: [
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Magic_Spiritborn_01.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Magic_Spiritborn_02.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HGlaive_Normal_Spiritborn_00.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_001.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_004.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_005.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_006.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_008.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Legendary_Spiritborn_009.itm.json'],
-    ['json\\base\\meta\\Item\\X1_2HGlaive_Magic_Spiritborn_01.itm.json'],
-    ['json\\base\\meta\\Item\\X1_2HGlaive_Magic_Spiritborn_02.itm.json'],
-    ['json\\base\\meta\\Item\\X1_2HGlaive_Normal_Spiritborn_00.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Rare_Spiritborn_03.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Rare_Spiritborn_04.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HGlaive_Rare_Spiritborn_05.itm.json'],
@@ -696,6 +696,11 @@ const QUARTERSTAFF: CollectionDescriptor = {
   name: 'Quarterstaff',
   category: Category.WEAPON,
   items: [
+    // unobtainable
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Magic_Spiritborn_01.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Magic_Spiritborn_02.itm.json'],
+    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Normal_Spiritborn_00.itm.json'],
+    // standard
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_001.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_03.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_04.itm.json'],
@@ -703,9 +708,6 @@ const QUARTERSTAFF: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_06.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_08.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Legendary_Spiritborn_09.itm.json'],
-    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Magic_Spiritborn_01.itm.json'],
-    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Magic_Spiritborn_02.itm.json'],
-    ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Normal_Spiritborn_00.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Rare_Spiritborn_03.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Rare_Spiritborn_04.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HQuarterstaff_Rare_Spiritborn_05.itm.json'],
@@ -718,6 +720,14 @@ const QUARTERSTAFF: CollectionDescriptor = {
   patches: [
     {
       items: [1970381],
+      unobtainable: true,
+    },
+    {
+      items: [1970366],
+      unobtainable: true,
+    },
+    {
+      items: [1970493],
       unobtainable: true,
     },
   ],
