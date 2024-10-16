@@ -19,6 +19,15 @@ const SEASON06: CollectionDescriptor = {
       category: Category.SEASON_JOURNEY,
       challengeFileFlatten: true,
       challengeFile: 'json\\base\\meta\\Challenge\\Season6.cha.json',
+      achievements: ['json\\base\\meta\\Achievement\\Feat_S06_AllJourneyTasks.ach.json'],
+      items: [['json\\base\\meta\\Item\\2HMace_Legendary_Generic_003.itm.json']],
+      patches: [
+        {
+          items: [592302],
+          claimDescription:
+            'Obtained during Season 5 from a Season Journey Chapter 2 cache, only if opened with a Necromancer.',
+        },
+      ],
     },
   ],
 };
