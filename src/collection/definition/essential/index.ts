@@ -13,14 +13,14 @@ import ZONE from './zone.js';
 import { CollectionDescriptor } from '../../struct.js';
 
 const ESSENTIAL: ReadonlyArray<CollectionDescriptor> = [
-  ZONE,
   MONSTER,
-  EVENT,
+  ZONE,
   CITADEL,
-  PVP,
-  ACTIVITY,
-  ARMOR,
   WEAPON,
+  ARMOR,
+  ACTIVITY,
+  PVP,
+  EVENT,
   TEJAL,
   SOFTWARE,
   BETA,

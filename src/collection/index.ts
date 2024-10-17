@@ -85,6 +85,7 @@ export function buildCollection(deps: D4Dependencies) {
       season: descriptor.season,
       outOfRotation: descriptor.outOfRotation,
       premium: descriptor.premium,
+      promotional: descriptor.promotional,
       collectionItems: parseCollectionItems(deps)(descriptor),
       subcollections: challenges.concat(...(descriptor.children?.map(buildCollection(deps)) ?? [])),
     };

@@ -8,10 +8,33 @@ import * as two_handed_staff from '../../../d4data/sno/two_handed_staff.js';
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const DISCORD: CollectionDescriptor = {
+  name: 'Discord',
+  description: 'Transmogs acquired through Discord collaborations',
+  promotional: true,
+  outOfRotation: true,
+  category: Category.PROMOTIONAL,
+  children: [
+    {
+      name: 'Vessel of Hatred Quest',
+      description:
+        'Stream yourself playing Vessel of Hatred on Discord from October 8th, 2024 until October 15th, 2024',
+      claim: 'Discord Quest',
+      claimDescription: 'Stream yourself playing Vessel of Hatred on Discord.',
+      items: [
+        ['json\\base\\meta\\Item\\dagger_stor086.itm.json'],
+        ['json\\base\\meta\\Item\\sword_stor100.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandPolearm_stor068.itm.json'],
+      ],
+    },
+  ],
+};
+
 const TWITCH: CollectionDescriptor = {
   name: 'Twitch',
   description: 'Twitch drops and support a streamer mounts',
   category: Category.PROMOTIONAL,
+  promotional: true,
   children: [
     {
       name: 'Support a Streamer #3',
@@ -210,6 +233,7 @@ const PRIME: CollectionDescriptor = {
   name: 'Prime',
   description: 'Loot for Prime Gaming members',
   category: Category.PROMOTIONAL,
+  promotional: true,
   children: [
     {
       name: 'Prime Gaming #4',
@@ -221,7 +245,7 @@ const PRIME: CollectionDescriptor = {
       items: [
         ['json\\base\\meta\\Item\\mnt_stor020_trophy.itm.json'],
         ['json\\base\\meta\\Item\\mnt_stor015_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor109_horse.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_amor109_horse_stor.itm.json'],
       ],
     },
     {
@@ -270,6 +294,7 @@ const BLIZZCON: CollectionDescriptor = {
   category: Category.PROMOTIONAL,
   claimDescription: 'Included in the BlizzCon Collection Epic and Legendary pack.',
   premium: true,
+  promotional: true,
   items: [
     ['json\\base\\meta\\Item\\mnt_stor122_trophy.itm.json'],
     ['json\\base\\meta\\Item\\mnt_stor121_trophy.itm.json'],
@@ -291,98 +316,109 @@ const CALL_OF_DUTY: CollectionDescriptor = {
   claimDescription: 'Kill "The Butcher" in Call of Duty.',
   outOfRotation: true,
   premium: true,
+  promotional: true,
   items: [['json\\base\\meta\\Item\\Scythe_stor007.itm.json']],
 };
 
-const FRANCHISE: CollectionDescriptor = {
-  name: 'Franchise Promotion',
-  description: 'Transmogs collected from various franchise promotions',
+const TROLLI: CollectionDescriptor = {
+  name: 'Trolli',
+  description: 'Franchise Promotion',
   category: Category.PROMOTIONAL,
-  children: [
-    {
-      name: 'Trolli',
-      category: Category.PROMOTIONAL,
-      claimDescription: 'Redeemable by submitting the barcode from Trolli candy packets.',
-      premium: true,
-      items: [
-        ['json\\base\\meta\\Item\\twoHandPolearm_stor042.itm.json'],
-        ['json\\base\\meta\\Item\\mace_stor044.itm.json'],
-        ['json\\base\\meta\\Item\\dagger_stor076.itm.json'],
-      ],
-    },
-    {
-      name: "CU Demon's Blood & Angel's Tears",
-      category: Category.PROMOTIONAL,
-      claimDescription: 'Redeemable from wine bottles purchased in Korea.',
-      premium: true,
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_KR_RedWine_stor001.prd.json'],
-    },
-    {
-      name: 'Coco Fresh Tea',
-      category: Category.PROMOTIONAL,
-      claimDescription: 'Redeemable from the Coco Fresh Tea promotion.',
-      outOfRotation: true,
-      premium: true,
-      storeProducts: ['json\\base\\meta\\StoreProduct\\marking_nec001_stor.prd.json'],
-      items: [
-        ['json\\base\\meta\\Item\\axe_stor007.itm.json'],
-        ['json\\base\\meta\\Item\\Shield_stor004.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandMace_stor007.itm.json'],
-        ['json\\base\\meta\\Item\\Dagger_stor015.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor130_horse_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor013_horse.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor059_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor060_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Necro_151_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Necro_151_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Necro_151_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Necro_151_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Necromancer_151_stor.itm.json'],
-        ['json\\base\\meta\\Item\\sword_stor002.itm.json'],
-        ['json\\base\\meta\\Item\\shield_stor003.itm.json'],
-      ],
-    },
-    {
-      name: 'Mountain Dew',
-      category: Category.PROMOTIONAL,
-      claimDescription: 'Redeemable from the Mountain Dew promotion.',
-      outOfRotation: true,
-      premium: true,
-      items: [
-        ['json\\base\\meta\\Item\\offHandsSorc_stor029.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandSword_stor022.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandCrossbow_stor029.itm.json'],
-        ['json\\base\\meta\\Item\\mace_stor028.itm.json'],
-      ],
-    },
-    {
-      name: 'Burger King',
-      category: Category.PROMOTIONAL,
-      claimDescription: 'Redeemable from the Burger King promotion.',
-      outOfRotation: true,
-      premium: true,
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Necro_165_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Necro_165_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Necro_165_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Necro_165_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Necromancer_165_stor.itm.json'],
-      ],
-    },
-    {
-      name: 'KFC',
-      category: Category.PROMOTIONAL,
-      claimDescription: 'Redeemable from the KFC promotion.',
-      outOfRotation: true,
-      premium: true,
-      items: [
-        ['json\\base\\meta\\Item\\twoHandBow_stor006.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandSorcStaff_stor009.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandPolearm_stor004.itm.json'],
-        ['json\\base\\meta\\Item\\offHandsDruid_stor005.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandScythe_stor006.itm.json'],
-      ],
-    },
+  claimDescription: 'Redeemable by submitting the barcode from Trolli candy packets.',
+  premium: true,
+  promotional: true,
+  items: [
+    ['json\\base\\meta\\Item\\twoHandPolearm_stor042.itm.json'],
+    ['json\\base\\meta\\Item\\mace_stor044.itm.json'],
+    ['json\\base\\meta\\Item\\dagger_stor076.itm.json'],
+  ],
+};
+
+const DEMONS_BLOOD: CollectionDescriptor = {
+  name: "CU Demon's Blood & Angel's Tears",
+  description: 'Korean Convenience Store Promotion',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Redeemable from wine bottles purchased in Korea.',
+  premium: true,
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_KR_RedWine_stor001.prd.json'],
+};
+
+const COCO: CollectionDescriptor = {
+  name: 'Coco Fresh Tea',
+  description: 'Franchise Promotion',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Redeemable from the Coco Fresh Tea promotion.',
+  outOfRotation: true,
+  premium: true,
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\marking_nec001_stor.prd.json'],
+  items: [
+    ['json\\base\\meta\\Item\\axe_stor007.itm.json'],
+    ['json\\base\\meta\\Item\\Shield_stor004.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandMace_stor007.itm.json'],
+    ['json\\base\\meta\\Item\\Dagger_stor015.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_amor130_horse_stor.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor013_horse.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor059_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor060_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\Helm_Cosmetic_Necro_151_stor.itm.json'],
+    ['json\\base\\meta\\Item\\Chest_Cosmetic_Necro_151_stor.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Cosmetic_Necro_151_stor.itm.json'],
+    ['json\\base\\meta\\Item\\Pants_Cosmetic_Necro_151_stor.itm.json'],
+    ['json\\base\\meta\\Item\\Boots_Cosmetic_Necromancer_151_stor.itm.json'],
+    ['json\\base\\meta\\Item\\sword_stor002.itm.json'],
+    ['json\\base\\meta\\Item\\shield_stor003.itm.json'],
+  ],
+};
+
+const MOUNTAIN_DEW: CollectionDescriptor = {
+  name: 'Mountain Dew',
+  description: 'Franchise Promotion',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Redeemable from the Mountain Dew promotion.',
+  outOfRotation: true,
+  premium: true,
+  promotional: true,
+  items: [
+    ['json\\base\\meta\\Item\\offHandsSorc_stor029.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandSword_stor022.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandCrossbow_stor029.itm.json'],
+    ['json\\base\\meta\\Item\\mace_stor028.itm.json'],
+  ],
+};
+
+const BURGER_KING: CollectionDescriptor = {
+  name: 'Burger King',
+  description: 'Franchise Promotion',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Redeemable from the Burger King promotion.',
+  outOfRotation: true,
+  premium: true,
+  promotional: true,
+  items: [
+    ['json\\base\\meta\\Item\\Helm_Cosmetic_Necro_165_stor.itm.json'],
+    ['json\\base\\meta\\Item\\Chest_Cosmetic_Necro_165_stor.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Cosmetic_Necro_165_stor.itm.json'],
+    ['json\\base\\meta\\Item\\Pants_Cosmetic_Necro_165_stor.itm.json'],
+    ['json\\base\\meta\\Item\\Boots_Cosmetic_Necromancer_165_stor.itm.json'],
+  ],
+};
+
+const KFC: CollectionDescriptor = {
+  name: 'KFC',
+  description: 'Franchise Promotion',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Redeemable from the KFC promotion.',
+  outOfRotation: true,
+  premium: true,
+  promotional: true,
+  items: [
+    ['json\\base\\meta\\Item\\twoHandBow_stor006.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandSorcStaff_stor009.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandPolearm_stor004.itm.json'],
+    ['json\\base\\meta\\Item\\offHandsDruid_stor005.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandScythe_stor006.itm.json'],
   ],
 };
 
@@ -393,6 +429,7 @@ const HELL_STATION: CollectionDescriptor = {
   claim: 'Promotional',
   claimDescription: 'Reward for participating in escape rooms, Korea only.',
   outOfRotation: true,
+  promotional: true,
   items: [['json\\base\\meta\\Item\\Sword_stor011.itm.json']],
 };
 
@@ -402,6 +439,7 @@ const HELL_INK: CollectionDescriptor = {
   category: Category.PROMOTIONAL,
   claimDescription: "Receive a tattoo during the Hell's Ink promotion.",
   outOfRotation: true,
+  promotional: true,
   items: [
     ['json\\base\\meta\\PlayerTitle\\prefix_mothers.pt.json', 'json\\base\\meta\\PlayerTitle\\suffix_inked.pt.json'],
   ],
@@ -414,9 +452,25 @@ const STEEL_SERIES: CollectionDescriptor = {
   claimDescription: 'Included with SteelSeries hardware purchases.',
   outOfRotation: true,
   premium: true,
+  promotional: true,
   items: [['json\\base\\meta\\Item\\mnt_stor018_trophy.itm.json']],
 };
 
-const PROMOTIONAL = [TWITCH, PRIME, BLIZZCON, CALL_OF_DUTY, FRANCHISE, HELL_STATION, HELL_INK, STEEL_SERIES];
+const PROMOTIONAL = [
+  TWITCH,
+  DISCORD,
+  TROLLI,
+  DEMONS_BLOOD,
+  COCO,
+  MOUNTAIN_DEW,
+  BURGER_KING,
+  KFC,
+  PRIME,
+  BLIZZCON,
+  CALL_OF_DUTY,
+  HELL_STATION,
+  HELL_INK,
+  STEEL_SERIES,
+];
 
 export default PROMOTIONAL;

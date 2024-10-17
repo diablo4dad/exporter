@@ -9,19 +9,6 @@ const DARK_CITADEL: CollectionDescriptor = {
   items: [['json\\base\\meta\\Item\\MountReins_RaidReward_Cat.itm.json']],
 };
 
-const DISCORD: CollectionDescriptor = {
-  name: 'Vessel of Hatred Discord Quest',
-  description: 'Stream yourself playing Vessel of Hatred on Discord from October 8th, 2024 until October 15th, 2024',
-  category: Category.PROMOTIONAL,
-  claim: 'Discord Quest',
-  claimDescription: 'Stream yourself playing Vessel of Hatred on Discord.',
-  items: [
-    ['json\\base\\meta\\Item\\dagger_stor086.itm.json'],
-    ['json\\base\\meta\\Item\\sword_stor100.itm.json'],
-    ['json\\base\\meta\\Item\\twoHandPolearm_stor068.itm.json'],
-  ],
-};
-
 const LUNARY_AWAKENING: CollectionDescriptor = {
   name: 'Lunar Awakening',
   description: 'Chinese new year event from February 6th, 2024 until February 20th, 2024',
@@ -91,7 +78,7 @@ const EVENT: CollectionDescriptor = {
   name: 'Limited Event',
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
-  children: [DARK_CITADEL, DISCORD, LUNARY_AWAKENING, MIDWINTER_BLIGHT, DONATE_BLOOD_HARVEST],
+  children: [DARK_CITADEL, LUNARY_AWAKENING, MIDWINTER_BLIGHT, DONATE_BLOOD_HARVEST],
 };
 
 export default EVENT;

@@ -18,6 +18,7 @@ export type CollectionDescriptor = {
   season?: number;
   outOfRotation?: boolean;
   premium?: boolean;
+  promotional?: boolean;
   claim?: string;
   claimDescription?: string;
   claimZone?: Zone;
@@ -60,6 +61,7 @@ export type D4DadCollection = {
   season?: number;
   outOfRotation?: boolean;
   premium?: boolean;
+  promotional?: boolean;
   description?: string;
   category?: string;
   bundleId?: number;
