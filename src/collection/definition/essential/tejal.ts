@@ -2,7 +2,7 @@ import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
 const VESSEL_OF_HATRED_FREEBIES: CollectionDescriptor = {
-  name: 'Vessel of Hatred Freebies',
+  name: 'Season of Hatred Rising Gifts',
   description: "Free from Tejal's Shop from October 8th, 2024",
   category: Category.SHOP_ITEMS,
   claimDescription: 'Free from the cash shop for a limited time.',
