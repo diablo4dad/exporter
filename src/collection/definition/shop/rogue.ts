@@ -183,6 +183,11 @@ const ROGUE: CollectionDescriptor = {
       // The Hungry Devil
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor235.prd.json'],
     },
+    {
+      // The Betrayer
+      // Warcraft Legends II
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor232.prd.json'],
+    },
   ],
 };
 

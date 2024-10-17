@@ -30,6 +30,11 @@ const CAT_MOUNTS: CollectionDescriptor = {
       // Wild Transcendence
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor002.prd.json'],
     },
+    {
+      // Ash'adar, Harbinger of the Dawn
+      // Warcraft Legends II
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor009.prd.json'],
+    },
   ],
 };
 

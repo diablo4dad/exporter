@@ -193,6 +193,11 @@ const BARBARIAN: CollectionDescriptor = {
       // The Guardian Angel
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor225.prd.json'],
     },
+    {
+      // The Tyrant
+      // Warcraft Legends II
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor231.prd.json'],
+    },
   ],
 };
 

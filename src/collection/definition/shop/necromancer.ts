@@ -180,10 +180,14 @@ const NECROMANCER: CollectionDescriptor = {
       // The Scarecrow
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor197.prd.json'],
     },
-    //
     {
       // The Jeweled Weaver
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor209.prd.json'],
+    },
+    {
+      // The One True King
+      // Warcraft Legends II
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor226.prd.json'],
     },
   ],
 };

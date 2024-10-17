@@ -181,6 +181,11 @@ const SORCERER: CollectionDescriptor = {
       // The Luminarei
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor232.prd.json'],
     },
+    {
+      // The Archmage
+      // Warcraft Legends II
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor230.prd.json'],
+    },
   ],
 };
 

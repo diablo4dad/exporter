@@ -223,6 +223,11 @@ const MOUNTS: CollectionDescriptor = {
       // The Haunted Automaton
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor046.prd.json'],
     },
+    {
+      // Invincible Aspect
+      // Warcraft Legends II
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor005.prd.json'],
+    },
   ],
 };
 

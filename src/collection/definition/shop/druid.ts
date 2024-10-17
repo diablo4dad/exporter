@@ -140,6 +140,11 @@ const DRUID: CollectionDescriptor = {
       // Visions of Chaos
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor224.prd.json'],
     },
+    {
+      // The Honored Teacher
+      // Warcraft Legends II
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor223.prd.json'],
+    },
   ],
 };
 

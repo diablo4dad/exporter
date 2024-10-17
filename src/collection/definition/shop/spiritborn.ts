@@ -27,6 +27,11 @@ const SPIRITBORN: CollectionDescriptor = {
       // Mother's Memory
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor159.prd.json'],
     },
+    {
+      // Spirit of Death
+      // # Warcraft Legends II
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor154.prd.json'],
+    },
   ],
 };
 
