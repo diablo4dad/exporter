@@ -62,6 +62,12 @@ const MOTHERS_FAVOR: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\twoHandAxe_stor007.itm.json'],
     ['json\\base\\meta\\Item\\Sword_stor010.itm.json'],
   ],
+  patches: [
+    {
+      items: [1237309],
+      unobtainable: true,
+    },
+  ],
 };
 
 const RETURNING_CHAMPION: CollectionDescriptor = {
