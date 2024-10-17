@@ -10,11 +10,11 @@ const DARK_CITADEL: CollectionDescriptor = {
 };
 
 const DISCORD: CollectionDescriptor = {
-  name: 'Discord Stream',
-  description: 'Stream yourself playing Diablo IV on Discord from October 8th, 2024 until October 15th, 2024',
+  name: 'Vessel of Hatred Discord Quest',
+  description: 'Stream yourself playing Vessel of Hatred on Discord from October 8th, 2024 until October 15th, 2024',
   category: Category.PROMOTIONAL,
-  claim: 'Discord Reward',
-  claimDescription: 'Stream yourself playing Diablo IV on Discord.',
+  claim: 'Discord Quest',
+  claimDescription: 'Stream yourself playing Vessel of Hatred on Discord.',
   items: [
     ['json\\base\\meta\\Item\\dagger_stor086.itm.json'],
     ['json\\base\\meta\\Item\\sword_stor100.itm.json'],
