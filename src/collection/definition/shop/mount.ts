@@ -220,15 +220,8 @@ const MOUNTS: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor202.prd.json'],
     },
     {
-      // The Haunted Automaton [encrypted]
+      // The Haunted Automaton
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor046.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor046_horse.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor198_horse_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor203_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor202_trophy.itm.json'],
-      ],
     },
   ],
 };

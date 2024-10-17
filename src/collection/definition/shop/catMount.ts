@@ -19,37 +19,16 @@ const CAT_MOUNTS: CollectionDescriptor = {
       ],
     },
     {
-      // The Dusk Walker [encrypted]
+      // The Dusk Walker
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor001.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor001_cat.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor101_cat_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor241_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor242_trophy.itm.json'],
-      ],
     },
     {
-      // The White Wildcat [encrypted]
+      // The White Wildcat
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor003.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor003_cat.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor103_cat_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor246_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor245_trophy.itm.json'],
-      ],
     },
     {
-      // Wild Transcendence [encrypted]
+      // Wild Transcendence
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor002.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor002_cat.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor102_cat_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor244_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor243_trophy.itm.json'],
-      ],
     },
   ],
 };

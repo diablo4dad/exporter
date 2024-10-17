@@ -172,50 +172,16 @@ const ROGUE: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor219.prd.json'],
     },
     {
-      // The Black Smoke [encrypted]
+      // The Black Smoke
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor233.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Rogue_233_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Rogue_233_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Rogue_233_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Rogue_233_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Rogue_233_stor.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandCrossbow_stor044.itm.json'],
-        ['json\\base\\meta\\Item\\sword_stor082.itm.json'],
-        ['json\\base\\meta\\MarkingShape\\bodymarking_rog053_stor.msh.json'],
-      ],
     },
     {
-      // Frost of Cocytus [encrypted]
+      // Frost of Cocytus
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor223.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Rogue_223_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Rogue_223_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Rogue_223_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Rogue_223_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Rogue_223_stor.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandCrossbow_stor039.itm.json'],
-        ['json\\base\\meta\\Item\\sword_stor073.itm.json'],
-        ['json\\base\\meta\\MarkingShape\\bodymarking_rog046_stor.msh.json'],
-      ],
     },
-    //
     {
-      // The Hungry Devil [encrypted]
+      // The Hungry Devil
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor235.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Rogue_235_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Rogue_235_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Rogue_235_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Rogue_235_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Rogue_235_stor.itm.json'],
-        ['json\\base\\meta\\Item\\dagger_stor074.itm.json'],
-        ['json\\base\\meta\\Item\\sword_stor084.itm.json'],
-        ['json\\base\\meta\\MarkingShape\\bodymarking_rog055_stor.msh.json'],
-      ],
     },
   ],
 };

@@ -178,64 +178,20 @@ const BARBARIAN: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor221.prd.json'],
     },
     {
-      // The Flames of Abaddon [encrypted]
+      // The Flames of Abaddon
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor226.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Barbarian_226_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Barbarian_226_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Barbarian_226_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Barbarian_226_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Barbarian_226_stor.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandMace_stor035.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandAxe_stor030.itm.json'],
-        ['json\\base\\meta\\MarkingShape\\bodymarking_bar047_stor.msh.json'],
-      ],
     },
     {
-      // Blood Sacrifice [encrypted]
+      // Blood Sacrifice
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor189.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Barbarian_189_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Barbarian_189_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Barbarian_189_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Barbarian_189_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Barbarian_189_stor.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandAxe_stor011.itm.json'],
-        ['json\\base\\meta\\Item\\mace_stor019.itm.json'],
-        ['json\\base\\meta\\MarkingShape\\bodymarking_bar031_stor.msh.json'],
-      ],
     },
     {
-      // Wraith of the Old War [encrypted]
+      // Wraith of the Old War
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor227.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Barbarian_227_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Barbarian_227_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Barbarian_227_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Barbarian_227_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Barbarian_227_stor.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandMace_stor032.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandPolearm_stor035.itm.json'],
-        ['json\\base\\meta\\MarkingShape\\bodymarking_bar048_stor.msh.json'],
-      ],
     },
     {
-      // The Guardian Angel [encrypted]
+      // The Guardian Angel
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor225.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Barbarian_225_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Barbarian_225_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Barbarian_225_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Barbarian_225_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Barbarian_225_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mace_stor038.itm.json'],
-        ['json\\base\\meta\\Item\\axe_stor039.itm.json'],
-        ['json\\base\\meta\\MarkingShape\\bodymarking_bar046_stor.msh.json'],
-      ],
     },
   ],
 };

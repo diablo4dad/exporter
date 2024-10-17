@@ -137,19 +137,8 @@ const DRUID: CollectionDescriptor = {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor214.prd.json'],
     },
     {
-      // Visions of Chaos [encrypted]
+      // Visions of Chaos
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor224.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\Helm_Cosmetic_Druid_224_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Chest_Cosmetic_Druid_224_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Gloves_Cosmetic_Druid_224_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Pants_Cosmetic_Druid_224_stor.itm.json'],
-        ['json\\base\\meta\\Item\\Boots_Cosmetic_Druid_224_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mace_stor043.itm.json'],
-        ['json\\base\\meta\\Item\\OffHandTotem_stor036.itm.json'],
-        ['json\\base\\meta\\MarkingShape\\bodymarking_dru044_stor.msh.json'],
-      ],
     },
   ],
 };
