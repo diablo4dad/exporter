@@ -22,6 +22,9 @@ const WEAPONS: CollectionDescriptor = {
     {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MagmaticArmaments.prd.json'],
     },
+    {
+      storeProducts: ['json\\base\\meta\\StoreProduct\\AddOn_StarterPack2.prd.json'],
+    },
   ],
 };
 
