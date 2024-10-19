@@ -1,3 +1,4 @@
+import * as dagger from '../../../d4data/sno/dagger.js';
 import * as mace from '../../../d4data/sno/mace.js';
 import * as two_handed_staff from '../../../d4data/sno/two_handed_staff.js';
 import * as two_handed_sword from '../../../d4data/sno/two_handed_sword.js';
@@ -12,6 +13,8 @@ const RAID: CollectionDescriptor = {
   claimDescription: 'Looted from middle chests and bosses in the Dark Citadel.',
   category: Category.ACTIVITY,
   items: [
+    ['json\\base\\meta\\Item\\mnt_amor05_cat.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_uniq70_trophy.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier1_Helm_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier1_Chest_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier1_Gloves_Transmog.itm.json'],
@@ -33,36 +36,11 @@ const RAID: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HScythe_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HDagger_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HAxe_Transmog.itm.json'],
-    ['json\\base\\meta\\Item\\mnt_amor05_cat.itm.json'],
-    ['json\\base\\meta\\Item\\mnt_uniq70_trophy.itm.json'],
-  ],
-};
-
-const RAID_TIER2: CollectionDescriptor = {
-  name: 'Raid Drops (Tier II)',
-  description: 'Transmogs dropped within the Dark Citadel on Torment IV',
-  claim: 'Zone Drop',
-  claimDescription: 'Looted from middle chests and bosses in the Dark Citadel.',
-  category: Category.ACTIVITY,
-  items: [
-    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Helm_Transmog.itm.json'],
-    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Chest_Transmog.itm.json'],
-    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Pants_Transmog.itm.json'],
-    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Gloves_Transmog.itm.json'],
-    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Boots_Transmog.itm.json'],
-  ],
-};
-
-const DARK_CITADEL_VENDOR: CollectionDescriptor = {
-  name: 'Vendor',
-  description: 'Transmogs purchased from the Dark Citadel Vendor',
-  claim: 'Vendor',
-  category: Category.ACTIVITY,
-  items: [
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HMace_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_2HSword_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_2HQuarterstaff_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HWand_Transmog.itm.json'],
+    ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HDagger_Transmog.itm.json'],
   ],
   patches: [
     {
@@ -81,6 +59,25 @@ const DARK_CITADEL_VENDOR: CollectionDescriptor = {
       items: [wand.TWISTED_SPIRIT_WAND],
       claimDescription: 'Purchased for 15,000 coins from the Dark Citadel vendor.',
     },
+    {
+      items: [dagger.HOOKED_PIERCER],
+      claimDescription: 'Purchased for 15,000 coins from the Dark Citadel vendor.',
+    },
+  ],
+};
+
+const RAID_TIER2: CollectionDescriptor = {
+  name: 'Raid Drops (Tier II)',
+  description: 'Transmogs dropped within the Dark Citadel on Torment IV',
+  claim: 'Zone Drop',
+  claimDescription: 'Looted from middle chests and bosses in the Dark Citadel.',
+  category: Category.ACTIVITY,
+  items: [
+    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Helm_Transmog.itm.json'],
+    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Chest_Transmog.itm.json'],
+    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Pants_Transmog.itm.json'],
+    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Gloves_Transmog.itm.json'],
+    ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier2_Boots_Transmog.itm.json'],
   ],
 };
 
@@ -88,7 +85,7 @@ const CITADEL: CollectionDescriptor = {
   name: 'Dark Citadel',
   description: 'Transmogs earned within the Dark Citadel',
   category: Category.GENERAL,
-  children: [RAID, RAID_TIER2, DARK_CITADEL_VENDOR],
+  children: [RAID, RAID_TIER2],
 };
 
 export default CITADEL;
