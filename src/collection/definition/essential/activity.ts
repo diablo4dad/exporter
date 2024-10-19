@@ -38,6 +38,9 @@ const QUEST: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_QST_Gloves_Legendary_Generic_013.itm.json'],
     ['json\\base\\meta\\Item\\X1_QST_Pants_Legendary_Generic_013.itm.json'],
     ['json\\base\\meta\\Item\\X1_QST_Boots_Legendary_Generic_013.itm.json'],
+    // expansion mount
+    ['json\\base\\meta\\Item\\MountReins_NahantuPanther_Cat.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_amor06_cat.itm.json'],
   ],
   patches: [
     {
@@ -111,6 +114,16 @@ const QUEST: CollectionDescriptor = {
       claimDescription: 'Vessel of Hatred priority quest reward.',
       claimZone: Zone.NAHANTU,
     },
+    {
+      items: [2021557],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [2021565],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
     // Hatred's Armor Set:
     {
       items: [2021219],
@@ -164,6 +177,17 @@ const QUEST: CollectionDescriptor = {
       claimDescription: 'Complete the "Deeds of a Champion" epilogue quest line.',
       claimZone: Zone.NAHANTU,
     },
+    // mount + barding
+    {
+      items: [2008771],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [1982034],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
   ],
 };
 
@@ -201,8 +225,8 @@ const VENDOR: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\MountReins_WhiteHorse.itm.json'],
     ['json\\base\\meta\\Item\\MountReins_MottledHorse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor01_horse.itm.json'],
-    ['json\\base\\meta\\Item\\MountReins_LeucisticLion_Cat.itm.json'],
     ['json\\base\\meta\\Item\\MountReins_Cat.itm.json'],
+    ['json\\base\\meta\\Item\\MountReins_Albino_Cat.itm.json'],
   ],
 };
 
