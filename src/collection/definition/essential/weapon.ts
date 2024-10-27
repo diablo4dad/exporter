@@ -690,6 +690,16 @@ const GLAIVE: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Glaive_Unique_Spiritborn_010_x1.itm.json'],
     ['json\\base\\meta\\Item\\Glaive_Unique_Spiritborn_014_x1.itm.json'],
   ],
+  patches: [
+    {
+      items: [2012497],
+      claimDescription: 'Salvaged from Wushe Nak Pa.',
+    },
+    {
+      items: [1982241],
+      claimDescription: 'Salvaged from Nesekem, the Herald.',
+    },
+  ],
 };
 
 const QUARTERSTAFF: CollectionDescriptor = {
@@ -729,6 +739,14 @@ const QUARTERSTAFF: CollectionDescriptor = {
     {
       items: [1970493],
       unobtainable: true,
+    },
+    {
+      items: [1987312],
+      claimDescription: 'Salvaged from Sepazontec.',
+    },
+    {
+      items: [2093166],
+      claimDescription: 'Salvaged from Rod of Kepeleke.',
     },
   ],
 };
