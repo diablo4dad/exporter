@@ -117,7 +117,7 @@ const TWITCH: CollectionDescriptor = {
       ],
     },
     {
-      name: 'Support a Streamer #3',
+      name: 'Support a Streamer #2',
       description: 'Season of the Construct promotion from January 23rd, 2024 until February 26th, 2024',
       category: Category.PROMOTIONAL,
       claimDescription: 'Gift 2 subs during the Twitch promotion.',
