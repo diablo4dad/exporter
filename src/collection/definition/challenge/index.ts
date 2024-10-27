@@ -135,7 +135,12 @@ const PATCHES: Partial<D4DadCollectionItem>[] = [
   {
     // Hatreds Chosen
     items: [1320174, 1320176],
-    claimDescription: "[Hidden] Become Hatred's Chosen",
+    claimDescription: "[Hidden] Become Hatred's Chosen.",
+  },
+  {
+    // The Hateful Stone
+    items: [2092909],
+    claimDescription: '[Hidden] Reach Paragon Level 300.',
   },
 ];
 
@@ -214,14 +219,17 @@ function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
   const sideQuests = findNamedCollection(collection, 'Side Quests');
   const pvp = findNamedCollection(collection, 'PvP');
   const hidden = findNamedCollection(collection, 'Hidden');
+  const challenge = findNamedCollection(findNamedCollection(collection, 'Challenge'), 'Challenge');
 
   const triuneTrouble = findCollectionItem(hidden, [1287112, 1287114]);
   const ironWolf = findCollectionItem(hidden, [996341, 1287106]);
   const hatredsChosen = findCollectionItem(hidden, [1320174, 1320176]);
+  const theHatefulStone = findCollectionItem(hidden, [2092909]);
 
   // impure!
   sideQuests.collectionItems.push(triuneTrouble, ironWolf);
   pvp.collectionItems.push(hatredsChosen);
+  challenge.collectionItems.push(theHatefulStone);
 
   // impure! only keep well-wisher
   hidden.collectionItems = hidden.collectionItems.filter((ci) => ci.items.every((i) => i === 1339653));
