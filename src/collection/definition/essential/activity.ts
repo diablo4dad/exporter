@@ -151,6 +151,16 @@ const QUEST: CollectionDescriptor = {
       claimDescription: 'Vessel of Hatred priority quest reward.',
       claimZone: Zone.NAHANTU,
     },
+    {
+      items: [1825016],
+      claimDescription: 'Vessel of Hatred priority quest reward; salvaged from Malefic Gaze.',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [1976738],
+      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimZone: Zone.NAHANTU,
+    },
     // Baleful Intent Armor Set:
     {
       items: [1875355],
@@ -180,12 +190,12 @@ const QUEST: CollectionDescriptor = {
     // mount + barding
     {
       items: [2008771],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete the "Deeds of a Champion" epilogue quest line.',
       claimZone: Zone.NAHANTU,
     },
     {
       items: [1982034],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete the "Deeds of a Champion" epilogue quest line.',
       claimZone: Zone.NAHANTU,
     },
   ],
