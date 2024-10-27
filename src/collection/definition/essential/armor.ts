@@ -33,6 +33,7 @@ const HELM: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\S05_BSK_Helm_Unique_Generic_001.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Barb_101_x1.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Necro_101_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Helm_Unique_Spiritborn_009_x1.itm.json'],
     // mythic
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_002.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_004.itm.json'],
@@ -71,6 +72,7 @@ const CHEST_ARMOR: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Chest_Normal_Generic_011.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\Chest_Unique_Rogue_101.itm.json'],
+    ['json\\base\\meta\\Item\\Chest_Unique_Spiritborn_013_x1.itm.json'],
     // mythic
     ['json\\base\\meta\\Item\\Chest_Unique_Generic_127.itm.json'],
     ['json\\base\\meta\\Item\\Chest_Unique_Generic_103.itm.json'],
@@ -114,6 +116,7 @@ const GLOVES: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\S05_BSK_Gloves_Unique_Generic_001.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Sorc_101.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Sorc_143_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Unique_Spiritborn_007_x1.itm.json'],
   ],
 };
 
@@ -150,6 +153,7 @@ const PANTS: CollectionDescriptor = {
     // unique
     ['json\\base\\meta\\Item\\Pants_Unique_Barb_100.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Unique_Sorc_101.itm.json'],
+    ['json\\base\\meta\\Item\\Pants_Unique_Spiritborn_015_x1.itm.json'],
   ],
 };
 
@@ -188,6 +192,7 @@ const BOOTS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Boots_Unique_Generic_003.itm.json'],
     ['json\\base\\meta\\Item\\S05_BSK_Boots_Unique_Generic_001.itm.json'],
     ['json\\base\\meta\\Item\\Boots_Unique_Necro_101.itm.json'],
+    ['json\\base\\meta\\Item\\Boots_Unique_Spiritborn_008_x1.itm.json'],
   ],
 };
 
