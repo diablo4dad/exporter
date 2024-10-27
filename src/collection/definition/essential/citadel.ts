@@ -13,6 +13,7 @@ const RAID: CollectionDescriptor = {
   claimDescription: 'Looted from middle chests and bosses in the Dark Citadel.',
   category: Category.ACTIVITY,
   items: [
+    ['json\\base\\meta\\Item\\mnt_amor04_cat.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor05_cat.itm.json'],
     ['json\\base\\meta\\Item\\mnt_uniq70_trophy.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticArmor_Tier1_Helm_Transmog.itm.json'],
@@ -34,7 +35,6 @@ const RAID: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_2HAxe_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HSword_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HScythe_Transmog.itm.json'],
-    ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HDagger_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HAxe_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_1HMace_Transmog.itm.json'],
     ['json\\base\\meta\\Item\\X1_Raid_CosmeticWeapon_2HSword_Transmog.itm.json'],
