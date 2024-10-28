@@ -753,7 +753,7 @@ const QUARTERSTAFF: CollectionDescriptor = {
 
 const WEAPON: CollectionDescriptor = {
   name: 'Weapon',
-  description: 'Transmogs found throughout sanctuary',
+  description: 'Transmogs found throughout Sanctuary',
   category: Category.GENERAL,
   children: [
     TWO_HANDED_AXE,

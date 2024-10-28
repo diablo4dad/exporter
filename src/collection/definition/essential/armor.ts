@@ -198,7 +198,7 @@ const BOOTS: CollectionDescriptor = {
 
 const ARMOR: CollectionDescriptor = {
   name: 'Armor',
-  description: 'Transmogs found throughout sanctuary',
+  description: 'Transmogs found throughout Sanctuary',
   category: Category.GENERAL,
   children: [HELM, CHEST_ARMOR, GLOVES, PANTS, BOOTS],
 };
