@@ -202,11 +202,28 @@ const NIGHTMARE_DUNGEON: CollectionDescriptor = {
   items: [['json\\base\\meta\\Item\\MountReins_CaldeumHorse.itm.json']],
 };
 
+const KURAST_UNDERCITY: CollectionDescriptor = {
+  name: 'Kurast Undercity',
+  description: 'Transmogs dropped within Kurast Undercity',
+  category: Category.ZONE,
+  claimDescription: 'Dropped within Kurast Undercity.',
+  items: [['json\\base\\meta\\Item\\mnt_amor04_cat.itm.json']],
+};
+
 const ZONE: CollectionDescriptor = {
   name: 'Zone',
   description: 'Transmogs dropped within regions',
   category: Category.GENERAL,
-  children: [FRACTURED_PEAKS, SCOSGLEN, KEHJISTAN, DRY_STEPPES, HAWEZAR, OPEN_WORLD, NIGHTMARE_DUNGEON],
+  children: [
+    FRACTURED_PEAKS,
+    SCOSGLEN,
+    KEHJISTAN,
+    DRY_STEPPES,
+    HAWEZAR,
+    OPEN_WORLD,
+    NIGHTMARE_DUNGEON,
+    KURAST_UNDERCITY,
+  ],
 };
 
 export default ZONE;
