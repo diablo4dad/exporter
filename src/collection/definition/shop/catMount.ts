@@ -8,15 +8,8 @@ const CAT_MOUNTS: CollectionDescriptor = {
   premium: true,
   children: [
     {
-      // Beast of Brimstone [encrypted]
+      // Beast of Brimstone
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor004b.prd.json'],
-      claim: 'Cash Shop',
-      items: [
-        ['json\\base\\meta\\Item\\mnt_stor004_cat.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_amor104_cat_stor.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor248_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\mnt_stor247_trophy.itm.json'],
-      ],
     },
     {
       // The Dusk Walker
