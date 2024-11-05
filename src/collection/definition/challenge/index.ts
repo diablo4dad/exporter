@@ -142,6 +142,11 @@ const PATCHES: Partial<D4DadCollectionItem>[] = [
     items: [2092909],
     claimDescription: '[Hidden] Reach Paragon Level 300.',
   },
+  {
+    // Celebrated
+    items: [2096025],
+    claimDescription: '[Hidden] Open a Greater Cache during the Citadel Community Challenge.',
+  },
 ];
 
 const findNamedCollection = (collection: D4DadCollection, name: string) => {
@@ -220,19 +225,50 @@ function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
   const pvp = findNamedCollection(collection, 'PvP');
   const hidden = findNamedCollection(collection, 'Hidden');
   const challenge = findNamedCollection(findNamedCollection(collection, 'Challenge'), 'Challenge');
+  const citadel = findNamedCollection(collection, 'First Khazra Citadel');
 
   const triuneTrouble = findCollectionItem(hidden, [1287112, 1287114]);
   const ironWolf = findCollectionItem(hidden, [996341, 1287106]);
   const hatredsChosen = findCollectionItem(hidden, [1320174, 1320176]);
   const theHatefulStone = findCollectionItem(hidden, [2092909]);
+  const celebrated = findCollectionItem(hidden, [2096025]);
+  const khazraHelm = findCollectionItem(hidden, [1955200]);
+  const khazraBoots = findCollectionItem(hidden, [1955198]);
 
   // impure!
   sideQuests.collectionItems.push(triuneTrouble, ironWolf);
   pvp.collectionItems.push(hatredsChosen);
   challenge.collectionItems.push(theHatefulStone);
+  citadel.collectionItems.push(celebrated);
+  citadel.collectionItems.push(khazraHelm);
+  citadel.collectionItems.push(khazraBoots);
 
-  // impure! only keep well-wisher
-  hidden.collectionItems = hidden.collectionItems.filter((ci) => ci.items.every((i) => i === 1339653));
+  // prefer opt-out to catch new hidden achievement rewards
+  const itemsToRemove = [
+    [1287112, 1287114], // triune trouble
+    [1320174, 1320176], // hatreds chosen
+    [996341, 1287106], // iron wolf
+    [1523527, 1520593], // wrathful heart
+    [1257432], // bloody liquid steed
+    [1610513, 1610521], // shadow vampire
+    [1638773, 1638778], // reborn nightspawn
+    [1638776, 1638780], // eternal bloodhunter
+    [921365], // varshan's severed head
+    [843632], // vir's bloody skull
+    [1904653], // blazon of victory
+    [1647914, 1647921, 1647925, 1647930, 1647933], // the dragons tapestry
+    [1975292], // abyssal bastion
+    [2096025], // celebrated
+    [2096027], // patron
+    [2092909], // the hateful stone
+    [1955200], // Greater Helm of the Khazra
+    [1955198], // Boots of the Khazra
+  ];
+
+  // impure!
+  hidden.collectionItems = hidden.collectionItems.filter(
+    (ci) => !itemsToRemove.some((ir) => ir.every((i) => ci.items.includes(i))),
+  );
 
   return collection;
 }
