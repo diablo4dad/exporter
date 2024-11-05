@@ -1,7 +1,20 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
-const VESSEL_OF_HATRED_FREEBIES: CollectionDescriptor = {
+const MACABRE_CELEBRATION: CollectionDescriptor = {
+  name: 'Macabre Celebration',
+  description: "Free from Tejal's Shop from October 29th, 2024 until November 5th 2024",
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Free from the cash shop for a limited time.',
+  items: [
+    ['json\\base\\meta\\Item\\mnt_stor044_horse.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor198_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor199_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_amor196_horse_stor.itm.json'],
+  ],
+};
+
+const HATRED_RISING_FREEBIES: CollectionDescriptor = {
   name: 'Season of Hatred Rising Gifts',
   description: "Free from Tejal's Shop from October 8th, 2024",
   category: Category.SHOP_ITEMS,
@@ -112,7 +125,8 @@ const TEJAL: CollectionDescriptor = {
   description: "Transmogs acquired from Tejal's Shop on a limited basis",
   category: Category.GENERAL,
   children: [
-    VESSEL_OF_HATRED_FREEBIES,
+    MACABRE_CELEBRATION,
+    HATRED_RISING_FREEBIES,
     FIRST_YEAR_ANNIVERSARY,
     DARK_GIFTS,
     MOTHERS_FAVOR,
