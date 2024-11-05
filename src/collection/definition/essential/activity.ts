@@ -12,7 +12,7 @@ const QUEST: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HShield_QST_Hawe_ZakFort_Carthas_01.itm.json'],
     ['json\\base\\meta\\Item\\1HMace_Rare_Barb_Crafted_37.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Rare_Rogue_Crafted_27.itm.json'],
-    ['json\\base\\meta\\Item\\cmp_base00_dog.itm.json'],
+    ['json\\base\\meta\\Item\\cmp_base000_dogLarge.itm.json'],
     // expansion
     ['json\\base\\meta\\Item\\X1_QST_1HFocus_GoingNative_Legendary_17.itm.json'],
     ['json\\base\\meta\\Item\\X1_QST_2HAxe_ShroudOfWrath_Legendary_Generic_11.itm.json'],

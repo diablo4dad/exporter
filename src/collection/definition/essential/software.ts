@@ -16,12 +16,12 @@ const SOFTWARE: CollectionDescriptor = {
       claimDescription: 'Included with the Vessel of Hatred Ultimate edition.',
       premium: true,
       items: [
+        ['json\\base\\meta\\Item\\cmp_stor101_pantheraKitten.itm.json'],
         ['json\\base\\meta\\Item\\cmp_stor100_pantheraKitten.itm.json'],
         ['json\\base\\meta\\Item\\cmp_stor100_dogLarge.itm.json'],
         ['json\\base\\meta\\Item\\mnt_dlux004_cat.itm.json'],
         ['json\\base\\meta\\Item\\mnt_amor207_cat_stor.itm.json'],
         ['json\\base\\meta\\Item\\mnt_stor218_trophy.itm.json'],
-        ['json\\base\\meta\\Item\\cmp_base00_cat.itm.json'],
         ['json\\base\\meta\\Item\\trophy_glo002_stor.itm.json'],
         ['json\\base\\meta\\Item\\trophy_glo003_stor.itm.json'],
         ['json\\base\\meta\\TownPortalCosmetic\\portal_glo013_stor.tpc.json'],
@@ -58,7 +58,12 @@ const SOFTWARE: CollectionDescriptor = {
       ],
       patches: [
         {
-          items: [1869929], // Wings of the Damned
+          items: [1869929], // Alkor Pet
+          claimDescription: 'Included with the Vessel of Hatred pre-purchase.',
+          outOfRotation: true,
+        },
+        {
+          items: [1971329], // Wings of the Damned
           claimDescription: 'Included with the Vessel of Hatred Deluxe and Ultimate editions.',
         },
         {
