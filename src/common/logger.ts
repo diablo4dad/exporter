@@ -1,4 +1,4 @@
-import { RAISE_ON_ERROR } from '../config.js';
+import { DEBUG_ON, RAISE_ON_ERROR } from '../config.js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function captureError(message?: any, ...optionalParams: any[]) {
@@ -8,4 +8,11 @@ export function captureError(message?: any, ...optionalParams: any[]) {
   }
 
   console.error(message, ...optionalParams);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function captureSoftError(message?: any, ...optionalParams: any[]) {
+  if (DEBUG_ON) {
+    console.debug(message, ...optionalParams);
+  }
 }

@@ -3,7 +3,7 @@ import path from 'path';
 import { EMPTY_STRINGS_LIST, FILE_EXTENSIONS, PATH_TO_D4STRING_LIST } from './constant.js';
 import { D4Entity, D4SnoRef, D4StoreProduct, D4Translation } from './struct.js';
 
-import { captureError } from '../common/logger.js';
+import { captureError, captureSoftError } from '../common/logger.js';
 
 export function resolveSno<T>(ref: D4SnoRef | null, lookup: Map<string, T>): T | undefined {
   if (!ref) {
@@ -49,7 +49,7 @@ export function resolveStringsList(ref: D4Entity | undefined, lookup: Map<string
 
   const stl = lookup.get(stlPath);
   if (!stl) {
-    captureError('StringsList not found.', stlPath);
+    captureSoftError('StringsList not found.', stlPath);
     return EMPTY_STRINGS_LIST;
   }
 
