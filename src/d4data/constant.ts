@@ -32,6 +32,7 @@ export const FILE_EXTENSIONS: ReadonlyMap<string, string> = new Map([
   ['EmblemDefinition', '.emb'],
   ['MarkingShapeDefinition', '.msh'],
   ['ItemDefinition', '.itm'],
+  ['PlayerTitleDefinition', '.pt'],
 ]);
 
 export const EMPTY_STRINGS_LIST: Readonly<D4Translation> = {
