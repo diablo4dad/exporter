@@ -15,7 +15,7 @@ import {
   isTownPortalCosmetic,
 } from '../d4data/predicate.js';
 import { resolveSno, resolveStoreProduct, resolveStringsList } from '../d4data/resolver.js';
-import { D4Entity, D4Item, D4StoreProduct, D4Type } from '../d4data/struct.js';
+import { D4Entity, D4Item, D4StoreProduct, D4Translation, D4Type } from '../d4data/struct.js';
 import { getEntity, getEntityFuzzy } from '../d4reader/getter.js';
 import { getTextFromStl } from '../d4reader/strings.js';
 import { D4Dependencies } from '../d4reader/struct.js';
@@ -97,19 +97,31 @@ export function buildCollection(deps: D4Dependencies) {
 export function composeName(deps: D4Dependencies) {
   return (...items: D4Entity[]): string => {
     return items
-      .map((i) => {
-        const itemStrings = resolveStringsList(i, deps.strings);
-
-        const storeProduct = resolveStoreProduct(i, deps.storeProducts);
-        const storeStrings = resolveStringsList(storeProduct, deps.strings);
-
-        return getTextFromStl(itemStrings, 'Name', getTextFromStl(storeStrings, 'Name'));
-      })
-      .filter((v, i, self) => {
-        return i == self.indexOf(v);
-      })
+      .map((i) => composeItemName(i, deps.strings, deps.storeProducts))
+      .filter((v, i, self) => i == self.indexOf(v))
       .join(', ');
   };
+}
+
+export function composeItemName<T extends D4Entity>(
+  entity: T,
+  translations: Map<string, D4Translation>,
+  storeProducts: Map<string, D4StoreProduct>,
+): string {
+  const itemStrings = resolveStringsList(entity, translations);
+  const itemName = getTextFromStl(itemStrings, 'Name');
+  if (itemName) {
+    return itemName;
+  }
+
+  const product = resolveStoreProduct(entity, storeProducts);
+  const productStrings = resolveStringsList(product, translations);
+  const productName = getTextFromStl(productStrings, 'Name');
+  if (productName) {
+    return productName;
+  }
+
+  return '';
 }
 
 export function createItemList(): ItemList {
