@@ -8,12 +8,16 @@
   "scripts": {
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
-    "build": "npx tsx --env-file .env src/main.ts"
+    "build": "npx tsx --env-file .env src/main.ts build",
+    "copy-assets": "npx tsx --env-file .env src/main.ts copy-assets",
+    "codegen": "npx tsx --env-file .env src/main.ts codegen"
   },
   "dependencies": {
+    "commander": "^12.1.0",
     "firebase-admin": "^12.3.1"
   },
   "devDependencies": {
+    "@commander-js/extra-typings": "^12.1.0",
     "@tsconfig/node20": "^20.1.2",
     "@types/node": "^20.11.19",
     "@typescript-eslint/parser": "^7.13.0",
