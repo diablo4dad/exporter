@@ -101,7 +101,7 @@ const QUEST: CollectionDescriptor = {
     },
     {
       items: [1738466],
-      claimDescription: 'Complete the "Beleth\'s Bane" side quest.',
+      claimDescription: 'Complete "New Again" Side Quest.',
       claimZone: Zone.NAHANTU,
     },
     {
@@ -111,54 +111,58 @@ const QUEST: CollectionDescriptor = {
     },
     {
       items: [1913839],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete "Tenets of Depravity: Scion of Blasphemies" Side Quest.',
       claimZone: Zone.NAHANTU,
     },
     {
       items: [2021557],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete "Burning Crusade" Main Quest.',
       claimZone: Zone.NAHANTU,
     },
     {
       items: [2021565],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete "Burning Crusade" Main Quest',
+      claimZone: Zone.NAHANTU,
+    },
+    {
+      items: [1970413],
+      claimDescription: 'Complete "The Sacred Hunt" Spiritborn Quest.',
       claimZone: Zone.NAHANTU,
     },
     // Hatred's Armor Set:
     {
       items: [2021219],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete "Catharsis" Main Quest',
       claimZone: Zone.NAHANTU,
     },
     {
       items: [2021223],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete "Fragile Blessings" Main Quest',
       claimZone: Zone.NAHANTU,
     },
     {
       items: [2021211],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete "Enmity Rising" Main Quest',
       claimZone: Zone.NAHANTU,
     },
     {
       items: [2021221],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete "The Heart of All Rot" Main Quest',
       claimZone: Zone.NAHANTU,
-      unobtainable: true, // no one seems to be able to get the pants
     },
     {
       items: [2021191],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Complete "Across the Threshold" Main Quest',
       claimZone: Zone.NAHANTU,
     },
     {
       items: [1825016],
-      claimDescription: 'Vessel of Hatred priority quest reward; salvaged from Malefic Gaze.',
+      claimDescription: 'Defeat The Priestess of Hatred.',
       claimZone: Zone.NAHANTU,
     },
     {
       items: [1976738],
-      claimDescription: 'Vessel of Hatred priority quest reward.',
+      claimDescription: 'Defeat The Harbinger of Hatred.',
       claimZone: Zone.NAHANTU,
     },
     // Baleful Intent Armor Set:

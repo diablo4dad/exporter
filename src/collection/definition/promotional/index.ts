@@ -377,14 +377,33 @@ const MOUNTAIN_DEW: CollectionDescriptor = {
   description: 'Franchise Promotion',
   category: Category.PROMOTIONAL,
   claimDescription: 'Redeemable from the Mountain Dew promotion.',
-  outOfRotation: true,
-  premium: true,
   promotional: true,
-  items: [
-    ['json\\base\\meta\\Item\\offHandsSorc_stor029.itm.json'],
-    ['json\\base\\meta\\Item\\twoHandSword_stor022.itm.json'],
-    ['json\\base\\meta\\Item\\twoHandCrossbow_stor029.itm.json'],
-    ['json\\base\\meta\\Item\\mace_stor028.itm.json'],
+  premium: true,
+  children: [
+    {
+      name: 'Mountain Dew #2',
+      description: 'Franchise Promotion',
+      claimDescription: 'Redeemable from the Mountain Dew promotion.',
+      items: [
+        ['json\\base\\meta\\Item\\twoHandGlaive_stor006.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandGlaive_stor022.itm.json'],
+        ['json\\base\\meta\\Item\\dagger_stor077.itm.json'],
+        ['json\\base\\meta\\Item\\axe_stor043.itm.json'],
+        ['json\\base\\meta\\TownPortalCosmetic\\portal_glo017_stor.tpc.json'],
+      ],
+    },
+    {
+      name: 'Mountain Dew #1',
+      description: 'Franchise Promotion',
+      claimDescription: 'Redeemable from the Mountain Dew promotion.',
+      outOfRotation: true,
+      items: [
+        ['json\\base\\meta\\Item\\offHandsSorc_stor029.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandSword_stor022.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandCrossbow_stor029.itm.json'],
+        ['json\\base\\meta\\Item\\mace_stor028.itm.json'],
+      ],
+    },
   ],
 };
 
@@ -456,13 +475,24 @@ const STEEL_SERIES: CollectionDescriptor = {
   items: [['json\\base\\meta\\Item\\mnt_stor018_trophy.itm.json']],
 };
 
+const IAM8BIT: CollectionDescriptor = {
+  name: 'iam8bit',
+  description: 'Bundled with the Diablo IV Vinyl soundtrack.',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Included with the Vinyl soundtrack from iam8bit.',
+  premium: true,
+  promotional: true,
+  items: [['json\\base\\meta\\Item\\mnt_stor223_trophy.itm.json']],
+};
+
 const PROMOTIONAL = [
   TWITCH,
   DISCORD,
   TROLLI,
   DEMONS_BLOOD,
-  COCO,
   MOUNTAIN_DEW,
+  IAM8BIT,
+  COCO,
   BURGER_KING,
   KFC,
   PRIME,

@@ -10,6 +10,7 @@
     "format": "eslint src/**/*.ts --fix",
     "build": "npx tsx --env-file .env src/main.ts build",
     "copy-assets": "npx tsx --env-file .env src/main.ts copy-assets",
+    "upload-assets": "npx tsx --env-file .env src/main.ts copy-assets --upload",
     "codegen": "npx tsx --env-file .env src/main.ts codegen"
   },
   "dependencies": {

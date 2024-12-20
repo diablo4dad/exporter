@@ -1,12 +1,42 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const SLAY_RIDE_TO_HELL: CollectionDescriptor = {
+  name: 'Slay Ride to Hell',
+  description: 'Holiday event from December 17th, 2024 until January 2nd, 2025.',
+  category: Category.LIMITED_EVENT,
+  claimDescription: 'Rewarded from the "Slay Ride to Hell" event.',
+  items: [
+    ['json\\base\\meta\\Item\\mnt_stor146_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor147_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_amor172_horse_stor.itm.json'],
+  ],
+};
+
 const DARK_CITADEL: CollectionDescriptor = {
-  name: 'Dark Citadel Reveal',
-  description: 'Complete the Dark Citadel before November 8th, 2024',
+  name: 'Dark Citadel',
+  description: 'Transmogs obtained from Dark Citadel events.',
   category: Category.LIMITED_EVENT,
   claimDescription: 'Complete the Dark Citadel.',
-  items: [['json\\base\\meta\\Item\\MountReins_RaidReward_Cat.itm.json']],
+  items: [
+    ['json\\base\\meta\\Item\\MountReins_RaidReward_Cat.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_uniq78_trophy.itm.json'],
+    ['json\\base\\meta\\PlayerTitle\\suffix_patron.pt.json'],
+  ],
+  patches: [
+    {
+      items: [2021753],
+      claimDescription: 'Complete the Dark Citadel before November 8th, 2024.',
+    },
+    {
+      items: [2090314],
+      claimDescription: 'Awarded from the Dark Citadel Community Challenge.',
+    },
+    {
+      items: [2096027],
+      claimDescription: 'Awarded from the Dark Citadel Community Challenge.',
+    },
+  ],
 };
 
 const LUNARY_AWAKENING: CollectionDescriptor = {
@@ -78,7 +108,7 @@ const EVENT: CollectionDescriptor = {
   name: 'Limited Event',
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
-  children: [DARK_CITADEL, LUNARY_AWAKENING, MIDWINTER_BLIGHT, DONATE_BLOOD_HARVEST],
+  children: [SLAY_RIDE_TO_HELL, DARK_CITADEL, LUNARY_AWAKENING, MIDWINTER_BLIGHT, DONATE_BLOOD_HARVEST],
 };
 
 export default EVENT;

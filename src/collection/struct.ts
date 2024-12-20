@@ -32,6 +32,7 @@ export type CollectionDescriptor = {
   storeProducts?: string[];
   achievements?: string[];
   items?: string[][];
+  collectionItems?: Partial<D4DadCollectionItem>[];
 };
 
 export type D4DadAchievement = D4DadEntity & {

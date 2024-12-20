@@ -480,6 +480,10 @@ const DAGGER: CollectionDescriptor = {
       items: [1267003],
       unobtainable: true,
     },
+    {
+      items: [459942],
+      unobtainable: true,
+    },
   ],
 };
 

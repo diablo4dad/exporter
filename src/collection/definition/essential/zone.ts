@@ -206,8 +206,8 @@ const KURAST_UNDERCITY: CollectionDescriptor = {
   name: 'Kurast Undercity',
   description: 'Transmogs dropped within Kurast Undercity',
   category: Category.ZONE,
-  claimDescription: 'Dropped within Kurast Undercity.',
-  items: [['json\\base\\meta\\Item\\mnt_amor04_cat.itm.json']],
+  claimDescription: 'Obtained from Goblin Prankster chest in the Kurast Undercity.',
+  items: [['json\\base\\meta\\Item\\mnt_amor01_cat.itm.json'], ['json\\base\\meta\\Item\\mnt_amor04_cat.itm.json']],
 };
 
 const ZONE: CollectionDescriptor = {
