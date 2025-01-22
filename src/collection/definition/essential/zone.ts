@@ -208,6 +208,16 @@ const KURAST_UNDERCITY: CollectionDescriptor = {
   category: Category.ZONE,
   claimDescription: 'Obtained from Goblin Prankster chest in the Kurast Undercity.',
   items: [['json\\base\\meta\\Item\\mnt_amor01_cat.itm.json'], ['json\\base\\meta\\Item\\mnt_amor04_cat.itm.json']],
+  patches: [
+    {
+      items: [1592350],
+      claimDescription: 'Obtained from Goblin Prankster chest in the Kurast Undercity.',
+    },
+    {
+      items: [1966707],
+      claimDescription: 'Obtained from chests in the Kurast Undercity (legendary tribute).',
+    },
+  ],
 };
 
 const ZONE: CollectionDescriptor = {

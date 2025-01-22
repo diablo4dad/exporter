@@ -243,7 +243,7 @@ const AXE: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HAxe_Magic_Generic_002.itm.json'],
     ['json\\base\\meta\\Item\\1HAxe_Legendary_Generic_007.itm.json'],
     ['json\\base\\meta\\Item\\1HAxe_Legendary_Generic_005.itm.json'],
-    ['json\\base\\meta\\Item\\1HAxe_Legendary_Generic_004.itm.json'],
+    // ['json\\base\\meta\\Item\\1HAxe_Legendary_Generic_004.itm.json'],  // removed
     ['json\\base\\meta\\Item\\1HAxe_Legendary_Generic_003.itm.json'],
     ['json\\base\\meta\\Item\\1HAxe_Legendary_Generic_002.itm.json'],
     ['json\\base\\meta\\Item\\1HAxe_Legendary_Generic_001.itm.json'],

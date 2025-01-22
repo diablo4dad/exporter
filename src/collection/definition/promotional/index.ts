@@ -288,6 +288,16 @@ const PRIME: CollectionDescriptor = {
   ],
 };
 
+const GEFORCE: CollectionDescriptor = {
+  name: 'GeForce',
+  description: 'Participate in the GeForce LAN 50 event starting January 4th, 2025.',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Reward from the GeForce LAN 50 event.',
+  premium: true,
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor129.prd.json'],
+};
+
 const BLIZZCON: CollectionDescriptor = {
   name: 'BlizzCon 2023',
   description: 'Transmogs from the BlizzCon 2023 Collection',
@@ -485,6 +495,15 @@ const IAM8BIT: CollectionDescriptor = {
   items: [['json\\base\\meta\\Item\\mnt_stor223_trophy.itm.json']],
 };
 
+const THE_WAR_WITHIN: CollectionDescriptor = {
+  name: 'The War Within',
+  description: 'Included with the "The War Within" WoW expansion for a limited time.',
+  category: Category.PROMOTIONAL,
+  premium: true,
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor005.prd.json'],
+};
+
 const PROMOTIONAL = [
   TWITCH,
   DISCORD,
@@ -497,6 +516,8 @@ const PROMOTIONAL = [
   KFC,
   PRIME,
   BLIZZCON,
+  GEFORCE,
+  THE_WAR_WITHIN,
   CALL_OF_DUTY,
   HELL_STATION,
   HELL_INK,
