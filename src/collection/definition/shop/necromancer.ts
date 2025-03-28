@@ -189,6 +189,18 @@ const NECROMANCER: CollectionDescriptor = {
       // Warcraft Legends II
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor226.prd.json'],
     },
+    {
+      // The Centipede Priest
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor217.prd.json'],
+    },
+    {
+      // Empire of Bones
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor220.prd.json'],
+    },
+    {
+      // The Candlelight Heresy
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor228.prd.json'],
+    },
   ],
 };
 

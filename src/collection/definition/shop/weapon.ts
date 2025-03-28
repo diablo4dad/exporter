@@ -25,6 +25,18 @@ const WEAPONS: CollectionDescriptor = {
     {
       storeProducts: ['json\\base\\meta\\StoreProduct\\AddOn_StarterPack2.prd.json'],
     },
+    {
+      // Arms of Sivalir
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_Any_stor003.prd.json'],
+    },
+    {
+      // The Hydra's Forge
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_Any_stor002.prd.json'],
+    },
+    {
+      // The Crystalline Armory
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_Any_stor001.prd.json'],
+    },
   ],
 };
 

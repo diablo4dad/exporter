@@ -188,6 +188,18 @@ const ROGUE: CollectionDescriptor = {
       // Warcraft Legends II
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor232.prd.json'],
     },
+    {
+      // Shadows of Araneae
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor195.prd.json'],
+    },
+    {
+      // The Fallen Rapture
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor236.prd.json'],
+    },
+    {
+      // The Deep Cold
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor234.prd.json'],
+    },
   ],
 };
 

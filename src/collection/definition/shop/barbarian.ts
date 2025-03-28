@@ -198,6 +198,18 @@ const BARBARIAN: CollectionDescriptor = {
       // Warcraft Legends II
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor231.prd.json'],
     },
+    {
+      // The Grip of Winter
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor232.prd.json'],
+    },
+    {
+      // Shade of the General
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor234.prd.json'],
+    },
+    {
+      // Sins of Wrath
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor240.prd.json'],
+    },
   ],
 };
 

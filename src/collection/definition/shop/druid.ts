@@ -145,6 +145,10 @@ const DRUID: CollectionDescriptor = {
       // Warcraft Legends II
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor223.prd.json'],
     },
+    {
+      // The Thunderstag
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor206.prd.json'],
+    },
   ],
 };
 

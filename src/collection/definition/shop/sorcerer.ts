@@ -186,6 +186,18 @@ const SORCERER: CollectionDescriptor = {
       // Warcraft Legends II
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor230.prd.json'],
     },
+    {
+      // Crucible of Ice
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor235.prd.json'],
+    },
+    {
+      // The Warbird Resurgent
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor180.prd.json'],
+    },
+    {
+      // The Wraithmage
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor225.prd.json'],
+    },
   ],
 };
 

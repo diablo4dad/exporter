@@ -32,6 +32,26 @@ const SPIRITBORN: CollectionDescriptor = {
       // # Warcraft Legends II
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor154.prd.json'],
     },
+    {
+      // The Flesh Dancer
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor164.prd.json'],
+    },
+    {
+      // Avatar of the Lunar
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor170.prd.json'],
+    },
+    {
+      // Ascent of the Sun-King
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor160.prd.json'],
+    },
+    {
+      // Scion of Devils
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor166.prd.json'],
+    },
+    {
+      // Daemon Knight
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor171.prd.json'],
+    },
   ],
 };
 

@@ -28,6 +28,10 @@ const CAT_MOUNTS: CollectionDescriptor = {
       // Warcraft Legends II
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor009.prd.json'],
     },
+    {
+      // Demon of the Angry Sky
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor008.prd.json'],
+    },
   ],
 };
 
