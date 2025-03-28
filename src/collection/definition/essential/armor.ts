@@ -154,6 +154,7 @@ const PANTS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Pants_Unique_Barb_100.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Unique_Sorc_101.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Unique_Spiritborn_015_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Pants_Unique_Necro_102.itm.json'],
   ],
 };
 
@@ -193,6 +194,7 @@ const BOOTS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\S05_BSK_Boots_Unique_Generic_001.itm.json'],
     ['json\\base\\meta\\Item\\Boots_Unique_Necro_101.itm.json'],
     ['json\\base\\meta\\Item\\Boots_Unique_Spiritborn_008_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Boots_Unique_Rogue_101.itm.json'],
   ],
 };
 

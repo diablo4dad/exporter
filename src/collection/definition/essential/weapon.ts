@@ -625,6 +625,8 @@ const FOCUS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_1HFocus_Legendary_Generic_13.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HFocus_Legendary_Sorcerer_16.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HFocus_Rare_Generic_08.itm.json'],
+    // unique
+    ['json\\base\\meta\\Item\\1HFocus_Unique_Sorc_100.itm.json'],
   ],
   patches: [
     {
@@ -730,6 +732,7 @@ const QUARTERSTAFF: CollectionDescriptor = {
     // unique
     ['json\\base\\meta\\Item\\Quarterstaff_Unique_Spiritborn_012_x1.itm.json'],
     ['json\\base\\meta\\Item\\Quarterstaff_Unique_Spiritborn_016_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Quarterstaff_Unique_Spiritborn_001.itm.json'],
   ],
   patches: [
     {
