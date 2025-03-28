@@ -19,6 +19,14 @@ const SEASON07: CollectionDescriptor = {
       category: Category.SEASON_JOURNEY,
       challengeFileFlatten: true,
       challengeFile: 'json\\base\\meta\\Challenge\\Season7.cha.json',
+      achievements: ['json\\base\\meta\\Achievement\\SJ_S07_CompleteAllChallenges_Hidden.ach.json'],
+      items: [['json\\base\\meta\\Item\\cmp_base001_bird.itm.json']],
+      patches: [
+        {
+          items: [1981526],
+          claimDescription: 'Complete the Season 7 Journey.',
+        },
+      ],
     },
   ],
 };
