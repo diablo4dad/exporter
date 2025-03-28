@@ -149,6 +149,10 @@ const DRUID: CollectionDescriptor = {
       // The Thunderstag
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor206.prd.json'],
     },
+    {
+      // Acolyte of Itherael
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor228.prd.json'],
+    },
   ],
 };
 

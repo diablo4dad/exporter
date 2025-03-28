@@ -52,6 +52,10 @@ const SPIRITBORN: CollectionDescriptor = {
       // Daemon Knight
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor171.prd.json'],
     },
+    {
+      // Acolyte of Inarius
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor177.prd.json'],
+    },
   ],
 };
 

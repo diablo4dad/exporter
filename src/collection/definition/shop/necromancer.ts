@@ -201,6 +201,10 @@ const NECROMANCER: CollectionDescriptor = {
       // The Candlelight Heresy
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor228.prd.json'],
     },
+    {
+      // Acolyte of Malthael
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor229.prd.json'],
+    },
   ],
 };
 

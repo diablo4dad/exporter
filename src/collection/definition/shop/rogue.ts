@@ -200,6 +200,10 @@ const ROGUE: CollectionDescriptor = {
       // The Deep Cold
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor234.prd.json'],
     },
+    {
+      // Acolyte of Tyrael
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor237.prd.json'],
+    },
   ],
 };
 

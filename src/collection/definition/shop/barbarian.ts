@@ -210,6 +210,10 @@ const BARBARIAN: CollectionDescriptor = {
       // Sins of Wrath
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor240.prd.json'],
     },
+    {
+      // Acolyte of Imperius
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor235.prd.json'],
+    },
   ],
 };
 

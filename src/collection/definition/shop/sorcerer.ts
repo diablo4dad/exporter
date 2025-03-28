@@ -198,6 +198,10 @@ const SORCERER: CollectionDescriptor = {
       // The Wraithmage
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor225.prd.json'],
     },
+    {
+      // Acolyte of Auriel
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor240.prd.json'],
+    },
   ],
 };
 

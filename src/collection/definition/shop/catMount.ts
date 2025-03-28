@@ -32,6 +32,10 @@ const CAT_MOUNTS: CollectionDescriptor = {
       // Demon of the Angry Sky
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor008.prd.json'],
     },
+    {
+      // Pride of the Acolytes
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor010.prd.json'],
+    },
   ],
 };
 
