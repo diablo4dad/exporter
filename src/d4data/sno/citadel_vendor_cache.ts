@@ -1,0 +1,5 @@
+// this file is auto-generated; do not edit
+export const DARK_CITADEL_CRAFTING_CACHE_2084198 = 2084198;
+export const DARK_CITADEL_GEAR_CACHE_1948784 = 1948784;
+export const DARK_CITADEL_GEM_CACHE_2084248 = 2084248;
+export const DARK_CITADEL_SCROLL_CACHE_2109701 = 2109701;

@@ -47,11 +47,11 @@ const TWITCH: CollectionDescriptor = {
       ],
       patches: [
         {
-          items: [mount.GHOST_OF_THE_CONQUERED],
+          items: [mount.GHOST_OF_THE_CONQUERED_1826175],
           claimDescription: 'Purchase or Gift 2 Twitch Subscriptions.',
         },
         {
-          items: [horse_armor.GLORY_OF_THE_VICTOR],
+          items: [horse_armor.GLORY_OF_THE_VICTOR_1807543],
           claimDescription: 'Purchase or Gift 4 Twitch Subscriptions.',
         },
       ],
@@ -79,31 +79,31 @@ const TWITCH: CollectionDescriptor = {
           claimDescription: 'Week 1 Twitch Drop.',
         },
         {
-          items: [scythe.WRANGLERS_HOOK],
+          items: [scythe.WRANGLERS_HOOK_1957204],
           claimDescription: 'Week 1 Twitch Drop.',
         },
         {
-          items: [back_trophy.GUISE_OF_THE_GRAND_VIZIER],
+          items: [back_trophy.GUISE_OF_THE_GRAND_VIZIER_1825560],
           claimDescription: 'Week 1 Twitch Drop.',
         },
         {
-          items: [back_trophy.GUISE_OF_THE_TOMBKEEPER],
+          items: [back_trophy.GUISE_OF_THE_TOMBKEEPER_1815812],
           claimDescription: 'Week 1 Twitch Drop.',
         },
         {
-          items: [two_handed_axe.COMPETITORS_PRIDE],
+          items: [two_handed_axe.COMPETITORS_PRIDE_1957240],
           claimDescription: 'Week 2 Twitch Drop.',
         },
         {
-          items: [back_trophy.GUISE_OF_THE_GLADIATOR],
+          items: [back_trophy.GUISE_OF_THE_GLADIATOR_1744661],
           claimDescription: 'Week 2 Twitch Drop.',
         },
         {
-          items: [bow.EXECUTIONERS_REACH],
+          items: [bow.EXECUTIONERS_REACH_1957299],
           claimDescription: 'Week 3 Twitch Drop.',
         },
         {
-          items: [back_trophy.GUISE_OF_THE_EAGLE_CALLER],
+          items: [back_trophy.GUISE_OF_THE_EAGLECALLER_1825236],
           claimDescription: 'Week 3 Twitch Drop.',
         },
         {
@@ -111,7 +111,7 @@ const TWITCH: CollectionDescriptor = {
           claimDescription: 'Week 4 Twitch Drop.',
         },
         {
-          items: [back_trophy.GUISE_OF_THE_BEASTLORD],
+          items: [back_trophy.GUISE_OF_THE_BEASTLORD_1815634],
           claimDescription: 'Week 4 Twitch Drop.',
         },
       ],

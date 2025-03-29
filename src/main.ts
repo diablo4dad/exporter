@@ -5,6 +5,7 @@ import { Command } from '@commander-js/extra-typings';
 
 import { createAssociationMap, writeSnoRefFile } from './codegen/index.js';
 import { makeDb } from './collection/compiler.js';
+import { snakeCase } from './common/strings.js';
 import { PATH_TO_PUBLIC_DIR } from './config.js';
 import { ARTIFACT_NAME, BUILD_DIR } from './constants.js';
 import { readD4Data } from './d4reader/client.js';
@@ -20,10 +21,13 @@ program
   .description('Generates SNO ID constants.')
   .action(() => {
     const deps = readD4Data();
-    const items = createAssociationMap(deps.items, deps.strings, deps.storeProducts);
-    const stream = fs.createWriteStream('debug.ts');
-    writeSnoRefFile(items, stream);
-    stream.close();
+    const items = createAssociationMap(deps.items, deps.strings, deps);
+    items.forEach(([itemType, subset]) => {
+      const outFile = `src/d4data/sno/${snakeCase(itemType)}.ts`;
+      const stream = fs.createWriteStream(outFile);
+      writeSnoRefFile(subset, stream);
+      stream.close();
+    });
   });
 
 program

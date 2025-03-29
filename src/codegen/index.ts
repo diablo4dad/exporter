@@ -2,7 +2,13 @@ import { WriteStream } from 'node:fs';
 
 import { composeItemName } from '../collection/index.js';
 import { captureError, captureSoftError } from '../common/logger.js';
-import { D4Entity, D4StoreProduct, D4Translation } from '../d4data/struct.js';
+import { resolveSno, resolveStringsList } from '../d4data/resolver.js';
+import { D4Item, D4Translation } from '../d4data/struct.js';
+import { getTextFromStl } from '../d4reader/strings.js';
+import { D4Dependencies } from '../d4reader/struct.js';
+
+export type ItemMapType = [string, ItemSetSubset][];
+export type ItemSetSubset = [string, number][];
 
 function nameToKey(name: string, snoId: number): string {
   const result = name
@@ -22,12 +28,13 @@ function nameToKey(name: string, snoId: number): string {
   return result;
 }
 
-export function createAssociationMap<T extends D4Entity>(
-  table: Map<string, T>,
+export function createAssociationMap(
+  table: Map<string, D4Item>,
   translations: Map<string, D4Translation>,
-  storeProducts: Map<string, D4StoreProduct>,
-): Map<string, number> {
-  const result = new Map<string, number>();
+  dependencies: D4Dependencies,
+) {
+  const { itemTypes, storeProducts } = dependencies;
+  const result = new Map<string, [string, number][]>();
 
   for (const [ref, val] of table.entries()) {
     const snoId = val.__snoID__;
@@ -43,14 +50,34 @@ export function createAssociationMap<T extends D4Entity>(
       continue;
     }
 
-    result.set(key, snoId);
+    const itemType = resolveSno(val.snoItemType, itemTypes);
+    if (!itemType) {
+      continue;
+    }
+
+    const itemTypeStringsList = resolveStringsList(itemType, translations);
+    const itemTypeName = getTextFromStl(itemTypeStringsList, 'Name', '!uncategorized');
+    if (!result.has(itemTypeName)) {
+      result.set(itemTypeName, []);
+    }
+
+    const subset = result.get(itemTypeName);
+    if (subset) {
+      subset.push([key, snoId]);
+    }
   }
 
-  return result;
+  return (
+    Array.from(result.entries()).map(([itemType, itemTypeSet]) => [
+      itemType,
+      itemTypeSet.sort(([n1], [n2]) => n1.localeCompare(n2)),
+    ]) as ItemMapType
+  ).sort(([n1], [n2]) => n1.localeCompare(n2));
 }
 
-export function writeSnoRefFile(table: Map<string, number>, stream: WriteStream) {
-  for (const [ref, value] of table.entries()) {
+export function writeSnoRefFile(table: ItemSetSubset, stream: WriteStream) {
+  stream.write('// this file is auto-generated; do not edit\n');
+  for (const [ref, value] of table.values()) {
     stream.write('export const ');
     stream.write(ref);
     stream.write(' = ');

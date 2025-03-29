@@ -1,6 +1,6 @@
 import * as dagger from '../../../d4data/sno/dagger.js';
 import * as mace from '../../../d4data/sno/mace.js';
-import * as two_handed_staff from '../../../d4data/sno/two_handed_staff.js';
+import * as quarterstaff from '../../../d4data/sno/quarterstaff.js';
 import * as two_handed_sword from '../../../d4data/sno/two_handed_sword.js';
 import * as wand from '../../../d4data/sno/wand.js';
 import { Category } from '../../constants.js';
@@ -43,23 +43,23 @@ const RAID: CollectionDescriptor = {
   ],
   patches: [
     {
-      items: [mace.DOOM_MACE],
+      items: [mace.DOOM_MACE_1955206],
       claimDescription: 'Purchased for 15,000 coins from the Dark Citadel vendor.',
     },
     {
-      items: [two_handed_sword.RITUAL_IMPALER],
+      items: [two_handed_sword.RITUAL_IMPALER_1833998],
       claimDescription: 'Purchased for 20,000 coins from the Dark Citadel vendor.',
     },
     {
-      items: [two_handed_staff.SCULPTED_QUARTERSTAFF],
+      items: [quarterstaff.SCULPTED_QUARTERSTAFF_1834031],
       claimDescription: 'Purchased for 20,000 coins from the Dark Citadel vendor.',
     },
     {
-      items: [wand.TWISTED_SPIRIT_WAND],
+      items: [wand.TWISTED_SPIRIT_WAND_1833992],
       claimDescription: 'Purchased for 15,000 coins from the Dark Citadel vendor.',
     },
     {
-      items: [dagger.HOOKED_PIERCER],
+      items: [dagger.HOOKED_PIERCER_1955202],
       claimDescription: 'Purchased for 15,000 coins from the Dark Citadel vendor.',
     },
   ],

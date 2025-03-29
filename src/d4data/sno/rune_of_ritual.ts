@@ -1,0 +1,26 @@
+// this file is auto-generated; do not edit
+export const AHU_2080568 = 2080568;
+export const BAC_1999352 = 1999352;
+export const CEM_1968097 = 1968097;
+export const CIP_2021604 = 2021604;
+export const CIR_2060618 = 2060618;
+export const FEO_2006748 = 2006748;
+export const HAK_2046440 = 2046440;
+export const IGNI_2165977 = 2165977;
+export const KAA_2081285 = 2081285;
+export const LITH_2060482 = 2060482;
+export const MONI_2063887 = 2063887;
+export const NAGU_2155997 = 2155997;
+export const NEO_2063988 = 2063988;
+export const NOC_2089875 = 2089875;
+export const PAC_2085644 = 2085644;
+export const POC_2004454 = 2004454;
+export const TAM_1968107 = 1968107;
+export const TEST_01_HZ_RUNE_2050494 = 2050494;
+export const TEST_1_HZ_RUNE_2041397 = 2041397;
+export const TZA_2040857 = 2040857;
+export const UR_2020681 = 2020681;
+export const XOL_2040700 = 2040700;
+export const YAX_1969054 = 1969054;
+export const YUL_2004498 = 2004498;
+export const ZAN_1968550 = 1968550;
