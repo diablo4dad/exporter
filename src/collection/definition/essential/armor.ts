@@ -73,6 +73,7 @@ const CHEST_ARMOR: CollectionDescriptor = {
     // unique
     ['json\\base\\meta\\Item\\Chest_Unique_Rogue_101.itm.json'],
     ['json\\base\\meta\\Item\\Chest_Unique_Spiritborn_013_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Chest_Unique_Barb_101.itm.json'],
     // mythic
     ['json\\base\\meta\\Item\\Chest_Unique_Generic_127.itm.json'],
     ['json\\base\\meta\\Item\\Chest_Unique_Generic_103.itm.json'],
@@ -155,6 +156,12 @@ const PANTS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Pants_Unique_Sorc_101.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Unique_Spiritborn_015_x1.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Unique_Necro_102.itm.json'],
+  ],
+  patches: [
+    {
+      items: [2123318],
+      claimDescription: "Salvaged from Indira's Memory or Kessime's Legacy.",
+    },
   ],
 };
 

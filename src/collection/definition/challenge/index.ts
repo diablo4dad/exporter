@@ -263,6 +263,7 @@ function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
     [2092909], // the hateful stone
     [1955200], // Greater Helm of the Khazra
     [1955198], // Boots of the Khazra
+    [2217663], // The Dragon's Tapestry
   ];
 
   // impure!
