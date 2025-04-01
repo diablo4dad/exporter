@@ -102,6 +102,7 @@ type D4StoreProduct = D4Entity & {
   snoEmblem: D4SnoRef | null;
   snoHeadstone: D4SnoRef | null;
   snoTownPortal: D4SnoRef | null;
+  snoCompanion: D4SnoRef | null;
   arBundledProducts: D4SnoRef[];
   arAddOnBundles: D4SnoRef[];
 };

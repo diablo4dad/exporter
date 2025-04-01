@@ -24,6 +24,10 @@ export function extractItemFromProduct(deps: D4Dependencies): (product: D4StoreP
       return resolveSno(product.snoMount, deps.items);
     }
 
+    if (product.snoCompanion) {
+      return resolveSno(product.snoCompanion, deps.items);
+    }
+
     if (product.snoTownPortal) {
       return resolveSno(product.snoTownPortal, deps.portals);
     }

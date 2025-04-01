@@ -7,7 +7,7 @@ import { D4Item, D4Translation } from '../d4data/struct.js';
 import { getTextFromStl } from '../d4reader/strings.js';
 import { D4Dependencies } from '../d4reader/struct.js';
 
-export type ItemMapType = [string, ItemSetSubset][];
+export type ItemMapType = [string, ItemSetSubset];
 export type ItemSetSubset = [string, number][];
 
 function nameToKey(name: string, snoId: number): string {
@@ -67,12 +67,9 @@ export function createAssociationMap(
     }
   }
 
-  return (
-    Array.from(result.entries()).map(([itemType, itemTypeSet]) => [
-      itemType,
-      itemTypeSet.sort(([n1], [n2]) => n1.localeCompare(n2)),
-    ]) as ItemMapType
-  ).sort(([n1], [n2]) => n1.localeCompare(n2));
+  return Array.from(result.entries())
+    .map(([itemType, itemTypeSet]): ItemMapType => [itemType, itemTypeSet.sort(([n1], [n2]) => n1.localeCompare(n2))])
+    .sort(([n1], [n2]) => n1.localeCompare(n2));
 }
 
 export function writeSnoRefFile(table: ItemSetSubset, stream: WriteStream) {
