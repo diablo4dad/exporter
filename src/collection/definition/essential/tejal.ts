@@ -57,6 +57,38 @@ const DARK_GIFTS: CollectionDescriptor = {
   ],
 };
 
+const CHARGE_OF_THE_DEVASTATOR: CollectionDescriptor = {
+  name: 'Charge of the Devastator',
+  description: 'Free mount armor cosmetics',
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Occasionally free from the cash shop.',
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor200.prd.json'],
+};
+
+const KEHJISTAN_MERCHANT: CollectionDescriptor = {
+  name: 'Kehjistan Merchant',
+  description: 'Free mount armor cosmetics',
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Occasionally free from the cash shop.',
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor031_HM.prd.json'],
+};
+
+const THE_GREAT_HUNT: CollectionDescriptor = {
+  name: 'The Great Hunt',
+  description: 'Free mount armor cosmetics',
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Occasionally free from the cash shop.',
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor151.prd.json'],
+};
+
+const FLESHROT_OVERGROWTH: CollectionDescriptor = {
+  name: 'Fleshrot Overgrowth',
+  description: 'Free mount armor cosmetics',
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Occasionally free from the cash shop.',
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor004.prd.json'],
+};
+
 const MOTHERS_FAVOR: CollectionDescriptor = {
   name: "Mother's Favor",
   description: 'Free weapon cosmetics',
@@ -129,6 +161,10 @@ const TEJAL: CollectionDescriptor = {
     HATRED_RISING_FREEBIES,
     FIRST_YEAR_ANNIVERSARY,
     DARK_GIFTS,
+    CHARGE_OF_THE_DEVASTATOR,
+    KEHJISTAN_MERCHANT,
+    THE_GREAT_HUNT,
+    FLESHROT_OVERGROWTH,
     MOTHERS_FAVOR,
     RETURNING_CHAMPION,
     THE_HUNGER,
