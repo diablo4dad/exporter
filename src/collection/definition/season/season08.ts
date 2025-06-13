@@ -17,7 +17,6 @@ const SEASON08: CollectionDescriptor = {
       category: Category.SEASON_JOURNEY,
       challengeFile: 'json\\base\\meta\\Challenge\\Season8.cha.json',
       challengeFileFlatten: true,
-      achievements: ['json\\base\\meta\\Achievement\\SJ_S07_CompleteAllChallenges_Hidden.ach.json'],
     },
   ],
   postHook: groupItemsWithSameName,

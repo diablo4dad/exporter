@@ -1,6 +1,14 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const MARCH_OF_THE_GOBLINS: CollectionDescriptor = {
+  name: 'March of the Goblins',
+  description: 'Slay Gilded Goblins from March 4th, 2025 until March 11th, 2045.',
+  category: Category.LIMITED_EVENT,
+  claimDescription: 'Complete the March of the Goblins reputation board.',
+  items: [['json\\base\\meta\\Emblem\\emblem_glo054_stor.emb.json']],
+};
+
 const SLAY_RIDE_TO_HELL: CollectionDescriptor = {
   name: 'Slay Ride to Hell',
   description: 'Holiday event from December 17th, 2024 until January 2nd, 2025.',
@@ -108,7 +116,14 @@ const EVENT: CollectionDescriptor = {
   name: 'Limited Event',
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
-  children: [SLAY_RIDE_TO_HELL, DARK_CITADEL, LUNARY_AWAKENING, MIDWINTER_BLIGHT, DONATE_BLOOD_HARVEST],
+  children: [
+    MARCH_OF_THE_GOBLINS,
+    SLAY_RIDE_TO_HELL,
+    DARK_CITADEL,
+    LUNARY_AWAKENING,
+    MIDWINTER_BLIGHT,
+    DONATE_BLOOD_HARVEST,
+  ],
 };
 
 export default EVENT;
