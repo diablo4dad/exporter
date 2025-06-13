@@ -1,6 +1,24 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const LUNAR_AWAKENING_2025: CollectionDescriptor = {
+  name: 'Lunar Awakening 2025',
+  description: 'Chinese new year event from February 4th, 2025 until February 18th, 2025',
+  category: Category.LIMITED_EVENT,
+  outOfRotation: true,
+  claim: 'Quest Reward',
+  claimDescription: 'Lunar Awakening Event quest reward.',
+  achievements: ['json\\base\\meta\\Achievement\\LTE_LNY_Challenge_AllShrines.ach.json'],
+  items: [
+    ['json\\base\\meta\\Item\\Wand_lunar001_lte.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandAxe_lunar001_lte.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandBow_lunar001_lte.itm.json'],
+    ['json\\base\\meta\\Item\\LTE_LNY_Rep_MarkingReward.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_lunar001_trophy_lte.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor057_horse.itm.json'],
+  ],
+};
+
 const MARCH_OF_THE_GOBLINS: CollectionDescriptor = {
   name: 'March of the Goblins',
   description: 'Slay Gilded Goblins from March 4th, 2025 until March 11th, 2045.',
@@ -118,6 +136,7 @@ const EVENT: CollectionDescriptor = {
   category: Category.GENERAL,
   children: [
     MARCH_OF_THE_GOBLINS,
+    LUNAR_AWAKENING_2025,
     SLAY_RIDE_TO_HELL,
     DARK_CITADEL,
     LUNARY_AWAKENING,
