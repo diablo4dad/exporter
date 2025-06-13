@@ -34,6 +34,8 @@ const HELM: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Helm_Unique_Barb_101_x1.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Necro_101_x1.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Spiritborn_009_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Helm_Unique_Druid_102.itm.json'],
+    ['json\\base\\meta\\Item\\Helm_Unique_Sorc_101.itm.json'],
     // mythic
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_002.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_004.itm.json'],
@@ -118,6 +120,8 @@ const GLOVES: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Gloves_Unique_Sorc_101.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Sorc_143_x1.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Spiritborn_007_x1.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Unique_Rogue_102.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Unique_Barb_101.itm.json'],
   ],
 };
 

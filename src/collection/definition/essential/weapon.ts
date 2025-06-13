@@ -83,6 +83,7 @@ const TWO_HANDED_SWORD: CollectionDescriptor = {
     // unique
     ['json\\base\\meta\\Item\\2HSword_Unique_Barb_002.itm.json'],
     ['json\\base\\meta\\Item\\2HSword_Unique_Generic_001.itm.json'],
+    ['json\\base\\meta\\Item\\2HSword_Unique_Necro_100.itm.json'],
   ],
 };
 
