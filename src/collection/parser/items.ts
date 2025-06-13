@@ -30,12 +30,17 @@ export function itemToDad(deps: D4Dependencies): (_: D4Item) => [D4DadItem, D4Da
     const magicType = !item.eMagicType ? undefined : item.eMagicType;
     const iconId = chooseBestIconHandle(item, itemActor) ?? 0;
     const series = stu(getTextFromStl(storeProductStringsList, 'Series'));
-    const transmogName = stu(getTextFromStl(itemStringsList, 'TransmogName'));
+    let transmogName = stu(getTextFromStl(itemStringsList, 'TransmogName'));
     const invImages: D4DadGenderSpecificImages[] | undefined = item.tInvImages.some(
       (ii) => ii.hDefaultImage !== 0 || ii.hFemaleImage !== 0,
     )
       ? item.tInvImages.map((ii) => [ii.hDefaultImage, ii.hFemaleImage])
       : undefined;
+
+    // patch Ancient Quake Armor - game mismatch bug
+    if (id === 2081131) {
+      transmogName = name;
+    }
 
     return [
       {
