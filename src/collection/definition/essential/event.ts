@@ -1,6 +1,22 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const SECOND_ANNIVERSARY = {
+  name: '2nd Anniversary',
+  description: 'Claim Reliquary rewards from June 3rd, 2025 until June 17th, 2025.',
+  category: Category.LIMITED_EVENT,
+  claimDescription: 'Claimed from the 2nd Anniversary Reliquary.',
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Catalog_Anniversary_2.prd.json'],
+};
+
+const BERSERK: CollectionDescriptor = {
+  name: 'Diablo IV x Berserk',
+  description: 'Claim Reliquary rewards from May 6th, 2025 until June 3rd, 2025.',
+  category: Category.LIMITED_EVENT,
+  claimDescription: 'Claimed from the Berserk Reliquary.',
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Catalog_S08_IP_Collab.prd.json'],
+};
+
 const LUNAR_AWAKENING_2025: CollectionDescriptor = {
   name: 'Lunar Awakening 2025',
   description: 'Chinese new year event from February 4th, 2025 until February 18th, 2025',
@@ -135,6 +151,8 @@ const EVENT: CollectionDescriptor = {
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
   children: [
+    SECOND_ANNIVERSARY,
+    BERSERK,
     MARCH_OF_THE_GOBLINS,
     LUNAR_AWAKENING_2025,
     SLAY_RIDE_TO_HELL,
