@@ -20,7 +20,6 @@ const SEASON07: CollectionDescriptor = {
       challengeFileFlatten: true,
       challengeFile: 'json\\base\\meta\\Challenge\\Season7.cha.json',
       achievements: ['json\\base\\meta\\Achievement\\SJ_S07_CompleteAllChallenges_Hidden.ach.json'],
-      items: [['json\\base\\meta\\Item\\cmp_base001_bird.itm.json']],
       patches: [
         {
           items: [1981526],
