@@ -473,7 +473,11 @@ export function unpackStoreProduct(deps: D4Dependencies): (product: D4StoreProdu
     product.arBundledProducts.forEach((bp) => {
       const innerProduct = resolveSno(bp, deps.storeProducts);
       if (innerProduct) {
-        itemList = pushToItemList(itemList, extractItemFromProduct(deps)(innerProduct));
+        if (isStoreProduct(innerProduct)) {
+          itemList = mergeItemLists(itemList, unpackStoreProduct(deps)(innerProduct));
+        } else {
+          itemList = pushToItemList(itemList, extractItemFromProduct(deps)(innerProduct));
+        }
       }
     });
 

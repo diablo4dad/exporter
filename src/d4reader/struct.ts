@@ -11,6 +11,7 @@ import {
   D4Power,
   D4Reputation,
   D4StoreProduct,
+  D4Texture,
   D4TownPortalCosmetic,
   D4Translation,
 } from '../d4data/struct.js';
@@ -31,4 +32,5 @@ export type D4Dependencies = {
   challenges: Map<string, D4ChallengeDefinition>;
   reputation: Map<string, D4Reputation>;
   headstones: Map<string, D4Actor>;
+  textures: Map<string, D4Texture>;
 };

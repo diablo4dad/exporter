@@ -5,10 +5,12 @@ import SEASON04 from './season04.js';
 import SEASON05 from './season05.js';
 import SEASON06 from './season06.js';
 import SEASON07 from './season07.js';
+import SEASON08 from './season08.js';
 
 import { CollectionDescriptor } from '../../struct.js';
 
 const SEASON: ReadonlyArray<CollectionDescriptor> = [
+  SEASON08,
   SEASON07,
   SEASON06,
   SEASON05,

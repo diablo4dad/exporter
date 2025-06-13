@@ -22,7 +22,8 @@ const SEASON04: CollectionDescriptor = {
       challengeFile: 'json\\base\\meta\\Challenge\\Season4.cha.json',
       achievements: ['json\\base\\meta\\Achievement\\Feat_S04_AllJourneyTasks.ach.json'],
       items: [
-        ['json\\base\\meta\\Item\\mnt_uniq28_trophy.itm.json'],
+        // missing since season 8
+        // ['json\\base\\meta\\Item\\mnt_uniq28_trophy.itm.json'],
         ['json\\base\\meta\\Item\\1HFocus_Legendary_Generic_006.itm.json'],
       ],
       patches: [

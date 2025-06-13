@@ -15,6 +15,7 @@ import {
   PATH_TO_D4REPUTATION,
   PATH_TO_D4STORE_PRODUCT,
   PATH_TO_D4STRING_LIST,
+  PATH_TO_D4TEXTURE,
   PATH_TO_D4TOWN_PORTAL,
 } from '../d4data/constant.js';
 import {
@@ -30,6 +31,7 @@ import {
   D4Power,
   D4Reputation,
   D4StoreProduct,
+  D4Texture,
   D4TownPortalCosmetic,
   D4Translation,
 } from '../d4data/struct.js';
@@ -49,6 +51,7 @@ export function readD4Data(): D4Dependencies {
   const challenges = parseFiles<D4ChallengeDefinition>(PATH_TO_D4CHALLENGE);
   const achievements = parseFiles<D4Achievement>(PATH_TO_D4ACHIEVEMENT);
   const reputation = parseFiles<D4Reputation>(PATH_TO_D4REPUTATION);
+  const textures = parseFiles<D4Texture>(PATH_TO_D4TEXTURE);
   const headstones = new Map(Array.of(...actors.entries()).filter(([, a]) => a.__fileName__.includes('headstone')));
 
   console.log('Read ' + items.size + ' items...');
@@ -62,6 +65,7 @@ export function readD4Data(): D4Dependencies {
   console.log('Read ' + storeProducts.size + ' store products...');
   console.log('Read ' + playerTitles.size + ' player titles...');
   console.log('Read ' + challenges.size + ' challenges...');
+  console.log('Read ' + textures.size + ' textures...');
 
   return {
     actors,
@@ -79,5 +83,6 @@ export function readD4Data(): D4Dependencies {
     challenges,
     reputation,
     headstones,
+    textures,
   };
 }

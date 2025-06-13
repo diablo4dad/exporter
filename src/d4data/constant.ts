@@ -23,6 +23,7 @@ export const PATH_TO_D4PLAYER_TITLE: Readonly<string> = 'json\\base\\meta\\Playe
 export const PATH_TO_D4CHALLENGE: Readonly<string> = 'json\\base\\meta\\Challenge';
 export const PATH_TO_D4ACHIEVEMENT: Readonly<string> = 'json\\base\\meta\\Achievement';
 export const PATH_TO_D4REPUTATION: Readonly<string> = 'json\\base\\meta\\Reputation';
+export const PATH_TO_D4TEXTURE: Readonly<string> = 'json\\base\\meta\\Texture';
 export const PATH_TO_D4STRING_LIST: Readonly<string> = 'json\\enUS_Text\\meta\\StringList';
 
 export const FILE_EXTENSIONS: ReadonlyMap<string, string> = new Map([
