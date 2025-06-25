@@ -204,6 +204,26 @@ const ROGUE: CollectionDescriptor = {
       // Acolyte of Tyrael
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor237.prd.json'],
     },
+    {
+      // The Hawk of Light - Berserk
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor246.prd.json'],
+    },
+    {
+      // The Struggler - Berserk
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor243.prd.json'],
+    },
+    {
+      // Carnival of Chaos
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor244.prd.json'],
+    },
+    {
+      // A Blackguard Reborn
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor227.prd.json'],
+    },
+    {
+      // The Assassin Shade
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor225.prd.json'],
+    },
   ],
 };
 

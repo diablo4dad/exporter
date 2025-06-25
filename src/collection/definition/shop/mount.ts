@@ -228,6 +228,10 @@ const MOUNTS: CollectionDescriptor = {
       // Warcraft Legends II
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor005.prd.json'],
     },
+    {
+      // Warhorse of the Hawk - Berserk
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor060.prd.json'],
+    },
   ],
 };
 

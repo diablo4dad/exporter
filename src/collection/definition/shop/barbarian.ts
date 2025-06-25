@@ -214,6 +214,18 @@ const BARBARIAN: CollectionDescriptor = {
       // Acolyte of Imperius
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor235.prd.json'],
     },
+    {
+      // The Beserker Armor
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor245.prd.json'],
+    },
+    {
+      // The Penitent Prisoner
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor246.prd.json'],
+    },
+    {
+      // The Knight's Crucible
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor233.prd.json'],
+    },
   ],
 };
 

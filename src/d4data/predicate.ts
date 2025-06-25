@@ -35,7 +35,8 @@ export function isPlayerTitle(snoRef: D4Type): snoRef is D4PlayerTitle {
 }
 
 export function isStoreProduct(snoRef: D4Type): snoRef is D4StoreProduct {
-  return snoRef.__type__ === 'StoreProductDefinition';
+  // @ts-expect-error this is a workaround until these refs are no longer encrypted
+  return snoRef.__type__ === 'StoreProductDefinition' || snoRef.groupName === 'StoreProduct';
 }
 
 export function isTownPortalCosmetic(snoRef: D4Type): snoRef is D4TownPortalCosmetic {

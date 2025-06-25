@@ -36,6 +36,10 @@ const CAT_MOUNTS: CollectionDescriptor = {
       // Pride of the Acolytes
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor010.prd.json'],
     },
+    {
+      // The Nether Lion
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor012.prd.json'],
+    },
   ],
 };
 

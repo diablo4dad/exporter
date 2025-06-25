@@ -37,7 +37,7 @@ const LUNAR_AWAKENING_2025: CollectionDescriptor = {
 
 const MARCH_OF_THE_GOBLINS: CollectionDescriptor = {
   name: 'March of the Goblins',
-  description: 'Slay Gilded Goblins from March 4th, 2025 until March 11th, 2045.',
+  description: 'Slay Gilded Goblins from March 4th, 2025 until March 11th, 2025.',
   category: Category.LIMITED_EVENT,
   claimDescription: 'Complete the March of the Goblins reputation board.',
   items: [['json\\base\\meta\\Emblem\\emblem_glo054_stor.emb.json']],

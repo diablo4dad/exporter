@@ -37,8 +37,14 @@ const TWITCH: CollectionDescriptor = {
   promotional: true,
   children: [
     {
+      name: 'Twitch Drops #4',
+      description: 'Berserk promotion from April 29th, 2025 until May 13th, 2025',
+      category: Category.PROMOTIONAL,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_promo_twitch_25.prd.json'],
+    },
+    {
       name: 'Support a Streamer #4',
-      description: 'Berserk promotion from May 6th, 2025',
+      description: 'Berserk promotion from May 6th, 2025 until June 3rd, 2025',
       category: Category.PROMOTIONAL,
       premium: true,
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_Twitch_24.prd.json'],

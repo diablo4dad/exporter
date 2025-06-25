@@ -56,6 +56,30 @@ const SPIRITBORN: CollectionDescriptor = {
       // Acolyte of Inarius
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor177.prd.json'],
     },
+    {
+      // The Claws of Baal
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor180.prd.json'],
+    },
+    {
+      // Progeny of Zir
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor162.prd.json'],
+    },
+    {
+      // Snowbound Spirit
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor179.prd.json'],
+    },
+    {
+      // Gale of the Icesprite
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor163.prd.json'],
+    },
+    {
+      // Deity of the Desert
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor185.prd.json'],
+    },
+    {
+      // The Heir Abhorrent
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor184.prd.json'],
+    },
   ],
 };
 

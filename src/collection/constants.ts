@@ -17,6 +17,10 @@ export enum Category {
   ACTIVITY = 'Activity',
   ARMOR = 'Armor',
   WEAPON = 'Weapon',
+  // reliquaries
+  BATTLE_PASS_RELIQUARY = 'Battle Pass Reliquary',
+  PREMIUM_BATTLE_PASS_RELIQUARY = 'Premium Battle Pass Reliquary',
+  DELUXE_BATTLE_PASS_RELIQUARY = 'Deluxe Battle Pass Reliquary',
 }
 
 export enum D4DadCollectionCategory {

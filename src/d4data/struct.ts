@@ -103,8 +103,9 @@ type D4StoreProduct = D4Entity & {
   snoHeadstone: D4SnoRef | null;
   snoTownPortal: D4SnoRef | null;
   snoCompanion: D4SnoRef | null;
-  arBundledProducts: D4SnoRef[];
-  arAddOnBundles: D4SnoRef[];
+  snoCompletionReward: D4SnoRef | null;
+  arBundledProducts: D4SnoRef[] | null;
+  arAddOnBundles: D4SnoRef[] | null;
 };
 
 type D4TownPortalCosmetic = D4Entity & {

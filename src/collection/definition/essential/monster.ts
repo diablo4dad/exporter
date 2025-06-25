@@ -54,6 +54,7 @@ const DUNGEON_BOSS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\mnt_stor006_trophy.itm.json'],
     ['json\\base\\meta\\Item\\mnt_stor005_trophy.itm.json'],
     ['json\\base\\meta\\Item\\mnt_stor002_horse.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_uniq35_trophy.itm.json'],
   ],
   patches: [
     {
@@ -80,6 +81,11 @@ const DUNGEON_BOSS: CollectionDescriptor = {
       items: [1583610],
       claim: 'Uber Boss Drop',
       claimDescription: 'Dropped by Duriel, King of Maggots.',
+    },
+    {
+      items: [2245606],
+      claim: 'Uber Boss Drop',
+      claimDescription: 'Dropped by Belial.',
     },
   ],
 };

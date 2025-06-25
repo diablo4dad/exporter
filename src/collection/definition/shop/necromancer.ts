@@ -205,6 +205,22 @@ const NECROMANCER: CollectionDescriptor = {
       // Acolyte of Malthael
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor229.prd.json'],
     },
+    {
+      // The Skull Knight
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor239.prd.json'],
+    },
+    {
+      // Shepard of the Lost
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor240.prd.json'],
+    },
+    {
+      // The Pitiless Executioner
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor238.prd.json'],
+    },
+    {
+      // The Burnt Scythe
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor221.prd.json'],
+    },
   ],
 };
 

@@ -21,6 +21,12 @@ import { getTextFromStl } from '../d4reader/strings.js';
 import { D4Dependencies } from '../d4reader/struct.js';
 import { hashCode, identity, pipe } from '../helper.js';
 
+const RELIQUARY = [
+  Category.BATTLE_PASS_RELIQUARY,
+  Category.PREMIUM_BATTLE_PASS_RELIQUARY,
+  Category.DELUXE_BATTLE_PASS_RELIQUARY,
+];
+
 export function aggregateItemList(deps: D4Dependencies) {
   return (il: ItemList): D4Entity[][] => {
     const collectionItems = [];
@@ -200,6 +206,12 @@ function inferClaim(descriptor: CollectionDescriptor, source?: Source) {
         return 'Battle Pass';
       case Source.STORE_PRODUCT:
         return 'Accelerated Battle Pass';
+    }
+  }
+
+  if (descriptor.category) {
+    if (RELIQUARY.includes(descriptor.category)) {
+      return 'Reliquary';
     }
   }
 
@@ -470,7 +482,7 @@ export function unpackStoreProduct(deps: D4Dependencies): (product: D4StoreProdu
 
     itemList = pushToItemList(itemList, extractItemFromProduct(deps)(product));
 
-    product.arBundledProducts.forEach((bp) => {
+    product.arBundledProducts?.forEach((bp) => {
       const innerProduct = resolveSno(bp, deps.storeProducts);
       if (innerProduct) {
         if (isStoreProduct(innerProduct)) {
@@ -481,12 +493,19 @@ export function unpackStoreProduct(deps: D4Dependencies): (product: D4StoreProdu
       }
     });
 
-    product.arAddOnBundles.forEach((ao) => {
+    product.arAddOnBundles?.forEach((ao) => {
       const addOn = resolveSno(ao, deps.storeProducts);
       if (addOn) {
         itemList = mergeItemLists(itemList, unpackStoreProduct(deps)(addOn));
       }
     });
+
+    if (product.snoCompletionReward) {
+      const completionReward = resolveSno(product.snoCompletionReward, deps.storeProducts);
+      if (completionReward) {
+        itemList = mergeItemLists(itemList, unpackStoreProduct(deps)(completionReward));
+      }
+    }
 
     return itemList;
   };

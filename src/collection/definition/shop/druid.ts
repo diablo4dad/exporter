@@ -153,6 +153,14 @@ const DRUID: CollectionDescriptor = {
       // Acolyte of Itherael
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor228.prd.json'],
     },
+    {
+      // Bellows of Netherfire
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor219.prd.json'],
+    },
+    {
+      // Hunger of the Dethroner
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor207.prd.json'],
+    },
   ],
 };
 

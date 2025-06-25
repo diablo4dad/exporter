@@ -51,7 +51,7 @@ export function readD4Data(): D4Dependencies {
   const challenges = parseFiles<D4ChallengeDefinition>(PATH_TO_D4CHALLENGE);
   const achievements = parseFiles<D4Achievement>(PATH_TO_D4ACHIEVEMENT);
   const reputation = parseFiles<D4Reputation>(PATH_TO_D4REPUTATION);
-  const textures = parseFiles<D4Texture>(PATH_TO_D4TEXTURE);
+  const textures = new Map(); // parseFiles<D4Texture>(PATH_TO_D4TEXTURE);
   const headstones = new Map(Array.of(...actors.entries()).filter(([, a]) => a.__fileName__.includes('headstone')));
 
   console.log('Read ' + items.size + ' items...');

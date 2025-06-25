@@ -13,6 +13,16 @@ const PETS: CollectionDescriptor = {
     {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor002.prd.json'],
     },
+    {
+      storeProducts: ['json\\base\\meta\\StoreProduct\\AddOn_Companion_stor102_bird.prd.json'],
+    },
+    {
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_schnoz.prd.json'],
+    },
+    // Lily
+    {
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100.prd.json'],
+    },
   ],
 };
 

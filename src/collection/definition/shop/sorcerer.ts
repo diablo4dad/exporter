@@ -202,6 +202,18 @@ const SORCERER: CollectionDescriptor = {
       // Acolyte of Auriel
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor240.prd.json'],
     },
+    {
+      // The Great Conductor
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor222.prd.json'],
+    },
+    {
+      // Nightly Connoisseur
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor224.prd.json'],
+    },
+    {
+      // Singer of Anathema
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor242.prd.json'],
+    },
   ],
 };
 
