@@ -152,6 +152,27 @@ const THE_HUNGER: CollectionDescriptor = {
   ],
 };
 
+const THORNS_OF_CLARET: CollectionDescriptor = {
+  name: 'Thorns of Claret',
+  description: 'Free weapon cosmetics',
+  claimDescription: 'Occasionally free from the cash shop.',
+  premium: true,
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_KR_RedWine_stor001.prd.json'],
+};
+
+const HIGHLAND_NECTAR: CollectionDescriptor = {
+  name: 'Highland Nectar',
+  description: 'Free weapon cosmetics',
+  claimDescription: 'Occasionally free from the cash shop.',
+  items: [
+    ['json\\base\\meta\\Item\\offHandsSorc_stor029.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandSword_stor022.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandCrossbow_stor029.itm.json'],
+    ['json\\base\\meta\\Item\\mace_stor028.itm.json'],
+  ],
+};
+
 const TEJAL: CollectionDescriptor = {
   name: "Tejal's Gifts",
   description: "Transmogs acquired from Tejal's Shop on a limited basis",
@@ -168,6 +189,8 @@ const TEJAL: CollectionDescriptor = {
     MOTHERS_FAVOR,
     RETURNING_CHAMPION,
     THE_HUNGER,
+    THORNS_OF_CLARET,
+    HIGHLAND_NECTAR,
   ],
 };
 

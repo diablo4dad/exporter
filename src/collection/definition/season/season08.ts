@@ -1,11 +1,13 @@
 import { Category } from '../../constants.js';
-import { CollectionDescriptor, D4DadCollection, D4DadCollectionItem } from '../../struct.js';
+import { groupItemsWithSameName } from '../../helper.js';
+import { CollectionDescriptor } from '../../struct.js';
 
 const SEASON08: CollectionDescriptor = {
   name: "Belial's Return",
   description: 'Season 8 starting April 29th, 2025',
   category: Category.SEASONS,
   season: 8,
+  outOfRotation: true,
   children: [
     {
       name: "Battle Pass Reliquary #8: Belial's Return",
@@ -49,21 +51,5 @@ const SEASON08: CollectionDescriptor = {
   ],
   postHook: groupItemsWithSameName,
 };
-
-function groupItemsWithSameName(c: D4DadCollection): D4DadCollection {
-  return {
-    ...c,
-    subcollections: c.subcollections.map(groupItemsWithSameName),
-    collectionItems: c.collectionItems.reduce((a, c) => {
-      const existing = a.find((d) => d.name === c.name);
-      if (existing) {
-        existing.items.push(...c.items);
-      } else {
-        a.push(c);
-      }
-      return a;
-    }, [] as D4DadCollectionItem[]),
-  };
-}
 
 export default SEASON08;

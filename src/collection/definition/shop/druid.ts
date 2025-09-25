@@ -161,6 +161,10 @@ const DRUID: CollectionDescriptor = {
       // Hunger of the Dethroner
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor207.prd.json'],
     },
+    {
+      // Pride of the Storm
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor231.prd.json'],
+    },
   ],
 };
 

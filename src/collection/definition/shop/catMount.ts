@@ -40,6 +40,10 @@ const CAT_MOUNTS: CollectionDescriptor = {
       // The Nether Lion
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor012.prd.json'],
     },
+    {
+      // Hunters of the Haunt
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor014.prd.json'],
+    },
   ],
 };
 

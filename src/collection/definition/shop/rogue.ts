@@ -224,6 +224,14 @@ const ROGUE: CollectionDescriptor = {
       // The Assassin Shade
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor225.prd.json'],
     },
+    {
+      // The Lost Zealot
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor251.prd.json'],
+    },
+    {
+      // The Spectral Phantom
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor249.prd.json'],
+    },
   ],
 };
 

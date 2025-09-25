@@ -55,6 +55,7 @@ const TWO_HANDED_MACE: CollectionDescriptor = {
     // unique
     ['json\\base\\meta\\Item\\2HMace_Unique_Barb_001.itm.json'],
     ['json\\base\\meta\\Item\\2HMace_Unique_Barb_100.itm.json'],
+    ['json\\base\\meta\\Item\\2HMace_Unique_Druid_100.itm.json'],
   ],
 };
 

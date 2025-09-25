@@ -265,6 +265,7 @@ function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
     [1955198], // Boots of the Khazra
     [2217663], // The Dragon's Tapestry
     [2196917], // March of the Goblins
+    [2089386, 2263324], // Masterful Tactician
   ];
 
   // impure!

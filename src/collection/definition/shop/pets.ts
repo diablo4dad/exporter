@@ -23,6 +23,10 @@ const PETS: CollectionDescriptor = {
     {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100.prd.json'],
     },
+    // Azul
+    {
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_fox.prd.json'],
+    },
   ],
 };
 

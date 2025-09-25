@@ -6,6 +6,7 @@ const SEASON07: CollectionDescriptor = {
   description: 'Season 7 starting January 21st, 2025',
   category: Category.SEASONS,
   season: 7,
+  outOfRotation: true,
   children: [
     {
       name: 'Battle Pass #7',

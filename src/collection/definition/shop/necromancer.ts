@@ -221,6 +221,18 @@ const NECROMANCER: CollectionDescriptor = {
       // The Burnt Scythe
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor221.prd.json'],
     },
+    {
+      // Children of the Crypt
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor227.prd.json'],
+    },
+    {
+      // The Abyssal Revival
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor233.prd.json'],
+    },
+    {
+      // The Spectral Sepulcher
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor244.prd.json'],
+    },
   ],
 };
 

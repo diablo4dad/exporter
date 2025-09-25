@@ -226,6 +226,22 @@ const BARBARIAN: CollectionDescriptor = {
       // The Knight's Crucible
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor233.prd.json'],
     },
+    {
+      // Crux Contagionis
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor243.prd.json'],
+    },
+    {
+      // Behemoth of the Bulwarks
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor244.prd.json'],
+    },
+    {
+      // Thy Flesh Reforged
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor250.prd.json'],
+    },
+    {
+      // The Spectral Legion
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor249.prd.json'],
+    },
   ],
 };
 

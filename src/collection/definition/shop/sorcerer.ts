@@ -214,6 +214,14 @@ const SORCERER: CollectionDescriptor = {
       // Singer of Anathema
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor242.prd.json'],
     },
+    {
+      // The Queen's Silver
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor231.prd.json'],
+    },
+    {
+      // The Grinning Priestess
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor236.prd.json'],
+    },
   ],
 };
 

@@ -37,9 +37,31 @@ const TWITCH: CollectionDescriptor = {
   promotional: true,
   children: [
     {
+      name: 'Twitch Drops #7',
+      description: 'Tune into the Developer Live Stream September 16th, 2025',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_twoHandBow_stor020.prd.json'],
+    },
+    {
+      name: 'Twitch Drops #6',
+      description: 'Sins of the Horadrim promotion from July 1st, 2025 until July 19th, 2025',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_twoHandCrossbow_stor034.prd.json'],
+    },
+    {
+      name: 'Twitch Drops #5',
+      description: 'Tune into the Developer Live Stream June 27th, 2025',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_promo_twitch_26.prd.json'],
+    },
+    {
       name: 'Twitch Drops #4',
       description: 'Berserk promotion from April 29th, 2025 until May 13th, 2025',
       category: Category.PROMOTIONAL,
+      outOfRotation: true,
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_promo_twitch_25.prd.json'],
     },
     {
@@ -47,6 +69,7 @@ const TWITCH: CollectionDescriptor = {
       description: 'Berserk promotion from May 6th, 2025 until June 3rd, 2025',
       category: Category.PROMOTIONAL,
       premium: true,
+      outOfRotation: true,
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_Twitch_24.prd.json'],
     },
     {
@@ -54,6 +77,7 @@ const TWITCH: CollectionDescriptor = {
       description: 'Vessel of Hatred promotion from October 8th, 2024 until November 5th, 2024',
       category: Category.PROMOTIONAL,
       premium: true,
+      outOfRotation: true,
       items: [
         ['json\\base\\meta\\Item\\mnt_stor048_horse.itm.json'],
         ['json\\base\\meta\\Item\\mnt_amor205_horse_stor.itm.json'],
@@ -74,6 +98,7 @@ const TWITCH: CollectionDescriptor = {
       description: 'Vessel of Hatred promotion starting October 8th, 2024',
       category: Category.PROMOTIONAL,
       claim: 'Twitch Drop',
+      outOfRotation: true,
       items: [
         ['json\\base\\meta\\Item\\twoHandSorcStaff_stor046.itm.json'],
         ['json\\base\\meta\\Item\\scythe_stor031.itm.json'],
@@ -517,12 +542,22 @@ const THE_WAR_WITHIN: CollectionDescriptor = {
   storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor005.prd.json'],
 };
 
+const BUTCHERS_CLEAVER: CollectionDescriptor = {
+  name: 'Butchers Cleaver',
+  description: 'Purchase the Butchers Cleaver Replica from the Blizzard Gear Store.',
+  category: Category.PROMOTIONAL,
+  premium: true,
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_axe_stor029.prd.json'],
+};
+
 const PROMOTIONAL = [
   TWITCH,
   DISCORD,
   TROLLI,
   DEMONS_BLOOD,
   MOUNTAIN_DEW,
+  BUTCHERS_CLEAVER,
   IAM8BIT,
   COCO,
   BURGER_KING,

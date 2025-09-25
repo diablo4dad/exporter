@@ -36,6 +36,7 @@ const HELM: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Helm_Unique_Spiritborn_009_x1.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Druid_102.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Sorc_101.itm.json'],
+    ['json\\base\\meta\\Item\\Helm_Unique_Rogue_002.itm.json'],
     // mythic
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_002.itm.json'],
     ['json\\base\\meta\\Item\\Helm_Unique_Generic_004.itm.json'],
@@ -122,6 +123,7 @@ const GLOVES: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Gloves_Unique_Spiritborn_007_x1.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Rogue_102.itm.json'],
     ['json\\base\\meta\\Item\\Gloves_Unique_Barb_101.itm.json'],
+    ['json\\base\\meta\\Item\\Gloves_Unique_Necro_102.itm.json'],
   ],
 };
 
@@ -160,6 +162,7 @@ const PANTS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Pants_Unique_Sorc_101.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Unique_Spiritborn_015_x1.itm.json'],
     ['json\\base\\meta\\Item\\Pants_Unique_Necro_102.itm.json'],
+    ['json\\base\\meta\\Item\\Pants_Unique_Spiritborn_100.itm.json'],
   ],
   patches: [
     {
@@ -206,6 +209,7 @@ const BOOTS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\Boots_Unique_Necro_101.itm.json'],
     ['json\\base\\meta\\Item\\Boots_Unique_Spiritborn_008_x1.itm.json'],
     ['json\\base\\meta\\Item\\Boots_Unique_Rogue_101.itm.json'],
+    ['json\\base\\meta\\Item\\Boots_Unique_Barb_101.itm.json'],
   ],
 };
 

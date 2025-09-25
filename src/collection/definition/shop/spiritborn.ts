@@ -80,6 +80,18 @@ const SPIRITBORN: CollectionDescriptor = {
       // The Heir Abhorrent
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor184.prd.json'],
     },
+    {
+      // Will of the Earthsoul
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor178.prd.json'],
+    },
+    {
+      // The Heir Abhorrent
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor191.prd.json'],
+    },
+    {
+      // The Skymaster's Reign
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor194.prd.json'],
+    },
   ],
 };
 
