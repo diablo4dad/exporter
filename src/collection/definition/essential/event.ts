@@ -151,8 +151,9 @@ const EVENT: CollectionDescriptor = {
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
   children: [
-    SECOND_ANNIVERSARY,
-    BERSERK,
+    // these have gone missing
+    // SECOND_ANNIVERSARY,
+    // BERSERK,
     MARCH_OF_THE_GOBLINS,
     LUNAR_AWAKENING_2025,
     SLAY_RIDE_TO_HELL,
