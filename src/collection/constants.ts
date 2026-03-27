@@ -109,4 +109,5 @@ export const USED_ITEM_TYPES: ReadonlyArray<string> = [
   'Pet',
   'Quarterstaff',
   'Glaive',
+  'Flail',
 ];

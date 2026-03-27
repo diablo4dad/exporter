@@ -8,6 +8,8 @@ export const CLASS_TYPES: ReadonlyArray<string> = [
   'Rogue',
   'Necromancer',
   'Spiritborn',
+  'Paladin',
+  'Warlock',
 ];
 
 export const PATH_TO_D4ITEM: Readonly<string> = 'json\\base\\meta\\Item';
