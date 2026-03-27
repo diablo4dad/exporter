@@ -6,7 +6,8 @@ const SEASON10: CollectionDescriptor = {
   name: 'Season of Infernal Chaos',
   description: 'Season 10 starting September 10th, 2025',
   category: Category.SEASONS,
-  season: 8,
+  season: 10,
+  outOfRotation: true,
   children: [
     {
       name: 'Battle Pass Reliquary #10: Infernal Chaos',

@@ -6,7 +6,8 @@ const SEASON09: CollectionDescriptor = {
   name: 'Sins of the Horadrim',
   description: 'Season 9 starting July 1st, 2025',
   category: Category.SEASONS,
-  season: 8,
+  season: 9,
+  outOfRotation: true,
   children: [
     {
       name: 'Battle Pass Reliquary #9: Sins of the Horadrim',

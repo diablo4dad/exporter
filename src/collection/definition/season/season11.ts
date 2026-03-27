@@ -6,7 +6,8 @@ const SEASON11: CollectionDescriptor = {
   name: 'Season of Divine Intervention',
   description: 'Season 11 starting December 11th, 2025',
   category: Category.SEASONS,
-  season: 8,
+  season: 11,
+  outOfRotation: true,
   children: [
     {
       name: 'Battle Pass Reliquary #11: Season of Divine Intervention',

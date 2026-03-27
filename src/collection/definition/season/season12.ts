@@ -6,7 +6,7 @@ const SEASON12: CollectionDescriptor = {
   name: 'Season of Slaughter',
   description: 'Season 12 starting March 11th, 2026',
   category: Category.SEASONS,
-  season: 8,
+  season: 12,
   children: [
     {
       name: 'Battle Pass Reliquary #12: Season of Slaughter',
