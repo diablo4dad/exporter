@@ -37,6 +37,16 @@ const TWITCH: CollectionDescriptor = {
   promotional: true,
   children: [
     {
+      name: 'Twitch Drops #8',
+      description: 'Tune into the Developer Live Stream March 5th, 2026',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_Scythe_stor040.prd.json',
+        'json\\base\\meta\\StoreProduct\\Bundle_Wand_stor047.prd.json',
+      ],
+    },
+    {
       name: 'Twitch Drops #7',
       description: 'Tune into the Developer Live Stream September 16th, 2025',
       category: Category.PROMOTIONAL,
@@ -375,10 +385,16 @@ const TROLLI: CollectionDescriptor = {
   claimDescription: 'Redeemable by submitting the barcode from Trolli candy packets.',
   premium: true,
   promotional: true,
-  items: [
-    ['json\\base\\meta\\Item\\twoHandPolearm_stor042.itm.json'],
-    ['json\\base\\meta\\Item\\mace_stor044.itm.json'],
-    ['json\\base\\meta\\Item\\dagger_stor076.itm.json'],
+  children: [
+    {
+      name: 'Trolli #1',
+      description: 'Promotion running from September 1st, 2024 until February 28th, 2025.',
+      items: [
+        ['json\\base\\meta\\Item\\twoHandPolearm_stor042.itm.json'],
+        ['json\\base\\meta\\Item\\mace_stor044.itm.json'],
+        ['json\\base\\meta\\Item\\dagger_stor076.itm.json'],
+      ],
+    },
   ],
 };
 
@@ -542,6 +558,15 @@ const THE_WAR_WITHIN: CollectionDescriptor = {
   storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor005.prd.json'],
 };
 
+const MIDNIGHT: CollectionDescriptor = {
+  name: 'Midnight',
+  description: 'Included with the "Midnight" WoW expansion for a limited time.',
+  category: Category.PROMOTIONAL,
+  premium: true,
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_chickenLarge.prd.json'],
+};
+
 const BUTCHERS_CLEAVER: CollectionDescriptor = {
   name: 'Butchers Cleaver',
   description: 'Purchase the Butchers Cleaver Replica from the Blizzard Gear Store.',
@@ -551,12 +576,23 @@ const BUTCHERS_CLEAVER: CollectionDescriptor = {
   storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_axe_stor029.prd.json'],
 };
 
+const DEATHS_HEAD_CUDGEL: CollectionDescriptor = {
+  name: "Death's Head Cudgel",
+  description: "Purchase products in the Death's Head Cudgel collection from the Blizzard Gear Store.",
+  category: Category.PROMOTIONAL,
+  premium: true,
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_Mace_stor049.prd.json'],
+};
+
 const PROMOTIONAL = [
   TWITCH,
   DISCORD,
   TROLLI,
   DEMONS_BLOOD,
   MOUNTAIN_DEW,
+  DEATHS_HEAD_CUDGEL,
+  MIDNIGHT,
   BUTCHERS_CLEAVER,
   IAM8BIT,
   COCO,
