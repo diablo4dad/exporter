@@ -28,6 +28,15 @@ function patchPortal(portal: D4TownPortalCosmetic): D4TownPortalCosmetic {
   return portal;
 }
 
+function getFallbackName(itemId: number) {
+  // patch missing name
+  if (itemId === 2344288) {
+    return "Dark Horseman's Door";
+  }
+
+  return '';
+}
+
 export function portalToDad(deps: D4Dependencies): (portal: D4TownPortalCosmetic) => [D4DadItem, D4DadTranslation] {
   return (portal: D4TownPortalCosmetic): [D4DadItem, D4DadTranslation] => {
     portal = patchPortal(portal);
@@ -38,7 +47,7 @@ export function portalToDad(deps: D4Dependencies): (portal: D4TownPortalCosmetic
     const id = portal.__snoID__;
     const filename = portal.__fileName__;
     const typeId = TOWN_PORTAL;
-    const name = getTextFromStl(stringsList, 'Name');
+    const name = getTextFromStl(stringsList, 'Name', getFallbackName(id));
     const description = stu(getTextFromStl(stringsList, 'Description'));
     const series = stu(getTextFromStl(stringsList, 'Series'));
     const iconId = chooseIcon(portal, storeProduct);

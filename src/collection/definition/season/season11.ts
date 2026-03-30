@@ -44,6 +44,20 @@ const SEASON11: CollectionDescriptor = {
       category: Category.SEASON_JOURNEY,
       challengeFile: 'json\\base\\meta\\Challenge\\Season11.cha.json',
       challengeFileFlatten: true,
+      patches: [
+        {
+          items: [2516421, 2516423],
+          claimDescription: 'Rank II Reward',
+        },
+        {
+          items: [2254542],
+          claimDescription: 'Rank III Reward',
+        },
+        {
+          items: [2254544],
+          claimDescription: 'Rank VII Reward',
+        },
+      ],
     },
   ],
   postHook: groupItemsWithSameName,
