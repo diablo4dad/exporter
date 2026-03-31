@@ -8,28 +8,6 @@ import * as two_handed_staff from '../../../d4data/sno/two_handed_staff.js';
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
-const DISCORD: CollectionDescriptor = {
-  name: 'Discord',
-  description: 'Transmogs acquired through Discord collaborations',
-  promotional: true,
-  outOfRotation: true,
-  category: Category.PROMOTIONAL,
-  children: [
-    {
-      name: 'Vessel of Hatred Quest',
-      description:
-        'Stream yourself playing Vessel of Hatred on Discord from October 8th, 2024 until October 15th, 2024',
-      claim: 'Discord Quest',
-      claimDescription: 'Stream yourself playing Vessel of Hatred on Discord.',
-      items: [
-        ['json\\base\\meta\\Item\\dagger_stor086.itm.json'],
-        ['json\\base\\meta\\Item\\sword_stor100.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandPolearm_stor068.itm.json'],
-      ],
-    },
-  ],
-};
-
 const TWITCH: CollectionDescriptor = {
   name: 'Twitch',
   description: 'Twitch drops and support a streamer mounts',
@@ -37,8 +15,19 @@ const TWITCH: CollectionDescriptor = {
   promotional: true,
   children: [
     {
-      name: 'Twitch Drops #8',
-      description: 'Tune into the Developer Live Stream March 5th, 2026',
+      name: 'Twitch Drops #14',
+      description: 'Tune into an eligible live stream from March 11th, 2026 until March 26th, 2026',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      // Singsplinter
+      storeProducts: [
+        // 'json\\base\\meta\\StoreProduct\\Bundle_Scythe_stor040.prd.json',
+        // 'json\\base\\meta\\StoreProduct\\Bundle_Wand_stor047.prd.json',
+      ],
+    },
+    {
+      name: 'Twitch Drops #13',
+      description: 'Tune into the developer live stream March 5th, 2026',
       category: Category.PROMOTIONAL,
       outOfRotation: true,
       storeProducts: [
@@ -47,8 +36,47 @@ const TWITCH: CollectionDescriptor = {
       ],
     },
     {
+      name: 'Twitch Drops #12',
+      description: 'Tune into an eligible live stream from December 12th, 2025 until December 26th, 2025',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Axe_stor046.prd.json'],
+    },
+    {
+      name: 'Twitch Drops #11',
+      description: 'Tune into the developer live stream December 3rd, 2026',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Sword_stor068.prd.json'],
+    },
+    {
+      name: 'Twitch Drops #10',
+      description: 'Tune into an eligible live stream from October 16th, 2025 until October 17th, 2025',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Dagger_stor053.prd.json'],
+    },
+    {
+      name: 'Twitch Drops #9',
+      description: 'Tune into an eligible live stream from September 26th, 2025 until October 10th, 2025',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_emblem_glo061_stor.prd.json',
+        'json\\base\\meta\\StoreProduct\\Bundle_emblem_glo062_stor.prd.json',
+        'json\\base\\meta\\StoreProduct\\Bundle_emblem_glo060_stor.prd.json',
+      ],
+    },
+    {
+      name: 'Twitch Drops #8',
+      description: 'Tune into an eligible live stream from September 23rd, 2025 until September 26th, 2025',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_twoHandPolearm_stor054.prd.json'],
+    },
+    {
       name: 'Twitch Drops #7',
-      description: 'Tune into the Developer Live Stream September 16th, 2025',
+      description: 'Tune into the developer live stream September 16th, 2025',
       category: Category.PROMOTIONAL,
       outOfRotation: true,
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_twoHandBow_stor020.prd.json'],
@@ -62,7 +90,7 @@ const TWITCH: CollectionDescriptor = {
     },
     {
       name: 'Twitch Drops #5',
-      description: 'Tune into the Developer Live Stream June 27th, 2025',
+      description: 'Tune into the developer live stream June 27th, 2025',
       category: Category.PROMOTIONAL,
       outOfRotation: true,
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_promo_twitch_26.prd.json'],
@@ -277,6 +305,28 @@ const TWITCH: CollectionDescriptor = {
   ],
 };
 
+const DISCORD: CollectionDescriptor = {
+  name: 'Discord',
+  description: 'Transmogs acquired through Discord collaborations',
+  promotional: true,
+  outOfRotation: true,
+  category: Category.PROMOTIONAL,
+  children: [
+    {
+      name: 'Vessel of Hatred Quest',
+      description:
+        'Stream yourself playing Vessel of Hatred on Discord from October 8th, 2024 until October 15th, 2024',
+      claim: 'Discord Quest',
+      claimDescription: 'Stream yourself playing Vessel of Hatred on Discord.',
+      items: [
+        ['json\\base\\meta\\Item\\dagger_stor086.itm.json'],
+        ['json\\base\\meta\\Item\\sword_stor100.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandPolearm_stor068.itm.json'],
+      ],
+    },
+  ],
+};
+
 const PRIME: CollectionDescriptor = {
   name: 'Prime',
   description: 'Loot for Prime Gaming members',
@@ -336,16 +386,6 @@ const PRIME: CollectionDescriptor = {
   ],
 };
 
-const GEFORCE: CollectionDescriptor = {
-  name: 'GeForce',
-  description: 'Participate in the GeForce LAN 50 event starting January 4th, 2025.',
-  category: Category.PROMOTIONAL,
-  claimDescription: 'Reward from the GeForce LAN 50 event.',
-  premium: true,
-  promotional: true,
-  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor129.prd.json'],
-};
-
 const BLIZZCON: CollectionDescriptor = {
   name: 'BlizzCon 2023',
   description: 'Transmogs from the BlizzCon 2023 Collection',
@@ -367,16 +407,7 @@ const BLIZZCON: CollectionDescriptor = {
   ],
 };
 
-const CALL_OF_DUTY: CollectionDescriptor = {
-  name: 'Call of Duty',
-  description: '"The Haunting" event from October 17th, 2023 until November 6th, 2023',
-  category: Category.PROMOTIONAL,
-  claimDescription: 'Kill "The Butcher" in Call of Duty.',
-  outOfRotation: true,
-  premium: true,
-  promotional: true,
-  items: [['json\\base\\meta\\Item\\Scythe_stor007.itm.json']],
-};
+// trolli #2 Piquance, Sucrëhander, Prickletongue
 
 const TROLLI: CollectionDescriptor = {
   name: 'Trolli',
@@ -448,6 +479,7 @@ const MOUNTAIN_DEW: CollectionDescriptor = {
       name: 'Mountain Dew #2',
       description: 'Franchise Promotion',
       claimDescription: 'Redeemable from the Mountain Dew promotion.',
+      category: Category.PROMOTIONAL,
       items: [
         ['json\\base\\meta\\Item\\twoHandGlaive_stor006.itm.json'],
         ['json\\base\\meta\\Item\\twoHandGlaive_stor022.itm.json'],
@@ -460,6 +492,7 @@ const MOUNTAIN_DEW: CollectionDescriptor = {
       name: 'Mountain Dew #1',
       description: 'Franchise Promotion',
       claimDescription: 'Redeemable from the Mountain Dew promotion.',
+      category: Category.PROMOTIONAL,
       outOfRotation: true,
       items: [
         ['json\\base\\meta\\Item\\offHandsSorc_stor029.itm.json'],
@@ -528,84 +561,101 @@ const HELL_INK: CollectionDescriptor = {
   ],
 };
 
-const STEEL_SERIES: CollectionDescriptor = {
-  name: 'SteelSeries',
-  description: 'Bundled with Diablo IV themed hardware',
+const GEFORCE: CollectionDescriptor = {
+  name: 'GeForce',
+  description: 'Participate in the GeForce LAN 50 event starting January 4th, 2025.',
   category: Category.PROMOTIONAL,
-  claimDescription: 'Included with SteelSeries hardware purchases.',
-  outOfRotation: true,
+  claimDescription: 'Reward from the GeForce LAN 50 event.',
   premium: true,
   promotional: true,
-  items: [['json\\base\\meta\\Item\\mnt_stor018_trophy.itm.json']],
+  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_MountAmor_stor129.prd.json'],
 };
 
-const IAM8BIT: CollectionDescriptor = {
-  name: 'iam8bit',
-  description: 'Bundled with the Diablo IV Vinyl soundtrack.',
+const CROSSOVERS: CollectionDescriptor = {
+  name: 'Blizzard Crossovers',
+  description: 'Transmogs acquired through Blizzard games such as World of Warcraft',
   category: Category.PROMOTIONAL,
-  claimDescription: 'Included with the Vinyl soundtrack from iam8bit.',
   premium: true,
   promotional: true,
-  items: [['json\\base\\meta\\Item\\mnt_stor223_trophy.itm.json']],
+  children: [
+    {
+      name: 'Midnight',
+      description: 'Complete the prologue "Echoes of midnight" achievement in the WoW Midnight expansion',
+      category: Category.PROMOTIONAL,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_chickenLarge.prd.json'],
+    },
+    {
+      name: 'The War Within',
+      description: 'Included with the "The War Within" WoW expansion',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor005.prd.json'],
+    },
+    {
+      name: 'Call of Duty',
+      description: '"The Haunting" event from October 17th, 2023 until November 6th, 2023',
+      claimDescription: 'Kill "The Butcher" in Call of Duty.',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      items: [['json\\base\\meta\\Item\\Scythe_stor007.itm.json']],
+    },
+  ],
 };
 
-const THE_WAR_WITHIN: CollectionDescriptor = {
-  name: 'The War Within',
-  description: 'Included with the "The War Within" WoW expansion for a limited time.',
+const MERCHANDISE: CollectionDescriptor = {
+  name: 'Merchandise',
+  description: 'Transmogs included with Diablo IV merchandise',
   category: Category.PROMOTIONAL,
   premium: true,
-  promotional: true,
-  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_stor005.prd.json'],
-};
-
-const MIDNIGHT: CollectionDescriptor = {
-  name: 'Midnight',
-  description: 'Included with the "Midnight" WoW expansion for a limited time.',
-  category: Category.PROMOTIONAL,
-  premium: true,
-  promotional: true,
-  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_chickenLarge.prd.json'],
-};
-
-const BUTCHERS_CLEAVER: CollectionDescriptor = {
-  name: 'Butchers Cleaver',
-  description: 'Purchase the Butchers Cleaver Replica from the Blizzard Gear Store.',
-  category: Category.PROMOTIONAL,
-  premium: true,
-  promotional: true,
-  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_axe_stor029.prd.json'],
-};
-
-const DEATHS_HEAD_CUDGEL: CollectionDescriptor = {
-  name: "Death's Head Cudgel",
-  description: "Purchase products in the Death's Head Cudgel collection from the Blizzard Gear Store.",
-  category: Category.PROMOTIONAL,
-  premium: true,
-  promotional: true,
-  storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_Mace_stor049.prd.json'],
+  children: [
+    {
+      name: "Death's Head Cudgel",
+      description: "Purchase products in the Death's Head Cudgel collection from the Blizzard Gear Store",
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_Mace_stor049.prd.json'],
+    },
+    {
+      name: 'Butchers Cleaver',
+      description: 'Purchase the Butchers Cleaver Replica from the Blizzard Gear Store',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_axe_stor029.prd.json'],
+    },
+    {
+      name: 'iam8bit',
+      description: 'Bundled with the Diablo IV Vinyl soundtrack.',
+      claimDescription: 'Included with the Vinyl soundtrack from iam8bit.',
+      category: Category.PROMOTIONAL,
+      items: [['json\\base\\meta\\Item\\mnt_stor223_trophy.itm.json']],
+    },
+    {
+      name: 'SteelSeries',
+      description: 'Bundled with Diablo IV themed hardware',
+      claimDescription: 'Included with SteelSeries hardware purchases.',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      items: [['json\\base\\meta\\Item\\mnt_stor018_trophy.itm.json']],
+    },
+  ],
 };
 
 const PROMOTIONAL = [
   TWITCH,
+  MERCHANDISE,
+  CROSSOVERS,
+  BLIZZCON,
   DISCORD,
+  PRIME,
   TROLLI,
-  DEMONS_BLOOD,
   MOUNTAIN_DEW,
-  DEATHS_HEAD_CUDGEL,
-  MIDNIGHT,
-  BUTCHERS_CLEAVER,
-  IAM8BIT,
+  DEMONS_BLOOD,
   COCO,
   BURGER_KING,
   KFC,
-  PRIME,
-  BLIZZCON,
   GEFORCE,
-  THE_WAR_WITHIN,
-  CALL_OF_DUTY,
   HELL_STATION,
   HELL_INK,
-  STEEL_SERIES,
 ];
 
 export default PROMOTIONAL;
