@@ -46,14 +46,15 @@ const SEASON12: CollectionDescriptor = {
       category: Category.SEASON_JOURNEY,
       challengeFile: 'json\\base\\meta\\Challenge\\Season12.cha.json',
       challengeFileFlatten: true,
+      items: [['json\\base\\meta\\Item\\mnt_uniq42_trophy.itm.json']],
       patches: [
         {
           items: [2593309, 2593316],
-          claimDescription: 'Complete Chapter II of the Season Journey',
+          claimDescription: 'Complete the Capstone Dungeon "Vault of the Crucible" (Monster Lv. 30 - Hard).',
         },
         {
           items: [2516283],
-          claimDescription: 'Complete Chapter III of the Season Journey',
+          claimDescription: 'Complete the Capstone Dungeon "Hellish Descent" (Monster Lv. 50 - Penitent).',
         },
         {
           items: [2579148],
@@ -66,7 +67,11 @@ const SEASON12: CollectionDescriptor = {
         },
         {
           items: [2516285],
-          claimDescription: 'Complete Chapter VII of the Season Journey',
+          claimDescription: 'Defeat a Bloodied Lair Boss in Torment III or higher.',
+        },
+        {
+          items: [2575769],
+          claimDescription: 'Random drop by defeating The Butcher in The Broiler.',
         },
       ],
     },

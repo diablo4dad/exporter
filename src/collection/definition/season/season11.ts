@@ -44,14 +44,19 @@ const SEASON11: CollectionDescriptor = {
       category: Category.SEASON_JOURNEY,
       challengeFile: 'json\\base\\meta\\Challenge\\Season11.cha.json',
       challengeFileFlatten: true,
+      items: [
+        ['json\\base\\meta\\Item\\mnt_amor66_horse.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_uniq41_trophy.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_uniq97_trophy.itm.json'],
+      ],
       patches: [
         {
           items: [2516421, 2516423],
-          claimDescription: 'Complete Chapter II of the Season Journey',
+          claimDescription: 'Complete Chapter II of the Season Journey.',
         },
         {
           items: [2254542],
-          claimDescription: 'Complete Chapter III of the Season Journey',
+          claimDescription: 'Complete Chapter III of the Season Journey.',
         },
         {
           items: [2468469],
@@ -64,7 +69,20 @@ const SEASON11: CollectionDescriptor = {
         },
         {
           items: [2254544],
-          claimDescription: 'Complete Chapter VII of the Season Journey',
+          claimDescription: 'Complete Chapter VII of the Season Journey.',
+        },
+        {
+          items: [2474560],
+          claimDescription: 'Obtained by defeating Azmodan "World Boss".',
+        },
+        {
+          items: [2420630],
+          claimDescription:
+            'Obtained by defeating Lesser Evils bosses in secret boss lair by offering each 4 purified essences to hidden altars.',
+        },
+        {
+          items: [2420619],
+          claimDescription: 'Obtained by defeating summoned Azmodan in Zarbinzet.',
         },
       ],
     },

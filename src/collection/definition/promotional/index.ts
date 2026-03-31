@@ -619,7 +619,6 @@ const MERCHANDISE: CollectionDescriptor = {
       name: 'Butchers Cleaver',
       description: 'Purchase the Butchers Cleaver Replica from the Blizzard Gear Store',
       category: Category.PROMOTIONAL,
-      outOfRotation: true,
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_axe_stor029.prd.json'],
     },
     {
