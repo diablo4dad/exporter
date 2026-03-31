@@ -47,15 +47,24 @@ const SEASON11: CollectionDescriptor = {
       patches: [
         {
           items: [2516421, 2516423],
-          claimDescription: 'Rank II Reward',
+          claimDescription: 'Complete Chapter II of the Season Journey',
         },
         {
           items: [2254542],
-          claimDescription: 'Rank III Reward',
+          claimDescription: 'Complete Chapter III of the Season Journey',
+        },
+        {
+          items: [2468469],
+          claimDescription:
+            'Complete the Capstone Dungeon "Den of the Apostate" (Monster Lv. Pit Tier 30 - Torment II).',
+        },
+        {
+          items: [2493794],
+          claimDescription: 'Complete the Capstone Dungeon "Breach of Sins" (Monster Lv. Pit Tier 45 - Torment III).',
         },
         {
           items: [2254544],
-          claimDescription: 'Rank VII Reward',
+          claimDescription: 'Complete Chapter VII of the Season Journey',
         },
       ],
     },

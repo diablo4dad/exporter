@@ -49,15 +49,24 @@ const SEASON12: CollectionDescriptor = {
       patches: [
         {
           items: [2593309, 2593316],
-          claimDescription: 'Rank II Reward',
+          claimDescription: 'Complete Chapter II of the Season Journey',
         },
         {
           items: [2516283],
-          claimDescription: 'Rank III Reward',
+          claimDescription: 'Complete Chapter III of the Season Journey',
+        },
+        {
+          items: [2579148],
+          claimDescription:
+            'Complete the Capstone Dungeon "Den of the Apostate" (Monster Lv. Pit Tier 30 - Torment II).',
+        },
+        {
+          items: [2571410],
+          claimDescription: "Defeat The Butcher and open The Butcher's Hoard in Torment III.",
         },
         {
           items: [2516285],
-          claimDescription: 'Rank VII Reward',
+          claimDescription: 'Complete Chapter VII of the Season Journey',
         },
       ],
     },
