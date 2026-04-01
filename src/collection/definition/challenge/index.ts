@@ -277,13 +277,18 @@ function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
 
   // removes duplicate feats
   feats.collectionItems = feats.collectionItems.filter((e) => {
-    // removes dupe "The Cry of Ashava"
-    if (e.items.includes(1482434) && e.id !== 17349) {
+    // "The Cry of Ashava"
+    if (e.items.includes(1482434) && e.id !== 17373) {
       return false;
     }
 
-    // remove dupe "Beta Wolf Pack"
-    if (e.items.includes(1433914) && e.id !== 17351) {
+    // "Beta Wolf Pack"
+    if (e.items.includes(1433914) && e.id !== 17399) {
+      return false;
+    }
+
+    // "Early Voyager"
+    if (e.items.includes(1408465) && e.items.includes(1408463) && e.id !== 17371) {
       return false;
     }
 
