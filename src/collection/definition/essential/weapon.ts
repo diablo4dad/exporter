@@ -24,6 +24,7 @@ const TWO_HANDED_AXE: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_2HAxe_Legendary_Druid_10.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HAxe_Legendary_Barb_09.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HAxe_Rare_Generic_08.itm.json'],
+    ['json\\base\\meta\\Item\\2HAxe_Unique_Paladin_001.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\2HAxe_Unique_Barb_001.itm.json'],
   ],
@@ -83,8 +84,10 @@ const TWO_HANDED_SWORD: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_2HSword_Rare_Generic_08.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\2HSword_Unique_Barb_002.itm.json'],
-    ['json\\base\\meta\\Item\\2HSword_Unique_Generic_001.itm.json'],
     ['json\\base\\meta\\Item\\2HSword_Unique_Necro_100.itm.json'],
+    ['json\\base\\meta\\Item\\2HSword_Unique_Paladin_002.itm.json'],
+    // mythic
+    ['json\\base\\meta\\Item\\2HSword_Unique_Generic_001.itm.json'],
   ],
 };
 
@@ -223,6 +226,10 @@ const SWORD: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HSword_Unique_Generic_100.itm.json'],
     ['json\\base\\meta\\Item\\1HSword_Unique_Barb_101.itm.json'],
     ['json\\base\\meta\\Item\\S05_BSK_1HSword_uniq16_TransmogItem.itm.json'],
+    ['json\\base\\meta\\Item\\1HSword_Unique_Barb_103.itm.json'],
+    ['json\\base\\meta\\Item\\1HSword_Unique_Paladin_002.itm.json'],
+    ['json\\base\\meta\\Item\\1HSword_Unique_Paladin_001.itm.json'],
+    // mythic
     ['json\\base\\meta\\Item\\1HSword_Unique_Generic_001.itm.json'],
   ],
 };
@@ -315,6 +322,9 @@ const MACE: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_1HMace_Rare_Generic_08.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\1HMace_Unique_Druid_001.itm.json'],
+    ['json\\base\\meta\\Item\\1HMace_Unique_Necro_100.itm.json'],
+    ['json\\base\\meta\\Item\\1HMace_Unique_Sorc_100.itm.json'],
+    ['json\\base\\meta\\Item\\1HMace_Unique_Paladin_001.itm.json'],
   ],
   patches: [
     {
@@ -361,6 +371,11 @@ const SHIELD: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_1HShield_Legendary_Necro_12.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HShield_Legendary_Necro_13.itm.json'],
     ['json\\base\\meta\\Item\\X1_1HShield_Rare_Necro_08.itm.json'],
+    ['json\\base\\meta\\Item\\1HShield_Unique_Paladin_002.itm.json'],
+    ['json\\base\\meta\\Item\\1HShield_Unique_Paladin_005.itm.json'],
+    ['json\\base\\meta\\Item\\1HShield_Unique_Paladin_001.itm.json'],
+    ['json\\base\\meta\\Item\\1HShield_Unique_Paladin_004.itm.json'],
+    ['json\\base\\meta\\Item\\1HShield_Unique_Paladin_003.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\1HShield_Unique_Necro_100.itm.json'],
   ],
@@ -393,6 +408,8 @@ const CROSSBOW: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_2HCrossbow_Legendary_Rogue_12.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HCrossbow_Legendary_Rogue_13.itm.json'],
     ['json\\base\\meta\\Item\\X1_2HCrossbow_Rare_Rogue_08.itm.json'],
+    // unique
+    ['json\\base\\meta\\Item\\2HCrossbow_Unique_Rogue_100.itm.json'],
   ],
   patches: [
     {
@@ -629,6 +646,7 @@ const FOCUS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\X1_1HFocus_Rare_Generic_08.itm.json'],
     // unique
     ['json\\base\\meta\\Item\\1HFocus_Unique_Sorc_100.itm.json'],
+    ['json\\base\\meta\\Item\\1HFocus_Unique_Necro_100.itm.json'],
   ],
   patches: [
     {
@@ -760,6 +778,35 @@ const QUARTERSTAFF: CollectionDescriptor = {
   ],
 };
 
+const FLAILS: CollectionDescriptor = {
+  name: 'Flails',
+  category: Category.WEAPON,
+  items: [
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base09.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Legendary_Generic_uniq01.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base06.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base11.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base03.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Legendary_Generic_uniq04.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Normal_Generic_base00.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base10.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Magic_Generic_base01.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base08.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base04.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Legendary_Generic_uniq08.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Legendary_Generic_uniq06.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Legendary_Generic_uniq05.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Legendary_Generic_uniq07.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base05.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base07.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base12.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Rare_Generic_base02.itm.json'],
+    ['json\\base\\meta\\Item\\X2_1HFlail_Legendary_Generic_uniq02.itm.json'],
+    ['json\\base\\meta\\Item\\1HFlail_Unique_Paladin_003.itm.json'],
+    ['json\\base\\meta\\Item\\1HFlail_Unique_Paladin_004.itm.json'],
+  ],
+};
+
 const WEAPON: CollectionDescriptor = {
   name: 'Weapon',
   description: 'Transmogs found throughout Sanctuary',
@@ -784,6 +831,7 @@ const WEAPON: CollectionDescriptor = {
     TOTEM,
     GLAIVE,
     QUARTERSTAFF,
+    FLAILS,
   ],
 };
 
