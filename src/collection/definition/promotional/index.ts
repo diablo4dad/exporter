@@ -58,7 +58,7 @@ const TWITCH: CollectionDescriptor = {
     },
     {
       name: 'Twitch Drops #9',
-      description: 'Tune into an eligible live stream from September 26th, 2025 until October 10th, 2025',
+      description: 'Starcraft promotion from September 26th, 2025 until October 10th, 2025',
       category: Category.PROMOTIONAL,
       outOfRotation: true,
       storeProducts: [
