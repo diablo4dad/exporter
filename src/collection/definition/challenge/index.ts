@@ -226,6 +226,7 @@ function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
   const hidden = findNamedCollection(collection, 'Hidden');
   const challenge = findNamedCollection(findNamedCollection(collection, 'Challenge'), 'Challenge');
   const citadel = findNamedCollection(collection, 'First Khazra Citadel');
+  const feats = findNamedCollection(findNamedCollection(collection, 'Feats of Strength'), 'Feats');
 
   const triuneTrouble = findCollectionItem(hidden, [1287112, 1287114]);
   const ironWolf = findCollectionItem(hidden, [996341, 1287106]);
@@ -266,12 +267,28 @@ function moveHiddenAchievements(collection: D4DadCollection): D4DadCollection {
     [2217663], // The Dragon's Tapestry
     [2196917], // March of the Goblins
     [2089386, 2263324], // Masterful Tactician
+    [2391483, 2391479, 2391491, 2391487, 2391475, 2391495, 2391499], // Avatar of Trag'Oul
   ];
 
   // impure!
   hidden.collectionItems = hidden.collectionItems.filter(
     (ci) => !itemsToRemove.some((ir) => ir.every((i) => ci.items.includes(i))),
   );
+
+  // removes duplicate feats
+  feats.collectionItems = feats.collectionItems.filter((e) => {
+    // removes dupe "The Cry of Ashava"
+    if (e.items.includes(1482434) && e.id !== 17349) {
+      return false;
+    }
+
+    // remove dupe "Beta Wolf Pack"
+    if (e.items.includes(1433914) && e.id !== 17351) {
+      return false;
+    }
+
+    return true;
+  });
 
   return collection;
 }
