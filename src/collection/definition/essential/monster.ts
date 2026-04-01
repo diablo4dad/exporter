@@ -13,6 +13,8 @@ const WORLD_BOSS: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\mnt_uniq55_trophy.itm.json'],
     ['json\\base\\meta\\Item\\mnt_amor54_horse.itm.json'],
     ['json\\base\\meta\\Item\\mnt_uniq54_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_amor66_horse.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_uniq41_trophy.itm.json'],
   ],
   patches: [
     {
@@ -38,6 +40,14 @@ const WORLD_BOSS: CollectionDescriptor = {
     {
       items: [1222132],
       claimDescription: 'Dropped by Wandering Avarice.',
+    },
+    {
+      items: [2474560],
+      claimDescription: 'Dropped by Azmodan.',
+    },
+    {
+      items: [2420619],
+      claimDescription: 'Dropped by Azmodan.',
     },
   ],
 };
