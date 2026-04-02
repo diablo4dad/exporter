@@ -263,6 +263,7 @@ const AXE: CollectionDescriptor = {
     // uniques
     ['json\\base\\meta\\Item\\1HAxe_Unique_Generic_001.itm.json'],
     ['json\\base\\meta\\Item\\1HAxe_Unique_Druid_100.itm.json'],
+    ['json\\base\\meta\\Item\\1HAxe_Unique_Generic_003.itm.json'],
   ],
   patches: [
     {
@@ -485,6 +486,7 @@ const DAGGER: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\1HDagger_Unique_Rogue_002.itm.json'],
     ['json\\base\\meta\\Item\\1HDagger_Unique_Rogue_001.itm.json'],
     ['json\\base\\meta\\Item\\S05_BSK_1HDagger_uniq17_TransmogItem.itm.json'],
+    ['json\\base\\meta\\Item\\1HDagger_Unique_Generic_001.itm.json'],
   ],
   patches: [
     {
