@@ -1,6 +1,54 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const APRIL_FOWLS: CollectionDescriptor = {
+  name: 'April Fowls',
+  description: "Free from Tejal's Shop from April 1st, 2026 until April 7th, 2026",
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Free from the cash shop for a limited time.',
+  // Quake Before the Hatchling
+  items: [['json\\base\\meta\\Emblem\\emblem_glo073_stor.emb.json']],
+};
+
+const DOOM: CollectionDescriptor = {
+  name: 'Doom: Age of the Slayer',
+  description: "Free from Tejal's Shop from March 11th, 2026 until April 26th, 2026",
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Free from the cash shop for a limited time.',
+  // Dark before the Dawn (Emblem) (03.11.2026)
+  // Grandeur of the Gutted (Emblem) (03.13.2026)
+  // Rip and Tear (Emblem) (03.15.2026)
+  items: [
+    ['json\\base\\meta\\Emblem\\emblem_glo073_stor.emb.json'],
+    ['json\\base\\meta\\Emblem\\emblem_glo072_stor.emb.json'],
+    ['json\\base\\meta\\Emblem\\emblem_glo074_stor.emb.json'],
+  ],
+};
+
+const MARCH_OF_THE_GOBLINS: CollectionDescriptor = {
+  name: 'March of the Goblins',
+  description: "Free from Tejal's Shop from December 18th, 2025 until January 6th, 2026",
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Free from the cash shop for a limited time.',
+  items: [
+    ['json\\base\\meta\\Item\\mnt_stor299_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor298_trophy.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_amor224_horse_stor.itm.json'],
+  ],
+};
+
+const COMMUNITY_DELIGHTS: CollectionDescriptor = {
+  name: 'Community Delights',
+  description: 'Free gifts for "Vessel of Hatred" expansion owners',
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Free from the cash shop for a limited time.',
+  items: [
+    ['json\\base\\meta\\Item\\cmp_stor105_dogLarge.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_stor303_trophy.itm.json'],
+    ['json\\base\\meta\\Emblem\\emblem_glo075_stor.emb.json'],
+  ],
+};
+
 const STARCRAFT: CollectionDescriptor = {
   name: 'StarCraft x Diablo IV',
   description: "Free from Tejal's Shop from September 26th, 2025 until October 10th, 2025",
@@ -193,6 +241,10 @@ const TEJAL: CollectionDescriptor = {
   description: "Transmogs acquired from Tejal's Shop on a limited basis",
   category: Category.GENERAL,
   children: [
+    // APRIL_FOWLS
+    // DOOM,
+    MARCH_OF_THE_GOBLINS,
+    COMMUNITY_DELIGHTS,
     STARCRAFT,
     MACABRE_CELEBRATION,
     HATRED_RISING_FREEBIES,
