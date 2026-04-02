@@ -44,6 +44,13 @@ export const HEADSTONE = 7203;
 export const EMBLEM = 7204;
 export const PLAYER_TITLE_PREFIX = 7205;
 export const PLAYER_TITLE_SUFFIX = 7206;
+export const HORSE_ARMOR = 446865;
+export const BACK_TROPHY = 1007859;
+export const TROPHY = 446866;
+export const SWORD = 446796;
+export const TWO_HANDED_SWORD = 446799;
+export const TWO_HANDED_POLEARM = 446813;
+export const BOW = 446823;
 
 export enum Zone {
   FRACTURED_PEAKS,

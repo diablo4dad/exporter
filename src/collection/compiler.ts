@@ -15,6 +15,7 @@ import { itemTypeToDad } from './parser/itemTypes.js';
 import { markingShapeToDad } from './parser/marking.js';
 import { portalToDad } from './parser/portals.js';
 import { playerTitleToDad } from './parser/title.js';
+import { getReconstructedEntities } from './reconstruction.js';
 import { D4DadDb, D4DadEntity, D4DadTranslation } from './struct.js';
 
 import { D4Dependencies } from '../d4reader/struct.js';
@@ -44,6 +45,9 @@ export function makeDb(deps: D4Dependencies): D4DadDb {
   const achievementsOut = Array.from(deps.achievements.values()).map(achievementToDad(deps));
   const challengeOut = Array.from(deps.challenges.values()).map(challengeToDad(deps));
 
+  // some items are missing from d4data
+  const reconstructedOut = getReconstructedEntities();
+
   const general = ESSENTIAL.map(buildCollection(deps));
   const seasons = SEASON.map(buildCollection(deps));
   const challenge = pipe(CHALLENGE, buildCollection(deps)).subcollections;
@@ -72,6 +76,7 @@ export function makeDb(deps: D4Dependencies): D4DadDb {
     ...productsOut.map(mapTranslations),
     ...challengeOut.map(mapTranslations),
     ...achievementsOut.map(mapTranslations),
+    ...reconstructedOut.map(mapTranslations),
   ]);
 
   return {
@@ -88,6 +93,7 @@ export function makeDb(deps: D4Dependencies): D4DadDb {
       ...markingsOut.map(mapEntitiesCoalesce),
       ...portalsOut.map(mapEntitiesCoalesce),
       ...titlesOut.map(mapEntitiesCoalesce),
+      ...reconstructedOut.map(mapEntitiesCoalesce),
     ],
   };
 }

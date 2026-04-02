@@ -31,7 +31,7 @@ export type CollectionDescriptor = {
   reputationFile?: string;
   storeProducts?: string[];
   achievements?: string[];
-  items?: string[][];
+  items?: string[][] | number[][];
   collectionItems?: Partial<D4DadCollectionItem>[];
 };
 

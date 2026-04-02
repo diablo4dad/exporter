@@ -1,20 +1,101 @@
 import { Category } from '../../constants.js';
+import {
+  BRAND_OF_SACRIFICE,
+  BURNING_BARDS,
+  BURNING_DAWN_BANNER,
+  BURNING_DAWN_BOW,
+  ODE_OF_THE_BERSERKER,
+  SUNFLAME_LANTERN,
+  SUNFLAME_SWORD,
+  SUNRAISER,
+  THE_BURNING_DAWN,
+  THE_FORETOLD_ECLIPSE,
+  THE_HAWKS_DESTINY,
+  THE_SKULL_KNIGHTS_HERALDRY,
+} from '../../reconstruction.js';
 import { CollectionDescriptor } from '../../struct.js';
 
-const SECOND_ANNIVERSARY = {
+const SECOND_ANNIVERSARY: CollectionDescriptor = {
   name: '2nd Anniversary',
   description: 'Claim Reliquary rewards from June 3rd, 2025 until June 17th, 2025.',
   category: Category.LIMITED_EVENT,
   claimDescription: 'Claimed from the 2nd Anniversary Reliquary.',
-  storeProducts: ['json\\base\\meta\\StoreProduct\\Catalog_Anniversary_2.prd.json'],
+  // storeProducts: ['json\\base\\meta\\StoreProduct\\Catalog_Anniversary_2.prd.json'],
+  items: [
+    [SUNRAISER],
+    [SUNFLAME_SWORD],
+    [BURNING_BARDS],
+    [BURNING_DAWN_BOW],
+    [THE_BURNING_DAWN],
+    [SUNFLAME_LANTERN],
+    [BURNING_DAWN_BANNER],
+  ],
 };
 
 const BERSERK: CollectionDescriptor = {
   name: 'Diablo IV x Berserk',
-  description: 'Claim Reliquary rewards from May 6th, 2025 until June 3rd, 2025.',
+  description: 'Claim Reliquary rewards from May 6th, 2025 until June 3rd, 2025',
   category: Category.LIMITED_EVENT,
   claimDescription: 'Claimed from the Berserk Reliquary.',
-  storeProducts: ['json\\base\\meta\\StoreProduct\\Catalog_S08_IP_Collab.prd.json'],
+  // storeProducts: ['json\\base\\meta\\StoreProduct\\Catalog_S08_IP_Collab.prd.json'],
+  items: [
+    [THE_HAWKS_DESTINY],
+    [THE_SKULL_KNIGHTS_HERALDRY],
+    [BRAND_OF_SACRIFICE],
+    [THE_FORETOLD_ECLIPSE],
+    [ODE_OF_THE_BERSERKER],
+  ],
+};
+
+const DOOM_DARK_AGES: CollectionDescriptor = {
+  name: 'DOOM: The Dark Ages',
+  description: 'Claim DOOM transmogs from March 11th, 2026 until April 26th, 2026',
+  category: Category.LIMITED_EVENT,
+  claimDescription: 'Claimed from the DOOM Reliquary.',
+  children: [
+    {
+      name: 'Chest Drops',
+      items: [
+        // Crucible Sword - S12_2HSword_DOOM_TransmogItem.itm
+        // Crucible Blade - S12_1HSword_DOOM_TransmogItem.itm
+        // Crucible Axe - S12_1HAxe_DOOM_TransmogItem.itm
+        // Crucible Dagger - S12_1HDagger_DOOM_TransmogItem.itm
+        // Crucible Polearm - S12_2HPolearm_DOOM_TransmogItem.itm
+      ],
+    },
+    {
+      name: 'Reliquary',
+      items: [
+        ['json\\base\\meta\\Item\\Flail_stor008.itm.json'],
+        ['json\\base\\meta\\Item\\mace_stor067.itm.json'],
+        ['json\\base\\meta\\Item\\shield_stor049.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandSorcStaff_stor060.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandCrossbow_stor063.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandQuarterstaff_stor026.itm.json'],
+        ['json\\base\\meta\\Item\\trophy_glo007_stor.itm.json'],
+        // ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'], // The Forsaken Gates
+        // ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'], // Font of the Slayer
+      ],
+    },
+  ],
+};
+
+const LUNAR_AWAKENING_2026: CollectionDescriptor = {
+  name: 'Lunar Awakening 2026',
+  description: 'Chinese new year event from February 12th, 2026 until February 26th, 2026',
+  category: Category.LIMITED_EVENT,
+  outOfRotation: true,
+  claim: 'Quest Reward',
+  claimDescription: 'Lunar Awakening Event quest reward.',
+  achievements: ['json\\base\\meta\\Achievement\\LTE_LNY_Rep_GrantMarking_Hidden_2026.ach.json'],
+  items: [
+    ['json\\base\\meta\\Item\\mnt_lunar002_horse.itm.json'],
+    ['json\\base\\meta\\Item\\mnt_lunar002_trophy_lte.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandAxe_lunar002_lte.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandBow_lunar002_lte.itm.json'],
+    ['json\\base\\meta\\Item\\wand_lunar002_lte.itm.json'],
+  ],
 };
 
 const LUNAR_AWAKENING_2025: CollectionDescriptor = {
@@ -37,7 +118,7 @@ const LUNAR_AWAKENING_2025: CollectionDescriptor = {
 
 const MARCH_OF_THE_GOBLINS: CollectionDescriptor = {
   name: 'March of the Goblins',
-  description: 'Slay Gilded Goblins from March 4th, 2025 until March 11th, 2025.',
+  description: 'Slay Gilded Goblins from March 4th, 2025 until March 11th, 2025',
   category: Category.LIMITED_EVENT,
   claimDescription: 'Complete the March of the Goblins reputation board.',
   items: [['json\\base\\meta\\Emblem\\emblem_glo054_stor.emb.json']],
@@ -45,7 +126,7 @@ const MARCH_OF_THE_GOBLINS: CollectionDescriptor = {
 
 const SLAY_RIDE_TO_HELL: CollectionDescriptor = {
   name: 'Slay Ride to Hell',
-  description: 'Holiday event from December 17th, 2024 until January 2nd, 2025.',
+  description: 'Holiday event from December 17th, 2024 until January 2nd, 2025',
   category: Category.LIMITED_EVENT,
   claimDescription: 'Rewarded from the "Slay Ride to Hell" event.',
   items: [
@@ -151,9 +232,10 @@ const EVENT: CollectionDescriptor = {
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
   children: [
-    // these have gone missing
-    // SECOND_ANNIVERSARY,
-    // BERSERK,
+    // DOOM_DARK_AGES,
+    LUNAR_AWAKENING_2026,
+    SECOND_ANNIVERSARY,
+    BERSERK,
     MARCH_OF_THE_GOBLINS,
     LUNAR_AWAKENING_2025,
     SLAY_RIDE_TO_HELL,

@@ -349,7 +349,10 @@ function parseAchievementFiles(deps: D4Dependencies) {
 function parseExtraItems(deps: D4Dependencies) {
   return (descriptor: CollectionDescriptor): D4DadCollectionItem[] => {
     return (descriptor.items ?? []).map((g) => {
-      const items = g.map((i) => getEntityFuzzy(i, deps)).filter((v): v is D4Entity => v !== null);
+      const isSnoPath = typeof g[0] === 'string';
+      const items = g
+        .map((i) => (typeof i === 'string' ? getEntityFuzzy(i, deps) : null))
+        .filter((v): v is D4Entity => v !== null);
 
       return {
         id: generateId(),
@@ -357,7 +360,7 @@ function parseExtraItems(deps: D4Dependencies) {
         claim: descriptor.claim ?? inferClaim(descriptor),
         claimZone: descriptor.claimZone,
         claimDescription: descriptor.claimDescription,
-        items: items.map((i) => i.__snoID__),
+        items: isSnoPath ? items.map((i) => i.__snoID__) : (g as number[]),
       };
     });
   };
