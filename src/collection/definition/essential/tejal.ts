@@ -1,6 +1,21 @@
 import { Category } from '../../constants.js';
 import { CollectionDescriptor } from '../../struct.js';
 
+const STARCRAFT: CollectionDescriptor = {
+  name: 'StarCraft x Diablo IV',
+  description: "Free from Tejal's Shop from September 26th, 2025 until October 10th, 2025",
+  category: Category.SHOP_ITEMS,
+  claimDescription: 'Free from the cash shop for a limited time.',
+  items: [
+    ['json\\base\\meta\\Item\\mace_stor060.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandPolearm_stor078.itm.json'],
+    ['json\\base\\meta\\Item\\twoHandCrossbow_stor059.itm.json'],
+    ['json\\base\\meta\\Emblem\\emblem_glo073_stor.emb.json'],
+    ['json\\base\\meta\\Emblem\\emblem_glo072_stor.emb.json'],
+    ['json\\base\\meta\\Emblem\\emblem_glo074_stor.emb.json'],
+  ],
+};
+
 const MACABRE_CELEBRATION: CollectionDescriptor = {
   name: 'Macabre Celebration',
   description: "Free from Tejal's Shop from October 29th, 2024 until November 5th 2024",
@@ -178,6 +193,7 @@ const TEJAL: CollectionDescriptor = {
   description: "Transmogs acquired from Tejal's Shop on a limited basis",
   category: Category.GENERAL,
   children: [
+    STARCRAFT,
     MACABRE_CELEBRATION,
     HATRED_RISING_FREEBIES,
     FIRST_YEAR_ANNIVERSARY,
