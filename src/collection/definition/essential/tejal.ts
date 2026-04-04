@@ -198,6 +198,7 @@ const RETURNING_CHAMPION: CollectionDescriptor = {
     ['json\\base\\meta\\Item\\offHandsSorc_stor024.itm.json'],
     ['json\\base\\meta\\Item\\twoHandAxe_stor014.itm.json'],
     ['json\\base\\meta\\Item\\scythe_stor013.itm.json'],
+    ['json\\base\\meta\\Item\\offHandsNecro_stor023.itm.json'],
   ],
 };
 

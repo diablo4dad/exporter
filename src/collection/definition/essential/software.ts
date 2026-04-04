@@ -9,6 +9,65 @@ const SOFTWARE: CollectionDescriptor = {
   patches: [],
   children: [
     {
+      name: 'Lord of Hatred',
+      description: 'The Lord of Hatred expansion',
+      category: Category.GENERAL,
+      claim: 'Promotional',
+      claimDescription: 'Included with the Lord of Hatred Ultimate edition.',
+      premium: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\X2_BNet_Ultimate.prd.json',
+        'json\\base\\meta\\StoreProduct\\Bundle_HArmor_pal_stor156.prd.json',
+      ],
+      items: [
+        ['json\\base\\meta\\Item\\cmp_stor100_chimeraMount.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_stor001_chimera.itm.json'],
+        ['json\\base\\meta\\Item\\mnt_stor302_trophy.itm.json'],
+      ],
+      patches: [
+        {
+          items: [2320809], // Skorch
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2385816], // Skartaran Basilisk
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2309816], // Skartaran Basilisk Trophy
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2288711],
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2288717],
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2288724],
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2288730],
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2288736],
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2288895],
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+        {
+          items: [2391002],
+          claimDescription: 'Included with the Lord of Hatred Deluxe and Ultimate editions.',
+        },
+      ],
+    },
+    {
       name: 'Vessel of Hatred',
       description: 'The Vessel of Hatred expansion',
       category: Category.GENERAL,

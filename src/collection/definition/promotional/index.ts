@@ -580,6 +580,15 @@ const CROSSOVERS: CollectionDescriptor = {
   promotional: true,
   children: [
     {
+      name: 'Diablo II: Reign of the Warlock',
+      description: 'Transmogs included with the D2R expansion',
+      category: Category.PROMOTIONAL,
+      items: [
+        ['json\\base\\meta\\Item\\cmp_stor100_gardenDefiler.itm.json'],
+        ['json\\base\\meta\\Item\\trophy_glo015_stor.itm.json'],
+      ],
+    },
+    {
       name: 'Midnight',
       description: 'Complete the prologue "Echoes of midnight" achievement in the WoW Midnight expansion',
       category: Category.PROMOTIONAL,
