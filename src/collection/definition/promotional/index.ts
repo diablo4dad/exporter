@@ -420,6 +420,7 @@ const TROLLI: CollectionDescriptor = {
     {
       name: 'Trolli #1',
       description: 'Promotion running from September 1st, 2024 until February 28th, 2025.',
+      claimDescription: 'Redeemable from the Trolli promotion.',
       items: [
         ['json\\base\\meta\\Item\\twoHandPolearm_stor042.itm.json'],
         ['json\\base\\meta\\Item\\mace_stor044.itm.json'],
@@ -610,7 +611,8 @@ const MERCHANDISE: CollectionDescriptor = {
   children: [
     {
       name: "Death's Head Cudgel",
-      description: "Purchase products in the Death's Head Cudgel collection from the Blizzard Gear Store",
+      description:
+        "Included with Death's Head Cudgel collection at the Blizzard Gear Store from November 10th, 2025 until December 19th, 2025",
       category: Category.PROMOTIONAL,
       outOfRotation: true,
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Promo_Mace_stor049.prd.json'],

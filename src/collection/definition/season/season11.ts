@@ -48,11 +48,11 @@ const SEASON11: CollectionDescriptor = {
       patches: [
         {
           items: [2516421, 2516423],
-          claimDescription: 'Complete Chapter II of the Season Journey.',
+          claimDescription: 'Complete the Capstone Dungeon "Vault of the Crucible" (Monster Lv. 30 - Hard).',
         },
         {
           items: [2254542],
-          claimDescription: 'Complete Chapter III of the Season Journey.',
+          claimDescription: 'Complete the Capstone Dungeon "Hellish Descent" (Monster Lv. 50 - Penitent).',
         },
         {
           items: [2468469],
@@ -65,7 +65,7 @@ const SEASON11: CollectionDescriptor = {
         },
         {
           items: [2254544],
-          claimDescription: 'Complete Chapter VII of the Season Journey.',
+          claimDescription: 'Complete the Capstone Dungeon "Breach of Sins" (Monster Lv. Pit Tier 45 - Torment III).',
         },
         {
           items: [2420630],

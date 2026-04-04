@@ -81,7 +81,7 @@ const BERSERK: [D4DadItem, D4DadTranslation][] = [
       icon: -1,
     },
     {
-      name: 'Ode of the Berserker',
+      name: 'Od of the Berserker',
     },
   ],
 ];
