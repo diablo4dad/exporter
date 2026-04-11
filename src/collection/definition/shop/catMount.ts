@@ -44,6 +44,26 @@ const CAT_MOUNTS: CollectionDescriptor = {
       // Hunters of the Haunt
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor014.prd.json'],
     },
+    {
+      // Zergling Rush
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor017.prd.json'],
+    },
+    {
+      // Herald of the lightning
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor015.prd.json'],
+    },
+    {
+      // Beasts of sunless realms
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor016.prd.json'],
+    },
+    {
+      // Pride of the Rimehowl
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor021.prd.json'],
+    },
+    {
+      // Blood and Bone
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor020.prd.json'],
+    },
   ],
 };
 

@@ -222,6 +222,34 @@ const SORCERER: CollectionDescriptor = {
       // The Grinning Priestess
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor236.prd.json'],
     },
+    {
+      // The Spectral Phantom
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor249.prd.json'],
+    },
+    {
+      // The high templar
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor253.prd.json'],
+    },
+    {
+      // Sovereign of prisms
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor255.prd.json'],
+    },
+    {
+      // Inquisition of the black flame
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor254.prd.json'],
+    },
+    {
+      // The Lioness of Denshar
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor260.prd.json'],
+    },
+    {
+      // The ScarletFlame Vanguard
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor261.prd.json'],
+    },
+    {
+      // Singer of Anathema
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor242.prd.json'],
+    },
   ],
 };
 

@@ -232,6 +232,26 @@ const ROGUE: CollectionDescriptor = {
       // The Spectral Phantom
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor249.prd.json'],
     },
+    {
+      // The dark prelate
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor252.prd.json'],
+    },
+    {
+      // Shadow viper
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor254.prd.json'],
+    },
+    {
+      // The curseborn creature
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor253.prd.json'],
+    },
+    {
+      // Marionette Fatale
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor245.prd.json'],
+    },
+    {
+      // The Fallen Rapture
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor236.prd.json'],
+    },
   ],
 };
 

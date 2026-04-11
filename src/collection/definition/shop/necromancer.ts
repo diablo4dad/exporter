@@ -233,6 +233,22 @@ const NECROMANCER: CollectionDescriptor = {
       // The Spectral Sepulcher
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor244.prd.json'],
     },
+    {
+      // Overqueen of the swarm
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor249.prd.json'],
+    },
+    {
+      // Ichor of contempt
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor248.prd.json'],
+    },
+    {
+      // Communion in Carmine
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor253.prd.json'],
+    },
+    {
+      // The Abyssal Revival
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor233.prd.json'],
+    },
   ],
 };
 

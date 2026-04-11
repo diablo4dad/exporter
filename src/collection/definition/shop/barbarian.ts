@@ -242,6 +242,26 @@ const BARBARIAN: CollectionDescriptor = {
       // The Spectral Legion
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor249.prd.json'],
     },
+    {
+      // The rebel Marshal
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor253.prd.json'],
+    },
+    {
+      // Hand of the Blackthorn Tribe
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor255.prd.json'],
+    },
+    {
+      // The untamed monarch
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor252.prd.json'],
+    },
+    {
+      // Dreadblade titan
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor223.prd.json'],
+    },
+    {
+      // The Flames of Abaddon
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor226.prd.json'],
+    },
   ],
 };
 

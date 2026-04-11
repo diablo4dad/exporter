@@ -27,6 +27,18 @@ const PETS: CollectionDescriptor = {
     {
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_fox.prd.json'],
     },
+    {
+      // Foe to friend
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_hydralisk.prd.json'],
+    },
+    {
+      // Mirth of the earth
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor102.prd.json'],
+    },
+    {
+      // The Springmoon Stag
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_deer.prd.json'],
+    },
   ],
 };
 

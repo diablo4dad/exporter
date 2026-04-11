@@ -165,6 +165,22 @@ const DRUID: CollectionDescriptor = {
       // Pride of the Storm
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor231.prd.json'],
     },
+    {
+      // The spectral Wraithguard
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor234.prd.json'],
+    },
+    {
+      // Heaven's devil
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor236.prd.json'],
+    },
+    {
+      // Eve of Krim'darg
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor241.prd.json'],
+    },
+    {
+      // Bellows of Netherfire
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor219.prd.json'],
+    },
   ],
 };
 

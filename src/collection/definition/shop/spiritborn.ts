@@ -92,6 +92,34 @@ const SPIRITBORN: CollectionDescriptor = {
       // The Skymaster's Reign
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor194.prd.json'],
     },
+    {
+      // The spectral Undercroft
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor189.prd.json'],
+    },
+    {
+      // The Queen of Blades
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor195.prd.json'],
+    },
+    {
+      // Path of the spiritborn
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_TPortal_spi_stor001.prd.json'],
+    },
+    {
+      // Order of the black mantis
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor196.prd.json'],
+    },
+    {
+      // Thornblood's Blooming
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor204.prd.json'],
+    },
+    {
+      // Huntress of Mirages
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor203.prd.json'],
+    },
+    {
+      // The Claws of Baal
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor180.prd.json'],
+    },
   ],
 };
 

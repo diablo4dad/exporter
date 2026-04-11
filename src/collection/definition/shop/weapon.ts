@@ -37,6 +37,10 @@ const WEAPONS: CollectionDescriptor = {
       // The Crystalline Armory
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_Any_stor001.prd.json'],
     },
+    {
+      // The Glacial Ossuary
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Weapons_dru_stor001.prd.json'],
+    },
   ],
 };
 
