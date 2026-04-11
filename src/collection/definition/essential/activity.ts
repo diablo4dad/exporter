@@ -218,6 +218,10 @@ const GAUNTLET: CollectionDescriptor = {
   ],
   patches: [
     {
+      items: [1821571],
+      outOfRotation: true,
+    },
+    {
       items: [1904653],
       season: 4,
       outOfRotation: true,
@@ -225,6 +229,7 @@ const GAUNTLET: CollectionDescriptor = {
     {
       items: [1975292],
       season: 5,
+      outOfRotation: true,
     },
   ],
 };
