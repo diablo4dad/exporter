@@ -116,10 +116,6 @@ const SPIRITBORN: CollectionDescriptor = {
       // Huntress of Mirages
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor203.prd.json'],
     },
-    {
-      // The Claws of Baal
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_spi_stor180.prd.json'],
-    },
   ],
 };
 

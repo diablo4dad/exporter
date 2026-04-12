@@ -258,10 +258,6 @@ const BARBARIAN: CollectionDescriptor = {
       // Dreadblade titan
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor223.prd.json'],
     },
-    {
-      // The Flames of Abaddon
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor226.prd.json'],
-    },
   ],
 };
 

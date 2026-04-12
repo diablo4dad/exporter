@@ -245,10 +245,6 @@ const NECROMANCER: CollectionDescriptor = {
       // Communion in Carmine
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor253.prd.json'],
     },
-    {
-      // The Abyssal Revival
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_nec_stor233.prd.json'],
-    },
   ],
 };
 

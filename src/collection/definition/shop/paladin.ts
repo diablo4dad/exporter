@@ -55,10 +55,6 @@ const PALADIN: CollectionDescriptor = {
       // Sins of Wanton Delights
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_pal_stor166.prd.json'],
     },
-    {
-      // Sacrilege's Crucible
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_pal_stor157.prd.json'],
-    },
   ],
 };
 

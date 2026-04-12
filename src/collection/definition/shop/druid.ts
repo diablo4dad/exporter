@@ -177,10 +177,6 @@ const DRUID: CollectionDescriptor = {
       // Eve of Krim'darg
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor241.prd.json'],
     },
-    {
-      // Bellows of Netherfire
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_dru_stor219.prd.json'],
-    },
   ],
 };
 

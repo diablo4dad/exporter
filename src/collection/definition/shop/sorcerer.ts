@@ -246,10 +246,6 @@ const SORCERER: CollectionDescriptor = {
       // The ScarletFlame Vanguard
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor261.prd.json'],
     },
-    {
-      // Singer of Anathema
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_sor_stor242.prd.json'],
-    },
   ],
 };
 

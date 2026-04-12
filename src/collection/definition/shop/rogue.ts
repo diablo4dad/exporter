@@ -248,10 +248,6 @@ const ROGUE: CollectionDescriptor = {
       // Marionette Fatale
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor245.prd.json'],
     },
-    {
-      // The Fallen Rapture
-      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_rog_stor236.prd.json'],
-    },
   ],
 };
 
