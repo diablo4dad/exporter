@@ -29,7 +29,6 @@ const FRACTURED_PEAKS: CollectionDescriptor = {
     {
       items: [1223765],
       claimChest: Chest.LEGION,
-      unobtainable: true, // this one appears to be bugged
     },
     {
       items: [667310],
