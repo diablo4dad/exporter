@@ -51,6 +51,13 @@ export const SWORD = 446796;
 export const TWO_HANDED_SWORD = 446799;
 export const TWO_HANDED_POLEARM = 446813;
 export const BOW = 446823;
+export const FLAIL = 2312856;
+export const MACE = 446778;
+export const SHIELD = 446834;
+export const TWO_HANDED_STAFF = 1567589;
+export const TWO_HANDED_MACE = 446788;
+export const TWO_HANDED_CROSSBOW = 446825;
+export const QUARTERSTAFF = 1495597;
 
 export enum Zone {
   FRACTURED_PEAKS,

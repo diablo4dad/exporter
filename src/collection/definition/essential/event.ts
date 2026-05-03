@@ -1,15 +1,24 @@
 import { Category } from '../../constants.js';
 import {
+  BALLISTIC_FORCE_CROSSBOW,
   BRAND_OF_SACRIFICE,
   BURNING_BARDS,
   BURNING_DAWN_BANNER,
   BURNING_DAWN_BOW,
+  CHAINSHOT_STAFF,
+  DREADMACE,
+  HEAD_OF_THE_CYBERDEMON,
+  IMPALER,
   ODE_OF_THE_BERSERKER,
+  PULVERIZER,
+  SHIELD_SAW,
+  SLAYERS_FLAIL,
   SUNFLAME_LANTERN,
   SUNFLAME_SWORD,
   SUNRAISER,
   THE_BURNING_DAWN,
   THE_FORETOLD_ECLIPSE,
+  THE_FORSAKEN_GATES,
   THE_HAWKS_DESTINY,
   THE_SKULL_KNIGHTS_HERALDRY,
 } from '../../reconstruction.js';
@@ -47,37 +56,45 @@ const BERSERK: CollectionDescriptor = {
   ],
 };
 
-const DOOM_DARK_AGES: CollectionDescriptor = {
-  name: 'DOOM: The Dark Ages',
-  description: 'Claim DOOM transmogs from March 11th, 2026 until April 26th, 2026',
+const DOOM_DARK_AGES_EVENT: CollectionDescriptor = {
+  name: 'Diablo IV x DOOM: The Dark Ages Event',
+  description: 'Slay Lair Bosses from March 11th, 2026 until April 26th, 2026',
+  category: Category.LIMITED_EVENT,
+  claimDescription: 'Claimed from a DOOM Chest.',
+  items: [
+    ['json\\base\\meta\\Item\\S12_2HSword_DOOM_TransmogItem.itm.json'],
+    ['json\\base\\meta\\Item\\S12_1HSword_DOOM_TransmogItem.itm.json'],
+    ['json\\base\\meta\\Item\\S12_1HAxe_DOOM_TransmogItem.itm.json'],
+    ['json\\base\\meta\\Item\\S12_1HDagger_DOOM_TransmogItem.itm.json'],
+    ['json\\base\\meta\\Item\\S12_2HPolearm_DOOM_TransmogItem.itm.json'],
+  ],
+};
+
+const DOOM_DARK_AGES_RELIQUARY: CollectionDescriptor = {
+  name: 'Diablo IV x DOOM: The Dark Ages Reliquary',
+  description: 'Claim Reliquary rewards from March 11th, 2026 until April 26th, 2026',
   category: Category.LIMITED_EVENT,
   claimDescription: 'Claimed from the DOOM Reliquary.',
-  children: [
-    {
-      name: 'Chest Drops',
-      items: [
-        // Crucible Sword - S12_2HSword_DOOM_TransmogItem.itm
-        // Crucible Blade - S12_1HSword_DOOM_TransmogItem.itm
-        // Crucible Axe - S12_1HAxe_DOOM_TransmogItem.itm
-        // Crucible Dagger - S12_1HDagger_DOOM_TransmogItem.itm
-        // Crucible Polearm - S12_2HPolearm_DOOM_TransmogItem.itm
-      ],
-    },
-    {
-      name: 'Reliquary',
-      items: [
-        ['json\\base\\meta\\Item\\Flail_stor008.itm.json'],
-        ['json\\base\\meta\\Item\\mace_stor067.itm.json'],
-        ['json\\base\\meta\\Item\\shield_stor049.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandSorcStaff_stor060.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandCrossbow_stor063.itm.json'],
-        ['json\\base\\meta\\Item\\twoHandQuarterstaff_stor026.itm.json'],
-        ['json\\base\\meta\\Item\\trophy_glo007_stor.itm.json'],
-        // ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'], // The Forsaken Gates
-        // ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'], // Font of the Slayer
-      ],
-    },
+  items: [
+    [SLAYERS_FLAIL],
+    [DREADMACE],
+    [SHIELD_SAW],
+    [CHAINSHOT_STAFF],
+    [PULVERIZER],
+    [BALLISTIC_FORCE_CROSSBOW],
+    [IMPALER],
+    [HEAD_OF_THE_CYBERDEMON],
+    [THE_FORSAKEN_GATES],
+    // ['json\\base\\meta\\Item\\Flail_stor008.itm.json'],
+    // ['json\\base\\meta\\Item\\mace_stor067.itm.json'],
+    // ['json\\base\\meta\\Item\\shield_stor049.itm.json'],
+    // ['json\\base\\meta\\Item\\twoHandSorcStaff_stor060.itm.json'],
+    // ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'],
+    // ['json\\base\\meta\\Item\\twoHandCrossbow_stor063.itm.json'],
+    // ['json\\base\\meta\\Item\\twoHandQuarterstaff_stor026.itm.json'],
+    // ['json\\base\\meta\\Item\\trophy_glo007_stor.itm.json'],
+    // ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'], // The Forsaken Gates
+    // ['json\\base\\meta\\Item\\twoHandMace_stor059.itm.json'], // Font of the Slayer
   ],
 };
 
@@ -232,7 +249,8 @@ const EVENT: CollectionDescriptor = {
   description: 'Transmogs received from limited events',
   category: Category.GENERAL,
   children: [
-    // DOOM_DARK_AGES,
+    DOOM_DARK_AGES_EVENT,
+    DOOM_DARK_AGES_RELIQUARY,
     LUNAR_AWAKENING_2026,
     SECOND_ANNIVERSARY,
     BERSERK,
