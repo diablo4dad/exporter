@@ -328,69 +328,14 @@ function levenshteinDistance(str1: string, str2: string): number {
   return matrix[str2.length][str1.length];
 }
 
-const searchStrings = [
-  'The spectral Wraithguard',
-  'The Spectral Phantom',
-  'The spectral Undercroft',
-  'The rebel Marshal',
-  "Heaven's devil",
-  'Overqueen of the swarm',
-  'The dark prelate',
-  'The high templar',
-  'The Queen of Blades',
-  'Zergling Rush',
-  'Foe to friend',
-  'Path of the spiritborn',
-  'The Glacial Ossuary',
-  'Herald of the lightning',
-  'Beasts of sunless realms',
-  'Mirth of the earth',
-  'Pride of the Rimehowl',
-  'Blood and Bone',
-  'The Springmoon Stag',
-  'Defenders of the Verdant Wild',
-  'Heart of Emberthorn',
-  'Hand of the Blackthorn Tribe',
-  'The Spectral Ossuarian',
-  'Ichor of contempt',
-  'Order of the black mantis',
-  'Shadow viper',
-  'The curseborn creature',
-  'Sovereign of prisms',
-  'Inquisition of the black flame',
-  'Marionette Fatale',
-  "Thornblood's Blooming",
-  'Communion in Carmine',
-  'Huntress of Mirages',
-  'The Lioness of Denshar',
-  'The ScarletFlame Vanguard',
-  "Eve of Krim'darg",
-  'The untamed monarch',
-  'Dreadblade titan',
-  'Thirst of the Crimson Reign',
-  'Pride of the red sand',
-  "The Red Devil's Revolution",
-  'The Onyx Sentinel',
-  'Illumination of the sunbringer',
-  "Sacrilege's Crucible",
-  'Wolves of the Shattered Hearth',
-  'Nocturne of the Ravensknight',
-  'Sins of Wanton Delights',
-  'The Flames of Abaddon',
-  'Bellows of Netherfire',
-  'The Abyssal Revival',
-  "Sacrilege's Crucible",
-  'The Fallen Rapture',
-  'Singer of Anathema',
-  'The Claws of Baal',
-];
-
 const todo = [
-  // doom - mount bundle
-  'King of the Forge-Wings',
-  // doom pets
-  'The Cyclopean Cackle',
-  'Souls of the Lost',
+  // demonic goods
+  "Xazax's Razor", // (axe​stor052.itm)
+  "Astrogha's Spindle", // (wand​stor045.itm)
+  "Rakanoth's Toothpickz", // (twoHandSword​stor059.itm)
+  "Maluus' Tenderizer", // (mace​stor061.itm)
+  "Kabraxis' Skewer", // (twoHandQuarterstaff_​stor023.itm)
+
   // doom armors
   'PRAETOR OF THARSIS (BARB)',
   'PRAETOR OF EREBUS (DRUID)',
@@ -399,17 +344,9 @@ const todo = [
   'PRAETOR OF ARGYRE (ROGUE)',
   'PRAETOR OF MARINERIS (SPIRITBORN)',
   'PRAETOR OF AEOLIS (SORCERER)',
-  // season 12 MOUNT armor
-  "The Null Bramble's Wildcats",
-  'Astride the Fell Horde',
-  // season 12 paladin armor
-  'Heretic for the Creatrix',
-  'Magmus Oathforge',
-  "Breakneck's Brawlers",
-  'The Holy Geist',
 ];
 
-const results = findBestMatches(searchStrings, 'C:\\Users\\Sam\\Documents\\d4data\\json\\enUS_Text\\meta\\StringList');
+const results = findBestMatches(todo, 'C:\\Users\\Sam\\Documents\\d4data\\json\\enUS_Text\\meta\\StringList');
 
 fs.writeFileSync('../../results.json', JSON.stringify(results));
 

@@ -39,6 +39,14 @@ const PETS: CollectionDescriptor = {
       // The Springmoon Stag
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_deer.prd.json'],
     },
+    {
+      // The Cyclopean Cackle
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_cacodemonOG.prd.json'],
+    },
+    {
+      // Souls of the Lost
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_Companion_stor100_lostSoul.prd.json'],
+    },
   ],
 };
 

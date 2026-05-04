@@ -258,6 +258,10 @@ const BARBARIAN: CollectionDescriptor = {
       // Dreadblade titan
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor223.prd.json'],
     },
+    {
+      // Breakneck's Brawlers
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_bar_stor256.prd.json'],
+    },
   ],
 };
 

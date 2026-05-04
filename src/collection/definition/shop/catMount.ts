@@ -64,6 +64,18 @@ const CAT_MOUNTS: CollectionDescriptor = {
       // Blood and Bone
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor020.prd.json'],
     },
+    {
+      // King of the Forge-Wings
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor025.prd.json'],
+    },
+    {
+      // The Null Bramble's Wildcats
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor027.prd.json'],
+    },
+    {
+      // Astride the Fell Horde
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HMount_cat_stor026.prd.json'],
+    },
   ],
 };
 

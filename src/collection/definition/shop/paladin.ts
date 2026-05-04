@@ -55,6 +55,18 @@ const PALADIN: CollectionDescriptor = {
       // Sins of Wanton Delights
       storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_pal_stor166.prd.json'],
     },
+    {
+      // Heretic for the Creatrix
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_pal_stor173.prd.json'],
+    },
+    {
+      // Magmus Oathforge
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_pal_stor175.prd.json'],
+    },
+    {
+      // The Holy Geist
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_HArmor_pal_stor172.prd.json'],
+    },
   ],
 };
 
