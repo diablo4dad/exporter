@@ -7,7 +7,7 @@ const APRIL_FOWLS: CollectionDescriptor = {
   category: Category.SHOP_ITEMS,
   claimDescription: 'Free from the cash shop for a limited time.',
   // Quake Before the Hatchling
-  items: [['json\\base\\meta\\Emblem\\emblem_glo073_stor.emb.json']],
+  items: [['json\\base\\meta\\Emblem\\emblem_glo105_stor.emb.json']],
 };
 
 const DOOM: CollectionDescriptor = {
@@ -242,8 +242,8 @@ const TEJAL: CollectionDescriptor = {
   description: "Transmogs acquired from Tejal's Shop on a limited basis",
   category: Category.GENERAL,
   children: [
-    // APRIL_FOWLS
-    // DOOM,
+    APRIL_FOWLS,
+    DOOM,
     MARCH_OF_THE_GOBLINS,
     COMMUNITY_DELIGHTS,
     STARCRAFT,
