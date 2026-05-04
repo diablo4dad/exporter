@@ -15,15 +15,21 @@ const TWITCH: CollectionDescriptor = {
   promotional: true,
   children: [
     {
+      name: 'Twitch Drops #15',
+      description: 'Tune into an eligible live stream from April 23rd, 2026 until April 24th, 2026',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
+      storeProducts: [
+        'json\\base\\meta\\StoreProduct\\Bundle_twoHandSorcStaff_stor066.prd.json',
+        'json\\base\\meta\\StoreProduct\\Bundle_Sword_stor136.prd.json',
+      ],
+    },
+    {
       name: 'Twitch Drops #14',
       description: 'Tune into an eligible live stream from March 11th, 2026 until March 26th, 2026',
       category: Category.PROMOTIONAL,
       outOfRotation: true,
-      // Singsplinter
-      storeProducts: [
-        // 'json\\base\\meta\\StoreProduct\\Bundle_Scythe_stor040.prd.json',
-        // 'json\\base\\meta\\StoreProduct\\Bundle_Wand_stor047.prd.json',
-      ],
+      storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_twoHandBow_stor025.prd.json'],
     },
     {
       name: 'Twitch Drops #13',
@@ -407,8 +413,6 @@ const BLIZZCON: CollectionDescriptor = {
   ],
 };
 
-// trolli #2 Piquance, Sucrëhander, Prickletongue
-
 const TROLLI: CollectionDescriptor = {
   name: 'Trolli',
   description: 'Franchise Promotion',
@@ -418,9 +422,22 @@ const TROLLI: CollectionDescriptor = {
   promotional: true,
   children: [
     {
+      name: 'Trolli #2',
+      description: 'Promotion running from March 1st, 2026 until September 30th, 2026.',
+      claimDescription: 'Redeemable from the Trolli promotion.',
+      category: Category.PROMOTIONAL,
+      items: [
+        ['json\\base\\meta\\Item\\dagger_stor111.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandPolearm_stor089.itm.json'],
+        ['json\\base\\meta\\Item\\twoHandSword_stor079.itm.json'],
+      ],
+    },
+    {
       name: 'Trolli #1',
       description: 'Promotion running from September 1st, 2024 until February 28th, 2025.',
       claimDescription: 'Redeemable from the Trolli promotion.',
+      category: Category.PROMOTIONAL,
+      outOfRotation: true,
       items: [
         ['json\\base\\meta\\Item\\twoHandPolearm_stor042.itm.json'],
         ['json\\base\\meta\\Item\\mace_stor044.itm.json'],
@@ -438,6 +455,15 @@ const DEMONS_BLOOD: CollectionDescriptor = {
   premium: true,
   promotional: true,
   storeProducts: ['json\\base\\meta\\StoreProduct\\Bundle_KR_RedWine_stor001.prd.json'],
+};
+
+const COCA_COLA: CollectionDescriptor = {
+  name: 'Coca-Cola',
+  description: 'Wanta Fanta Promotion from 24th March, 2026 until July 30th, 2026',
+  category: Category.PROMOTIONAL,
+  claimDescription: 'Redeemable from the Wanta Fanta Promotion.',
+  promotional: true,
+  storeProducts: ['json\\base\\meta\\StoreProduct\\portal_glo039_stor.prd.json'],
 };
 
 const COCO: CollectionDescriptor = {
@@ -658,6 +684,7 @@ const PROMOTIONAL = [
   DISCORD,
   PRIME,
   TROLLI,
+  COCA_COLA,
   MOUNTAIN_DEW,
   DEMONS_BLOOD,
   COCO,
